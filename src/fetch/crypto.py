@@ -83,19 +83,33 @@ def klines(symbol, tf, start_ms=None, limit=1000):
     df = df[df["ct"].astype("int64") < now]
     return df[["datetime", "open", "high", "low", "close", "volume"]]
 
-def top_by_volume(symbols, n=10, window=30):
-    """Top-n by 24h quote volume, via ONE bulk ticker call. Rule-based tier A
+def top_by_volume(symbols, n=10, window=30, shortlist=40):
+    """Top-n crypto by `window`-day MEDIAN quote volume. Rule-based tier A
     membership, recomputed each run.
 
-    This replaces a per-symbol daily-median loop (one request per symbol) that
-    was far too slow and rate-limit-prone against the public mirror - it made
-    the tier-A ranking alone take minutes. 24h quote volume is a robust, single
-    request proxy for the same "which names are liquid right now" question.
-    `window` is kept for call-site compatibility and no longer used.
+    Ranking is by median daily volume, not 24h: a one-day volume spike (an alt
+    mid-pump) must NOT buy its way into tier A - membership should be the names
+    that are *sustainably* liquid. To stay cheap, this is a two-pass shortlist:
+    one bulk 24h-ticker call picks the top `shortlist` candidates, then only
+    those get a daily-klines fetch for the true median. That is ~50 requests
+    instead of one-per-symbol across the whole ~470-name universe (which was
+    far too slow / rate-limit-prone against the public mirror), while giving
+    the same stable ranking as scanning everyone.
     """
     wanted = set(symbols)
     data = _get(f"{BASE}/api/v3/ticker/24hr")
-    scored = [(d["symbol"], float(d.get("quoteVolume") or 0.0))
-              for d in data if d["symbol"] in wanted]
+    by24 = sorted(((d["symbol"], float(d.get("quoteVolume") or 0.0))
+                   for d in data if d["symbol"] in wanted), key=lambda x: -x[1])
+    candidates = [s for s, _ in by24[:shortlist]]
+    scored = []
+    for s in candidates:
+        try:
+            d = klines(s, "1d", limit=window + 2)
+            if len(d) < window // 2:
+                continue
+            scored.append((s, float((d["close"] * d["volume"]).median())))
+        except Exception:
+            continue
+        time.sleep(0.03)
     scored.sort(key=lambda x: -x[1])
     return [s for s, _ in scored[:n]]

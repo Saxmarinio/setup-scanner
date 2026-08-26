@@ -25,11 +25,12 @@ lower low against oscillator higher low. Python port of the Pine indicator.
 
 | tier | universe | scan | confirm |
 |---|---|---|---|
-| A | top 10 crypto by 24h volume | 4H | 1D |
+| A | top 10 crypto by 30d median volume | 4H | 1D |
 | B | all other crypto pairs | 1H | 4H + 1D |
 | C | equities / ETFs | 1D | — |
 
-Tier A membership is recomputed each run from 24h volume — not a hardcoded list.
+Tier A membership is recomputed each run from 30d median volume (shortlisted by
+24h volume first, for speed) — a one-day volume spike can't buy a name in.
 `config/overrides.yaml` is the escape hatch.
 
 ## Two things to know before trusting output
