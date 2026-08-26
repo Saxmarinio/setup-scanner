@@ -1,0 +1,27 @@
+{
+ "generated": "2026-08-26 20:08 UTC",
+ "groups": {
+  "compression (4h)": [
+   {
+    "state": "triggered",
+    "ribbon_pct": 0.812,
+    "ribbon_w_atr": 1.368,
+    "gap_atr": -6.61,
+    "bars_to_apex": -10.6,
+    "bars_in_state": 0,
+    "higher_lows": true,
+    "resistance": 0.058689,
+    "invalidation": 0.092546,
+    "close": 0.16447,
+    "atr": 0.016015,
+    "symbol": "ONGUSDT",
+    "tf": "4h",
+    "tv_symbol": "BINANCE:ONGUSDT",
+    "htf_favourable": true,
+    "detail": "ribbon p81, apex -10.6, held 0",
+    "score": 0.575
+   }
+  ],
+  "divergence (4h)": []
+ }
+}
