@@ -1,44 +1,7 @@
 {
- "generated": "2026-08-26 11:25 UTC",
+ "generated": "2026-08-26 11:29 UTC",
  "groups": {
   "Tier A - compression (4h)": [],
-  "Tier A - divergence (4h)": [
-   {
-    "symbol": "SNDKBUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
-    "margin_excess": 0.0,
-    "invalidation": 1418.51,
-    "tv_symbol": "BINANCE:SNDKBUSDT",
-    "htf_favourable": true,
-    "score": 0.825
-   },
-   {
-    "symbol": "USDCUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 0.99968,
-    "tv_symbol": "BINANCE:USDCUSDT",
-    "htf_favourable": false,
-    "score": 0.175
-   },
-   {
-    "symbol": "RLUSDUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 1.0,
-    "tv_symbol": "BINANCE:RLUSDUSDT",
-    "htf_favourable": false,
-    "score": 0.175
-   }
-  ]
+  "Tier A - divergence (4h)": []
  }
 }
