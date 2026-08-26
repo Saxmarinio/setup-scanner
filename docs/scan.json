@@ -1,27 +1,20 @@
 {
- "generated": "2026-08-26 19:58 UTC",
+ "generated": "2026-08-26 19:59 UTC",
  "groups": {
-  "Tier A - compression (4h)": [
+  "Tier C - compression (1d)": [],
+  "Tier C - divergence (1d)": [
    {
-    "state": "triggered",
-    "ribbon_pct": 0.768,
-    "ribbon_w_atr": 1.151,
-    "gap_atr": -7.27,
-    "bars_to_apex": -9.1,
-    "bars_in_state": 0,
-    "higher_lows": true,
-    "resistance": 0.06202,
-    "invalidation": 0.088315,
-    "close": 0.16975,
-    "atr": 0.01481,
-    "symbol": "ONGUSDT",
-    "tf": "4h",
-    "tv_symbol": "BINANCE:ONGUSDT",
+    "symbol": "GLD",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
+    "margin_excess": 0.0,
+    "invalidation": 397.869995,
+    "tv_symbol": "GLD",
     "htf_favourable": true,
-    "detail": "ribbon p76, apex -9.1, held 0",
-    "score": 0.575
+    "score": 0.625
    }
-  ],
-  "Tier A - divergence (4h)": []
+  ]
  }
 }
