@@ -1,25 +1,40 @@
-"""Binance USD-M perpetuals: universe + incremental klines.
+"""Bybit USDT linear perpetuals: universe + incremental klines.
+
+Data source is the Bybit v5 public market API. Binance's fapi returns HTTP 451
+(geo-block) from cloud / CI IP ranges such as GitHub Actions runners, so the
+scanner reads the same USDT-perp universe from Bybit, which does not geo-block.
 
 Universe changes (listings, delistings, migrations) are diffed against the
-committed universe.json and reported, matching the pattern in the sector
-pipeline. Do NOT silently absorb changes - a delisting that disappears
-quietly will show up later as a stale symbol with frozen bars.
+committed universe.json and reported. Do NOT silently absorb changes - a
+delisting that disappears quietly will show up later as a stale symbol with
+frozen bars.
 """
 import json, os, time, requests, pandas as pd
 
-FAPI = "https://fapi.binance.com"
+BASE = "https://api.bybit.com"
+# Bybit kline interval codes, keyed by our timeframe labels.
+TF = {"1h": "60", "4h": "240", "1d": "D"}
 TF_MS = {"1h": 3_600_000, "4h": 14_400_000, "1d": 86_400_000}
 
-def _get(url, params=None, tries=4):
+def _get(path, params=None, tries=5):
+    """GET a Bybit v5 endpoint and return its `result` dict. Retries on
+    transport errors and Bybit rate-limit codes with exponential backoff."""
+    url = f"{BASE}{path}"
     for k in range(tries):
         try:
             r = requests.get(url, params=params, timeout=25)
-            if r.status_code == 200:
-                return r.json()
-            if r.status_code in (418, 429):
+            if r.status_code in (403, 429):            # rate limited at HTTP layer
                 time.sleep(2 ** k)
                 continue
             r.raise_for_status()
+            j = r.json()
+            rc = j.get("retCode")
+            if rc == 0:
+                return j["result"]
+            if rc in (10006, 10018):                   # too many visits / rate limit
+                time.sleep(2 ** k)
+                continue
+            raise RuntimeError(f"bybit retCode {rc}: {j.get('retMsg')}")
         except requests.RequestException:
             if k == tries - 1:
                 raise
@@ -27,13 +42,22 @@ def _get(url, params=None, tries=4):
     raise RuntimeError(f"failed: {url}")
 
 def universe(quote="USDT"):
-    info = _get(f"{FAPI}/fapi/v1/exchangeInfo")
-    return sorted(
-        s["symbol"] for s in info["symbols"]
-        if s.get("contractType") == "PERPETUAL"
-        and s.get("status") == "TRADING"
-        and s.get("quoteAsset") == quote
-    )
+    """All tradable Bybit linear perpetuals with the given quote coin, sorted."""
+    syms, cursor = [], None
+    while True:
+        p = {"category": "linear", "limit": 1000}
+        if cursor:
+            p["cursor"] = cursor
+        res = _get("/v5/market/instruments-info", p)
+        for s in res.get("list", []):
+            if (s.get("contractType") == "LinearPerpetual"
+                    and s.get("status") == "Trading"
+                    and s.get("quoteCoin") == quote):
+                syms.append(s["symbol"])
+        cursor = res.get("nextPageCursor")
+        if not cursor:
+            break
+    return sorted(set(syms))
 
 def diff_universe(current, path="universe.json"):
     prev = []
@@ -45,21 +69,25 @@ def diff_universe(current, path="universe.json"):
     return added, removed
 
 def klines(symbol, tf, start_ms=None, limit=1000):
-    p = {"symbol": symbol, "interval": tf, "limit": limit}
+    p = {"category": "linear", "symbol": symbol,
+         "interval": TF[tf], "limit": min(limit, 1000)}
     if start_ms:
-        p["startTime"] = start_ms
-    raw = _get(f"{FAPI}/fapi/v1/klines", p)
+        p["start"] = start_ms
+    res = _get("/v5/market/kline", p)
+    raw = res.get("list", [])
     if not raw:
         return pd.DataFrame()
+    # Bybit lists klines newest-first; reverse to chronological order.
+    raw = raw[::-1]
     df = pd.DataFrame(raw, columns=[
-        "ot", "open", "high", "low", "close", "volume",
-        "ct", "qv", "trades", "tb", "tq", "ig"])
-    df["datetime"] = pd.to_datetime(df["ot"].astype("int64"), unit="ms")
+        "ot", "open", "high", "low", "close", "volume", "turnover"])
+    df["ot"] = df["ot"].astype("int64")
+    df["datetime"] = pd.to_datetime(df["ot"], unit="ms")
     for c in ("open", "high", "low", "close", "volume"):
         df[c] = df[c].astype(float)
     # Drop the still-forming bar. Bar-close discipline: never evaluate a live bar.
     now = int(time.time() * 1000)
-    df = df[df["ct"].astype("int64") < now]
+    df = df[df["ot"] + TF_MS[tf] <= now]
     return df[["datetime", "open", "high", "low", "close", "volume"]]
 
 def top_by_volume(symbols, n=10, window=30):

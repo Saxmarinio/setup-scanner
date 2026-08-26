@@ -4,7 +4,7 @@
 
 universe:
   crypto:
-    source: binance_perps          # fapi/v1/exchangeInfo
+    source: bybit_linear_perps     # v5/market/instruments-info (Binance fapi is geo-blocked on CI)
     quote: USDT
     top_n_by_volume: 10            # tier A membership is a RULE, not a list
     volume_window_days: 30
