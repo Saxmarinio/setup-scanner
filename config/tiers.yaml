@@ -78,5 +78,4 @@ ranking:
   cluster_correlation: 0.80        # collapse hits above this into best-in-cluster
 
 output:
-  html: docs/index.html
-  json: docs/scan.json
+  dir: docs                        # per-tier pages a/b/c.html + index.html

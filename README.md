@@ -1,8 +1,15 @@
 # Setup scanner
 
-Daily/intraday sweep for two setups across Binance perps and a small equity list.
-Output is a static page on GitHub Pages: eight rows, not sixty, each linking
-straight to the TradingView chart for manual confirmation.
+Daily/intraday sweep for two setups across Binance spot pairs and a small
+equity list. Output is a set of static pages on GitHub Pages — one per tier,
+linked from an index — each row linking straight to the TradingView chart for
+manual confirmation.
+
+Crypto data comes from Binance's public mirror `data-api.binance.vision`
+(spot). The live `fapi`/`api` hosts return HTTP 451 to cloud IPs such as
+GitHub Actions runners, and other perp venues (Bybit, OKX) return 403; the
+mirror is not geo-blocked. The detectors use plain OHLCV, so spot candles are
+a faithful stand-in for the perp.
 
 ## Detectors
 
@@ -18,11 +25,11 @@ lower low against oscillator higher low. Python port of the Pine indicator.
 
 | tier | universe | scan | confirm |
 |---|---|---|---|
-| A | top 10 crypto perps by 30d median volume | 4H | 1D |
-| B | all other crypto perps | 1H | 4H + 1D |
+| A | top 10 crypto by 24h volume | 4H | 1D |
+| B | all other crypto pairs | 1H | 4H + 1D |
 | C | equities / ETFs | 1D | — |
 
-Tier A membership is recomputed each run from volume — not a hardcoded list.
+Tier A membership is recomputed each run from 24h volume — not a hardcoded list.
 `config/overrides.yaml` is the escape hatch.
 
 ## Two things to know before trusting output

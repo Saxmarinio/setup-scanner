@@ -157,10 +157,10 @@ def main():
                      f"collapsed (rho >= {thr}) - these are not independent bets")
 
     mx = w["max_rows"]
-    renderer.render([
-        (f"Tier {a.tier} - compression ({scan_tf})", comp_rows[:mx]),
-        (f"Tier {a.tier} - divergence ({scan_tf})", div_rows[:mx]),
-    ], notes, out=cfg["output"]["html"])
+    renderer.publish(a.tier, [
+        (f"compression ({scan_tf})", comp_rows[:mx]),
+        (f"divergence ({scan_tf})", div_rows[:mx]),
+    ], notes, outdir=cfg["output"]["dir"])
     print(f"tier {a.tier}: {len(syms)} symbols, "
           f"{len(comp_rows)} compression, {len(div_rows)} divergence")
 
