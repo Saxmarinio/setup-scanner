@@ -20,6 +20,14 @@ import json, os, time, requests, pandas as pd
 BASE = "https://data-api.binance.vision"
 TF_MS = {"1h": 3_600_000, "4h": 14_400_000, "1d": 86_400_000}
 _LEVERAGED = ("UPUSDT", "DOWNUSDT", "BULLUSDT", "BEARUSDT")
+# Stablecoin / fiat bases: high volume, ~flat price - pure noise for the
+# compression and divergence detectors, and they otherwise dominate the
+# 24h-volume tier-A ranking (USDCUSDT, FDUSDUSDT, ...). Kept out entirely.
+_STABLE_BASES = {
+    "USDC", "FDUSD", "TUSD", "USD1", "RLUSD", "DAI", "USDP", "BUSD", "USDD",
+    "PYUSD", "USTC", "AEUR", "EUR", "EURI", "GBP", "TRY", "BRL", "ARS", "JPY",
+    "MXN", "PLN", "RON", "ZAR", "CZK", "COP", "UAH", "NGN", "IDRT", "BIDR",
+}
 
 def _get(url, params=None, tries=4):
     for k in range(tries):
@@ -44,6 +52,7 @@ def universe(quote="USDT"):
         if s.get("status") == "TRADING"
         and s.get("quoteAsset") == quote
         and s.get("isSpotTradingAllowed")
+        and s.get("baseAsset") not in _STABLE_BASES
         and not s["symbol"].endswith(_LEVERAGED)
     )
 
@@ -75,16 +84,18 @@ def klines(symbol, tf, start_ms=None, limit=1000):
     return df[["datetime", "open", "high", "low", "close", "volume"]]
 
 def top_by_volume(symbols, n=10, window=30):
-    """30d median quote volume from daily bars. Rule-based tier A membership."""
-    scored = []
-    for s in symbols:
-        try:
-            d = klines(s, "1d", limit=window + 2)
-            if len(d) < window // 2:
-                continue
-            scored.append((s, float((d["close"] * d["volume"]).median())))
-        except Exception:
-            continue
-        time.sleep(0.05)
+    """Top-n by 24h quote volume, via ONE bulk ticker call. Rule-based tier A
+    membership, recomputed each run.
+
+    This replaces a per-symbol daily-median loop (one request per symbol) that
+    was far too slow and rate-limit-prone against the public mirror - it made
+    the tier-A ranking alone take minutes. 24h quote volume is a robust, single
+    request proxy for the same "which names are liquid right now" question.
+    `window` is kept for call-site compatibility and no longer used.
+    """
+    wanted = set(symbols)
+    data = _get(f"{BASE}/api/v3/ticker/24hr")
+    scored = [(d["symbol"], float(d.get("quoteVolume") or 0.0))
+              for d in data if d["symbol"] in wanted]
     scored.sort(key=lambda x: -x[1])
     return [s for s, _ in scored[:n]]
