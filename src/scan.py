@@ -92,7 +92,7 @@ def main():
                                    cfg["universe"]["crypto"]["volume_window_days"])
         syms = top if a.tier == "A" else [s for s in allsyms if s not in top]
         kind = "crypto"
-        tvpfx = "BYBIT:"
+        tvpfx = "BINANCE:"
 
     if a.limit:
         syms = syms[:a.limit]

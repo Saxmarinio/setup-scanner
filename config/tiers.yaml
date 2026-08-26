@@ -4,7 +4,7 @@
 
 universe:
   crypto:
-    source: bybit_linear_perps     # v5/market/instruments-info (Binance fapi is geo-blocked on CI)
+    source: binance_spot_vision    # data-api.binance.vision (fapi/Bybit both block CI IPs)
     quote: USDT
     top_n_by_volume: 10            # tier A membership is a RULE, not a list
     volume_window_days: 30
