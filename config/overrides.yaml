@@ -1,0 +1,4 @@
+# Force symbols into or out of tier A regardless of volume ranking.
+force_tier_a: []
+force_tier_b: []
+exclude: []

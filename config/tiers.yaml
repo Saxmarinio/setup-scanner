@@ -1,0 +1,82 @@
+# Scanner configuration.
+# Tiers differ ONLY for the compression detector. The roofed-RSI divergence
+# detector runs on its own fixed D/4H config for every symbol, ungated.
+
+universe:
+  crypto:
+    source: binance_perps          # fapi/v1/exchangeInfo
+    quote: USDT
+    top_n_by_volume: 10            # tier A membership is a RULE, not a list
+    volume_window_days: 30
+    overrides: config/overrides.yaml
+  equity:
+    source: yfinance
+    tickers_file: config/equities.txt
+
+tiers:
+  A:                               # top-10 crypto by 30d median volume
+    scan_tf: "4h"
+    confirm_tf: ["1d"]
+    detectors: [compression, divergence]
+  B:                               # all other crypto perps
+    scan_tf: "1h"
+    confirm_tf: ["4h", "1d"]
+    detectors: [compression, divergence]
+    # NOTE: compression params below are UNCALIBRATED on 1H. See calibrate.py.
+    # Treat tier B output as observational until the sweep has been run.
+  C:                               # equities / ETFs
+    scan_tf: "1d"
+    confirm_tf: []
+    detectors: [compression, divergence]
+    # 4H deliberately omitted: 6.5h RTH does not divide into 4, so 4H equity
+    # bars are ragged and vendor-dependent.
+
+compression:
+  defaults: &comp_defaults
+    ema_fast: 12
+    ema_mid: 21
+    ema_slow: 35
+    atr_len: 20
+    ribbon_lookback: 250
+    slope_lookback: 20
+    min_slope_atr: 0.02
+    pivot_left: 5
+    pivot_right: 3
+    structure_lookback: 60
+    ribbon_pct_max: 0.20
+    max_gap_atr: 1.0
+    breakout_range_atr: 1.5
+  "4h": *comp_defaults
+  "1d": *comp_defaults
+  "1h":
+    <<: *comp_defaults
+    pivot_left: 8                  # PROVISIONAL - not swept
+    structure_lookback: 120
+
+divergence:
+  # Chart TF config. margC/margB are the values you are currently observing on
+  # 4H. margC=0.20 (the daily optimum) tested NEGATIVE on 4H, so these do not
+  # transfer across timeframe - do not copy them to 1H without a sweep.
+  "1d": {roof_hi: 130, roof_lo: 10, osc_len: 21, hurst_len: 60, hurst_mult: 3.0,
+         piv_l: 5,  piv_r: 5, marg_c: 0.20, marg_b: 0.10, max_gap: 70}
+  "4h": {roof_hi: 130, roof_lo: 10, osc_len: 21, hurst_len: 60, hurst_mult: 3.0,
+         piv_l: 25, piv_r: 7, marg_c: 0.02, marg_b: 0.25, max_gap: 70}
+
+ranking:
+  # Weights are a STARTING POINT. Fit them properly with the blind-grading
+  # harness rather than trusting these.
+  compression:
+    apex_urgency: 0.35             # lower bars_to_apex scores higher
+    ribbon_tightness: 0.30         # lower ribbon_pct scores higher
+    persistence: 0.20              # higher bars_in_state scores higher
+    htf_favourable: 0.15
+  divergence:
+    recency: 0.40
+    margin_excess: 0.35
+    htf_favourable: 0.25           # ranking field ONLY - never a gate
+  max_rows: 8
+  cluster_correlation: 0.80        # collapse hits above this into best-in-cluster
+
+output:
+  html: docs/index.html
+  json: docs/scan.json

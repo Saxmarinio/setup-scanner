@@ -1,0 +1,6 @@
+SPY
+QQQ
+IWM
+TLT
+GLD
+USO
