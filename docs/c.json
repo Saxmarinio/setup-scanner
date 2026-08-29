@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-28 05:32 UTC",
+ "generated": "2026-08-29 03:14 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "GLD",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 397.869995,
     "tv_symbol": "GLD",
