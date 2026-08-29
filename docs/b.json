@@ -1,7 +1,27 @@
 {
- "generated": "2026-08-28 22:33 UTC",
+ "generated": "2026-08-29 07:20 UTC",
  "groups": {
-  "compression (1h)": [],
+  "compression (1h)": [
+   {
+    "state": "triggered",
+    "ribbon_pct": 0.552,
+    "ribbon_w_atr": 0.599,
+    "gap_atr": -2.64,
+    "bars_to_apex": -5.5,
+    "bars_in_state": 0,
+    "higher_lows": false,
+    "resistance": 0.437374,
+    "invalidation": 0.438186,
+    "close": 0.454,
+    "atr": 0.006308,
+    "symbol": "MASKUSDT",
+    "tf": "1h",
+    "tv_symbol": "BINANCE:MASKUSDT",
+    "htf_favourable": true,
+    "detail": "ribbon p55, apex -5.5, held 0",
+    "score": 0.575
+   }
+  ],
   "divergence (1h)": []
  }
 }
