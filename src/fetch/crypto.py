@@ -28,6 +28,42 @@ _STABLE_BASES = {
     "PYUSD", "USTC", "AEUR", "EUR", "EURI", "GBP", "TRY", "BRL", "ARS", "JPY",
     "MXN", "PLN", "RON", "ZAR", "CZK", "COP", "UAH", "NGN", "IDRT", "BIDR",
 }
+# Commodity-pegged tokens (gold): their own list, kept out of the crypto tiers.
+_COMMODITY_BASES = {"XAUT", "PAXG", "XAU"}
+# Binance's tokenized US stocks (AAPLB, NVDAB, ...) share one exact trading-
+# permission fingerprint that real crypto never has. We read that fingerprint
+# off these blue-chip references (any present is enough), so newly-listed
+# tokenized stocks are classified automatically without a hardcoded roster.
+_TOK_REFS = ("AAPLB", "MSFTB", "NVDAB", "TSLAB", "SPYB", "QQQB", "GOOGLB", "METAB")
+
+def _fingerprint(s):
+    ps = s.get("permissionSets") or [s.get("permissions", [])]
+    return tuple(sorted(ps[0])) if ps and ps[0] else ()
+
+def categorize(quote="USDT"):
+    """Split tradable spot pairs into crypto / tokenized-stock / commodity.
+    Stablecoins and leveraged tokens are dropped entirely."""
+    info = _get(f"{BASE}/api/v3/exchangeInfo")
+    syms = [s for s in info["symbols"]
+            if s.get("status") == "TRADING"
+            and s.get("quoteAsset") == quote
+            and s.get("isSpotTradingAllowed")]
+    bym = {s["baseAsset"]: s for s in syms}
+    tok_fps = {_fingerprint(bym[r]) for r in _TOK_REFS if r in bym}
+    crypto, stock, commodity = [], [], []
+    for s in syms:
+        base = s.get("baseAsset")
+        if base in _STABLE_BASES or s["symbol"].endswith(_LEVERAGED):
+            continue
+        if base in _COMMODITY_BASES:
+            commodity.append(s["symbol"])
+        elif tok_fps and _fingerprint(s) in tok_fps:
+            stock.append(s["symbol"])
+        else:
+            crypto.append(s["symbol"])
+    return {"crypto": sorted(set(crypto)),
+            "stock": sorted(set(stock)),
+            "commodity": sorted(set(commodity))}
 
 def _get(url, params=None, tries=4):
     for k in range(tries):
@@ -46,15 +82,8 @@ def _get(url, params=None, tries=4):
     raise RuntimeError(f"failed: {url}")
 
 def universe(quote="USDT"):
-    info = _get(f"{BASE}/api/v3/exchangeInfo")
-    return sorted(
-        s["symbol"] for s in info["symbols"]
-        if s.get("status") == "TRADING"
-        and s.get("quoteAsset") == quote
-        and s.get("isSpotTradingAllowed")
-        and s.get("baseAsset") not in _STABLE_BASES
-        and not s["symbol"].endswith(_LEVERAGED)
-    )
+    """Pure-crypto spot pairs (tokenized stocks and commodities excluded)."""
+    return categorize(quote)["crypto"]
 
 def diff_universe(current, path="universe.json"):
     prev = []

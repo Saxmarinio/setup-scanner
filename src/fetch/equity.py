@@ -1,9 +1,12 @@
 """Equities / ETFs via yfinance. Daily only - see tiers.yaml for why 4H is out."""
 import pandas as pd
 
-def klines(ticker, tf="1d", lookback="3y"):
+def klines(ticker, tf="1d", lookback=None):
     import yfinance as yf
-    interval = {"1d": "1d", "1h": "60m"}[tf]
+    interval = {"1d": "1d", "1h": "60m", "1w": "1wk", "1M": "1mo"}[tf]
+    if lookback is None:
+        # Weekly/monthly need long history for a stable DSS reading.
+        lookback = {"1h": "60d", "1d": "3y", "1w": "8y", "1M": "max"}[tf]
     df = yf.download(ticker, period=lookback, interval=interval,
                      progress=False, auto_adjust=False)
     if df is None or df.empty:

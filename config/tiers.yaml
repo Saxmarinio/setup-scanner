@@ -33,6 +33,16 @@ tiers:
     detectors: [compression, divergence]
     # 4H deliberately omitted: 6.5h RTH does not divide into 4, so 4H equity
     # bars are ragged and vendor-dependent.
+  D:                               # tokenized stocks (Binance spot, kept separate)
+    scan_tf: "1d"
+    confirm_tf: []
+    divergence_tf: "1d"
+    detectors: [compression, divergence]
+  E:                               # gold / commodity-pegged tokens
+    scan_tf: "1d"
+    confirm_tf: []
+    divergence_tf: "1d"
+    detectors: [compression, divergence]
 
 compression:
   defaults: &comp_defaults
@@ -80,5 +90,11 @@ ranking:
   max_rows: 8
   cluster_correlation: 0.80        # collapse hits above this into best-in-cluster
 
+# DSS Bressert confluence, shown as D/W/M columns on every surfaced row.
+# Standard Bressert double-smoothed stochastic; values scaled 0-1.
+dss:
+  stoch_len: 13
+  ema_len: 8
+
 output:
-  dir: docs                        # per-tier pages a/b/c.html + index.html
+  dir: docs                        # per-tier pages a..e.html + index.html

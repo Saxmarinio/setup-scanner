@@ -14,7 +14,13 @@ TIER_LABEL = {
     "A": "Tier A — top-10 crypto, 4H scan",
     "B": "Tier B — other crypto, 1H scan",
     "C": "Tier C — equities & ETFs, 1D scan",
+    "D": "Tier D — tokenized stocks, 1D scan",
+    "E": "Tier E — gold & commodities, 1D scan",
 }
+INDEX_TIERS = ("A", "B", "C", "D", "E")
+
+# DSS Bressert traffic-light thresholds (0-1): <=green bottoming, >=red topping.
+DSS_GREEN, DSS_RED = 0.1, 0.9
 
 CSS = """
 body{background:#131722;color:#d1d4dc;font:14px/1.5 -apple-system,Segoe UI,sans-serif;margin:0;padding:24px}
@@ -34,6 +40,10 @@ a{color:#2962ff;text-decoration:none}
 .div{background:#2a1b3a;color:#b388ff}
 .warn{background:#3a1b1b;color:#ef5350;padding:10px 12px;border-radius:4px;margin-bottom:18px;font-size:12px}
 .n{color:#787b86;font-size:12px}
+.dss{font-variant-numeric:tabular-nums;white-space:nowrap}
+.dg{color:#26a69a;font-weight:600}
+.dr{color:#ef5350;font-weight:600}
+.dw{color:#d1d4dc}
 """
 
 def _now():
@@ -42,6 +52,17 @@ def _now():
 def _head(title):
     return f"<!doctype html><meta charset=utf-8><title>{title}</title><style>{CSS}</style>"
 
+def _dss_val(v):
+    cls = "dg" if v <= DSS_GREEN else "dr" if v >= DSS_RED else "dw"
+    return f"<span class='{cls}'>{v:.2f}</span>"
+
+def _dss_cell(pair):
+    """One D/W/M cell showing 'fast / slow', each coloured by threshold."""
+    if not pair:
+        return "<td class='dss n'>&ndash;</td>"
+    f, s = pair
+    return f"<td class=dss>{_dss_val(f)}<span class=n> / </span>{_dss_val(s)}</td>"
+
 def _tables(groups):
     h = []
     for title, rows in groups:
@@ -49,12 +70,15 @@ def _tables(groups):
         if not rows:
             h.append("<div class=sub>nothing</div>")
             continue
-        h.append("<table><tr><th>symbol</th><th>tf</th><th>state</th><th>detail</th>"
-                 "<th>htf</th><th>invalidation</th><th>score</th><th></th></tr>")
+        h.append("<div style='overflow-x:auto'>"
+                 "<table><tr><th>symbol</th><th>tf</th><th>state</th><th>detail</th>"
+                 "<th>htf</th><th>invalidation</th><th>score</th>"
+                 "<th>dss D</th><th>dss W</th><th>dss M</th><th></th></tr>")
         for r in rows:
             iv = IV.get(r["tf"], "D")
             url = TV.format(sym=r.get("tv_symbol", r["symbol"]), iv=iv)
             cls = r.get("state", "div")
+            d = r.get("dss") or {}
             h.append(
                 f"<tr><td><b>{r['symbol']}</b></td><td class=n>{r['tf']}</td>"
                 f"<td><span class='s {cls}'>{r.get('state','divergence')}</span></td>"
@@ -62,8 +86,9 @@ def _tables(groups):
                 f"<td class=n>{'ok' if r.get('htf_favourable') else '-'}</td>"
                 f"<td class=n>{r.get('invalidation','')}</td>"
                 f"<td>{r.get('score','')}</td>"
+                f"{_dss_cell(d.get('1d'))}{_dss_cell(d.get('1w'))}{_dss_cell(d.get('1M'))}"
                 f"<td><a href='{url}' target=_blank>chart</a></td></tr>")
-        h.append("</table>")
+        h.append("</table></div>")
     return h
 
 def _render_tier(tier, groups, notes, outdir, ts):
@@ -73,8 +98,11 @@ def _render_tier(tier, groups, notes, outdir, ts):
          f"<div class=sub>last run {ts} &middot; <a href='index.html'>&larr; all tiers</a></div>"]
     for n in notes:
         h.append(f"<div class=warn>{n}</div>")
+    h.append("<div class=sub>DSS Bressert (fast / slow) on daily / weekly / monthly &middot; "
+             f"<span class=dg>&le;{DSS_GREEN:g} bottoming</span> &middot; "
+             f"<span class=dr>&ge;{DSS_RED:g} topping</span></div>")
     h += _tables(groups)
-    open(out, "w").write("\n".join(h))
+    open(out, "w", encoding="utf-8").write("\n".join(h))
     json.dump({"generated": ts, "groups": {t: r for t, r in groups}},
               open(os.path.join(outdir, f"{tier.lower()}.json"), "w"), indent=1)
 
@@ -84,7 +112,7 @@ def _render_index(outdir, status):
          f"<div class=sub>index updated {_now()}</div>",
          "<table><tr><th>tier</th><th>last run</th><th>compression</th>"
          "<th>divergence</th><th></th></tr>"]
-    for t in ("A", "B", "C"):
+    for t in INDEX_TIERS:
         info = status.get(t)
         if info:
             h.append(
@@ -99,7 +127,7 @@ def _render_index(outdir, status):
                 "<td class=n>not run yet</td><td class=n>&ndash;</td>"
                 "<td class=n>&ndash;</td><td class=n></td></tr>")
     h.append("</table>")
-    open(os.path.join(outdir, "index.html"), "w").write("\n".join(h))
+    open(os.path.join(outdir, "index.html"), "w", encoding="utf-8").write("\n".join(h))
 
 def publish(tier, groups, notes, outdir="docs"):
     """Write this tier's page + JSON, update the shared status, rebuild index.

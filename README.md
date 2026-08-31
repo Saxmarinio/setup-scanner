@@ -30,10 +30,25 @@ compression scan: **4H for both crypto tiers** (A and B), 1D for equities.
 | A | top 10 crypto by 30d median volume | 4H | 4H | 1D |
 | B | all other crypto pairs | 1H | 4H | 4H + 1D |
 | C | equities / ETFs | 1D | 1D | — |
+| D | tokenized stocks (Binance spot) | 1D | 1D | — |
+| E | gold / commodity-pegged tokens | 1D | 1D | — |
 
 Tier A membership is recomputed each run from 30d median volume (shortlisted by
 24h volume first, for speed) — a one-day volume spike can't buy a name in.
 `config/overrides.yaml` is the escape hatch.
+
+Tokenized stocks (AAPLB, NVDAB, …) and gold (XAUT, PAXG) are kept out of the
+pure-crypto tiers and scanned as their own lists D and E. Tokenized stocks are
+identified by the trading-permission fingerprint Binance gives that product, so
+new listings are picked up automatically.
+
+## DSS Bressert confluence
+
+Every surfaced row carries a DSS Bressert (double-smoothed stochastic) readout
+on **daily / weekly / monthly**, printed as `fast / slow` (0–1). Colour is a
+traffic light: **≤0.1 green** (bottoming swing), **≥0.9 red** (top), white
+between. Young series (a new alt's monthly) show `–` rather than a noisy value.
+Parameters live under `dss:` in `config/tiers.yaml`.
 
 ## Two things to know before trusting output
 

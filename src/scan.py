@@ -10,8 +10,8 @@ import numpy as np, pandas as pd, yaml
 
 sys.path.insert(0, os.path.dirname(__file__))
 from detectors.compression import compression_state, htf_posture
-from detectors import l1
-from fetch import crypto, store
+from detectors import l1, dss
+from fetch import crypto, store, equity
 import rank as ranker
 import render as renderer
 
@@ -65,9 +65,24 @@ def divergence_rows(df, dcfg, symbol, tf):
     return out
 
 
+def dss_dwm(sym, kind, dcfg):
+    """Latest DSS Bressert (fast, slow) on daily / weekly / monthly for one
+    symbol; None per timeframe when there aren't enough bars for a stable read."""
+    out = {}
+    for tf in ("1d", "1w", "1M"):
+        try:
+            bars = (crypto.klines(sym, tf, limit=1000) if kind == "crypto"
+                    else equity.klines(sym, tf))
+            out[tf] = dss.bressert(bars, stoch_len=dcfg.get("stoch_len", 13),
+                                   ema_len=dcfg.get("ema_len", 8))
+        except Exception:
+            out[tf] = None
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--tier", required=True, choices=["A", "B", "C"])
+    ap.add_argument("--tier", required=True, choices=["A", "B", "C", "D", "E"])
     ap.add_argument("--limit", type=int, default=0, help="debug: cap symbols")
     a = ap.parse_args()
 
@@ -81,6 +96,13 @@ def main():
                 if s.strip()]
         kind = "equity"
         tvpfx = ""
+    elif a.tier in ("D", "E"):
+        # Tokenized stocks (D) and gold/commodity-pegged (E) - Binance spot,
+        # scanned as their own lists, kept out of the pure-crypto tiers.
+        cats = crypto.categorize(cfg["universe"]["crypto"]["quote"])
+        syms = cats["stock"] if a.tier == "D" else cats["commodity"]
+        kind = "crypto"
+        tvpfx = "BINANCE:"
     else:
         allsyms = crypto.universe(cfg["universe"]["crypto"]["quote"])
         added, removed = crypto.diff_universe(allsyms)
@@ -168,6 +190,16 @@ def main():
                      f"collapsed (rho >= {thr}) - these are not independent bets")
 
     mx = w["max_rows"]
+    # DSS Bressert confluence on daily/weekly/monthly, only for the rows that
+    # will actually be displayed (a handful of symbols, deduped).
+    dcfg = cfg.get("dss", {})
+    dss_seen = {}
+    for r in comp_rows[:mx] + div_rows[:mx]:
+        sym = r["symbol"]
+        if sym not in dss_seen:
+            dss_seen[sym] = dss_dwm(sym, kind, dcfg)
+        r["dss"] = dss_seen[sym]
+
     renderer.publish(a.tier, [
         (f"compression ({scan_tf})", comp_rows[:mx]),
         (f"divergence ({div_tf})", div_rows[:mx]),
