@@ -1,25 +1,44 @@
 {
- "generated": "2026-08-31 05:52 UTC",
+ "generated": "2026-08-31 16:22 UTC",
  "groups": {
   "compression (1h)": [
    {
+    "state": "forming",
+    "ribbon_pct": 0.16,
+    "ribbon_w_atr": 0.235,
+    "gap_atr": null,
+    "bars_to_apex": null,
+    "bars_in_state": 0,
+    "higher_lows": true,
+    "resistance": null,
+    "invalidation": 0.255731,
+    "close": 0.2581,
+    "atr": 0.00545,
+    "symbol": "FORMUSDT",
+    "tf": "1h",
+    "tv_symbol": "BINANCE:FORMUSDT",
+    "htf_favourable": true,
+    "detail": "ribbon p16, apex None, held 0",
+    "score": 0.55
+   },
+   {
     "state": "triggered",
-    "ribbon_pct": 0.868,
-    "ribbon_w_atr": 1.541,
-    "gap_atr": -5.93,
-    "bars_to_apex": -14.8,
+    "ribbon_pct": 0.276,
+    "ribbon_w_atr": 0.252,
+    "gap_atr": -1.54,
+    "bars_to_apex": 2.7,
     "bars_in_state": 0,
     "higher_lows": false,
-    "resistance": 0.163061,
-    "invalidation": 0.168155,
-    "close": 0.1881,
-    "atr": 0.004223,
-    "symbol": "0GUSDT",
+    "resistance": 0.135151,
+    "invalidation": 0.134285,
+    "close": 0.1379,
+    "atr": 0.001782,
+    "symbol": "ATUSDT",
     "tf": "1h",
-    "tv_symbol": "BINANCE:0GUSDT",
+    "tv_symbol": "BINANCE:ATUSDT",
     "htf_favourable": false,
-    "detail": "ribbon p86, apex -14.8, held 0",
-    "score": 0.425
+    "detail": "ribbon p27, apex 2.7, held 0",
+    "score": 0.45
    }
   ],
   "divergence (1h)": []
