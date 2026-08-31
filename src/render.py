@@ -106,28 +106,89 @@ def _render_tier(tier, groups, notes, outdir, ts):
     json.dump({"generated": ts, "groups": {t: r for t, r in groups}},
               open(os.path.join(outdir, f"{tier.lower()}.json"), "w"), indent=1)
 
+def _index_signals(info):
+    if "board" in info:
+        return (f"{info['board']} tracked &middot; "
+                f"<span class=dg>{info.get('bottoming', 0)}</span> bottoming &middot; "
+                f"<span class=dr>{info.get('topping', 0)}</span> topping")
+    return f"{info.get('compression', 0)} compression &middot; {info.get('divergence', 0)} divergence"
+
 def _render_index(outdir, status):
     h = [_head("Setup scan"),
          "<h1>Setup scan</h1>",
          f"<div class=sub>index updated {_now()}</div>",
-         "<table><tr><th>tier</th><th>last run</th><th>compression</th>"
-         "<th>divergence</th><th></th></tr>"]
+         "<table><tr><th>tier</th><th>last run</th><th>signals</th><th></th></tr>"]
     for t in INDEX_TIERS:
         info = status.get(t)
         if info:
             h.append(
                 f"<tr><td><b>{TIER_LABEL[t]}</b></td>"
                 f"<td class=n>{info['ts']}</td>"
-                f"<td>{info['compression']}</td>"
-                f"<td>{info['divergence']}</td>"
+                f"<td class=n>{_index_signals(info)}</td>"
                 f"<td><a href='{t.lower()}.html'>view &rarr;</a></td></tr>")
         else:
             h.append(
                 f"<tr><td><b>{TIER_LABEL[t]}</b></td>"
                 "<td class=n>not run yet</td><td class=n>&ndash;</td>"
-                "<td class=n>&ndash;</td><td class=n></td></tr>")
+                "<td class=n></td></tr>")
     h.append("</table>")
     open(os.path.join(outdir, "index.html"), "w", encoding="utf-8").write("\n".join(h))
+
+def _board_table(rows):
+    h = ["<div style='overflow-x:auto'><table><tr><th>symbol</th>"
+         "<th>dss D</th><th>dss W</th><th>dss M</th><th></th></tr>"]
+    for r in rows:
+        url = TV.format(sym=r.get("tv_symbol", r["symbol"]), iv=IV["1d"])
+        d = r.get("dss") or {}
+        h.append(
+            f"<tr><td><b>{r['symbol']}</b></td>"
+            f"{_dss_cell(d.get('1d'))}{_dss_cell(d.get('1w'))}{_dss_cell(d.get('1M'))}"
+            f"<td><a href='{url}' target=_blank>chart</a></td></tr>")
+    h.append("</table></div>")
+    return h
+
+def _board_counts(rows):
+    """Rows with any fast DSS <=green (bottoming) / >=red (topping)."""
+    bottoming = topping = 0
+    for r in rows:
+        fasts = [p[0] for p in (r.get("dss") or {}).values() if p]
+        if any(f <= DSS_GREEN for f in fasts):
+            bottoming += 1
+        if any(f >= DSS_RED for f in fasts):
+            topping += 1
+    return bottoming, topping
+
+def publish_board(tier, rows, notes, outdir="docs"):
+    """Publish a DSS board page (one row per instrument, no setup required) and
+    refresh the shared index. Used for the tokenized-stock and commodity tiers."""
+    os.makedirs(outdir, exist_ok=True)
+    ts = _now()
+    out = os.path.join(outdir, f"{tier.lower()}.html")
+    h = [_head(f"Setup scan — Tier {tier}"),
+         f"<h1>{TIER_LABEL[tier]}</h1>",
+         f"<div class=sub>last run {ts} &middot; <a href='index.html'>&larr; all tiers</a></div>"]
+    for n in notes:
+        h.append(f"<div class=warn>{n}</div>")
+    h.append("<div class=sub>DSS Bressert (fast / slow) on daily / weekly / monthly &middot; "
+             f"<span class=dg>&le;{DSS_GREEN:g} bottoming</span> &middot; "
+             f"<span class=dr>&ge;{DSS_RED:g} topping</span> &middot; sorted extremes-first</div>")
+    h += _board_table(rows) if rows else ["<div class=sub>nothing</div>"]
+    open(out, "w", encoding="utf-8").write("\n".join(h))
+    json.dump({"generated": ts,
+               "rows": [{"symbol": r["symbol"], "dss": r.get("dss")} for r in rows]},
+              open(os.path.join(outdir, f"{tier.lower()}.json"), "w"), indent=1)
+    status_path = os.path.join(outdir, "status.json")
+    status = {}
+    if os.path.exists(status_path):
+        try:
+            status = json.load(open(status_path))
+        except Exception:
+            status = {}
+    bottoming, topping = _board_counts(rows)
+    status[tier] = {"ts": ts, "board": len(rows),
+                    "bottoming": bottoming, "topping": topping}
+    json.dump(status, open(status_path, "w"), indent=1)
+    _render_index(outdir, status)
 
 def publish(tier, groups, notes, outdir="docs"):
     """Write this tier's page + JSON, update the shared status, rebuild index.

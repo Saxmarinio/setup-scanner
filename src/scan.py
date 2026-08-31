@@ -119,6 +119,30 @@ def main():
     if a.limit:
         syms = syms[:a.limit]
 
+    # Tiers D/E are DSS boards, not setup scans: the tokenized stocks are too
+    # new (weeks of history) for the compression/divergence detectors, so list
+    # every instrument with its D/W/M DSS instead, extremes sorted to the top.
+    if a.tier in ("D", "E"):
+        dcfg = cfg.get("dss", {})
+        board = []
+        for s in syms:
+            board.append({"symbol": s, "tv_symbol": tvpfx + s,
+                          "dss": dss_dwm(s, kind, dcfg)})
+        g, r = renderer.DSS_GREEN, renderer.DSS_RED
+
+        def _key(row):
+            d = row["dss"]
+            flagged = any(p and (p[0] <= g or p[0] >= r) for p in d.values())
+            dd = d.get("1d")
+            return (0 if flagged else 1, dd[0] if dd else 0.5)
+        board.sort(key=_key)
+        with_daily = sum(1 for row in board if row["dss"].get("1d"))
+        notes.append(f"{with_daily}/{len(board)} have enough history for a daily DSS "
+                     "(weekly/monthly fill in as these list longer).")
+        renderer.publish_board(a.tier, board, notes, outdir=cfg["output"]["dir"])
+        print(f"tier {a.tier}: {len(board)} tracked (DSS board)")
+        return
+
     if a.tier == "B":
         notes.append("Tier B compression parameters are PROVISIONAL - the 1H sweep "
                      "in calibrate.py has not been run. Treat as observational.")
