@@ -1,0 +1,247 @@
+{
+ "generated": "2026-08-31 21:46 UTC",
+ "groups": {
+  "compression (1d)": [
+   {
+    "state": "forming",
+    "ribbon_pct": 0.3,
+    "ribbon_w_atr": 0.445,
+    "gap_atr": null,
+    "bars_to_apex": null,
+    "bars_in_state": 0,
+    "higher_lows": true,
+    "resistance": null,
+    "invalidation": 258.322373,
+    "close": 259.769989,
+    "atr": 7.38646,
+    "symbol": "AMZN",
+    "tf": "1d",
+    "tv_symbol": "AMZN",
+    "htf_favourable": true,
+    "detail": "ribbon p30, apex None, held 0",
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.156,
+      0.262
+     ],
+     "1w": [
+      0.456,
+      0.448
+     ],
+     "1M": [
+      0.576,
+      0.502
+     ]
+    }
+   }
+  ],
+  "divergence (1d)": [
+   {
+    "symbol": "AAOI",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 102.099998,
+    "tv_symbol": "AAOI",
+    "htf_favourable": true,
+    "score": 0.825,
+    "dss": {
+     "1d": [
+      0.134,
+      0.361
+     ],
+     "1w": [
+      0.127,
+      0.132
+     ],
+     "1M": [
+      0.731,
+      0.725
+     ]
+    }
+   },
+   {
+    "symbol": "BE",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 185.929993,
+    "tv_symbol": "BE",
+    "htf_favourable": true,
+    "score": 0.825,
+    "dss": {
+     "1d": [
+      0.204,
+      0.361
+     ],
+     "1w": [
+      0.083,
+      0.254
+     ],
+     "1M": [
+      0.704,
+      0.873
+     ]
+    }
+   },
+   {
+    "symbol": "INTC",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 85.139999,
+    "tv_symbol": "INTC",
+    "htf_favourable": true,
+    "score": 0.825,
+    "dss": {
+     "1d": [
+      0.138,
+      0.358
+     ],
+     "1w": [
+      0.109,
+      0.303
+     ],
+     "1M": [
+      0.911,
+      0.84
+     ]
+    }
+   },
+   {
+    "symbol": "MU",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 887.609985,
+    "tv_symbol": "MU",
+    "htf_favourable": true,
+    "score": 0.825,
+    "dss": {
+     "1d": [
+      0.345,
+      0.61
+     ],
+     "1w": [
+      0.104,
+      0.282
+     ],
+     "1M": [
+      0.896,
+      0.842
+     ]
+    }
+   },
+   {
+    "symbol": "NOK",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 9.77,
+    "tv_symbol": "NOK",
+    "htf_favourable": true,
+    "score": 0.825,
+    "dss": {
+     "1d": [
+      0.453,
+      0.686
+     ],
+     "1w": [
+      0.043,
+      0.151
+     ],
+     "1M": [
+      0.469,
+      0.477
+     ]
+    }
+   },
+   {
+    "symbol": "QCOM",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 156.229996,
+    "tv_symbol": "QCOM",
+    "htf_favourable": true,
+    "score": 0.825,
+    "dss": {
+     "1d": [
+      0.631,
+      0.665
+     ],
+     "1w": [
+      0.148,
+      0.358
+     ],
+     "1M": [
+      0.611,
+      0.6
+     ]
+    }
+   },
+   {
+    "symbol": "USAR",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
+    "margin_excess": 0.0,
+    "invalidation": 16.950001,
+    "tv_symbol": "USAR",
+    "htf_favourable": true,
+    "score": 0.625,
+    "dss": {
+     "1d": [
+      0.179,
+      0.42
+     ],
+     "1w": [
+      0.188,
+      0.302
+     ],
+     "1M": null
+    }
+   },
+   {
+    "symbol": "META",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 3 bars ago",
+    "bars_since": 3,
+    "margin_excess": 0.0,
+    "invalidation": 537.27002,
+    "tv_symbol": "META",
+    "htf_favourable": true,
+    "score": 0.525,
+    "dss": {
+     "1d": [
+      0.32,
+      0.353
+     ],
+     "1w": [
+      0.28,
+      0.487
+     ],
+     "1M": [
+      0.036,
+      0.114
+     ]
+    }
+   }
+  ]
+ }
+}
