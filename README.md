@@ -20,14 +20,16 @@ BTC 4H (≈3.5/yr/symbol).
 
 **divergence** — L1 roofed RSI (HP130/SS10/RSI21) and Hurst channel %B, price
 lower low against oscillator higher low. Python port of the Pine indicator.
+Runs on its own timeframe per tier (`divergence_tf`), independent of the
+compression scan: **4H for both crypto tiers** (A and B), 1D for equities.
 
 ## Tiers
 
-| tier | universe | scan | confirm |
-|---|---|---|---|
-| A | top 10 crypto by 30d median volume | 4H | 1D |
-| B | all other crypto pairs | 1H | 4H + 1D |
-| C | equities / ETFs | 1D | — |
+| tier | universe | compression scan | divergence | confirm |
+|---|---|---|---|---|
+| A | top 10 crypto by 30d median volume | 4H | 4H | 1D |
+| B | all other crypto pairs | 1H | 4H | 4H + 1D |
+| C | equities / ETFs | 1D | 1D | — |
 
 Tier A membership is recomputed each run from 30d median volume (shortlisted by
 24h volume first, for speed) — a one-day volume spike can't buy a name in.

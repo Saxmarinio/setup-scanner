@@ -102,7 +102,10 @@ def main():
                      "in calibrate.py has not been run. Treat as observational.")
 
     comp_cfg = cfg["compression"][scan_tf]
-    div_cfg = cfg["divergence"].get(scan_tf)
+    # Divergence runs on its own timeframe. Tier B scans 1H for compression but
+    # takes the roofed-RSI divergence off 4H; defaults to the scan timeframe.
+    div_tf = tier.get("divergence_tf", scan_tf)
+    div_cfg = cfg["divergence"].get(div_tf)
 
     comp_rows, div_rows, rets, failed = [], [], {}, []
     for i, s in enumerate(syms):
@@ -116,8 +119,10 @@ def main():
             # this is correct. Divergence is counter-trend by construction -
             # HTF is recorded as a RANKING FIELD ONLY, never a gate.
             fav = True
+            htf_bars = {}
             for ctf in confirm:
                 hdf = get_bars(s, ctf, kind)
+                htf_bars[ctf] = hdf
                 if hdf is None or len(hdf) < 120:
                     continue
                 p = htf_posture(hdf, cfg["compression"][ctf])
@@ -135,9 +140,15 @@ def main():
                         comp_rows.append(r)
 
             if div_cfg and "divergence" in tier["detectors"]:
-                for d in divergence_rows(df, div_cfg, s, scan_tf):
-                    d.update(tv_symbol=tvpfx + s, htf_favourable=fav)
-                    div_rows.append(d)
+                # Reuse already-fetched HTF bars when the divergence timeframe is
+                # one of them (tier B fetches 4H for the compression gate).
+                ddf = df if div_tf == scan_tf else htf_bars.get(div_tf)
+                if ddf is None and div_tf != scan_tf:
+                    ddf = get_bars(s, div_tf, kind)
+                if ddf is not None and len(ddf) >= 300:
+                    for d in divergence_rows(ddf, div_cfg, s, div_tf):
+                        d.update(tv_symbol=tvpfx + s, htf_favourable=fav)
+                        div_rows.append(d)
         except Exception as e:
             failed.append(f"{s}: {type(e).__name__}")
         if kind == "crypto":
@@ -159,7 +170,7 @@ def main():
     mx = w["max_rows"]
     renderer.publish(a.tier, [
         (f"compression ({scan_tf})", comp_rows[:mx]),
-        (f"divergence ({scan_tf})", div_rows[:mx]),
+        (f"divergence ({div_tf})", div_rows[:mx]),
     ], notes, outdir=cfg["output"]["dir"])
     print(f"tier {a.tier}: {len(syms)} symbols, "
           f"{len(comp_rows)} compression, {len(div_rows)} divergence")
