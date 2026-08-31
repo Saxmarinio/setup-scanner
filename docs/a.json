@@ -1,20 +1,7 @@
 {
- "generated": "2026-08-30 05:19 UTC",
+ "generated": "2026-08-31 05:26 UTC",
  "groups": {
   "compression (4h)": [],
-  "divergence (4h)": [
-   {
-    "symbol": "DOGEUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
-    "margin_excess": 0.0,
-    "invalidation": 0.08381,
-    "tv_symbol": "BINANCE:DOGEUSDT",
-    "htf_favourable": true,
-    "score": 0.625
-   }
-  ]
+  "divergence (4h)": []
  }
 }
