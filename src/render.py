@@ -16,8 +16,9 @@ TIER_LABEL = {
     "C": "Tier C — equities & ETFs, 1D scan",
     "D": "Tier D — tokenized stocks, 1D scan",
     "E": "Tier E — gold & commodities, 1D scan",
+    "F": "Tier F — NASDAQ/SPX stocks, 1D scan",
 }
-INDEX_TIERS = ("A", "B", "C", "D", "E")
+INDEX_TIERS = ("A", "B", "C", "D", "E", "F")
 
 # DSS Bressert traffic-light thresholds (0-1): <=green bottoming, >=red topping.
 DSS_GREEN, DSS_RED = 0.1, 0.9

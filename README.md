@@ -32,6 +32,7 @@ compression scan: **4H for both crypto tiers** (A and B), 1D for equities.
 | C | equities / ETFs | 1D | 1D | — |
 | D | tokenized stocks (Binance spot) | 1D | 1D | — |
 | E | gold / commodity-pegged tokens | 1D | 1D | — |
+| F | real NASDAQ/SPX stocks (Yahoo) | 1D | 1D | — |
 
 Tier A membership is recomputed each run from 30d median volume (shortlisted by
 24h volume first, for speed) — a one-day volume spike can't buy a name in.
@@ -41,6 +42,10 @@ Tokenized stocks (AAPLB, NVDAB, …) and gold (XAUT, PAXG) are kept out of the
 pure-crypto tiers and scanned as their own lists D and E. Tokenized stocks are
 identified by the trading-permission fingerprint Binance gives that product, so
 new listings are picked up automatically.
+
+Tier F scans the **real** equities behind the tokenized names (AAPL, NVDA, … via
+Yahoo Finance). Because these have full history, D/E are DSS boards (below) while
+tiers C and F are full compression + divergence setup scans.
 
 ## DSS Bressert confluence
 

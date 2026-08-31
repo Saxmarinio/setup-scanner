@@ -43,6 +43,11 @@ tiers:
     confirm_tf: []
     divergence_tf: "1d"
     detectors: [compression, divergence]
+  F:                               # real NASDAQ/SPX stocks (Yahoo) behind tier D
+    scan_tf: "1d"
+    confirm_tf: []
+    divergence_tf: "1d"
+    detectors: [compression, divergence]
 
 compression:
   defaults: &comp_defaults

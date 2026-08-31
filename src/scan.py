@@ -77,12 +77,14 @@ def dss_dwm(sym, kind, dcfg):
                                    ema_len=dcfg.get("ema_len", 8))
         except Exception:
             out[tf] = None
+        if kind == "equity":
+            time.sleep(0.2)
     return out
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--tier", required=True, choices=["A", "B", "C", "D", "E"])
+    ap.add_argument("--tier", required=True, choices=["A", "B", "C", "D", "E", "F"])
     ap.add_argument("--limit", type=int, default=0, help="debug: cap symbols")
     a = ap.parse_args()
 
@@ -94,6 +96,12 @@ def main():
     if a.tier == "C":
         syms = [s.strip() for s in open(cfg["universe"]["equity"]["tickers_file"])
                 if s.strip()]
+        kind = "equity"
+        tvpfx = ""
+    elif a.tier == "F":
+        # Real NASDAQ/SPX stocks behind the tokenized names - full history, so a
+        # normal setup scan (not a board). Auto-derived from tier D.
+        syms = crypto.stock_underlyings(cfg["universe"]["crypto"]["quote"])
         kind = "equity"
         tvpfx = ""
     elif a.tier in ("D", "E"):
@@ -197,8 +205,7 @@ def main():
                         div_rows.append(d)
         except Exception as e:
             failed.append(f"{s}: {type(e).__name__}")
-        if kind == "crypto":
-            time.sleep(0.05)
+        time.sleep(0.05 if kind == "crypto" else 0.3)   # gentler on Yahoo
 
     if failed:
         notes.append(f"{len(failed)} symbols failed: {', '.join(failed[:6])}")

@@ -65,6 +65,17 @@ def categorize(quote="USDT"):
             "stock": sorted(set(stock)),
             "commodity": sorted(set(commodity))}
 
+def stock_underlyings(quote="USDT"):
+    """Real equity tickers behind the tokenized stocks (Binance tags them with a
+    trailing 'B': AAPLB -> AAPL). Auto-tracks tier D; a few obscure ones won't
+    resolve on Yahoo and are simply skipped downstream."""
+    out = []
+    for sym in categorize(quote)["stock"]:
+        base = sym[:-len(quote)]          # AAPLBUSDT -> AAPLB
+        if base.endswith("B"):
+            out.append(base[:-1])         # AAPLB -> AAPL
+    return sorted(set(out))
+
 def _get(url, params=None, tries=4):
     for k in range(tries):
         try:
