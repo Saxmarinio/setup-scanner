@@ -95,6 +95,22 @@ ranking:
   max_rows: 8
   cluster_correlation: 0.80        # collapse hits above this into best-in-cluster
 
+# Money Noodle (EMA 12/21/35 + ATR band on the 35 line) and the swing-structure
+# trend gate. Calmer settings = fewer, higher-conviction trend calls that hold
+# through pullbacks (bullish first).
+noodle:
+  ema_fast: 12
+  ema_medium: 21
+  ema_slow: 35
+  atr_len: 20
+  band_mult: 0.0125           # ATR-mode band = atr*band_mult*40 = 0.5*ATR(20)
+trend:
+  pivot_width: 6              # bars each side for a swing (higher = calmer)
+  n_swings: 4                 # swings averaged in the slope fit
+  tau: 0.04                   # min ATR-normalised rising-lows slope for an uptrend
+  break_k: 1.0                # lower-low must break prior swing low by k*ATR to exit `up`
+  timeframes: ["15m", "1h", "4h", "1d", "1w"]
+
 # DSS Bressert confluence, shown as D/W/M columns on every surfaced row.
 # Standard Bressert double-smoothed stochastic; values scaled 0-1.
 dss:
