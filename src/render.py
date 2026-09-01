@@ -45,7 +45,14 @@ a{color:#2962ff;text-decoration:none}
 .dg{color:#26a69a;font-weight:600}
 .dr{color:#ef5350;font-weight:600}
 .dw{color:#d1d4dc}
+.trendcell{white-space:nowrap}
+.tb{display:inline-block;padding:1px 3px;margin:0 1px;border-radius:2px;font-size:9px;font-weight:600}
+.tup{background:#1b3a2a;color:#26a69a}
+.tno{background:#22263a;color:#6b7280}
+.tna{background:transparent;color:#3a3f4b}
 """
+
+TREND_TFS = [("15m", "15m"), ("1h", "1h"), ("4h", "4h"), ("1d", "D"), ("1w", "W")]
 
 def _now():
     return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -64,6 +71,17 @@ def _dss_cell(pair):
     f, s = pair
     return f"<td class=dss>{_dss_val(f)}<span class=n> / </span>{_dss_val(s)}</td>"
 
+def _trend_cell(tmap):
+    """Compact multi-TF trend: a green block per uptrend TF, grey for none."""
+    if not tmap:
+        return "<td class='trendcell n'>&ndash;</td>"
+    blocks = []
+    for tf, lab in TREND_TFS:
+        st = tmap.get(tf)
+        cls = "tup" if st == "up" else "tno" if st == "none" else "tna"
+        blocks.append(f"<span class='tb {cls}'>{lab}</span>")
+    return f"<td class=trendcell>{''.join(blocks)}</td>"
+
 def _tables(groups):
     h = []
     for title, rows in groups:
@@ -74,6 +92,7 @@ def _tables(groups):
         h.append("<div style='overflow-x:auto'>"
                  "<table><tr><th>symbol</th><th>tf</th><th>state</th><th>detail</th>"
                  "<th>htf</th><th>invalidation</th><th>score</th>"
+                 "<th>trend 15m&middot;1h&middot;4h&middot;D&middot;W</th>"
                  "<th>dss D</th><th>dss W</th><th>dss M</th><th></th></tr>")
         for r in rows:
             iv = IV.get(r["tf"], "D")
@@ -87,6 +106,7 @@ def _tables(groups):
                 f"<td class=n>{'ok' if r.get('htf_favourable') else '-'}</td>"
                 f"<td class=n>{r.get('invalidation','')}</td>"
                 f"<td>{r.get('score','')}</td>"
+                f"{_trend_cell(r.get('trend'))}"
                 f"{_dss_cell(d.get('1d'))}{_dss_cell(d.get('1w'))}{_dss_cell(d.get('1M'))}"
                 f"<td><a href='{url}' target=_blank>chart</a></td></tr>")
         h.append("</table></div>")

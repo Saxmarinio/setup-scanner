@@ -10,7 +10,7 @@ import numpy as np, pandas as pd, yaml
 
 sys.path.insert(0, os.path.dirname(__file__))
 from detectors.compression import compression_state, htf_posture
-from detectors import l1, dss
+from detectors import l1, dss, noodle, trend as trendmod
 from fetch import crypto, store, equity
 import rank as ranker
 import render as renderer
@@ -75,6 +75,39 @@ def dss_dwm(sym, kind, dcfg):
                     else equity.klines(sym, tf))
             out[tf] = dss.bressert(bars, stoch_len=dcfg.get("stoch_len", 13),
                                    ema_len=dcfg.get("ema_len", 8))
+        except Exception:
+            out[tf] = None
+        if kind == "equity":
+            time.sleep(0.2)
+    return out
+
+
+def _noodle(df, ncfg):
+    return noodle.money_noodle(
+        df, ema_fast=ncfg.get("ema_fast", 12), ema_medium=ncfg.get("ema_medium", 21),
+        ema_slow=ncfg.get("ema_slow", 35), atr_len=ncfg.get("atr_len", 20),
+        band_mult=ncfg.get("band_mult", 0.0125))
+
+
+def trend_multi(sym, kind, cfg):
+    """Current swing-structure trend state per timeframe (15m..1w) for one
+    symbol. None per TF when there isn't enough history."""
+    tcfg, ncfg = cfg.get("trend", {}), cfg.get("noodle", {})
+    tfs = tcfg.get("timeframes", ["15m", "1h", "4h", "1d", "1w"])
+    pw = tcfg.get("pivot_width", 6)
+    out = {}
+    for tf in tfs:
+        try:
+            bars = (crypto.klines(sym, tf, limit=1000) if kind == "crypto"
+                    else equity.klines(sym, tf))
+            if bars is None or len(bars) < 80:
+                out[tf] = None
+            else:
+                _, info = trendmod.trend_series(
+                    bars, _noodle(bars, ncfg), left=pw, right=pw,
+                    n_swings=tcfg.get("n_swings", 4), tau=tcfg.get("tau", 0.04),
+                    break_k=tcfg.get("break_k", 1.0))
+                out[tf] = info["state"]
         except Exception:
             out[tf] = None
         if kind == "equity":
@@ -224,12 +257,14 @@ def main():
     # DSS Bressert confluence on daily/weekly/monthly, only for the rows that
     # will actually be displayed (a handful of symbols, deduped).
     dcfg = cfg.get("dss", {})
-    dss_seen = {}
+    dss_seen, trend_seen = {}, {}
     for r in comp_rows[:mx] + div_rows[:mx]:
         sym = r["symbol"]
         if sym not in dss_seen:
             dss_seen[sym] = dss_dwm(sym, kind, dcfg)
+            trend_seen[sym] = trend_multi(sym, kind, cfg)
         r["dss"] = dss_seen[sym]
+        r["trend"] = trend_seen[sym]
 
     renderer.publish(a.tier, [
         (f"compression ({scan_tf})", comp_rows[:mx]),
