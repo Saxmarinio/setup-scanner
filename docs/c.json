@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-01 00:43 UTC",
+ "generated": "2026-09-01 23:28 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "GLD",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 397.869995,
     "tv_symbol": "GLD",
@@ -16,17 +16,24 @@
     "score": 0.625,
     "dss": {
      "1d": [
-      0.507,
-      0.795
+      0.394,
+      0.706
      ],
      "1w": [
-      0.667,
+      0.666,
       0.347
      ],
      "1M": [
-      0.093,
-      0.269
+      0.072,
+      0.226
      ]
+    },
+    "trend": {
+     "15m": null,
+     "1h": "none",
+     "4h": null,
+     "1d": "none",
+     "1w": "none"
     }
    }
   ]
