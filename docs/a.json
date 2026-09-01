@@ -1,7 +1,60 @@
 {
- "generated": "2026-08-31 05:26 UTC",
+ "generated": "2026-09-01 05:01 UTC",
  "groups": {
   "compression (4h)": [],
-  "divergence (4h)": []
+  "divergence (4h)": [
+   {
+    "symbol": "ETHUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 2387.28,
+    "tv_symbol": "BINANCE:ETHUSDT",
+    "htf_favourable": true,
+    "score": 0.625,
+    "dss": {
+     "1d": [
+      0.944,
+      0.93
+     ],
+     "1w": [
+      0.683,
+      0.526
+     ],
+     "1M": [
+      0.143,
+      0.297
+     ]
+    }
+   },
+   {
+    "symbol": "XRPUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 1.3352,
+    "tv_symbol": "BINANCE:XRPUSDT",
+    "htf_favourable": true,
+    "score": 0.625,
+    "dss": {
+     "1d": [
+      0.901,
+      0.841
+     ],
+     "1w": [
+      0.404,
+      0.259
+     ],
+     "1M": [
+      0.095,
+      0.281
+     ]
+    }
+   }
+  ]
  }
 }

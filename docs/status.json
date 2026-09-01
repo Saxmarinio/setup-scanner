@@ -1,8 +1,8 @@
 {
  "A": {
-  "ts": "2026-08-31 05:26 UTC",
+  "ts": "2026-09-01 05:01 UTC",
   "compression": 0,
-  "divergence": 0
+  "divergence": 2
  },
  "B": {
   "ts": "2026-08-31 20:46 UTC",
