@@ -15,13 +15,13 @@
   "divergence": 1
  },
  "D": {
-  "ts": "2026-08-31 21:30 UTC",
+  "ts": "2026-09-01 05:45 UTC",
   "board": 68,
-  "bottoming": 9,
-  "topping": 2
+  "bottoming": 11,
+  "topping": 1
  },
  "E": {
-  "ts": "2026-08-31 21:30 UTC",
+  "ts": "2026-09-01 05:45 UTC",
   "board": 2,
   "bottoming": 0,
   "topping": 0
