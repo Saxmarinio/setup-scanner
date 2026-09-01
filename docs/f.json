@@ -1,38 +1,45 @@
 {
- "generated": "2026-09-01 00:49 UTC",
+ "generated": "2026-09-01 21:39 UTC",
  "groups": {
   "compression (1d)": [
    {
-    "state": "forming",
-    "ribbon_pct": 0.3,
-    "ribbon_w_atr": 0.445,
-    "gap_atr": null,
-    "bars_to_apex": null,
-    "bars_in_state": 0,
-    "higher_lows": true,
-    "resistance": null,
-    "invalidation": 258.322373,
-    "close": 259.769989,
-    "atr": 7.38646,
-    "symbol": "AMZN",
+    "state": "triggered",
+    "ribbon_pct": 0.14,
+    "ribbon_w_atr": 0.261,
+    "gap_atr": -1.0,
+    "bars_to_apex": 4.9,
+    "bars_in_state": 2,
+    "higher_lows": false,
+    "resistance": 317.445718,
+    "invalidation": 313.212442,
+    "close": 325.130005,
+    "atr": 7.700465,
+    "symbol": "AAPL",
     "tf": "1d",
-    "tv_symbol": "AMZN",
+    "tv_symbol": "AAPL",
     "htf_favourable": true,
-    "detail": "ribbon p30, apex None, held 0",
+    "detail": "ribbon p14, apex 4.9, held 2",
     "score": 0.575,
     "dss": {
      "1d": [
-      0.156,
-      0.262
+      0.914,
+      0.735
      ],
      "1w": [
-      0.456,
-      0.448
+      0.278,
+      0.531
      ],
      "1M": [
-      0.576,
-      0.502
+      0.878,
+      0.792
      ]
+    },
+    "trend": {
+     "15m": null,
+     "1h": "up",
+     "4h": null,
+     "1d": "up",
+     "1w": "up"
     }
    }
   ],
@@ -41,8 +48,8 @@
     "symbol": "AAOI",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 102.099998,
     "tv_symbol": "AAOI",
@@ -50,25 +57,32 @@
     "score": 0.825,
     "dss": {
      "1d": [
-      0.134,
-      0.361
+      0.105,
+      0.304
      ],
      "1w": [
-      0.127,
-      0.132
+      0.124,
+      0.131
      ],
      "1M": [
-      0.731,
-      0.725
+      0.643,
+      0.707
      ]
+    },
+    "trend": {
+     "15m": null,
+     "1h": "none",
+     "4h": null,
+     "1d": "none",
+     "1w": "none"
     }
    },
    {
     "symbol": "BE",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 185.929993,
     "tv_symbol": "BE",
@@ -76,25 +90,32 @@
     "score": 0.825,
     "dss": {
      "1d": [
-      0.204,
-      0.361
+      0.19,
+      0.323
      ],
      "1w": [
       0.083,
       0.254
      ],
      "1M": [
-      0.704,
-      0.873
+      0.552,
+      0.803
      ]
+    },
+    "trend": {
+     "15m": null,
+     "1h": "none",
+     "4h": null,
+     "1d": "none",
+     "1w": "none"
     }
    },
    {
     "symbol": "INTC",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 85.139999,
     "tv_symbol": "INTC",
@@ -102,25 +123,32 @@
     "score": 0.825,
     "dss": {
      "1d": [
-      0.138,
-      0.358
+      0.107,
+      0.302
      ],
      "1w": [
       0.109,
       0.303
      ],
      "1M": [
-      0.911,
-      0.84
+      0.865,
+      0.845
      ]
+    },
+    "trend": {
+     "15m": null,
+     "1h": "none",
+     "4h": null,
+     "1d": "none",
+     "1w": "up"
     }
    },
    {
     "symbol": "MU",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 887.609985,
     "tv_symbol": "MU",
@@ -128,25 +156,32 @@
     "score": 0.825,
     "dss": {
      "1d": [
-      0.345,
-      0.61
+      0.268,
+      0.534
      ],
      "1w": [
       0.104,
       0.282
      ],
      "1M": [
-      0.896,
-      0.842
+      0.837,
+      0.84
      ]
+    },
+    "trend": {
+     "15m": null,
+     "1h": "none",
+     "4h": null,
+     "1d": "none",
+     "1w": "up"
     }
    },
    {
     "symbol": "NOK",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 9.77,
     "tv_symbol": "NOK",
@@ -154,25 +189,32 @@
     "score": 0.825,
     "dss": {
      "1d": [
-      0.453,
-      0.686
+      0.352,
+      0.611
      ],
      "1w": [
-      0.043,
-      0.151
+      0.04,
+      0.15
      ],
      "1M": [
-      0.469,
-      0.477
+      0.366,
+      0.453
      ]
+    },
+    "trend": {
+     "15m": null,
+     "1h": "none",
+     "4h": null,
+     "1d": "none",
+     "1w": "none"
     }
    },
    {
     "symbol": "QCOM",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 156.229996,
     "tv_symbol": "QCOM",
@@ -180,25 +222,32 @@
     "score": 0.825,
     "dss": {
      "1d": [
-      0.631,
-      0.665
+      0.641,
+      0.675
      ],
      "1w": [
-      0.148,
-      0.358
+      0.143,
+      0.357
      ],
      "1M": [
-      0.611,
-      0.6
+      0.504,
+      0.576
      ]
+    },
+    "trend": {
+     "15m": null,
+     "1h": "up",
+     "4h": null,
+     "1d": "none",
+     "1w": "none"
     }
    },
    {
     "symbol": "USAR",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 16.950001,
     "tv_symbol": "USAR",
@@ -206,22 +255,29 @@
     "score": 0.625,
     "dss": {
      "1d": [
-      0.179,
-      0.42
+      0.139,
+      0.357
      ],
      "1w": [
-      0.188,
-      0.302
+      0.182,
+      0.301
      ],
      "1M": null
+    },
+    "trend": {
+     "15m": null,
+     "1h": "none",
+     "4h": null,
+     "1d": "none",
+     "1w": "none"
     }
    },
    {
     "symbol": "META",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "channel %B, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 537.27002,
     "tv_symbol": "META",
@@ -229,17 +285,24 @@
     "score": 0.525,
     "dss": {
      "1d": [
-      0.32,
-      0.353
+      0.373,
+      0.357
      ],
      "1w": [
-      0.28,
-      0.487
+      0.286,
+      0.488
      ],
      "1M": [
-      0.036,
-      0.114
+      0.028,
+      0.095
      ]
+    },
+    "trend": {
+     "15m": null,
+     "1h": "none",
+     "4h": null,
+     "1d": "none",
+     "1w": "none"
     }
    }
   ]
