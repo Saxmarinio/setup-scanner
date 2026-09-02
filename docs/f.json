@@ -1,42 +1,44 @@
 {
- "generated": "2026-09-01 23:36 UTC",
+ "generated": "2026-09-02 20:07 UTC",
  "groups": {
   "compression (1d)": [
    {
-    "state": "triggered",
-    "ribbon_pct": 0.14,
-    "ribbon_w_atr": 0.261,
-    "gap_atr": -1.0,
-    "bars_to_apex": 4.9,
-    "bars_in_state": 2,
-    "higher_lows": false,
-    "resistance": 317.445718,
-    "invalidation": 313.212442,
-    "close": 325.130005,
-    "atr": 7.700465,
-    "symbol": "AAPL",
+    "state": "forming",
+    "channel_atr": 1.69,
+    "gap_atr": 1.57,
+    "bars_to_apex": 12.8,
+    "bars_in_state": 1,
+    "res_kind": "angled",
+    "resistance": 775.624746,
+    "res_slope": -0.12555999071608315,
+    "res_intercept": 863.3911797904082,
+    "invalidation": 761.074477,
+    "close": 765.200012,
+    "atr": 6.650337,
+    "ribbon_pct": 1.69,
+    "symbol": "SPY",
     "tf": "1d",
-    "tv_symbol": "AAPL",
+    "tv_symbol": "SPY",
     "htf_favourable": true,
-    "detail": "ribbon p14, apex 4.9, held 2",
+    "detail": "angled res, ch 1.69ATR, apex 12.8, held 1",
     "score": 0.575,
     "dss": {
      "1d": [
-      0.914,
-      0.735
+      0.094,
+      0.25
      ],
      "1w": [
-      0.278,
-      0.531
+      0.563,
+      0.631
      ],
      "1M": [
-      0.878,
-      0.792
+      0.77,
+      0.816
      ]
     },
     "trend": {
      "15m": null,
-     "1h": "up",
+     "1h": "none",
      "4h": null,
      "1d": "up",
      "1w": "up"
@@ -48,24 +50,24 @@
     "symbol": "AAOI",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 102.099998,
     "tv_symbol": "AAOI",
-    "htf_favourable": true,
-    "score": 0.825,
+    "htf_favourable": false,
+    "score": 0.575,
     "dss": {
      "1d": [
-      0.105,
-      0.304
+      0.081,
+      0.255
      ],
      "1w": [
       0.124,
       0.131
      ],
      "1M": [
-      0.643,
+      0.644,
       0.707
      ]
     },
@@ -81,25 +83,25 @@
     "symbol": "BE",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 185.929993,
     "tv_symbol": "BE",
-    "htf_favourable": true,
-    "score": 0.825,
+    "htf_favourable": false,
+    "score": 0.575,
     "dss": {
      "1d": [
-      0.19,
-      0.323
+      0.198,
+      0.295
      ],
      "1w": [
       0.083,
       0.254
      ],
      "1M": [
-      0.552,
-      0.803
+      0.548,
+      0.801
      ]
     },
     "trend": {
@@ -114,25 +116,25 @@
     "symbol": "INTC",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 85.139999,
     "tv_symbol": "INTC",
-    "htf_favourable": true,
-    "score": 0.825,
+    "htf_favourable": false,
+    "score": 0.575,
     "dss": {
      "1d": [
-      0.107,
-      0.302
+      0.084,
+      0.254
      ],
      "1w": [
       0.109,
       0.303
      ],
      "1M": [
-      0.865,
-      0.845
+      0.866,
+      0.846
      ]
     },
     "trend": {
@@ -147,25 +149,25 @@
     "symbol": "MU",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 887.609985,
     "tv_symbol": "MU",
-    "htf_favourable": true,
-    "score": 0.825,
+    "htf_favourable": false,
+    "score": 0.575,
     "dss": {
      "1d": [
-      0.268,
-      0.534
+      0.21,
+      0.462
      ],
      "1w": [
       0.104,
       0.282
      ],
      "1M": [
-      0.837,
-      0.84
+      0.846,
+      0.843
      ]
     },
     "trend": {
@@ -180,25 +182,25 @@
     "symbol": "NOK",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 9.77,
     "tv_symbol": "NOK",
-    "htf_favourable": true,
-    "score": 0.825,
+    "htf_favourable": false,
+    "score": 0.575,
     "dss": {
      "1d": [
-      0.352,
-      0.611
+      0.274,
+      0.536
      ],
      "1w": [
       0.04,
       0.15
      ],
      "1M": [
-      0.366,
-      0.453
+      0.365,
+      0.452
      ]
     },
     "trend": {
@@ -213,25 +215,25 @@
     "symbol": "QCOM",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 156.229996,
     "tv_symbol": "QCOM",
-    "htf_favourable": true,
-    "score": 0.825,
+    "htf_favourable": false,
+    "score": 0.575,
     "dss": {
      "1d": [
-      0.641,
-      0.675
+      0.764,
+      0.692
      ],
      "1w": [
-      0.143,
-      0.357
+      0.147,
+      0.358
      ],
      "1M": [
-      0.504,
-      0.576
+      0.53,
+      0.584
      ]
     },
     "trend": {
@@ -246,21 +248,21 @@
     "symbol": "USAR",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 16.950001,
     "tv_symbol": "USAR",
-    "htf_favourable": true,
-    "score": 0.625,
+    "htf_favourable": false,
+    "score": 0.308,
     "dss": {
      "1d": [
-      0.139,
-      0.357
+      0.108,
+      0.302
      ],
      "1w": [
-      0.182,
-      0.301
+      0.188,
+      0.302
      ],
      "1M": null
     },
@@ -276,21 +278,21 @@
     "symbol": "META",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "channel %B, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 537.27002,
     "tv_symbol": "META",
-    "htf_favourable": true,
-    "score": 0.525,
+    "htf_favourable": false,
+    "score": 0.175,
     "dss": {
      "1d": [
-      0.373,
-      0.357
+      0.485,
+      0.386
      ],
      "1w": [
-      0.286,
-      0.488
+      0.312,
+      0.494
      ],
      "1M": [
       0.028,

@@ -1,33 +1,74 @@
 {
- "generated": "2026-09-02 05:10 UTC",
- "rows": [
-  {
-   "symbol": "PAXGUSDT",
-   "dss": {
-    "1d": [
-     0.231,
-     0.51
-    ],
-    "1w": [
-     0.565,
-     0.257
-    ],
-    "1M": [
-     0.26,
-     0.514
-    ]
+ "generated": "2026-09-02 20:08 UTC",
+ "groups": {
+  "compression (1d)": [],
+  "divergence (1d)": [
+   {
+    "symbol": "CL=F",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 79.620003,
+    "tv_symbol": "TVC:USOIL",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.617,
+      0.652
+     ],
+     "1w": [
+      0.498,
+      0.28
+     ],
+     "1M": [
+      0.797,
+      0.566
+     ]
+    },
+    "trend": {
+     "15m": null,
+     "1h": "up",
+     "4h": null,
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "SI=F",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
+    "margin_excess": 0.0,
+    "invalidation": 63.119999,
+    "tv_symbol": "COMEX:SI1!",
+    "htf_favourable": false,
+    "score": 0.175,
+    "dss": {
+     "1d": [
+      0.273,
+      0.568
+     ],
+     "1w": [
+      0.536,
+      0.278
+     ],
+     "1M": [
+      0.194,
+      0.467
+     ]
+    },
+    "trend": {
+     "15m": null,
+     "1h": "none",
+     "4h": null,
+     "1d": "none",
+     "1w": "none"
+    }
    }
-  },
-  {
-   "symbol": "XAUTUSDT",
-   "dss": {
-    "1d": [
-     0.237,
-     0.521
-    ],
-    "1w": null,
-    "1M": null
-   }
-  }
- ]
+  ]
+ }
 }

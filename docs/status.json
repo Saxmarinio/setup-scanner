@@ -21,13 +21,12 @@
   "topping": 0
  },
  "E": {
-  "ts": "2026-09-02 05:10 UTC",
-  "board": 2,
-  "bottoming": 0,
-  "topping": 0
+  "ts": "2026-09-02 20:08 UTC",
+  "compression": 0,
+  "divergence": 2
  },
  "F": {
-  "ts": "2026-09-01 23:36 UTC",
+  "ts": "2026-09-02 20:07 UTC",
   "compression": 1,
   "divergence": 8
  }
