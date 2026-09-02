@@ -27,21 +27,23 @@ compression scan: **4H for both crypto tiers** (A and B), 1D for equities.
 
 | tier | universe | compression scan | divergence | confirm |
 |---|---|---|---|---|
-| A | top 10 crypto by 30d median volume | 4H | 4H | 1D |
-| B | all other crypto pairs | 1H | 4H | 4H + 1D |
+| A | top 10 crypto by 30d median volume | 15m/1h/4h | 4H | — |
+| B | all other crypto pairs | 15m/1h/4h | 4H | — |
 | C | equities / ETFs | 1D | 1D | — |
-| D | tokenized stocks (Binance spot) | 1D | 1D | — |
-| E | gold / commodity-pegged tokens | 1D | 1D | — |
+| D | tokenized stocks (Binance spot) | DSS board | — | — |
+| E | commodity futures (Yahoo) | 1D | 1D | — |
 | F | real NASDAQ/SPX stocks (Yahoo) | 1D | 1D | — |
 
 Tier A membership is recomputed each run from 30d median volume (shortlisted by
 24h volume first, for speed) — a one-day volume spike can't buy a name in.
 `config/overrides.yaml` is the escape hatch.
 
-Tokenized stocks (AAPLB, NVDAB, …) and gold (XAUT, PAXG) are kept out of the
-pure-crypto tiers and scanned as their own lists D and E. Tokenized stocks are
-identified by the trading-permission fingerprint Binance gives that product, so
-new listings are picked up automatically.
+Tokenized stocks (AAPLB, NVDAB, …) are kept out of the pure-crypto tiers and
+listed as their own DSS board (tier D) — they're too new for the setup
+detectors. Tier E is commodity futures (wheat, coffee, crude, gold, …) via
+Yahoo continuous contracts (`config/commodities.txt`), scanned fully like the
+equity tiers. The old Binance gold tokens (XAUT/PAXG) are retired — `GC=F`
+covers gold — but stay excluded from the crypto tiers.
 
 Tier F scans the **real** equities behind the tokenized names (AAPL, NVDA, … via
 Yahoo Finance). Because these have full history, D/E are DSS boards (below) while

@@ -21,8 +21,7 @@ jobs:
           path: data
           key: bars-${{ github.run_id }}
           restore-keys: bars-
-      - run: python src/scan.py --tier D      # tokenized stocks
-      - run: python src/scan.py --tier E      # gold / commodities
+      - run: python src/scan.py --tier D      # tokenized stocks (DSS board)
       - name: commit and push results
         shell: bash
         run: |

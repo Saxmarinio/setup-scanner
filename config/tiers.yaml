@@ -35,9 +35,9 @@ tiers:
     confirm_tf: []
     divergence_tf: "1d"
     detectors: [compression, divergence]
-  E:                               # gold / commodity-pegged tokens
+  E:                               # commodity futures (Yahoo) - full setup scan
     scan_tf: "1d"
-    confirm_tf: []
+    compression_tfs: ["1d"]
     divergence_tf: "1d"
     detectors: [compression, divergence]
   F:                               # real NASDAQ/SPX stocks (Yahoo) behind tier D

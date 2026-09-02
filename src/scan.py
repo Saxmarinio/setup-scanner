@@ -126,6 +126,7 @@ def main():
     scan_tf = tier["scan_tf"]
     notes = []
 
+    tvmap = {}   # per-symbol TradingView chart symbol override (tier E)
     if a.tier == "C":
         syms = [s.strip() for s in open(cfg["universe"]["equity"]["tickers_file"])
                 if s.strip()]
@@ -137,13 +138,25 @@ def main():
         syms = crypto.stock_underlyings(cfg["universe"]["crypto"]["quote"])
         kind = "equity"
         tvpfx = ""
-    elif a.tier in ("D", "E"):
-        # Tokenized stocks (D) and gold/commodity-pegged (E) - Binance spot,
-        # scanned as their own lists, kept out of the pure-crypto tiers.
-        cats = crypto.categorize(cfg["universe"]["crypto"]["quote"])
-        syms = cats["stock"] if a.tier == "D" else cats["commodity"]
+    elif a.tier == "D":
+        # Tokenized stocks (Binance spot) - too new for the detectors, so a board.
+        syms = crypto.categorize(cfg["universe"]["crypto"]["quote"])["stock"]
         kind = "crypto"
         tvpfx = "BINANCE:"
+    elif a.tier == "E":
+        # Commodity futures via Yahoo (wheat, coffee, crude, gold, ...). Full
+        # history -> a proper setup scan. Each line: Yahoo ticker + TV symbol.
+        syms = []
+        for line in open("config/commodities.txt"):
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            parts = line.split()
+            syms.append(parts[0])
+            if len(parts) >= 2:
+                tvmap[parts[0]] = parts[1]
+        kind = "equity"
+        tvpfx = ""
     else:
         allsyms = crypto.universe(cfg["universe"]["crypto"]["quote"])
         added, removed = crypto.diff_universe(allsyms)
@@ -160,10 +173,10 @@ def main():
     if a.limit:
         syms = syms[:a.limit]
 
-    # Tiers D/E are DSS boards, not setup scans: the tokenized stocks are too
-    # new (weeks of history) for the compression/divergence detectors, so list
-    # every instrument with its D/W/M DSS instead, extremes sorted to the top.
-    if a.tier in ("D", "E"):
+    # Tier D is a DSS board, not a setup scan: the tokenized stocks are too new
+    # (weeks of history) for the compression/divergence detectors, so list every
+    # instrument with its D/W/M DSS instead, extremes sorted to the top.
+    if a.tier == "D":
         dcfg = cfg.get("dss", {})
         board = []
         for s in syms:
@@ -218,7 +231,8 @@ def main():
                 r = compression_noodle(df, nd, comp_cfgs[ctf])
                 if r and r["state"] in ("compressed", "triggered", "forming"):
                     r["ribbon_pct"] = r["channel_atr"]      # tightness key for ranking
-                    r.update(symbol=s, tf=ctf, tv_symbol=tvpfx + s, htf_favourable=True,
+                    r.update(symbol=s, tf=ctf, tv_symbol=tvmap.get(s, tvpfx + s),
+                             htf_favourable=True,
                              detail=(f"{r['res_kind']} res, ch {r['channel_atr']}ATR, "
                                      f"apex {r['bars_to_apex']}, held {r['bars_in_state']}"))
                     comp_rows.append(r)
@@ -239,7 +253,7 @@ def main():
                 favd = tf_trend.get(div_tf) == "up"
                 if ddf is not None and len(ddf) >= 300:
                     for d in divergence_rows(ddf, div_cfg, s, div_tf):
-                        d.update(tv_symbol=tvpfx + s, htf_favourable=favd)
+                        d.update(tv_symbol=tvmap.get(s, tvpfx + s), htf_favourable=favd)
                         div_rows.append(d)
         except Exception as e:
             failed.append(f"{s}: {type(e).__name__}")

@@ -22,6 +22,7 @@ jobs:
           key: bars-${{ github.run_id }}
           restore-keys: bars-
       - run: python src/scan.py --tier F      # real NASDAQ/SPX stocks
+      - run: python src/scan.py --tier E      # commodity futures
       - name: commit and push results
         shell: bash
         run: |

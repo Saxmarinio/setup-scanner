@@ -1,0 +1,21 @@
+# Commodity futures (Yahoo continuous contract  |  TradingView symbol  |  name)
+# Tier E scans these on the daily: compression + divergence + DSS.
+# Edit freely - one per line, "YAHOO_TICKER  TV_SYMBOL  NAME".
+ZW=F  CBOT:ZW1!    wheat
+ZC=F  CBOT:ZC1!    corn
+ZS=F  CBOT:ZS1!    soybeans
+ZL=F  CBOT:ZL1!    soybean-oil
+KC=F  ICEUS:KC1!   coffee
+SB=F  ICEUS:SB1!   sugar
+CC=F  ICEUS:CC1!   cocoa
+CT=F  ICEUS:CT1!   cotton
+OJ=F  ICEUS:OJ1!   orange-juice
+CL=F  TVC:USOIL    wti-crude
+BZ=F  TVC:UKOIL    brent-crude
+NG=F  NYMEX:NG1!   natural-gas
+GC=F  COMEX:GC1!   gold
+SI=F  COMEX:SI1!   silver
+HG=F  COMEX:HG1!   copper
+PL=F  NYMEX:PL1!   platinum
+LE=F  CME:LE1!     live-cattle
+HE=F  CME:HE1!     lean-hogs
