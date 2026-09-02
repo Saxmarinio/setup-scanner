@@ -23,6 +23,26 @@ def money_noodle(df, ema_fast=12, ema_medium=21, ema_slow=35,
         index=df.index)
 
 
+def recent_break_up(df, nd, within=3):
+    """Bars-ago of the most recent close crossing ABOVE the upper band within
+    the last `within` bars; else None. The bullish 'noodle break'."""
+    c = df["close"].values
+    up = nd["upper"].values
+    i = len(c) - 1
+    for k in range(i, max(i - within, 0), -1):
+        if k >= 1 and c[k] > up[k] and c[k - 1] <= up[k - 1]:
+            return i - k
+    return None
+
+
+def at_band(df, nd):
+    """True if the latest bar is touching the noodle band (its range overlaps
+    the band) - i.e. price has reached the noodle."""
+    i = len(df) - 1
+    lo, up = nd["lower"].values[i], nd["upper"].values[i]
+    return df["low"].values[i] <= up and df["close"].values[i] >= lo
+
+
 def break_flags(df, nd):
     """Latest-bar noodle events (bar-close): (break_up, break_down, bounce_up,
     bounce_down). break_up = close crossed above the upper band this bar."""

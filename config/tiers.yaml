@@ -117,6 +117,12 @@ trend:
   break_k: 1.0                # lower-low must break prior swing low by k*ATR to exit `up`
   timeframes: ["15m", "1h", "4h", "1d", "1w"]
 
+# Universe-wide signals feed (tier S): fresh trend flips + noodle breaks +
+# weekly-noodle touches, on the "big deal" timeframes.
+signals:
+  timeframes: ["1d", "1w"]
+  fresh_bars: 3                 # only surface events within this many bars
+
 # DSS Bressert confluence, shown as D/W/M columns on every surfaced row.
 # Standard Bressert double-smoothed stochastic; values scaled 0-1.
 dss:

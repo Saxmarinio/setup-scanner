@@ -115,13 +115,78 @@ def trend_multi(sym, kind, cfg):
     return out
 
 
+def _signals_universe(cfg):
+    """Every watched symbol as (fetch_symbol, kind, tv_symbol)."""
+    quote = cfg["universe"]["crypto"]["quote"]
+    u = [(s, "crypto", "BINANCE:" + s) for s in crypto.universe(quote)]
+    u += [(s, "equity", s) for s in crypto.stock_underlyings(quote)]   # real stocks
+    for line in open("config/commodities.txt"):
+        line = line.strip()
+        if line and not line.startswith("#"):
+            p = line.split()
+            u.append((p[0], "equity", p[1] if len(p) > 1 else p[0]))
+    for s in open(cfg["universe"]["equity"]["tickers_file"]):
+        s = s.strip()
+        if s:
+            u.append((s, "equity", s))
+    return u
+
+
+def run_signals(cfg, limit=0):
+    """Universe-wide feed: fresh trend flips, noodle breaks, weekly-noodle
+    touches, on the daily/weekly. Its own page (docs/signals.html)."""
+    scfg = cfg.get("signals", {})
+    fresh = scfg.get("fresh_bars", 3)
+    tfs = scfg.get("timeframes", ["1d", "1w"])
+    ncfg, tcfg = cfg.get("noodle", {}), cfg.get("trend", {})
+    pw = tcfg.get("pivot_width", 6)
+
+    uni = _signals_universe(cfg)
+    if limit:
+        uni = uni[:limit]
+    breaks, flips, touches, failed = [], [], [], 0
+    for sym, kind, tv in uni:
+        for tf in tfs:
+            try:
+                bars = (crypto.klines(sym, tf, limit=1000) if kind == "crypto"
+                        else equity.klines(sym, tf))
+                if bars is None or len(bars) < 60:
+                    continue
+                nd = _noodle(bars, ncfg)
+                bu = noodle.recent_break_up(bars, nd, fresh)
+                if bu is not None:
+                    breaks.append({"symbol": sym, "tf": tf, "tv_symbol": tv, "bars_ago": bu})
+                _, tinfo = trendmod.trend_series(
+                    bars, nd, left=pw, right=pw, n_swings=tcfg.get("n_swings", 4),
+                    tau=tcfg.get("tau", 0.04), break_k=tcfg.get("break_k", 1.0))
+                ci = tinfo.get("change_idx")
+                if ci is not None and (len(bars) - 1 - ci) <= fresh:
+                    flips.append({"symbol": sym, "tf": tf, "tv_symbol": tv,
+                                  "state": tinfo["state"], "bars_ago": len(bars) - 1 - ci})
+                if tf == "1w" and noodle.at_band(bars, nd):
+                    touches.append({"symbol": sym, "tf": tf, "tv_symbol": tv})
+            except Exception:
+                failed += 1
+            if kind == "equity":
+                time.sleep(0.2)
+    for lst in (breaks, flips):
+        lst.sort(key=lambda r: r["bars_ago"])
+    renderer.render_signals(cfg["output"]["dir"], breaks, flips, touches, failed)
+    print(f"signals: {len(breaks)} breaks, {len(flips)} trend flips, "
+          f"{len(touches)} at weekly noodle ({failed} failed)")
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--tier", required=True, choices=["A", "B", "C", "D", "E", "F"])
+    ap.add_argument("--tier", required=True,
+                    choices=["A", "B", "C", "D", "E", "F", "S"])
     ap.add_argument("--limit", type=int, default=0, help="debug: cap symbols")
     a = ap.parse_args()
 
     cfg = load_cfg()
+    if a.tier == "S":
+        run_signals(cfg, a.limit)
+        return
     tier = cfg["tiers"][a.tier]
     scan_tf = tier["scan_tf"]
     notes = []

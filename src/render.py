@@ -137,8 +137,14 @@ def _index_signals(info):
 def _render_index(outdir, status):
     h = [_head("Setup scan"),
          "<h1>Setup scan</h1>",
-         f"<div class=sub>index updated {_now()}</div>",
-         "<table><tr><th>tier</th><th>last run</th><th>signals</th><th></th></tr>"]
+         f"<div class=sub>index updated {_now()}</div>"]
+    sig = status.get("S")
+    if sig:
+        h.append(f"<div class=sub>&#9733; <a href='signals.html'>Signals feed</a> &mdash; "
+                 f"<span class=dg>{sig['breaks']}</span> noodle breaks &middot; "
+                 f"{sig['flips']} trend changes &middot; {sig['touches']} at weekly noodle "
+                 f"<span class=n>({sig['ts']})</span></div>")
+    h.append("<table><tr><th>tier</th><th>last run</th><th>signals</th><th></th></tr>")
     for t in INDEX_TIERS:
         info = status.get(t)
         if info:
@@ -210,6 +216,72 @@ def publish_board(tier, rows, notes, outdir="docs"):
                     "bottoming": bottoming, "topping": topping}
     json.dump(status, open(status_path, "w"), indent=1)
     _render_index(outdir, status)
+
+def render_signals(outdir, breaks, flips, touches, failed=0):
+    """Universe-wide signals feed page + a summary link on the index."""
+    os.makedirs(outdir, exist_ok=True)
+    ts = _now()
+    h = [_head("Signals feed"), "<h1>Signals feed</h1>",
+         f"<div class=sub>updated {ts} &middot; <a href='index.html'>&larr; all tiers</a>"
+         + (f" &middot; {failed} fetches failed" if failed else "") + "</div>"]
+
+    def _chart(r):
+        return TV.format(sym=r.get("tv_symbol") or r["symbol"], iv=IV.get(r["tf"], "D"))
+
+    def _ago(r):
+        return "this bar" if r["bars_ago"] == 0 else f"{r['bars_ago']} bars ago"
+
+    h.append("<h2>&#128994; Noodle breaks (bullish)</h2>"
+             "<div class=sub>close crossed above the upper band</div>")
+    if not breaks:
+        h.append("<div class=sub>nothing</div>")
+    else:
+        h.append("<div style='overflow-x:auto'><table><tr><th>symbol</th><th>tf</th>"
+                 "<th>broke</th><th></th></tr>")
+        for r in breaks:
+            h.append(f"<tr><td><b>{r['symbol']}</b></td><td class=n>{r['tf']}</td>"
+                     f"<td class=n>{_ago(r)}</td>"
+                     f"<td><a href='{_chart(r)}' target=_blank>chart</a></td></tr>")
+        h.append("</table></div>")
+
+    h.append("<h2>Trend changes</h2>")
+    if not flips:
+        h.append("<div class=sub>nothing</div>")
+    else:
+        h.append("<div style='overflow-x:auto'><table><tr><th>symbol</th><th>tf</th>"
+                 "<th>flipped</th><th></th></tr>")
+        for r in flips:
+            up = r["state"] == "up"
+            lab = ("&uarr; up" if up else "&darr; none")
+            h.append(f"<tr><td><b>{r['symbol']}</b></td><td class=n>{r['tf']}</td>"
+                     f"<td class='{'dg' if up else 'n'}'>{lab} &middot; {_ago(r)}</td>"
+                     f"<td><a href='{_chart(r)}' target=_blank>chart</a></td></tr>")
+        h.append("</table></div>")
+
+    h.append("<h2>At the weekly noodle (watch)</h2>"
+             "<div class=sub>price reached the weekly noodle band</div>")
+    if not touches:
+        h.append("<div class=sub>nothing</div>")
+    else:
+        h.append("<div style='overflow-x:auto'><table><tr><th>symbol</th><th></th></tr>")
+        for r in touches:
+            h.append(f"<tr><td><b>{r['symbol']}</b></td>"
+                     f"<td><a href='{_chart(r)}' target=_blank>chart</a></td></tr>")
+        h.append("</table></div>")
+
+    open(os.path.join(outdir, "signals.html"), "w", encoding="utf-8").write("\n".join(h))
+    status_path = os.path.join(outdir, "status.json")
+    status = {}
+    if os.path.exists(status_path):
+        try:
+            status = json.load(open(status_path))
+        except Exception:
+            status = {}
+    status["S"] = {"ts": ts, "breaks": len(breaks), "flips": len(flips),
+                   "touches": len(touches)}
+    json.dump(status, open(status_path, "w"), indent=1)
+    _render_index(outdir, status)
+
 
 def publish(tier, groups, notes, outdir="docs"):
     """Write this tier's page + JSON, update the shared status, rebuild index.
