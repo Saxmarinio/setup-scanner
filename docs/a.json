@@ -1,48 +1,7 @@
 {
- "generated": "2026-09-02 04:24 UTC",
+ "generated": "2026-09-02 19:56 UTC",
  "groups": {
-  "compression (4h)": [
-   {
-    "state": "forming",
-    "ribbon_pct": 0.22,
-    "ribbon_w_atr": 0.566,
-    "gap_atr": null,
-    "bars_to_apex": null,
-    "bars_in_state": 0,
-    "higher_lows": true,
-    "resistance": null,
-    "invalidation": 826.453076,
-    "close": 839.77,
-    "atr": 27.400607,
-    "symbol": "ZECUSDT",
-    "tf": "4h",
-    "tv_symbol": "BINANCE:ZECUSDT",
-    "htf_favourable": true,
-    "detail": "ribbon p22, apex None, held 0",
-    "score": 0.575,
-    "dss": {
-     "1d": [
-      0.973,
-      0.933
-     ],
-     "1w": [
-      0.565,
-      0.54
-     ],
-     "1M": [
-      0.654,
-      0.603
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "up",
-     "1d": "up",
-     "1w": "none"
-    }
-   }
-  ],
+  "compression (15m/1h/4h)": [],
   "divergence (4h)": []
  }
 }
