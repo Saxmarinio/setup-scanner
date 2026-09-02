@@ -1,31 +1,74 @@
 {
- "generated": "2026-09-01 23:28 UTC",
+ "generated": "2026-09-02 23:29 UTC",
  "groups": {
-  "compression (1d)": [],
-  "divergence (1d)": [
+  "compression (1d)": [
    {
-    "symbol": "GLD",
+    "state": "forming",
+    "channel_atr": 1.69,
+    "gap_atr": 1.57,
+    "bars_to_apex": 12.8,
+    "bars_in_state": 1,
+    "res_kind": "angled",
+    "resistance": 775.624746,
+    "res_slope": -0.1255599907160906,
+    "res_intercept": 863.3911797904133,
+    "invalidation": 761.072253,
+    "close": 765.159973,
+    "atr": 6.650337,
+    "ribbon_pct": 1.69,
+    "symbol": "SPY",
     "tf": "1d",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 397.869995,
-    "tv_symbol": "GLD",
+    "tv_symbol": "SPY",
     "htf_favourable": true,
-    "score": 0.625,
+    "detail": "angled res, ch 1.69ATR, apex 12.8, held 1",
+    "score": 0.575,
     "dss": {
      "1d": [
-      0.394,
-      0.706
+      0.094,
+      0.25
      ],
      "1w": [
-      0.666,
-      0.347
+      0.563,
+      0.631
      ],
      "1M": [
-      0.072,
-      0.226
+      0.769,
+      0.816
+     ]
+    },
+    "trend": {
+     "15m": null,
+     "1h": "none",
+     "4h": null,
+     "1d": "up",
+     "1w": "up"
+    }
+   }
+  ],
+  "divergence (1d)": [
+   {
+    "symbol": "USO",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 125.410004,
+    "tv_symbol": "USO",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.684,
+      0.695
+     ],
+     "1w": [
+      0.414,
+      0.262
+     ],
+     "1M": [
+      0.845,
+      0.76
      ]
     },
     "trend": {
@@ -33,7 +76,7 @@
      "1h": "none",
      "4h": null,
      "1d": "none",
-     "1w": "none"
+     "1w": "up"
     }
    }
   ]
