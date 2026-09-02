@@ -15,24 +15,21 @@ universe:
 
 tiers:
   A:                               # top-10 crypto by 30d median volume
-    scan_tf: "4h"
-    confirm_tf: ["1d"]
-    divergence_tf: "4h"            # roofed-RSI divergence off the 4H scan bars
+    scan_tf: "4h"                  # primary TF (cluster-correlation returns)
+    compression_tfs: ["15m", "1h", "4h"]   # trend-gated noodle compression, each TF
+    divergence_tf: "4h"            # roofed-RSI divergence off the 4H bars
     detectors: [compression, divergence]
   B:                               # all other crypto perps
     scan_tf: "1h"
-    confirm_tf: ["4h", "1d"]
-    divergence_tf: "4h"            # 1H compression, but 4H roofed-RSI divergence
+    compression_tfs: ["15m", "1h", "4h"]
+    divergence_tf: "4h"
     detectors: [compression, divergence]
-    # NOTE: compression params below are UNCALIBRATED on 1H. See calibrate.py.
-    # Treat tier B output as observational until the sweep has been run.
+    # NOTE: 15m/1h compression params are PROVISIONAL. See calibrate.py.
   C:                               # equities / ETFs
     scan_tf: "1d"
-    confirm_tf: []
-    divergence_tf: "1d"           # daily roofed-RSI divergence
+    compression_tfs: ["1d"]       # 15m/4h omitted for equities (ragged/limited data)
+    divergence_tf: "1d"
     detectors: [compression, divergence]
-    # 4H deliberately omitted: 6.5h RTH does not divide into 4, so 4H equity
-    # bars are ragged and vendor-dependent.
   D:                               # tokenized stocks (Binance spot, kept separate)
     scan_tf: "1d"
     confirm_tf: []
@@ -45,31 +42,40 @@ tiers:
     detectors: [compression, divergence]
   F:                               # real NASDAQ/SPX stocks (Yahoo) behind tier D
     scan_tf: "1d"
-    confirm_tf: []
+    compression_tfs: ["1d"]
     divergence_tf: "1d"
     detectors: [compression, divergence]
 
 compression:
+  # Noodle-gated squeeze: price riding above the Money Noodle (lower rail =
+  # upper band) into a straight-line resistance through swing highs (horizontal
+  # preferred, angled accepted, rising highs rejected). Only evaluated when the
+  # timeframe's swing-trend is `up` (gate applied in scan.py).
   defaults: &comp_defaults
     ema_fast: 12
     ema_mid: 21
     ema_slow: 35
     atr_len: 20
-    ribbon_lookback: 250
     slope_lookback: 20
-    min_slope_atr: 0.02
     pivot_left: 5
     pivot_right: 3
     structure_lookback: 60
-    ribbon_pct_max: 0.20
-    max_gap_atr: 1.0
-    breakout_range_atr: 1.5
-  "4h": *comp_defaults
-  "1d": *comp_defaults
+    above_lookback: 8              # bars whose lows must stay above the noodle lower band
+    res_points: 3                 # swing highs fitted for the resistance line
+    res_flat: 0.015               # resistance slope (ATR/bar): > this rejected (ascending),
+                                  #   within +/- = horizontal (preferred), below = descending
+    max_channel_atr: 3.0          # channel height (resistance - noodle upper) to count as tight
+    max_gap_atr: 1.0              # price must be within this of the resistance to be "compressed"
+    breakout_range_atr: 1.5       # expansion range needed to call "triggered"
+  "15m":
+    <<: *comp_defaults
+    structure_lookback: 80
   "1h":
     <<: *comp_defaults
     pivot_left: 8                  # PROVISIONAL - not swept
     structure_lookback: 120
+  "4h": *comp_defaults
+  "1d": *comp_defaults
 
 divergence:
   # Chart TF config. margC/margB are the values you are currently observing on

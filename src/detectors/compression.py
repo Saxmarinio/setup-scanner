@@ -173,6 +173,98 @@ def compression_state(df, cfg):
     }
 
 
+def compression_noodle(df, nd, cfg):
+    """Noodle-gated compression: price riding above the Money Noodle, squeezed
+    into a straight-line resistance through recent swing highs. Trend-gated by
+    the caller (only call when the timeframe's swing-trend is `up`).
+
+    `nd` is the money_noodle DataFrame. Returns a state dict or None.
+    States: forming (converging + tight) -> compressed (also near resistance)
+    -> triggered (closed through resistance on expansion).
+    """
+    n = len(df)
+    if n < max(cfg["ema_slow"] * 3, cfg["structure_lookback"] + 20, 120):
+        return None
+    h, l, c = df["high"].values, df["low"].values, df["close"].values
+    a = atr(h, l, c, cfg["atr_len"])
+    i = n - 1
+    if not (np.isfinite(a[i]) and a[i] > 0):
+        return None
+    main, up_band, lo_band = nd["main"].values, nd["upper"].values, nd["lower"].values
+
+    # 1. Riding above the noodle, cleanly - no chopping through the band.
+    if c[i] <= up_band[i]:
+        return None
+    m0 = max(i - cfg["above_lookback"] + 1, 0)
+    if not np.all(l[m0:i + 1] >= lo_band[m0:i + 1]):
+        return None
+
+    # 2. Straight-line resistance through recent swing highs.
+    ph = fractal_pivots(h, cfg["pivot_left"], cfg["pivot_right"], "high")
+    rec = [j for j in ph if i - j <= cfg["structure_lookback"]][-cfg["res_points"]:]
+    if len(rec) < 2:
+        return None
+    slope, intercept = np.polyfit(np.array(rec, float),
+                                  np.array([h[j] for j in rec], float), 1)
+    slope_atr = slope / a[i]
+    # A compression coils UNDER a ceiling: resistance must be flat or descending.
+    # Ascending highs mean price is making higher highs freely - not a squeeze.
+    if slope_atr > cfg["res_flat"]:
+        return None
+    horizontal = slope_atr >= -cfg["res_flat"]   # within tolerance = flat; below = descending
+    res_now = slope * i + intercept
+    if not np.isfinite(res_now):
+        return None
+
+    # 3. Geometry between the noodle upper band (lower rail) and resistance.
+    height = (res_now - up_band[i]) / a[i]       # channel height, ATR
+    if height <= 0:
+        return None
+    main_slope = (main[i] - main[i - cfg["slope_lookback"]]) / cfg["slope_lookback"]
+    conv = (main_slope - slope) / a[i]           # >0 = rails converging
+    bars_to_apex = height / conv if conv > 0 else np.nan
+    gap_atr = (res_now - c[i]) / a[i]            # how far below resistance price sits
+    rng = (h[i] - l[i]) / a[i]
+
+    # 4. State.
+    tight = height <= cfg["max_channel_atr"]
+    near = 0 <= gap_atr <= cfg["max_gap_atr"]
+    broke = c[i] > res_now and rng >= cfg["breakout_range_atr"]
+    if broke:
+        state = "triggered"
+    elif conv > 0 and tight and near:
+        state = "compressed"
+    elif conv > 0 and tight:
+        state = "forming"
+    else:
+        return None
+
+    # How long the tight, above-noodle channel has held.
+    bis = 0
+    for k in range(i, max(i - cfg["structure_lookback"], 0), -1):
+        rk = slope * k + intercept
+        hk = (rk - up_band[k]) / a[k] if a[k] > 0 else np.nan
+        if np.isfinite(hk) and 0 < hk <= cfg["max_channel_atr"] and c[k] > up_band[k]:
+            bis += 1
+        else:
+            break
+
+    return {
+        "state": state,
+        "channel_atr": round(float(height), 2),
+        "gap_atr": round(float(gap_atr), 2),
+        "bars_to_apex": None if not np.isfinite(bars_to_apex) else round(float(bars_to_apex), 1),
+        "bars_in_state": bis,
+        "res_kind": "horizontal" if horizontal else "angled",
+        "resistance": round(float(res_now), 6),
+        "res_slope": float(slope),
+        "res_intercept": float(intercept),
+        "invalidation": round(float(main[i]), 6),   # close back below the noodle main
+        "close": round(float(c[i]), 6),
+        "atr": round(float(a[i]), 6),
+    }
+
+
 def htf_posture(df, cfg):
     """Cheap trend read for the confirmation timeframes. Compression is a
     continuation setup, so gating on this is appropriate (unlike divergence)."""

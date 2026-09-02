@@ -9,13 +9,13 @@ import argparse, os, sys, time, traceback
 import numpy as np, pandas as pd, yaml
 
 sys.path.insert(0, os.path.dirname(__file__))
-from detectors.compression import compression_state, htf_posture
+from detectors.compression import compression_noodle
 from detectors import l1, dss, noodle, trend as trendmod
 from fetch import crypto, store, equity
 import rank as ranker
 import render as renderer
 
-BARS = {"1h": 900, "4h": 900, "1d": 700}
+BARS = {"15m": 1000, "1h": 900, "4h": 900, "1d": 700, "1w": 500}
 
 
 def load_cfg(p="config/tiers.yaml"):
@@ -123,7 +123,7 @@ def main():
 
     cfg = load_cfg()
     tier = cfg["tiers"][a.tier]
-    scan_tf, confirm = tier["scan_tf"], tier["confirm_tf"]
+    scan_tf = tier["scan_tf"]
     notes = []
 
     if a.tier == "C":
@@ -188,53 +188,58 @@ def main():
         notes.append("Tier B compression parameters are PROVISIONAL - the 1H sweep "
                      "in calibrate.py has not been run. Treat as observational.")
 
-    comp_cfg = cfg["compression"][scan_tf]
-    # Divergence runs on its own timeframe. Tier B scans 1H for compression but
-    # takes the roofed-RSI divergence off 4H; defaults to the scan timeframe.
+    comp_tfs = tier.get("compression_tfs", [scan_tf])
+    comp_cfgs = {tf: cfg["compression"][tf] for tf in comp_tfs}
+    tcfg, ncfg = cfg.get("trend", {}), cfg.get("noodle", {})
+    pw = tcfg.get("pivot_width", 6)
+    # Divergence runs on its own timeframe (tier B scans intraday for compression
+    # but takes the roofed-RSI divergence off 4H); defaults to the scan timeframe.
     div_tf = tier.get("divergence_tf", scan_tf)
     div_cfg = cfg["divergence"].get(div_tf)
 
     comp_rows, div_rows, rets, failed = [], [], {}, []
     for i, s in enumerate(syms):
         try:
-            df = get_bars(s, scan_tf, kind)
-            if df is None or len(df) < 300:
-                continue
-            rets[s] = np.diff(np.log(df["close"].values))[-120:]
-
-            # HTF posture. Compression is a continuation setup, so gating on
-            # this is correct. Divergence is counter-trend by construction -
-            # HTF is recorded as a RANKING FIELD ONLY, never a gate.
-            fav = True
-            htf_bars = {}
-            for ctf in confirm:
-                hdf = get_bars(s, ctf, kind)
-                htf_bars[ctf] = hdf
-                if hdf is None or len(hdf) < 120:
+            tf_bars, tf_trend = {}, {}
+            # Compression on each timeframe, GATED on that TF's swing-trend == up:
+            # price riding the Money Noodle, squeezed into a flat/descending line.
+            for ctf in comp_tfs:
+                df = get_bars(s, ctf, kind)
+                tf_bars[ctf] = df
+                if df is None or len(df) < 300:
                     continue
-                p = htf_posture(hdf, cfg["compression"][ctf])
-                if p and not p["favourable"]:
-                    fav = False
-
-            r = compression_state(df, comp_cfg)
-            if r and r["state"] in ("compressed", "triggered", "forming"):
-                if fav or r["state"] != "forming":
-                    r.update(symbol=s, tf=scan_tf, tv_symbol=tvpfx + s,
-                             htf_favourable=fav,
-                             detail=(f"ribbon p{int(r['ribbon_pct']*100)}, "
+                nd = _noodle(df, ncfg)
+                _, tinfo = trendmod.trend_series(
+                    df, nd, left=pw, right=pw, n_swings=tcfg.get("n_swings", 4),
+                    tau=tcfg.get("tau", 0.04), break_k=tcfg.get("break_k", 1.0))
+                tf_trend[ctf] = tinfo["state"]
+                if tinfo["state"] != "up":
+                    continue
+                r = compression_noodle(df, nd, comp_cfgs[ctf])
+                if r and r["state"] in ("compressed", "triggered", "forming"):
+                    r["ribbon_pct"] = r["channel_atr"]      # tightness key for ranking
+                    r.update(symbol=s, tf=ctf, tv_symbol=tvpfx + s, htf_favourable=True,
+                             detail=(f"{r['res_kind']} res, ch {r['channel_atr']}ATR, "
                                      f"apex {r['bars_to_apex']}, held {r['bars_in_state']}"))
-                    if r["state"] != "forming" or r["ribbon_pct"] < 0.35:
-                        comp_rows.append(r)
+                    comp_rows.append(r)
 
+            # Returns for cluster-correlation, off the primary timeframe.
+            pdf = tf_bars.get(scan_tf)
+            if pdf is None:
+                pdf = get_bars(s, scan_tf, kind)
+                tf_bars[scan_tf] = pdf
+            if pdf is not None and len(pdf) >= 120:
+                rets[s] = np.diff(np.log(pdf["close"].values))[-120:]
+
+            # Divergence (roofed RSI), ungated; the div-TF trend is a ranking field.
             if div_cfg and "divergence" in tier["detectors"]:
-                # Reuse already-fetched HTF bars when the divergence timeframe is
-                # one of them (tier B fetches 4H for the compression gate).
-                ddf = df if div_tf == scan_tf else htf_bars.get(div_tf)
-                if ddf is None and div_tf != scan_tf:
+                ddf = tf_bars.get(div_tf)
+                if ddf is None:
                     ddf = get_bars(s, div_tf, kind)
+                favd = tf_trend.get(div_tf) == "up"
                 if ddf is not None and len(ddf) >= 300:
                     for d in divergence_rows(ddf, div_cfg, s, div_tf):
-                        d.update(tv_symbol=tvpfx + s, htf_favourable=fav)
+                        d.update(tv_symbol=tvpfx + s, htf_favourable=favd)
                         div_rows.append(d)
         except Exception as e:
             failed.append(f"{s}: {type(e).__name__}")
@@ -267,7 +272,7 @@ def main():
         r["trend"] = trend_seen[sym]
 
     renderer.publish(a.tier, [
-        (f"compression ({scan_tf})", comp_rows[:mx]),
+        (f"compression ({'/'.join(comp_tfs)})", comp_rows[:mx]),
         (f"divergence ({div_tf})", div_rows[:mx]),
     ], notes, outdir=cfg["output"]["dir"])
     print(f"tier {a.tier}: {len(syms)} symbols, "

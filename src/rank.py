@@ -19,7 +19,8 @@ def score_compression(rows, w):
     if not rows:
         return rows
     apex = [r.get("bars_to_apex") or 999 for r in rows]
-    pct  = [r.get("ribbon_pct", 1.0) for r in rows]
+    # tightness: channel_atr (noodle detector) or ribbon_pct (legacy); lower = tighter
+    pct  = [r.get("ribbon_pct", r.get("channel_atr", 1.0)) for r in rows]
     bis  = [r.get("bars_in_state", 0) for r in rows]
     fav  = [1.0 if r.get("htf_favourable") else 0.0 for r in rows]
     s = (w["apex_urgency"] * _norm(apex, invert=True)
