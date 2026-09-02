@@ -1,60 +1,48 @@
 {
- "generated": "2026-09-01 05:01 UTC",
+ "generated": "2026-09-02 04:24 UTC",
  "groups": {
-  "compression (4h)": [],
-  "divergence (4h)": [
+  "compression (4h)": [
    {
-    "symbol": "ETHUSDT",
+    "state": "forming",
+    "ribbon_pct": 0.22,
+    "ribbon_w_atr": 0.566,
+    "gap_atr": null,
+    "bars_to_apex": null,
+    "bars_in_state": 0,
+    "higher_lows": true,
+    "resistance": null,
+    "invalidation": 826.453076,
+    "close": 839.77,
+    "atr": 27.400607,
+    "symbol": "ZECUSDT",
     "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
-    "margin_excess": 0.0,
-    "invalidation": 2387.28,
-    "tv_symbol": "BINANCE:ETHUSDT",
+    "tv_symbol": "BINANCE:ZECUSDT",
     "htf_favourable": true,
-    "score": 0.625,
+    "detail": "ribbon p22, apex None, held 0",
+    "score": 0.575,
     "dss": {
      "1d": [
-      0.944,
-      0.93
+      0.973,
+      0.933
      ],
      "1w": [
-      0.683,
-      0.526
+      0.565,
+      0.54
      ],
      "1M": [
-      0.143,
-      0.297
+      0.654,
+      0.603
      ]
-    }
-   },
-   {
-    "symbol": "XRPUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
-    "margin_excess": 0.0,
-    "invalidation": 1.3352,
-    "tv_symbol": "BINANCE:XRPUSDT",
-    "htf_favourable": true,
-    "score": 0.625,
-    "dss": {
-     "1d": [
-      0.901,
-      0.841
-     ],
-     "1w": [
-      0.404,
-      0.259
-     ],
-     "1M": [
-      0.095,
-      0.281
-     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "up",
+     "1d": "up",
+     "1w": "none"
     }
    }
-  ]
+  ],
+  "divergence (4h)": []
  }
 }
