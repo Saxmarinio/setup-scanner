@@ -1,23 +1,56 @@
 {
- "generated": "2026-09-02 23:37 UTC",
+ "generated": "2026-09-03 23:36 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "CL=F",
+    "symbol": "ZL=F",
     "tf": "1d",
     "state": "divergence",
     "detail": "roofed RSI, fired 0 bars ago",
     "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 79.620003,
-    "tv_symbol": "TVC:USOIL",
+    "invalidation": 65.5,
+    "tv_symbol": "CBOT:ZL1!",
     "htf_favourable": false,
     "score": 0.575,
     "dss": {
      "1d": [
-      0.638,
-      0.656
+      0.846,
+      0.72
+     ],
+     "1w": [
+      0.043,
+      0.112
+     ],
+     "1M": [
+      0.892,
+      0.894
+     ]
+    },
+    "trend": {
+     "15m": null,
+     "1h": "none",
+     "4h": null,
+     "1d": "none",
+     "1w": "up"
+    }
+   },
+   {
+    "symbol": "CL=F",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
+    "margin_excess": 0.0,
+    "invalidation": 79.620003,
+    "tv_symbol": "TVC:USOIL",
+    "htf_favourable": false,
+    "score": 0.175,
+    "dss": {
+     "1d": [
+      0.7,
+      0.663
      ],
      "1w": [
       0.498,
@@ -31,39 +64,6 @@
     "trend": {
      "15m": null,
      "1h": "up",
-     "4h": null,
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "SI=F",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 63.119999,
-    "tv_symbol": "COMEX:SI1!",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.273,
-      0.568
-     ],
-     "1w": [
-      0.536,
-      0.278
-     ],
-     "1M": [
-      0.194,
-      0.467
-     ]
-    },
-    "trend": {
-     "15m": null,
-     "1h": "none",
      "4h": null,
      "1d": "none",
      "1w": "none"
