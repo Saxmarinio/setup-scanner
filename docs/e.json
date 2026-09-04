@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-03 23:36 UTC",
+ "generated": "2026-09-04 23:25 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "ZL=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 65.5,
     "tv_symbol": "CBOT:ZL1!",
@@ -16,16 +16,16 @@
     "score": 0.575,
     "dss": {
      "1d": [
-      0.846,
-      0.72
+      0.836,
+      0.744
      ],
      "1w": [
-      0.043,
-      0.112
+      0.034,
+      0.11
      ],
      "1M": [
-      0.892,
-      0.894
+      0.885,
+      0.892
      ]
     },
     "trend": {
@@ -40,8 +40,8 @@
     "symbol": "CL=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 79.620003,
     "tv_symbol": "TVC:USOIL",
@@ -49,8 +49,8 @@
     "score": 0.175,
     "dss": {
      "1d": [
-      0.7,
-      0.663
+      0.748,
+      0.678
      ],
      "1w": [
       0.498,
@@ -63,7 +63,7 @@
     },
     "trend": {
      "15m": null,
-     "1h": "up",
+     "1h": "none",
      "4h": null,
      "1d": "none",
      "1w": "none"
