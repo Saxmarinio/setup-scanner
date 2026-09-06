@@ -1,7 +1,38 @@
 {
- "generated": "2026-09-05 04:20 UTC",
+ "generated": "2026-09-06 04:31 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
-  "divergence (4h)": []
+  "divergence (4h)": [
+   {
+    "symbol": "TUTUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
+    "margin_excess": 0.0,
+    "invalidation": 0.02249,
+    "tv_symbol": "BINANCE:TUTUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.19,
+      0.329
+     ],
+     "1w": [
+      0.571,
+      0.778
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "1d": "none",
+     "1w": null
+    }
+   }
+  ]
  }
 }
