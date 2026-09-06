@@ -15,10 +15,10 @@
   "divergence": 1
  },
  "D": {
-  "ts": "2026-09-05 05:00 UTC",
+  "ts": "2026-09-06 05:10 UTC",
   "board": 72,
-  "bottoming": 6,
-  "topping": 0
+  "bottoming": 3,
+  "topping": 1
  },
  "E": {
   "ts": "2026-09-04 23:25 UTC",
