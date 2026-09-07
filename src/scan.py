@@ -15,7 +15,7 @@ from fetch import crypto, store, equity
 import rank as ranker
 import render as renderer
 
-BARS = {"15m": 1000, "1h": 900, "4h": 900, "1d": 700, "1w": 500}
+BARS = {"15m": 1000, "1h": 900, "4h": 900, "12h": 900, "1d": 700, "1w": 500}
 
 
 def load_cfg(p="config/tiers.yaml"):
@@ -89,11 +89,12 @@ def _noodle(df, ncfg):
         band_mult=ncfg.get("band_mult", 0.0125))
 
 
-def trend_multi(sym, kind, cfg):
-    """Current swing-structure trend state per timeframe (15m..1w) for one
-    symbol. None per TF when there isn't enough history."""
+def trend_multi(sym, kind, cfg, tfs=None):
+    """Current swing-structure trend state per timeframe for one symbol.
+    `tfs` comes from the tier (alts use 12H where majors use the daily).
+    None per TF when there isn't enough history."""
     tcfg, ncfg = cfg.get("trend", {}), cfg.get("noodle", {})
-    tfs = tcfg.get("timeframes", ["15m", "1h", "4h", "1d", "1w"])
+    tfs = tfs or tcfg.get("timeframes", ["15m", "1h", "4h", "1d", "1w"])
     pw = tcfg.get("pivot_width", 6)
     out = {}
     for tf in tfs:
@@ -116,19 +117,31 @@ def trend_multi(sym, kind, cfg):
 
 
 def _signals_universe(cfg):
-    """Every watched symbol as (fetch_symbol, kind, tv_symbol)."""
+    """Every watched symbol as (fetch_symbol, kind, tv_symbol, timeframes).
+    Alt coins get the 12H (they're more volatile); majors, stocks and
+    commodities keep the daily. Everything also gets the weekly."""
     quote = cfg["universe"]["crypto"]["quote"]
-    u = [(s, "crypto", "BINANCE:" + s) for s in crypto.universe(quote)]
-    u += [(s, "equity", s) for s in crypto.stock_underlyings(quote)]   # real stocks
+    ucfg, scfg = cfg["universe"]["crypto"], cfg.get("signals", {})
+    major_tf = scfg.get("major_tf", "1d")
+    alt_tf = scfg.get("alt_tf", "12h")
+    wk = scfg.get("weekly_tf", "1w")
+
+    allc = crypto.universe(quote)
+    majors = set(crypto.top_by_volume(allc, ucfg["top_n_by_volume"],
+                                      ucfg["volume_window_days"]))
+    u = [(s, "crypto", "BINANCE:" + s,
+          [major_tf if s in majors else alt_tf, wk]) for s in allc]
+    u += [(s, "equity", s, [major_tf, wk])
+          for s in crypto.stock_underlyings(quote)]           # real stocks
     for line in open("config/commodities.txt"):
         line = line.strip()
         if line and not line.startswith("#"):
             p = line.split()
-            u.append((p[0], "equity", p[1] if len(p) > 1 else p[0]))
+            u.append((p[0], "equity", p[1] if len(p) > 1 else p[0], [major_tf, wk]))
     for s in open(cfg["universe"]["equity"]["tickers_file"]):
         s = s.strip()
         if s:
-            u.append((s, "equity", s))
+            u.append((s, "equity", s, [major_tf, wk]))
     return u
 
 
@@ -137,7 +150,7 @@ def run_signals(cfg, limit=0):
     touches, on the daily/weekly. Its own page (docs/signals.html)."""
     scfg = cfg.get("signals", {})
     fresh = scfg.get("fresh_bars", 3)
-    tfs = scfg.get("timeframes", ["1d", "1w"])
+    wk = scfg.get("weekly_tf", "1w")
     ncfg, tcfg = cfg.get("noodle", {}), cfg.get("trend", {})
     pw = tcfg.get("pivot_width", 6)
 
@@ -145,7 +158,7 @@ def run_signals(cfg, limit=0):
     if limit:
         uni = uni[:limit]
     breaks, flips, touches, failed = [], [], [], 0
-    for sym, kind, tv in uni:
+    for sym, kind, tv, tfs in uni:
         for tf in tfs:
             try:
                 bars = (crypto.klines(sym, tf, limit=1000) if kind == "crypto"
@@ -163,7 +176,7 @@ def run_signals(cfg, limit=0):
                 if ci is not None and (len(bars) - 1 - ci) <= fresh:
                     flips.append({"symbol": sym, "tf": tf, "tv_symbol": tv,
                                   "state": tinfo["state"], "bars_ago": len(bars) - 1 - ci})
-                if tf == "1w" and noodle.at_band(bars, nd):
+                if tf == wk and noodle.at_band(bars, nd):
                     touches.append({"symbol": sym, "tf": tf, "tv_symbol": tv})
             except Exception:
                 failed += 1
@@ -293,13 +306,18 @@ def main():
                 tf_trend[ctf] = tinfo["state"]
                 if tinfo["state"] != "up":
                     continue
+                # How long this uptrend has been established (the setup wants a
+                # real trend behind it, not a fresh coin-flip).
+                ci = tinfo.get("change_idx")
+                tbars = (len(df) - 1 - ci) if ci is not None else len(df)
                 r = compression_noodle(df, nd, comp_cfgs[ctf])
                 if r and r["state"] in ("compressed", "triggered", "forming"):
                     r["ribbon_pct"] = r["channel_atr"]      # tightness key for ranking
                     r.update(symbol=s, tf=ctf, tv_symbol=tvmap.get(s, tvpfx + s),
-                             htf_favourable=True,
-                             detail=(f"{r['res_kind']} res, ch {r['channel_atr']}ATR, "
-                                     f"apex {r['bars_to_apex']}, held {r['bars_in_state']}"))
+                             htf_favourable=True, trend_bars=tbars,
+                             detail=(f"{r['res_kind']} res x{r['res_touches']}, "
+                                     f"exp {r['expansion_atr']}ATR, ch {r['channel_atr']}ATR, "
+                                     f"apex {r['bars_to_apex']}, trend {tbars}b"))
                     comp_rows.append(r)
 
             # Returns for cluster-correlation, off the primary timeframe.
@@ -346,7 +364,7 @@ def main():
         sym = r["symbol"]
         if sym not in dss_seen:
             dss_seen[sym] = dss_dwm(sym, kind, dcfg)
-            trend_seen[sym] = trend_multi(sym, kind, cfg)
+            trend_seen[sym] = trend_multi(sym, kind, cfg, tier.get("trend_tfs"))
         r["dss"] = dss_seen[sym]
         r["trend"] = trend_seen[sym]
 

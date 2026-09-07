@@ -14,20 +14,23 @@ universe:
     tickers_file: config/equities.txt
 
 tiers:
-  A:                               # top-10 crypto by 30d median volume
+  A:                               # top-10 crypto by 30d median volume (majors)
     scan_tf: "4h"                  # primary TF (cluster-correlation returns)
     compression_tfs: ["15m", "1h", "4h"]   # trend-gated noodle compression, each TF
+    trend_tfs: ["15m", "1h", "4h", "1d", "1w"]   # majors keep the daily
     divergence_tf: "4h"            # roofed-RSI divergence off the 4H bars
     detectors: [compression, divergence]
-  B:                               # all other crypto perps
+  B:                               # all other crypto perps (alts)
     scan_tf: "1h"
     compression_tfs: ["15m", "1h", "4h"]
+    trend_tfs: ["15m", "1h", "4h", "12h", "1w"]  # alts: 12H instead of daily
     divergence_tf: "4h"
     detectors: [compression, divergence]
     # NOTE: 15m/1h compression params are PROVISIONAL. See calibrate.py.
   C:                               # equities / ETFs
     scan_tf: "1d"
     compression_tfs: ["1d"]       # 15m/4h omitted for equities (ragged/limited data)
+    trend_tfs: ["1h", "1d", "1w"]
     divergence_tf: "1d"
     detectors: [compression, divergence]
   D:                               # tokenized stocks (Binance spot, kept separate)
@@ -38,11 +41,13 @@ tiers:
   E:                               # commodity futures (Yahoo) - full setup scan
     scan_tf: "1d"
     compression_tfs: ["1d"]
+    trend_tfs: ["1h", "1d", "1w"]
     divergence_tf: "1d"
     detectors: [compression, divergence]
   F:                               # real NASDAQ/SPX stocks (Yahoo) behind tier D
     scan_tf: "1d"
     compression_tfs: ["1d"]
+    trend_tfs: ["1h", "1d", "1w"]
     divergence_tf: "1d"
     detectors: [compression, divergence]
 
@@ -61,9 +66,22 @@ compression:
     pivot_right: 3
     structure_lookback: 60
     above_lookback: 8              # bars whose lows must stay above the noodle lower band
+    # --- the setup shape: expansion -> consolidation into the noodle ---
+    expansion_lookback: 120       # window to find the prior impulse
+    min_expansion_atr: 2.5        # price must have run this far clear of the noodle first
+    min_consolidation_bars: 10    # ...and the coil since that peak must be at least this long
+    max_now_atr: 1.8              # ...and now be coiled back within this of it
+    low_near_noodle_atr: 1.5      # pullback lows must hug the noodle (not drift above)
+    # --- the resistance must be a real, capping line ---
     res_points: 3                 # swing highs fitted for the resistance line
     res_flat: 0.015               # resistance slope (ATR/bar): > this rejected (ascending),
                                   #   within +/- = horizontal (preferred), below = descending
+    res_max_down_atr: 0.25        # ...but no steeper than this - a near-vertical
+                                  #   "resistance" is a bad 2-point fit, not a line.
+                                  #   Measured: clean diagonals sit at -0.11..-0.21
+    res_poke_atr: 0.3             # no high may exceed the line by more than this
+    res_touch_atr: 0.35           # a swing high within this of the line counts as a touch
+    min_res_touches: 2            # the line must actually be touched this many times
     max_channel_atr: 3.0          # channel height (resistance - noodle upper) to count as tight
     max_gap_atr: 1.0              # price must be within this of the resistance to be "compressed"
     breakout_range_atr: 1.5       # expansion range needed to call "triggered"
@@ -90,10 +108,10 @@ ranking:
   # Weights are a STARTING POINT. Fit them properly with the blind-grading
   # harness rather than trusting these.
   compression:
-    apex_urgency: 0.35             # lower bars_to_apex scores higher
-    ribbon_tightness: 0.30         # lower ribbon_pct scores higher
-    persistence: 0.20              # higher bars_in_state scores higher
-    htf_favourable: 0.15
+    apex_urgency: 0.30             # lower bars_to_apex scores higher
+    ribbon_tightness: 0.25         # tighter channel scores higher
+    persistence: 0.15              # higher bars_in_state scores higher
+    trend_established: 0.30        # longer-running uptrend behind the coil
   divergence:
     recency: 0.40
     margin_excess: 0.35
@@ -120,7 +138,9 @@ trend:
 # Universe-wide signals feed (tier S): fresh trend flips + noodle breaks +
 # weekly-noodle touches, on the "big deal" timeframes.
 signals:
-  timeframes: ["1d", "1w"]
+  major_tf: "1d"                # majors, stocks, commodities
+  alt_tf: "12h"                 # alt coins are more volatile - 12H not daily
+  weekly_tf: "1w"
   fresh_bars: 3                 # only surface events within this many bars
 
 # DSS Bressert confluence, shown as D/W/M columns on every surfaced row.

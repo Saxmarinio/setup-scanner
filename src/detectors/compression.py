@@ -174,16 +174,24 @@ def compression_state(df, cfg):
 
 
 def compression_noodle(df, nd, cfg):
-    """Noodle-gated compression: price riding above the Money Noodle, squeezed
-    into a straight-line resistance through recent swing highs. Trend-gated by
-    the caller (only call when the timeframe's swing-trend is `up`).
+    """Noodle compression, matching the classic setup:
+
+        expansion clear of the noodle  ->  consolidation back INTO it
+        ->  higher lows hugging the noodle, highs capped by a straight line
+        ->  the two converge  ->  expansion
+
+    So this requires (a) a prior impulse that established the trend, (b) price
+    now coiled back near the noodle, (c) ascending pullback lows riding the
+    noodle, and (d) a resistance line that genuinely CAPS the highs (nothing
+    pokes through it, and it is actually touched). Trend-gated by the caller.
 
     `nd` is the money_noodle DataFrame. Returns a state dict or None.
-    States: forming (converging + tight) -> compressed (also near resistance)
-    -> triggered (closed through resistance on expansion).
+    States: forming -> compressed (also near resistance) -> triggered.
     """
     n = len(df)
-    if n < max(cfg["ema_slow"] * 3, cfg["structure_lookback"] + 20, 120):
+    need = max(cfg["ema_slow"] * 3, cfg["structure_lookback"] + 20,
+               cfg.get("expansion_lookback", 120), 120)
+    if n < need:
         return None
     h, l, c = df["high"].values, df["low"].values, df["close"].values
     a = atr(h, l, c, cfg["atr_len"])
@@ -192,28 +200,85 @@ def compression_noodle(df, nd, cfg):
         return None
     main, up_band, lo_band = nd["main"].values, nd["upper"].values, nd["lower"].values
 
-    # 1. Riding above the noodle, cleanly - no chopping through the band.
-    if c[i] <= up_band[i]:
+    # 1. PRIOR EXPANSION - the impulse that establishes the trend. Somewhere in
+    #    the lookback price must have run clear of the noodle; a consolidation
+    #    with no preceding thrust is just chop.
+    w0 = max(i - cfg.get("expansion_lookback", 120), 0)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        dist = (c[w0:i + 1] - main[w0:i + 1]) / a[w0:i + 1]
+    if not np.any(np.isfinite(dist)):
+        return None
+    peak_off = int(np.nanargmax(dist))
+    expansion = float(dist[peak_off])
+    if expansion < cfg.get("min_expansion_atr", 2.5):
+        return None
+    # The consolidation runs from that impulse peak to now. Everything below is
+    # measured INSIDE it - fitting the resistance across the whole lookback
+    # would just trace the impulse's own rising highs.
+    peak = w0 + peak_off
+    if i - peak < cfg.get("min_consolidation_bars", 10):
+        return None
+
+    # 2. ...and price has since coiled back toward the noodle (not still extended).
+    now_dist = (c[i] - main[i]) / a[i]
+    if now_dist > cfg.get("max_now_atr", 1.8):
+        return None
+
+    # 3. Riding the noodle, cleanly - above its centre line (price consolidates
+    #    INTO the band, so requiring it clear of the upper band would exclude
+    #    the very shape we want), and no close through the band below.
+    if c[i] <= main[i]:
         return None
     m0 = max(i - cfg["above_lookback"] + 1, 0)
     if not np.all(l[m0:i + 1] >= lo_band[m0:i + 1]):
         return None
 
-    # 2. Straight-line resistance through recent swing highs.
+    # 4. HIGHER LOWS HUGGING THE NOODLE - ascending pullback lows, each holding
+    #    the band and none drifting far above it (they ride it up).
+    pl = fractal_pivots(l, cfg["pivot_left"], cfg["pivot_right"], "low")
+    rec_l = [j for j in pl if peak <= j <= i][-3:]
+    if len(rec_l) < 2:
+        return None
+    if not all(l[rec_l[k]] < l[rec_l[k + 1]] for k in range(len(rec_l) - 1)):
+        return None
+    near = cfg.get("low_near_noodle_atr", 1.5)
+    for j in rec_l:
+        if not (np.isfinite(a[j]) and a[j] > 0) or l[j] < lo_band[j]:
+            return None                                    # broke the noodle
+        if (l[j] - main[j]) / a[j] > near:
+            return None                                    # not hugging it
+
+    # 5. A straight-line resistance that genuinely CAPS the highs.
     ph = fractal_pivots(h, cfg["pivot_left"], cfg["pivot_right"], "high")
-    rec = [j for j in ph if i - j <= cfg["structure_lookback"]][-cfg["res_points"]:]
+    rec = [j for j in ph if peak <= j <= i][-cfg["res_points"]:]
     if len(rec) < 2:
         return None
     slope, intercept = np.polyfit(np.array(rec, float),
                                   np.array([h[j] for j in rec], float), 1)
     slope_atr = slope / a[i]
-    # A compression coils UNDER a ceiling: resistance must be flat or descending.
-    # Ascending highs mean price is making higher highs freely - not a squeeze.
+    # A compression coils UNDER a ceiling: resistance must be flat or gently
+    # descending. Ascending highs mean price is making higher highs freely (not
+    # a squeeze); a near-vertical drop is a bad two-point fit, not a real line.
     if slope_atr > cfg["res_flat"]:
+        return None
+    if slope_atr < -cfg.get("res_max_down_atr", 0.08):
         return None
     horizontal = slope_atr >= -cfg["res_flat"]   # within tolerance = flat; below = descending
     res_now = slope * i + intercept
     if not np.isfinite(res_now):
+        return None
+    # nothing may poke meaningfully above the line across the span it caps
+    # (from the first fitted swing high to now - not the whole lookback, or a
+    # descending line would always "fail" against older, higher bars).
+    wlo = max(min(rec), 0)
+    line = slope * np.arange(wlo, i + 1) + intercept
+    if float(np.nanmax(h[wlo:i + 1] - line)) / a[i] > cfg.get("res_poke_atr", 0.3):
+        return None
+    # ...and it must actually be touched, so it is a real line not a floating fit
+    tol = cfg.get("res_touch_atr", 0.35)
+    touches = sum(1 for j in rec
+                  if abs(h[j] - (slope * j + intercept)) / a[i] <= tol)
+    if touches < cfg.get("min_res_touches", 2):
         return None
 
     # 3. Geometry between the noodle upper band (lower rail) and resistance.
@@ -251,6 +316,10 @@ def compression_noodle(df, nd, cfg):
 
     return {
         "state": state,
+        "expansion_atr": round(float(expansion), 2),   # size of the prior impulse
+        "consol_bars": int(i - peak),                  # coil length since that peak
+        "consol_start": int(peak),                     # resistance is only valid from here
+        "res_touches": int(touches),
         "channel_atr": round(float(height), 2),
         "gap_atr": round(float(gap_atr), 2),
         "bars_to_apex": None if not np.isfinite(bars_to_apex) else round(float(bars_to_apex), 1),

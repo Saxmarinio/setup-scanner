@@ -22,11 +22,13 @@ def score_compression(rows, w):
     # tightness: channel_atr (noodle detector) or ribbon_pct (legacy); lower = tighter
     pct  = [r.get("ribbon_pct", r.get("channel_atr", 1.0)) for r in rows]
     bis  = [r.get("bars_in_state", 0) for r in rows]
-    fav  = [1.0 if r.get("htf_favourable") else 0.0 for r in rows]
+    # An established trend behind the coil is what makes it a continuation
+    # setup rather than a random squeeze - weight it.
+    tb   = [r.get("trend_bars", 0) for r in rows]
     s = (w["apex_urgency"] * _norm(apex, invert=True)
          + w["ribbon_tightness"] * _norm(pct, invert=True)
          + w["persistence"] * _norm(bis)
-         + w["htf_favourable"] * np.asarray(fav))
+         + w.get("trend_established", w.get("htf_favourable", 0.15)) * _norm(tb))
     for r, v in zip(rows, s):
         r["score"] = round(float(v), 3)
     return rows

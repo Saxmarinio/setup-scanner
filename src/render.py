@@ -52,7 +52,8 @@ a{color:#2962ff;text-decoration:none}
 .tna{background:transparent;color:#3a3f4b}
 """
 
-TREND_TFS = [("15m", "15m"), ("1h", "1h"), ("4h", "4h"), ("1d", "D"), ("1w", "W")]
+TREND_LABELS = {"15m": "15m", "1h": "1h", "4h": "4h", "12h": "12H",
+                "1d": "D", "1w": "W"}
 
 def _now():
     return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -72,14 +73,14 @@ def _dss_cell(pair):
     return f"<td class=dss>{_dss_val(f)}<span class=n> / </span>{_dss_val(s)}</td>"
 
 def _trend_cell(tmap):
-    """Compact multi-TF trend: a green block per uptrend TF, grey for none."""
+    """Compact multi-TF trend: a green block per uptrend TF, grey for none.
+    Renders whatever timeframes the tier used (alts carry 12H, majors D)."""
     if not tmap:
         return "<td class='trendcell n'>&ndash;</td>"
     blocks = []
-    for tf, lab in TREND_TFS:
-        st = tmap.get(tf)
+    for tf, st in tmap.items():
         cls = "tup" if st == "up" else "tno" if st == "none" else "tna"
-        blocks.append(f"<span class='tb {cls}'>{lab}</span>")
+        blocks.append(f"<span class='tb {cls}'>{TREND_LABELS.get(tf, tf)}</span>")
     return f"<td class=trendcell>{''.join(blocks)}</td>"
 
 def _tables(groups):
@@ -92,7 +93,7 @@ def _tables(groups):
         h.append("<div style='overflow-x:auto'>"
                  "<table><tr><th>symbol</th><th>tf</th><th>state</th><th>detail</th>"
                  "<th>htf</th><th>invalidation</th><th>score</th>"
-                 "<th>trend 15m&middot;1h&middot;4h&middot;D&middot;W</th>"
+                 "<th>trend by TF</th>"
                  "<th>dss D</th><th>dss W</th><th>dss M</th><th></th></tr>")
         for r in rows:
             iv = IV.get(r["tf"], "D")
