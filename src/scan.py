@@ -10,7 +10,7 @@ import numpy as np, pandas as pd, yaml
 
 sys.path.insert(0, os.path.dirname(__file__))
 from detectors.compression import compression_noodle
-from detectors import l1, dss, noodle, trend as trendmod
+from detectors import l1, dss, noodle, trend as trendmod, bottoming
 from fetch import crypto, store, equity
 import rank as ranker
 import render as renderer
@@ -288,7 +288,10 @@ def main():
     div_tf = tier.get("divergence_tf", scan_tf)
     div_cfg = cfg["divergence"].get(div_tf)
 
-    comp_rows, div_rows, rets, failed = [], [], {}, []
+    bot_tfs = tier.get("bottoming_tfs",
+                       cfg.get("bottoming", {}).get("timeframes", ["1d"]))
+    bcfg = cfg.get("bottoming", {})
+    comp_rows, div_rows, bot_rows, rets, failed = [], [], [], {}, []
     for i, s in enumerate(syms):
         try:
             tf_bars, tf_trend = {}, {}
@@ -338,6 +341,25 @@ def main():
                     for d in divergence_rows(ddf, div_cfg, s, div_tf):
                         d.update(tv_symbol=tvmap.get(s, tvpfx + s), htf_favourable=favd)
                         div_rows.append(d)
+
+            # Bottoming / accumulation - beaten-down names on the daily/weekly.
+            # A different setup from compression: no uptrend required yet.
+            if "bottoming" in tier["detectors"]:
+                for btf in bot_tfs:
+                    bdf = tf_bars.get(btf)
+                    if bdf is None:
+                        bdf = get_bars(s, btf, kind)
+                        tf_bars[btf] = bdf
+                    if bdf is None or len(bdf) < 400:
+                        continue
+                    br = bottoming.bottoming_state(bdf, _noodle(bdf, ncfg), bcfg)
+                    if br:
+                        br.update(
+                            symbol=s, tf=btf, tv_symbol=tvmap.get(s, tvpfx + s),
+                            detail=(f"dd {br['drawdown_pct']}%, vol x{br['vol_ratio']}, "
+                                    f"res {br['gap_res_atr']}ATR, 100EMA {br['gap_100_atr']}ATR, "
+                                    f"targets +{br['target_200_pct']}%/+{br['target_300_pct']}%"))
+                        bot_rows.append(br)
         except Exception as e:
             failed.append(f"{s}: {type(e).__name__}")
         time.sleep(0.05 if kind == "crypto" else 0.3)   # gentler on Yahoo
@@ -348,9 +370,11 @@ def main():
     w = cfg["ranking"]
     comp_rows = ranker.score_compression(comp_rows, w["compression"])
     div_rows = ranker.score_divergence(div_rows, w["divergence"])
+    bot_rows = ranker.score_bottoming(bot_rows, w.get("bottoming", {}))
     thr = w["cluster_correlation"]
     comp_rows, comp_dropped = ranker.collapse_clusters(comp_rows, rets, thr)
     div_rows, div_dropped = ranker.collapse_clusters(div_rows, rets, thr)
+    bot_rows, _ = ranker.collapse_clusters(bot_rows, rets, thr)
     if comp_dropped or div_dropped:
         notes.append(f"{len(comp_dropped)+len(div_dropped)} correlated duplicates "
                      f"collapsed (rho >= {thr}) - these are not independent bets")
@@ -360,7 +384,7 @@ def main():
     # will actually be displayed (a handful of symbols, deduped).
     dcfg = cfg.get("dss", {})
     dss_seen, trend_seen = {}, {}
-    for r in comp_rows[:mx] + div_rows[:mx]:
+    for r in comp_rows[:mx] + div_rows[:mx] + bot_rows[:mx]:
         sym = r["symbol"]
         if sym not in dss_seen:
             dss_seen[sym] = dss_dwm(sym, kind, dcfg)
@@ -371,9 +395,10 @@ def main():
     renderer.publish(a.tier, [
         (f"compression ({'/'.join(comp_tfs)})", comp_rows[:mx]),
         (f"divergence ({div_tf})", div_rows[:mx]),
+        ("bottoming (" + "/".join(bot_tfs) + ")", bot_rows[:mx]),
     ], notes, outdir=cfg["output"]["dir"])
-    print(f"tier {a.tier}: {len(syms)} symbols, "
-          f"{len(comp_rows)} compression, {len(div_rows)} divergence")
+    print(f"tier {a.tier}: {len(syms)} symbols, {len(comp_rows)} compression, "
+          f"{len(div_rows)} divergence, {len(bot_rows)} bottoming")
 
 
 if __name__ == "__main__":

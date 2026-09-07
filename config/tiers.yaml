@@ -19,13 +19,15 @@ tiers:
     compression_tfs: ["15m", "1h", "4h"]   # trend-gated noodle compression, each TF
     trend_tfs: ["15m", "1h", "4h", "1d", "1w"]   # majors keep the daily
     divergence_tf: "4h"            # roofed-RSI divergence off the 4H bars
-    detectors: [compression, divergence]
+    bottoming_tfs: ["1d", "1w"]    # majors: daily and weekly
+    detectors: [compression, divergence, bottoming]
   B:                               # all other crypto perps (alts)
     scan_tf: "1h"
     compression_tfs: ["15m", "1h", "4h"]
     trend_tfs: ["15m", "1h", "4h", "12h", "1w"]  # alts: 12H instead of daily
     divergence_tf: "4h"
-    detectors: [compression, divergence]
+    bottoming_tfs: ["1d"]          # alts: daily only (400 names - weekly doubles the fetches)
+    detectors: [compression, divergence, bottoming]
     # NOTE: 15m/1h compression params are PROVISIONAL. See calibrate.py.
   C:                               # equities / ETFs
     scan_tf: "1d"
@@ -112,6 +114,12 @@ ranking:
     ribbon_tightness: 0.25         # tighter channel scores higher
     persistence: 0.15              # higher bars_in_state scores higher
     trend_established: 0.30        # longer-running uptrend behind the coil
+  bottoming:
+    stage: 0.30                    # compressing > breakout > reclaimed > basing
+    volume_build: 0.25             # late-base volume vs early
+    upside: 0.25                   # gap to the 300EMA
+    proximity: 0.10                # how close to the base resistance
+    drawdown: 0.10                 # how beaten down
   divergence:
     recency: 0.40
     margin_excess: 0.35
@@ -134,6 +142,26 @@ trend:
   tau: 0.04                   # min ATR-normalised rising-lows slope for an uptrend
   break_k: 1.0                # lower-low must break prior swing low by k*ATR to exit `up`
   timeframes: ["15m", "1h", "4h", "1d", "1w"]
+
+# Bottoming / accumulation (beaten-down coins, daily/weekly). Framework:
+# bottomed out -> rounding base with higher lows -> volume building ->
+# local trend reclaimed as support -> compression into the 100EMA/resistance,
+# with the 200/300 EMA gaps as the targets.
+bottoming:
+  timeframes: ["1d", "1w"]
+  base_lookback: 180          # bars of base to examine
+  ema_mid: 100                # the EMA price compresses into
+  ema_far: 200                # first target
+  ema_long: 300               # second target
+  atr_len: 20
+  pivot_left: 5
+  pivot_right: 5
+  min_drawdown: 0.45          # must be genuinely beaten down off the base high
+  min_base_pivots: 4          # swing lows needed to judge the rounding
+  round_flat_atr: 0.01        # lows: <= this in H1, > this in H2 = rounding
+  min_vol_ratio: 1.2          # late-base volume vs early-base volume
+  reclaim_hold_bars: 5        # bars the noodle must hold as support
+  near_atr: 2.0               # "compressing into" the 100EMA / resistance
 
 # Universe-wide signals feed (tier S): fresh trend flips + noodle breaks +
 # weekly-noodle touches, on the "big deal" timeframes.

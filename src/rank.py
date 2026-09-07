@@ -46,6 +46,27 @@ def score_divergence(rows, w):
         r["score"] = round(float(v), 3)
     return rows
 
+def score_bottoming(rows, w):
+    """Rank accumulation candidates: the deeper the base, the more volume has
+    built, the closer the coil to its ceiling, and the bigger the overhead
+    EMA gap, the better the setup."""
+    if not rows:
+        return rows
+    stage_rank = {"basing": 0.25, "reclaimed": 0.6, "compressing": 1.0, "breakout": 0.85}
+    dd   = [r.get("drawdown_pct", 0.0) for r in rows]
+    vol  = [r.get("vol_ratio", 1.0) for r in rows]
+    gap  = [abs(r.get("gap_res_atr") or 99) for r in rows]
+    tgt  = [r.get("target_300_pct", 0.0) for r in rows]
+    stg  = [stage_rank.get(r.get("state"), 0.25) for r in rows]
+    s = (w.get("stage", 0.30) * np.asarray(stg)
+         + w.get("volume_build", 0.25) * _norm(vol)
+         + w.get("upside", 0.25) * _norm(tgt)
+         + w.get("proximity", 0.10) * _norm(gap, invert=True)
+         + w.get("drawdown", 0.10) * _norm(dd))
+    for r, v in zip(rows, s):
+        r["score"] = round(float(v), 3)
+    return rows
+
 def collapse_clusters(rows, returns_by_symbol, threshold=0.80):
     """Keep the highest-scoring member of each correlated group."""
     rows = sorted(rows, key=lambda r: -r.get("score", 0))

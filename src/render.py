@@ -39,6 +39,10 @@ a{color:#2962ff;text-decoration:none}
 .triggered{background:#3a2a1b;color:#ff9800}
 .forming{background:#22263a;color:#787b86}
 .div{background:#2a1b3a;color:#b388ff}
+.basing{background:#22263a;color:#787b86}
+.reclaimed{background:#1b3a2a;color:#26a69a}
+.compressing{background:#3a2a1b;color:#ff9800}
+.breakout{background:#1b3a2a;color:#26a69a;font-weight:700}
 .warn{background:#3a1b1b;color:#ef5350;padding:10px 12px;border-radius:4px;margin-bottom:18px;font-size:12px}
 .n{color:#787b86;font-size:12px}
 .dss{font-variant-numeric:tabular-nums;white-space:nowrap}
@@ -133,7 +137,11 @@ def _index_signals(info):
         return (f"{info['board']} tracked &middot; "
                 f"<span class=dg>{info.get('bottoming', 0)}</span> bottoming &middot; "
                 f"<span class=dr>{info.get('topping', 0)}</span> topping")
-    return f"{info.get('compression', 0)} compression &middot; {info.get('divergence', 0)} divergence"
+    out = (f"{info.get('compression', 0)} compression &middot; "
+           f"{info.get('divergence', 0)} divergence")
+    if info.get("bottoming"):
+        out += f" &middot; <span class=dg>{info['bottoming']}</span> bottoming"
+    return out
 
 def _render_index(outdir, status):
     h = [_head("Setup scan"),
@@ -299,6 +307,7 @@ def publish(tier, groups, notes, outdir="docs"):
             status = {}
     status[tier] = {"ts": ts,
                     "compression": len(groups[0][1]),
-                    "divergence": len(groups[1][1])}
+                    "divergence": len(groups[1][1]),
+                    "bottoming": len(groups[2][1]) if len(groups) > 2 else 0}
     json.dump(status, open(status_path, "w"), indent=1)
     _render_index(outdir, status)
