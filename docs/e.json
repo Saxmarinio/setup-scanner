@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-04 23:25 UTC",
+ "generated": "2026-09-07 23:49 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -16,22 +16,20 @@
     "score": 0.575,
     "dss": {
      "1d": [
-      0.836,
-      0.744
+      0.827,
+      0.741
      ],
      "1w": [
-      0.034,
-      0.11
+      0.036,
+      0.111
      ],
      "1M": [
-      0.885,
+      0.886,
       0.892
      ]
     },
     "trend": {
-     "15m": null,
      "1h": "none",
-     "4h": null,
      "1d": "none",
      "1w": "up"
     }
@@ -40,8 +38,8 @@
     "symbol": "CL=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 79.620003,
     "tv_symbol": "TVC:USOIL",
@@ -49,12 +47,12 @@
     "score": 0.175,
     "dss": {
      "1d": [
-      0.748,
-      0.678
+      0.805,
+      0.707
      ],
      "1w": [
-      0.498,
-      0.28
+      0.61,
+      0.353
      ],
      "1M": [
       0.797,
@@ -62,13 +60,12 @@
      ]
     },
     "trend": {
-     "15m": null,
      "1h": "none",
-     "4h": null,
      "1d": "none",
      "1w": "none"
     }
    }
-  ]
+  ],
+  "bottoming (1d/1w)": []
  }
 }
