@@ -1,50 +1,7 @@
 {
- "generated": "2026-09-04 23:09 UTC",
+ "generated": "2026-09-07 23:39 UTC",
  "groups": {
-  "compression (1d)": [
-   {
-    "state": "compressed",
-    "channel_atr": 1.48,
-    "gap_atr": 0.78,
-    "bars_to_apex": 12.3,
-    "bars_in_state": 3,
-    "res_kind": "angled",
-    "resistance": 775.373626,
-    "res_slope": -0.12555999071610272,
-    "res_intercept": 863.14005980899,
-    "invalidation": 762.213552,
-    "close": 770.190002,
-    "atr": 6.631756,
-    "ribbon_pct": 1.48,
-    "symbol": "SPY",
-    "tf": "1d",
-    "tv_symbol": "SPY",
-    "htf_favourable": true,
-    "detail": "angled res, ch 1.48ATR, apex 12.3, held 3",
-    "score": 0.575,
-    "dss": {
-     "1d": [
-      0.179,
-      0.213
-     ],
-     "1w": [
-      0.6,
-      0.639
-     ],
-     "1M": [
-      0.813,
-      0.826
-     ]
-    },
-    "trend": {
-     "15m": null,
-     "1h": "none",
-     "4h": null,
-     "1d": "up",
-     "1w": "up"
-    }
-   }
-  ],
+  "compression (1d)": [],
   "divergence (1d)": [
    {
     "symbol": "USO",
@@ -72,13 +29,12 @@
      ]
     },
     "trend": {
-     "15m": null,
      "1h": "up",
-     "4h": null,
      "1d": "none",
      "1w": "up"
     }
    }
-  ]
+  ],
+  "bottoming (1d/1w)": []
  }
 }
