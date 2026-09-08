@@ -1,31 +1,31 @@
 {
- "generated": "2026-09-08 19:48 UTC",
+ "generated": "2026-09-08 22:56 UTC",
  "groups": {
   "compression (15m/1h/4h)": [
    {
     "state": "forming",
     "expansion_atr": 8.32,
-    "consol_bars": 37,
-    "consol_start": 862,
+    "consol_bars": 38,
+    "consol_start": 861,
     "res_touches": 3,
-    "channel_atr": 0.95,
-    "gap_atr": 1.14,
-    "bars_to_apex": 7.2,
+    "channel_atr": 0.89,
+    "gap_atr": 1.37,
+    "bars_to_apex": 6.6,
     "bars_in_state": 0,
     "res_kind": "angled",
-    "resistance": 0.00467,
-    "res_slope": -1.9999999999999548e-05,
-    "res_intercept": 0.022649999999999587,
+    "resistance": 0.00465,
+    "res_slope": -1.9999999999999517e-05,
+    "res_intercept": 0.022629999999999567,
     "invalidation": 0.004376,
-    "close": 0.00444,
-    "atr": 0.000202,
-    "ribbon_pct": 0.95,
+    "close": 0.00438,
+    "atr": 0.000197,
+    "ribbon_pct": 0.89,
     "symbol": "TUSDT",
     "tf": "4h",
     "tv_symbol": "BINANCE:TUSDT",
     "htf_favourable": true,
-    "trend_bars": 15,
-    "detail": "angled res x3, exp 8.32ATR, ch 0.95ATR, apex 7.2, trend 15b",
+    "trend_bars": 16,
+    "detail": "angled res x3, exp 8.32ATR, ch 0.89ATR, apex 6.6, trend 16b",
     "score": 0.5,
     "dss": {
      "1d": [
@@ -52,16 +52,79 @@
   ],
   "divergence (4h)": [
    {
+    "symbol": "AVAUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.1552,
+    "tv_symbol": "BINANCE:AVAUSDT",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.166,
+      0.38
+     ],
+     "1w": [
+      0.565,
+      0.407
+     ],
+     "1M": [
+      0.729,
+      0.463
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "LUMIAUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.0809,
+    "tv_symbol": "BINANCE:LUMIAUSDT",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.052,
+      0.17
+     ],
+     "1w": [
+      0.196,
+      0.267
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
     "symbol": "ACEUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 0.163,
     "tv_symbol": "BINANCE:ACEUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.415,
     "dss": {
      "1d": [
       0.115,
@@ -85,13 +148,13 @@
     "symbol": "BMTUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 0.01678,
     "tv_symbol": "BINANCE:BMTUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.415,
     "dss": {
      "1d": [
       0.43,
@@ -115,13 +178,13 @@
     "symbol": "TOWNSUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 0.0019,
     "tv_symbol": "BINANCE:TOWNSUSDT",
     "htf_favourable": false,
-    "score": 0.442,
+    "score": 0.335,
     "dss": {
      "1d": [
       0.142,
@@ -145,8 +208,8 @@
     "symbol": "BFUSDUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 0.9993,
     "tv_symbol": "BINANCE:BFUSDUSDT",
@@ -175,8 +238,8 @@
     "symbol": "PUMPUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 0.003755,
     "tv_symbol": "BINANCE:PUMPUSDT",
@@ -274,7 +337,7 @@
     },
     "trend": {
      "15m": "none",
-     "1h": "none",
+     "1h": "up",
      "4h": "none",
      "12h": "none",
      "1w": "none"
