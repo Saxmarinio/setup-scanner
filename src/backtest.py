@@ -72,11 +72,45 @@ def deep_history(symbol, tf, start_ms, cache=True):
     return df
 
 
+def simulate(h, l, c, i, stop, targets=(2.0, 3.0), max_bars=120):
+    """Trade the setup as it would actually be traded: long at the close, stop
+    at the detector's own invalidation (a close back under the noodle), target
+    a multiple of that risk.
+
+    Fixed-horizon returns answer the wrong question - a setup can have a poor
+    30-bar median and still be profitable if the losers are cut at 1R, or vice
+    versa. When a bar spans both stop and target, the stop is assumed hit
+    first; without intrabar data that is the honest assumption, not the
+    flattering one.
+    """
+    entry = c[i]
+    risk = entry - stop
+    out = {"r_stop": None}
+    if risk <= 0:
+        return {"r_%g" % k: None for k in targets}
+    res = {}
+    for k in targets:
+        tgt = entry + k * risk
+        r = 0.0
+        for j in range(i + 1, min(i + 1 + max_bars, len(c))):
+            if l[j] <= stop:
+                r = -1.0
+                break
+            if h[j] >= tgt:
+                r = k
+                break
+        else:
+            r = (c[min(i + max_bars, len(c) - 1)] - entry) / risk
+        res["r_%g" % k] = r
+    return res
+
+
 def run(tf, start, nsym, fwd, cfg):
     ccfg, ncfg, tcfg = cfg["compression"][tf], cfg["noodle"], cfg["trend"]
     start_ms = int(pd.Timestamp(start).timestamp() * 1000)
     syms = crypto.universe()[:nsym]
-    dets, all_r, up_r = [], [], []
+    dets, all_r, up_r, base_r = [], [], [], []
+    rs = np.random.default_rng(0)
 
     for si, s in enumerate(syms):
         try:
@@ -92,6 +126,8 @@ def run(tf, start, nsym, fwd, cfg):
                                           n_swings=tcfg["n_swings"], tau=tcfg["tau"],
                                           break_k=tcfg["break_k"])
         c = df["close"].values
+        mainline = nd["main"].values
+        hi, lo_ = df["high"].values, df["low"].values
         dt = df["datetime"].values
         n = len(df)
         last_hit = -99
@@ -101,6 +137,11 @@ def run(tf, start, nsym, fwd, cfg):
             if states[i] != "up":
                 continue
             up_r.append(r)
+            # The same trade rule applied to an ordinary trend-up bar. The R
+            # figures below are meaningless without knowing what simply being
+            # in an uptrend would have paid.
+            if rs.random() < 0.02:
+                base_r.append(simulate(hi, lo_, c, i, mainline[i]))
             # Bounded window: the detector needs ~120 bars of context, so a
             # growing slice would make this O(n^2) for no gain.
             lo = max(0, i - WIN + 1)
@@ -108,21 +149,23 @@ def run(tf, start, nsym, fwd, cfg):
             if res is None or i - last_hit < 15:
                 continue
             last_hit = i
-            dets.append({"sym": s, "dt": dt[i], "state": res["state"],
-                         "fwd": r,
-                         "mfe": c[i + 1:i + 1 + fwd].max() / c[i] - 1.0,
-                         "mae": c[i + 1:i + 1 + fwd].min() / c[i] - 1.0})
+            rec = {"sym": s, "dt": dt[i], "state": res["state"], "fwd": r,
+                   "mfe": c[i + 1:i + 1 + fwd].max() / c[i] - 1.0,
+                   "mae": c[i + 1:i + 1 + fwd].min() / c[i] - 1.0}
+            rec.update(simulate(hi, lo_, c, i, res["invalidation"]))
+            dets.append(rec)
         if (si + 1) % 20 == 0:
             print("[%d/%d] %d detections, %d bars"
                   % (si + 1, len(syms), len(dets), len(all_r)), flush=True)
 
     d = pd.DataFrame(dets)
     d.to_csv("backtest_%s.csv" % tf, index=False)
-    report(d, np.asarray(all_r), np.asarray(up_r), tf, fwd)
+    report(d, np.asarray(all_r), np.asarray(up_r), tf, fwd,
+           pd.DataFrame(base_r))
     return d
 
 
-def report(d, all_r, up_r, tf, fwd):
+def report(d, all_r, up_r, tf, fwd, base=None):
     def line(name, v):
         v = np.asarray(v, float)
         if not len(v):
@@ -152,6 +195,19 @@ def report(d, all_r, up_r, tf, fwd):
               % ((meds <= obs).mean(),
                  "INSIDE the noise band - not distinguishable"
                  if lo <= obs <= hi else "OUTSIDE the noise band"))
+
+    for col in [x for x in getattr(d, "columns", []) if x.startswith("r_")]:
+        v = pd.to_numeric(d[col], errors="coerce").dropna().values
+        if len(v):
+            print("")
+            print("  traded at %sR target, stop = invalidation: n=%d"
+                  % (col[2:], len(v)))
+            print("    detections : expectancy %+.3fR   win %.1f%%" % (v.mean(), 100 * (v > 0).mean()))
+            if base is not None and len(base) and col in base:
+                bv = pd.to_numeric(base[col], errors="coerce").dropna().values
+                if len(bv):
+                    print("    trend-up   : expectancy %+.3fR   win %.1f%%   (n=%d)"
+                          % (bv.mean(), 100 * (bv > 0).mean(), len(bv)))
 
     if len(d):
         d = d.copy()
