@@ -78,6 +78,14 @@ compression:
                                   #   read from up to this many bars back so `triggered`
                                   #   can actually fire on the break.
     low_near_noodle_atr: 1.5      # pullback lows must hug the noodle (not drift above)
+    # Wick tolerances, both MEASURED rather than guessed (see docs/validation).
+    low_band_tol_atr: 0.0         # how far a low may dip below the noodle lower band.
+                                  #   Swept 0.0 / 0.25 / 0.5: loosening it ADDS setups but
+                                  #   degrades them (+0.20R -> +0.02R in-sample). The strict
+                                  #   rule is doing real work - left strict deliberately.
+    higher_low_tol_atr: 0.3       # swing lows need not be strictly monotonic; real coils
+                                  #   print the odd equal low. Adds ~25% more setups at no
+                                  #   measured cost to expectancy. The one loosening kept.
     # --- the resistance must be a real, capping line ---
     res_points: 3                 # swing highs fitted for the resistance line
     res_flat: 0.015               # resistance slope (ATR/bar): > this rejected (ascending),

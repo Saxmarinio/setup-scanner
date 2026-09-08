@@ -290,8 +290,13 @@ def compression_noodle(df, nd, cfg):
     #    the very shape we want), and no close through the band below.
     if c[e] <= main[e]:
         return None
+    # A coil that sits ON the noodle wicks through it - that is what "into the
+    # noodle" looks like on an intraday chart. Demanding every low hold the
+    # lower band exactly killed 35% of CAKE's 1H bars during a textbook coil,
+    # so the band gets an explicit ATR tolerance. 0.0 = the old strict rule.
+    tol_band = cfg.get("low_band_tol_atr", 0.0)
     m0 = max(e - cfg["above_lookback"] + 1, 0)
-    if not np.all(l[m0:e + 1] >= lo_band[m0:e + 1]):
+    if not np.all(l[m0:e + 1] >= lo_band[m0:e + 1] - tol_band * a[m0:e + 1]):
         return None
 
     # 4. HIGHER LOWS HUGGING THE NOODLE - ascending pullback lows, each holding
@@ -299,11 +304,16 @@ def compression_noodle(df, nd, cfg):
     rec_l = [j for j in pl_all if peak <= j <= e][-3:]
     if len(rec_l) < 2:
         return None
-    if not all(l[rec_l[k]] < l[rec_l[k + 1]] for k in range(len(rec_l) - 1)):
+    # Strictly monotonic swing lows are a stronger claim than "higher lows" -
+    # real coils print the odd equal or marginally lower low. Tolerance in ATR;
+    # 0.0 = the old strict rule.
+    hl_tol = cfg.get("higher_low_tol_atr", 0.0)
+    if not all(l[rec_l[k + 1]] > l[rec_l[k]] - hl_tol * a[rec_l[k + 1]]
+               for k in range(len(rec_l) - 1)):
         return None
     near = cfg.get("low_near_noodle_atr", 1.5)
     for j in rec_l:
-        if not (np.isfinite(a[j]) and a[j] > 0) or l[j] < lo_band[j]:
+        if not (np.isfinite(a[j]) and a[j] > 0) or l[j] < lo_band[j] - tol_band * a[j]:
             return None                                    # broke the noodle
         if (l[j] - main[j]) / a[j] > near:
             return None                                    # not hugging it
