@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-07 23:39 UTC",
+ "generated": "2026-09-08 23:31 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "USO",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 125.410004,
     "tv_symbol": "USO",
@@ -16,16 +16,16 @@
     "score": 0.375,
     "dss": {
      "1d": [
-      0.798,
-      0.725
+      0.843,
+      0.751
      ],
      "1w": [
-      0.413,
-      0.262
+      0.544,
+      0.325
      ],
      "1M": [
-      0.847,
-      0.761
+      0.855,
+      0.762
      ]
     },
     "trend": {
