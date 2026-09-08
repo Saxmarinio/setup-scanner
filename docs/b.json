@@ -1,14 +1,62 @@
 {
- "generated": "2026-09-08 13:14 UTC",
+ "generated": "2026-09-08 19:48 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [],
+  "compression (15m/1h/4h)": [
+   {
+    "state": "forming",
+    "expansion_atr": 8.32,
+    "consol_bars": 37,
+    "consol_start": 862,
+    "res_touches": 3,
+    "channel_atr": 0.95,
+    "gap_atr": 1.14,
+    "bars_to_apex": 7.2,
+    "bars_in_state": 0,
+    "res_kind": "angled",
+    "resistance": 0.00467,
+    "res_slope": -1.9999999999999548e-05,
+    "res_intercept": 0.022649999999999587,
+    "invalidation": 0.004376,
+    "close": 0.00444,
+    "atr": 0.000202,
+    "ribbon_pct": 0.95,
+    "symbol": "TUSDT",
+    "tf": "4h",
+    "tv_symbol": "BINANCE:TUSDT",
+    "htf_favourable": true,
+    "trend_bars": 15,
+    "detail": "angled res x3, exp 8.32ATR, ch 0.95ATR, apex 7.2, trend 15b",
+    "score": 0.5,
+    "dss": {
+     "1d": [
+      0.222,
+      0.47
+     ],
+     "1w": [
+      0.653,
+      0.543
+     ],
+     "1M": [
+      0.008,
+      0.031
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "up",
+     "12h": "none",
+     "1w": "none"
+    }
+   }
+  ],
   "divergence (4h)": [
    {
     "symbol": "ACEUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 0.163,
     "tv_symbol": "BINANCE:ACEUSDT",
@@ -37,8 +85,8 @@
     "symbol": "BMTUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 0.01678,
     "tv_symbol": "BINANCE:BMTUSDT",
@@ -56,7 +104,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -67,13 +115,13 @@
     "symbol": "TOWNSUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 0.0019,
     "tv_symbol": "BINANCE:TOWNSUSDT",
     "htf_favourable": false,
-    "score": 0.495,
+    "score": 0.442,
     "dss": {
      "1d": [
       0.142,
@@ -97,13 +145,13 @@
     "symbol": "BFUSDUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.9993,
     "tv_symbol": "BINANCE:BFUSDUSDT",
     "htf_favourable": false,
-    "score": 0.335,
+    "score": 0.175,
     "dss": {
      "1d": [
       0.017,
@@ -127,13 +175,13 @@
     "symbol": "PUMPUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.003755,
     "tv_symbol": "BINANCE:PUMPUSDT",
     "htf_favourable": false,
-    "score": 0.335,
+    "score": 0.175,
     "dss": {
      "1d": [
       0.065,
@@ -151,39 +199,6 @@
      "4h": "none",
      "12h": "up",
      "1w": null
-    }
-   },
-   {
-    "symbol": "REQUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 0.05,
-    "tv_symbol": "BINANCE:REQUSDT",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.173,
-      0.425
-     ],
-     "1w": [
-      0.566,
-      0.321
-     ],
-     "1M": [
-      0.12,
-      0.315
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
     }
    }
   ],
@@ -338,7 +353,7 @@
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -495,7 +510,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
