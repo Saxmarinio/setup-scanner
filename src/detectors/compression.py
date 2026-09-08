@@ -22,6 +22,7 @@ Ranking fields:
 """
 import numpy as np
 import pandas as pd
+from numpy.lib.stride_tricks import sliding_window_view
 
 
 def ema(x, n):
@@ -36,18 +37,32 @@ def atr(h, l, c, n=20):
 
 
 def fractal_pivots(series, left, right, kind="high"):
-    """Indices of confirmed fractal pivots. Confirmed `right` bars late."""
+    """Indices of confirmed fractal pivots. Confirmed `right` bars late.
+
+    Vectorised: the scanner calls this once per bar per symbol, and the
+    backtest calls it a million times, so the per-bar Python loop it replaced
+    was the dominant cost. Output is identical (ties break to the left, as
+    before: >= against the left window, > against the right).
+    """
     s = np.asarray(series, float)
-    out = []
-    for i in range(left, len(s) - right):
-        v = s[i]
-        if kind == "high":
-            if np.all(v >= s[i - left:i]) and np.all(v > s[i + 1:i + right + 1]):
-                out.append(i)
-        else:
-            if np.all(v <= s[i - left:i]) and np.all(v < s[i + 1:i + right + 1]):
-                out.append(i)
-    return out
+    n = len(s)
+    if n < left + right + 1:
+        return []
+    w = sliding_window_view(s, left + right + 1)
+    centre = w[:, left]
+    if kind == "high":
+        ok = np.ones(len(centre), bool)
+        if left:
+            ok &= centre >= w[:, :left].max(axis=1)
+        if right:
+            ok &= centre > w[:, left + 1:].max(axis=1)
+    else:
+        ok = np.ones(len(centre), bool)
+        if left:
+            ok &= centre <= w[:, :left].min(axis=1)
+        if right:
+            ok &= centre < w[:, left + 1:].min(axis=1)
+    return (np.nonzero(ok)[0] + left).tolist()
 
 
 def _fit_descending(idx, vals):
@@ -203,40 +218,85 @@ def compression_noodle(df, nd, cfg):
     # 1. PRIOR EXPANSION - the impulse that establishes the trend. Somewhere in
     #    the lookback price must have run clear of the noodle; a consolidation
     #    with no preceding thrust is just chop.
+    #
+    #    Anchor to the MOST RECENT such impulse, not the largest one in the
+    #    window. A market that runs, coils, then runs again would otherwise
+    #    anchor to the first leg and treat everything since as one long
+    #    "consolidation" - which then fits a resistance across both legs, sees
+    #    ascending highs, and rejects a setup that is plainly there. (Measured:
+    #    UNI 4H fitted 6.38 -> 6.51 -> 7.48 across three separate legs.)
     w0 = max(i - cfg.get("expansion_lookback", 120), 0)
     with np.errstate(divide="ignore", invalid="ignore"):
-        dist = (c[w0:i + 1] - main[w0:i + 1]) / a[w0:i + 1]
-    if not np.any(np.isfinite(dist)):
-        return None
-    peak_off = int(np.nanargmax(dist))
-    expansion = float(dist[peak_off])
-    if expansion < cfg.get("min_expansion_atr", 2.5):
-        return None
-    # The consolidation runs from that impulse peak to now. Everything below is
-    # measured INSIDE it - fitting the resistance across the whole lookback
-    # would just trace the impulse's own rising highs.
-    peak = w0 + peak_off
-    if i - peak < cfg.get("min_consolidation_bars", 10):
+        dist = (c - main) / a
+    min_exp = cfg.get("min_expansion_atr", 2.5)
+    min_consol = cfg.get("min_consolidation_bars", 10)
+    # Collapse extended bars into contiguous RUNS - one run is one impulse -
+    # and take each run's high-water mark. Anchoring to individual extended
+    # bars instead would put the anchor at the tail of the last run and leave
+    # a coil too short to hold any swing structure.
+    flags = np.isfinite(dist) & (dist >= min_exp)
+    peaks, k = [], w0
+    while k <= i:
+        if not flags[k]:
+            k += 1
+            continue
+        j = k
+        while j + 1 <= i and flags[j + 1]:
+            j += 1
+        peaks.append(k + int(np.nanargmax(dist[k:j + 1])))
+        k = j + 1
+    # The coil must be long enough to be a coil.
+    peaks = [p for p in peaks if p <= i - min_consol]
+    if not peaks:
         return None
 
     # 2. ...and price has since coiled back toward the noodle (not still extended).
-    now_dist = (c[i] - main[i]) / a[i]
-    if now_dist > cfg.get("max_now_atr", 1.8):
+    #
+    #    A breakout bar is by definition NOT coiled - it thrusts clear of the
+    #    noodle. Applying this gate to the current bar therefore rejects the
+    #    very move the detector exists to catch, and `triggered` could almost
+    #    never fire. So evaluate the COIL GEOMETRY at the last bar that was
+    #    still coiled (`e`), and judge the break at the current bar. When price
+    #    is still in the coil, e == i and this behaves exactly as before.
+    max_now = cfg.get("max_now_atr", 1.8)
+    if np.isfinite(dist[i]) and dist[i] <= max_now:
+        e = i
+    else:
+        grace = cfg.get("breakout_grace_bars", 3)
+        prev = [k for k in range(max(peaks[0], i - grace), i)
+                if np.isfinite(dist[k]) and dist[k] <= max_now]
+        if not prev:
+            return None            # extended, with no recent coil behind it
+        e = prev[-1]
+
+    # Pick the most recent impulse that actually has swing structure behind it
+    # in [peak, e]; fall back to the oldest candidate so the gates below can
+    # reject it on their own terms rather than on an arithmetic accident.
+    pl_all = fractal_pivots(l, cfg["pivot_left"], cfg["pivot_right"], "low")
+    ph_all = fractal_pivots(h, cfg["pivot_left"], cfg["pivot_right"], "high")
+    peak = peaks[0]
+    for p in reversed(peaks):
+        if (sum(1 for j in pl_all if p <= j <= e) >= 2
+                and sum(1 for j in ph_all if p <= j <= e) >= 2):
+            peak = p
+            break
+    if e - peak < min_consol:
         return None
+    # Report the size of that impulse, not merely the bar that cleared the bar.
+    expansion = float(np.nanmax(dist[peak:min(peak + 2, i + 1)]))
 
     # 3. Riding the noodle, cleanly - above its centre line (price consolidates
     #    INTO the band, so requiring it clear of the upper band would exclude
     #    the very shape we want), and no close through the band below.
-    if c[i] <= main[i]:
+    if c[e] <= main[e]:
         return None
-    m0 = max(i - cfg["above_lookback"] + 1, 0)
-    if not np.all(l[m0:i + 1] >= lo_band[m0:i + 1]):
+    m0 = max(e - cfg["above_lookback"] + 1, 0)
+    if not np.all(l[m0:e + 1] >= lo_band[m0:e + 1]):
         return None
 
     # 4. HIGHER LOWS HUGGING THE NOODLE - ascending pullback lows, each holding
     #    the band and none drifting far above it (they ride it up).
-    pl = fractal_pivots(l, cfg["pivot_left"], cfg["pivot_right"], "low")
-    rec_l = [j for j in pl if peak <= j <= i][-3:]
+    rec_l = [j for j in pl_all if peak <= j <= e][-3:]
     if len(rec_l) < 2:
         return None
     if not all(l[rec_l[k]] < l[rec_l[k + 1]] for k in range(len(rec_l) - 1)):
@@ -249,13 +309,12 @@ def compression_noodle(df, nd, cfg):
             return None                                    # not hugging it
 
     # 5. A straight-line resistance that genuinely CAPS the highs.
-    ph = fractal_pivots(h, cfg["pivot_left"], cfg["pivot_right"], "high")
-    rec = [j for j in ph if peak <= j <= i][-cfg["res_points"]:]
+    rec = [j for j in ph_all if peak <= j <= e][-cfg["res_points"]:]
     if len(rec) < 2:
         return None
     slope, intercept = np.polyfit(np.array(rec, float),
                                   np.array([h[j] for j in rec], float), 1)
-    slope_atr = slope / a[i]
+    slope_atr = slope / a[e]
     # A compression coils UNDER a ceiling: resistance must be flat or gently
     # descending. Ascending highs mean price is making higher highs freely (not
     # a squeeze); a near-vertical drop is a bad two-point fit, not a real line.
@@ -264,39 +323,46 @@ def compression_noodle(df, nd, cfg):
     if slope_atr < -cfg.get("res_max_down_atr", 0.08):
         return None
     horizontal = slope_atr >= -cfg["res_flat"]   # within tolerance = flat; below = descending
-    res_now = slope * i + intercept
-    if not np.isfinite(res_now):
+    res_now = slope * e + intercept              # the ceiling as of the coil
+    res_at_i = slope * i + intercept             # ...projected to the current bar
+    if not (np.isfinite(res_now) and np.isfinite(res_at_i)):
         return None
     # nothing may poke meaningfully above the line across the span it caps
-    # (from the first fitted swing high to now - not the whole lookback, or a
-    # descending line would always "fail" against older, higher bars).
+    # (from the first fitted swing high to the coil bar - not the whole
+    # lookback, or a descending line would always "fail" against older, higher
+    # bars; and not past `e`, or the breakout bar would fail against itself).
     wlo = max(min(rec), 0)
-    line = slope * np.arange(wlo, i + 1) + intercept
-    if float(np.nanmax(h[wlo:i + 1] - line)) / a[i] > cfg.get("res_poke_atr", 0.3):
+    line = slope * np.arange(wlo, e + 1) + intercept
+    if float(np.nanmax(h[wlo:e + 1] - line)) / a[e] > cfg.get("res_poke_atr", 0.3):
         return None
     # ...and it must actually be touched, so it is a real line not a floating fit
     tol = cfg.get("res_touch_atr", 0.35)
     touches = sum(1 for j in rec
-                  if abs(h[j] - (slope * j + intercept)) / a[i] <= tol)
+                  if abs(h[j] - (slope * j + intercept)) / a[e] <= tol)
     if touches < cfg.get("min_res_touches", 2):
         return None
 
-    # 3. Geometry between the noodle upper band (lower rail) and resistance.
-    height = (res_now - up_band[i]) / a[i]       # channel height, ATR
+    # 3. Geometry between the noodle upper band (lower rail) and resistance,
+    #    measured in the coil.
+    height = (res_now - up_band[e]) / a[e]       # channel height, ATR
     if height <= 0:
         return None
-    main_slope = (main[i] - main[i - cfg["slope_lookback"]]) / cfg["slope_lookback"]
-    conv = (main_slope - slope) / a[i]           # >0 = rails converging
+    main_slope = (main[e] - main[e - cfg["slope_lookback"]]) / cfg["slope_lookback"]
+    conv = (main_slope - slope) / a[e]           # >0 = rails converging
     bars_to_apex = height / conv if conv > 0 else np.nan
-    gap_atr = (res_now - c[i]) / a[i]            # how far below resistance price sits
-    rng = (h[i] - l[i]) / a[i]
+    gap_atr = (res_now - c[e]) / a[e]            # how far below resistance price sits
+    rng = (h[i] - l[i]) / a[i]                   # ...but the break is judged now
 
     # 4. State.
     tight = height <= cfg["max_channel_atr"]
     near = 0 <= gap_atr <= cfg["max_gap_atr"]
-    broke = c[i] > res_now and rng >= cfg["breakout_range_atr"]
+    broke = c[i] > res_at_i and rng >= cfg["breakout_range_atr"]
     if broke:
         state = "triggered"
+    elif e < i:
+        # Price has left the coil without a qualifying break - it is simply
+        # extended now, not compressing. Do not report a stale coil as live.
+        return None
     elif conv > 0 and tight and near:
         state = "compressed"
     elif conv > 0 and tight:
@@ -306,7 +372,7 @@ def compression_noodle(df, nd, cfg):
 
     # How long the tight, above-noodle channel has held.
     bis = 0
-    for k in range(i, max(i - cfg["structure_lookback"], 0), -1):
+    for k in range(e, max(e - cfg["structure_lookback"], 0), -1):
         rk = slope * k + intercept
         hk = (rk - up_band[k]) / a[k] if a[k] > 0 else np.nan
         if np.isfinite(hk) and 0 < hk <= cfg["max_channel_atr"] and c[k] > up_band[k]:
@@ -317,8 +383,10 @@ def compression_noodle(df, nd, cfg):
     return {
         "state": state,
         "expansion_atr": round(float(expansion), 2),   # size of the prior impulse
-        "consol_bars": int(i - peak),                  # coil length since that peak
+        "consol_bars": int(e - peak),                  # coil length since that peak
         "consol_start": int(peak),                     # resistance is only valid from here
+        "coil_end": int(e),                            # geometry measured here...
+        "bars_since_coil": int(i - e),                 # ...this many bars before now
         "res_touches": int(touches),
         "channel_atr": round(float(height), 2),
         "gap_atr": round(float(gap_atr), 2),

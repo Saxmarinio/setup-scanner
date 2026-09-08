@@ -73,6 +73,10 @@ compression:
     min_expansion_atr: 2.5        # price must have run this far clear of the noodle first
     min_consolidation_bars: 10    # ...and the coil since that peak must be at least this long
     max_now_atr: 1.8              # ...and now be coiled back within this of it
+    breakout_grace_bars: 3        # a breakout bar thrusts CLEAR of the noodle, so it
+                                  #   fails max_now_atr. Allow the coil geometry to be
+                                  #   read from up to this many bars back so `triggered`
+                                  #   can actually fire on the break.
     low_near_noodle_atr: 1.5      # pullback lows must hug the noodle (not drift above)
     # --- the resistance must be a real, capping line ---
     res_points: 3                 # swing highs fitted for the resistance line

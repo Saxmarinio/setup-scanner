@@ -320,7 +320,9 @@ def main():
                              htf_favourable=True, trend_bars=tbars,
                              detail=(f"{r['res_kind']} res x{r['res_touches']}, "
                                      f"exp {r['expansion_atr']}ATR, ch {r['channel_atr']}ATR, "
-                                     f"apex {r['bars_to_apex']}, trend {tbars}b"))
+                                     f"apex {r['bars_to_apex']}, trend {tbars}b"
+                                     + (f", broke {r['bars_since_coil']}b after coil"
+                                        if r.get("bars_since_coil") else "")))
                     comp_rows.append(r)
 
             # Returns for cluster-correlation, off the primary timeframe.
