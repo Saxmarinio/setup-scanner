@@ -1,50 +1,8 @@
 {
- "generated": "2026-09-07 04:31 UTC",
+ "generated": "2026-09-08 04:29 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [
-   {
-    "state": "forming",
-    "channel_atr": 2.56,
-    "gap_atr": 1.61,
-    "bars_to_apex": 17.2,
-    "bars_in_state": 8,
-    "res_kind": "angled",
-    "resistance": 13.304427,
-    "res_slope": -0.0017983870967742256,
-    "res_intercept": 15.10101612903229,
-    "invalidation": 12.955263,
-    "close": 13.121,
-    "atr": 0.113937,
-    "ribbon_pct": 2.56,
-    "symbol": "LINKUSDT",
-    "tf": "15m",
-    "tv_symbol": "BINANCE:LINKUSDT",
-    "htf_favourable": true,
-    "detail": "angled res, ch 2.56ATR, apex 17.2, held 8",
-    "score": 0.575,
-    "dss": {
-     "1d": [
-      0.249,
-      0.224
-     ],
-     "1w": [
-      0.713,
-      0.533
-     ],
-     "1M": [
-      0.042,
-      0.087
-     ]
-    },
-    "trend": {
-     "15m": "up",
-     "1h": "up",
-     "4h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   }
-  ],
-  "divergence (4h)": []
+  "compression (15m/1h/4h)": [],
+  "divergence (4h)": [],
+  "bottoming (1d/1w)": []
  }
 }
