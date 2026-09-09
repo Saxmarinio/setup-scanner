@@ -158,7 +158,6 @@
   "GPSUSDT",
   "GRAMUSDT",
   "GRTUSDT",
-  "GSBUSDT",
   "GTCUSDT",
   "GUNUSDT",
   "GUSDT",
@@ -404,6 +403,7 @@
   "ZKUSDT",
   "ZROUSDT",
   "ZRXUSDT",
-  "\u5e01\u5b89\u4eba\u751fUSDT"
+  "\u5e01\u5b89\u4eba\u751fUSDT",
+  "\u725b\u6765USDT"
  ]
 }
