@@ -1,114 +1,145 @@
 {
- "generated": "2026-09-09 19:34 UTC",
+ "generated": "2026-09-09 22:56 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [
+  "compression (15m/1h/4h)": [],
+  "divergence (4h)": [
    {
-    "state": "compressed",
-    "expansion_atr": 5.21,
-    "consol_bars": 111,
-    "consol_start": 788,
-    "res_touches": 3,
-    "channel_atr": 0.45,
-    "gap_atr": 0.54,
-    "bars_to_apex": 3.2,
-    "bars_in_state": 0,
-    "res_kind": "angled",
-    "resistance": 0.079074,
-    "res_slope": -0.00017995951417004204,
-    "res_intercept": 0.24085769230769374,
-    "invalidation": 0.076676,
-    "close": 0.0777,
-    "atr": 0.00253,
-    "ribbon_pct": 0.45,
-    "symbol": "DUSKUSDT",
+    "symbol": "CUSDT",
     "tf": "4h",
-    "tv_symbol": "BINANCE:DUSKUSDT",
-    "htf_favourable": true,
-    "trend_bars": 12,
-    "detail": "angled res x3, exp 5.21ATR, ch 0.45ATR, apex 3.2, trend 12b",
-    "score": 0.55,
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.0588,
+    "tv_symbol": "BINANCE:CUSDT",
+    "htf_favourable": false,
+    "score": 0.575,
     "dss": {
      "1d": [
-      0.66,
-      0.443
+      0.212,
+      0.139
      ],
      "1w": [
-      0.18,
-      0.173
+      0.102,
+      0.284
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": null
+    }
+   },
+   {
+    "symbol": "NEXOUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.821,
+    "tv_symbol": "BINANCE:NEXOUSDT",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.193,
+      0.441
+     ],
+     "1w": [
+      0.282,
+      0.183
      ],
      "1M": [
-      0.706,
-      0.525
+      0.043,
+      0.09
      ]
     },
     "trend": {
      "15m": "none",
      "1h": "none",
-     "4h": "up",
-     "12h": "none",
+     "4h": "none",
+     "12h": "up",
      "1w": "none"
     }
    },
    {
-    "state": "forming",
-    "expansion_atr": 5.62,
-    "consol_bars": 24,
-    "consol_start": 975,
-    "res_touches": 3,
-    "channel_atr": 2.69,
-    "gap_atr": 2.11,
-    "bars_to_apex": 29.5,
-    "bars_in_state": 2,
-    "res_kind": "horizontal",
-    "resistance": 0.018659,
-    "res_slope": -2.6315789473683446e-07,
-    "res_intercept": 0.018921578947368404,
-    "invalidation": 0.018177,
-    "close": 0.01834,
-    "atr": 0.000151,
-    "ribbon_pct": 2.69,
-    "symbol": "DODOUSDT",
-    "tf": "15m",
-    "tv_symbol": "BINANCE:DODOUSDT",
-    "htf_favourable": true,
-    "trend_bars": 13,
-    "detail": "horizontal res x3, exp 5.62ATR, ch 2.69ATR, apex 29.5, trend 13b",
-    "score": 0.45,
+    "symbol": "OGUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 2.674,
+    "tv_symbol": "BINANCE:OGUSDT",
+    "htf_favourable": false,
+    "score": 0.575,
     "dss": {
      "1d": [
-      0.13,
-      0.283
+      0.252,
+      0.479
      ],
      "1w": [
-      0.444,
-      0.518
+      0.719,
+      0.634
      ],
      "1M": [
-      0.579,
-      0.283
+      0.162,
+      0.381
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
      "1w": "none"
     }
-   }
-  ],
-  "divergence (4h)": [
+   },
+   {
+    "symbol": "PLUMEUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.0134,
+    "tv_symbol": "BINANCE:PLUMEUSDT",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.11,
+      0.287
+     ],
+     "1w": [
+      0.627,
+      0.488
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": null
+    }
+   },
    {
     "symbol": "2ZUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.05,
     "tv_symbol": "BINANCE:2ZUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.175,
     "dss": {
      "1d": [
       0.171,
@@ -126,69 +157,6 @@
      "4h": "none",
      "12h": "none",
      "1w": null
-    }
-   },
-   {
-    "symbol": "AVAUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 0.1552,
-    "tv_symbol": "BINANCE:AVAUSDT",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.129,
-      0.324
-     ],
-     "1w": [
-      0.565,
-      0.407
-     ],
-     "1M": [
-      0.729,
-      0.463
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "LUMIAUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 0.0809,
-    "tv_symbol": "BINANCE:LUMIAUSDT",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.041,
-      0.141
-     ],
-     "1w": [
-      0.196,
-      0.267
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
     }
    }
   ],
@@ -340,8 +308,8 @@
      "1M": null
     },
     "trend": {
-     "15m": "up",
-     "1h": "up",
+     "15m": "none",
+     "1h": "none",
      "4h": "none",
      "12h": "none",
      "1w": null
@@ -421,7 +389,7 @@
     },
     "trend": {
      "15m": "none",
-     "1h": "none",
+     "1h": "up",
      "4h": "none",
      "12h": "none",
      "1w": "none"
@@ -462,7 +430,7 @@
     "trend": {
      "15m": "none",
      "1h": "none",
-     "4h": "up",
+     "4h": "none",
      "12h": "up",
      "1w": "none"
     }
