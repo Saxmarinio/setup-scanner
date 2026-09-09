@@ -1,31 +1,62 @@
 {
- "generated": "2026-09-08 23:31 UTC",
+ "generated": "2026-09-09 23:25 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
+    "symbol": "GLD",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 396.450012,
+    "tv_symbol": "GLD",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.112,
+      0.326
+     ],
+     "1w": [
+      0.741,
+      0.435
+     ],
+     "1M": [
+      0.072,
+      0.226
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
     "symbol": "USO",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 125.410004,
     "tv_symbol": "USO",
     "htf_favourable": false,
-    "score": 0.375,
+    "score": 0.175,
     "dss": {
      "1d": [
-      0.843,
-      0.751
+      0.878,
+      0.779
      ],
      "1w": [
       0.544,
       0.325
      ],
      "1M": [
-      0.855,
-      0.762
+      0.856,
+      0.763
      ]
     },
     "trend": {
