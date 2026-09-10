@@ -1,62 +1,62 @@
 {
- "generated": "2026-09-09 23:33 UTC",
+ "generated": "2026-09-10 23:27 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "SI=F",
+    "symbol": "LE=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 0 bars ago",
+    "detail": "roofed RSI, fired 0 bars ago",
     "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 63.360001,
-    "tv_symbol": "COMEX:SI1!",
-    "htf_favourable": true,
-    "score": 0.825,
+    "invalidation": 209.574997,
+    "tv_symbol": "CME:LE1!",
+    "htf_favourable": false,
+    "score": 0.575,
     "dss": {
      "1d": [
-      0.116,
-      0.3
+      0.462,
+      0.23
      ],
      "1w": [
-      0.639,
-      0.358
+      0.051,
+      0.168
      ],
      "1M": [
-      0.194,
-      0.467
+      0.27,
+      0.422
      ]
     },
     "trend": {
      "1h": "none",
-     "1d": "up",
+     "1d": "none",
      "1w": "none"
     }
    },
    {
-    "symbol": "ZL=F",
+    "symbol": "GC=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "channel %B, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
-    "invalidation": 65.5,
-    "tv_symbol": "CBOT:ZL1!",
+    "invalidation": 4292.200195,
+    "tv_symbol": "COMEX:GC1!",
     "htf_favourable": false,
-    "score": 0.335,
+    "score": 0.475,
     "dss": {
      "1d": [
-      0.859,
-      0.784
+      0.095,
+      0.288
      ],
      "1w": [
-      0.043,
-      0.095
+      0.704,
+      0.392
      ],
      "1M": [
-      0.896,
-      0.894
+      0.137,
+      0.366
      ]
     },
     "trend": {
@@ -66,34 +66,34 @@
     }
    },
    {
-    "symbol": "CL=F",
+    "symbol": "ZL=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
-    "invalidation": 79.620003,
-    "tv_symbol": "TVC:USOIL",
+    "invalidation": 65.5,
+    "tv_symbol": "CBOT:ZL1!",
     "htf_favourable": false,
     "score": 0.175,
     "dss": {
      "1d": [
-      0.849,
-      0.738
+      0.88,
+      0.803
      ],
      "1w": [
-      0.61,
-      0.353
+      0.062,
+      0.099
      ],
      "1M": [
-      0.797,
-      0.566
+      0.907,
+      0.897
      ]
     },
     "trend": {
-     "1h": "up",
+     "1h": "none",
      "1d": "none",
-     "1w": "none"
+     "1w": "up"
     }
    }
   ],
