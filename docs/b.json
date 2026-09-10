@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-10 05:05 UTC",
+ "generated": "2026-09-10 13:17 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
@@ -7,8 +7,8 @@
     "symbol": "CUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.0588,
     "tv_symbol": "BINANCE:CUSDT",
@@ -37,8 +37,8 @@
     "symbol": "NEXOUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.821,
     "tv_symbol": "BINANCE:NEXOUSDT",
@@ -70,8 +70,8 @@
     "symbol": "OGUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 2.674,
     "tv_symbol": "BINANCE:OGUSDT",
@@ -103,8 +103,8 @@
     "symbol": "PLUMEUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.0134,
     "tv_symbol": "BINANCE:PLUMEUSDT",
@@ -241,7 +241,7 @@
      "15m": "none",
      "1h": "none",
      "4h": "none",
-     "12h": "up",
+     "12h": "none",
      "1w": null
     }
    },
@@ -361,7 +361,7 @@
      "15m": "none",
      "1h": "none",
      "4h": "none",
-     "12h": "up",
+     "12h": "none",
      "1w": "none"
     }
    },
