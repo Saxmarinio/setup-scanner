@@ -1,14 +1,45 @@
 {
- "generated": "2026-09-10 23:27 UTC",
+ "generated": "2026-09-11 23:34 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
+    "symbol": "GC=F",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 2 bars ago",
+    "bars_since": 2,
+    "margin_excess": 0.0,
+    "invalidation": 4292.200195,
+    "tv_symbol": "COMEX:GC1!",
+    "htf_favourable": true,
+    "score": 0.725,
+    "dss": {
+     "1d": [
+      0.074,
+      0.241
+     ],
+     "1w": [
+      0.704,
+      0.392
+     ],
+     "1M": [
+      0.137,
+      0.366
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "up",
+     "1w": "up"
+    }
+   },
+   {
     "symbol": "LE=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 209.574997,
     "tv_symbol": "CME:LE1!",
@@ -16,12 +47,12 @@
     "score": 0.575,
     "dss": {
      "1d": [
-      0.462,
-      0.23
+      0.581,
+      0.308
      ],
      "1w": [
-      0.051,
-      0.168
+      0.054,
+      0.169
      ],
      "1M": [
       0.27,
@@ -35,42 +66,11 @@
     }
    },
    {
-    "symbol": "GC=F",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "channel %B, fired 1 bars ago",
-    "bars_since": 1,
-    "margin_excess": 0.0,
-    "invalidation": 4292.200195,
-    "tv_symbol": "COMEX:GC1!",
-    "htf_favourable": false,
-    "score": 0.475,
-    "dss": {
-     "1d": [
-      0.095,
-      0.288
-     ],
-     "1w": [
-      0.704,
-      0.392
-     ],
-     "1M": [
-      0.137,
-      0.366
-     ]
-    },
-    "trend": {
-     "1h": "none",
-     "1d": "none",
-     "1w": "up"
-    }
-   },
-   {
     "symbol": "ZL=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 65.5,
     "tv_symbol": "CBOT:ZL1!",
@@ -78,16 +78,16 @@
     "score": 0.175,
     "dss": {
      "1d": [
-      0.88,
-      0.803
+      0.894,
+      0.823
      ],
      "1w": [
-      0.062,
-      0.099
+      0.032,
+      0.093
      ],
      "1M": [
-      0.907,
-      0.897
+      0.889,
+      0.893
      ]
     },
     "trend": {
