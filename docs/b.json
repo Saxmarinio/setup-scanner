@@ -1,31 +1,284 @@
 {
- "generated": "2026-09-10 22:51 UTC",
+ "generated": "2026-09-11 04:58 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
-  "divergence (4h)": [],
+  "divergence (4h)": [
+   {
+    "symbol": "ACEUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.1436,
+    "tv_symbol": "BINANCE:ACEUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.115,
+      0.148
+     ],
+     "1w": [
+      0.889,
+      0.74
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "BMTUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.01589,
+    "tv_symbol": "BINANCE:BMTUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.202,
+      0.426
+     ],
+     "1w": [
+      0.525,
+      0.442
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": null
+    }
+   },
+   {
+    "symbol": "BNTUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.3034,
+    "tv_symbol": "BINANCE:BNTUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.197,
+      0.337
+     ],
+     "1w": [
+      0.726,
+      0.554
+     ],
+     "1M": [
+      0.131,
+      0.334
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "CTSIUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "channel %B, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.02314,
+    "tv_symbol": "BINANCE:CTSIUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.601,
+      0.496
+     ],
+     "1w": [
+      0.629,
+      0.429
+     ],
+     "1M": [
+      0.08,
+      0.107
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "CUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.0541,
+    "tv_symbol": "BINANCE:CUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.415,
+      0.232
+     ],
+     "1w": [
+      0.102,
+      0.284
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": null
+    }
+   },
+   {
+    "symbol": "DEXEUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 1.62,
+    "tv_symbol": "BINANCE:DEXEUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.132,
+      0.314
+     ],
+     "1w": [
+      0.102,
+      0.278
+     ],
+     "1M": [
+      0.484,
+      0.358
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "DODOUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.0158,
+    "tv_symbol": "BINANCE:DODOUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.174,
+      0.233
+     ],
+     "1w": [
+      0.444,
+      0.518
+     ],
+     "1M": [
+      0.579,
+      0.283
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "EDENUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.04849,
+    "tv_symbol": "BINANCE:EDENUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.285,
+      0.498
+     ],
+     "1w": [
+      0.348,
+      0.306
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": null
+    }
+   }
+  ],
   "bottoming (1d)": [
    {
-    "state": "basing",
-    "drawdown_pct": 79.4,
-    "vol_ratio": 1.93,
+    "state": "breakout",
+    "drawdown_pct": 74.5,
+    "vol_ratio": 1.98,
     "base_bars": 180,
-    "gap_100_atr": 1.71,
-    "gap_res_atr": 0.73,
-    "target_200_pct": 149.9,
-    "target_300_pct": 540.6,
-    "resistance": 0.01487,
-    "invalidation": 0.01390628,
-    "close": 0.014,
-    "atr": 0.00119384,
+    "gap_100_atr": -0.9,
+    "gap_res_atr": 0.37,
+    "target_200_pct": 102.5,
+    "target_300_pct": 435.2,
+    "resistance": 0.01791,
+    "invalidation": 0.01393915,
+    "close": 0.01737,
+    "atr": 0.00144665,
     "symbol": "SAGAUSDT",
     "tf": "1d",
     "tv_symbol": "BINANCE:SAGAUSDT",
-    "detail": "dd 79.4%, vol x1.93, res 0.73ATR, 100EMA 1.71ATR, targets +149.9%/+540.6%",
-    "score": 0.501,
+    "detail": "dd 74.5%, vol x1.98, res 0.37ATR, 100EMA -0.9ATR, targets +102.5%/+435.2%",
+    "score": 0.677,
     "dss": {
      "1d": [
-      0.576,
-      0.794
+      0.518,
+      0.733
      ],
      "1w": [
       0.598,
@@ -34,7 +287,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -43,26 +296,26 @@
    },
    {
     "state": "basing",
-    "drawdown_pct": 76.6,
-    "vol_ratio": 11.06,
+    "drawdown_pct": 78.1,
+    "vol_ratio": 11.27,
     "base_bars": 180,
-    "gap_100_atr": 0.33,
-    "gap_res_atr": 1.0,
-    "target_200_pct": 31.7,
-    "target_300_pct": 79.9,
+    "gap_100_atr": 0.64,
+    "gap_res_atr": 1.34,
+    "target_200_pct": 40.4,
+    "target_300_pct": 91.9,
     "resistance": 0.0257,
-    "invalidation": 0.02045394,
-    "close": 0.02109,
-    "atr": 0.00460614,
+    "invalidation": 0.02036143,
+    "close": 0.01973,
+    "atr": 0.00445483,
     "symbol": "BICOUSDT",
     "tf": "1d",
     "tv_symbol": "BINANCE:BICOUSDT",
-    "detail": "dd 76.6%, vol x11.06, res 1.0ATR, 100EMA 0.33ATR, targets +31.7%/+79.9%",
-    "score": 0.5,
+    "detail": "dd 78.1%, vol x11.27, res 1.34ATR, 100EMA 0.64ATR, targets +40.4%/+91.9%",
+    "score": 0.509,
     "dss": {
      "1d": [
-      0.503,
-      0.701
+      0.392,
+      0.632
      ],
      "1w": [
       0.239,
@@ -83,103 +336,26 @@
    },
    {
     "state": "compressing",
-    "drawdown_pct": 55.9,
-    "vol_ratio": 1.75,
+    "drawdown_pct": 53.3,
+    "vol_ratio": 1.87,
     "base_bars": 180,
-    "gap_100_atr": 0.76,
-    "gap_res_atr": 1.05,
-    "target_200_pct": 73.6,
-    "target_300_pct": 179.0,
-    "resistance": 0.00926,
-    "invalidation": 0.00788814,
-    "close": 0.00862,
-    "atr": 0.0006099,
-    "symbol": "SXTUSDT",
-    "tf": "1d",
-    "tv_symbol": "BINANCE:SXTUSDT",
-    "detail": "dd 55.9%, vol x1.75, res 1.05ATR, 100EMA 0.76ATR, targets +73.6%/+179.0%",
-    "score": 0.49,
-    "dss": {
-     "1d": [
-      0.767,
-      0.874
-     ],
-     "1w": [
-      0.86,
-      0.687
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": null
-    }
-   },
-   {
-    "state": "compressing",
-    "drawdown_pct": 51.8,
-    "vol_ratio": 1.76,
-    "base_bars": 180,
-    "gap_100_atr": 0.39,
-    "gap_res_atr": 0.8,
-    "target_200_pct": 38.8,
-    "target_300_pct": 94.6,
-    "resistance": 0.0014,
-    "invalidation": 0.00122769,
-    "close": 0.001301,
-    "atr": 0.00012422,
-    "symbol": "QIUSDT",
-    "tf": "1d",
-    "tv_symbol": "BINANCE:QIUSDT",
-    "detail": "dd 51.8%, vol x1.76, res 0.8ATR, 100EMA 0.39ATR, targets +38.8%/+94.6%",
-    "score": 0.446,
-    "dss": {
-     "1d": [
-      0.131,
-      0.247
-     ],
-     "1w": [
-      0.775,
-      0.589
-     ],
-     "1M": [
-      0.01,
-      0.04
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "state": "compressing",
-    "drawdown_pct": 50.9,
-    "vol_ratio": 1.82,
-    "base_bars": 180,
-    "gap_100_atr": 0.02,
-    "gap_res_atr": 0.28,
-    "target_200_pct": 29.4,
-    "target_300_pct": 60.2,
+    "gap_100_atr": 0.85,
+    "gap_res_atr": 1.12,
+    "target_200_pct": 35.6,
+    "target_300_pct": 68.0,
     "resistance": 0.0971,
-    "invalidation": 0.08587416,
-    "close": 0.0956,
-    "atr": 0.00536693,
+    "invalidation": 0.08596402,
+    "close": 0.091,
+    "atr": 0.00545858,
     "symbol": "PUNDIXUSDT",
     "tf": "1d",
     "tv_symbol": "BINANCE:PUNDIXUSDT",
-    "detail": "dd 50.9%, vol x1.82, res 0.28ATR, 100EMA 0.02ATR, targets +29.4%/+60.2%",
-    "score": 0.442,
+    "detail": "dd 53.3%, vol x1.87, res 1.12ATR, 100EMA 0.85ATR, targets +35.6%/+68.0%",
+    "score": 0.438,
     "dss": {
      "1d": [
-      0.163,
-      0.349
+      0.127,
+      0.3
      ],
      "1w": [
       0.387,
@@ -194,76 +370,36 @@
      "15m": "none",
      "1h": "none",
      "4h": "none",
-     "12h": "up",
-     "1w": "none"
-    }
-   },
-   {
-    "state": "compressing",
-    "drawdown_pct": 48.5,
-    "vol_ratio": 1.29,
-    "base_bars": 180,
-    "gap_100_atr": 0.52,
-    "gap_res_atr": 0.23,
-    "target_200_pct": 25.9,
-    "target_300_pct": 41.2,
-    "resistance": 255.1,
-    "invalidation": 236.59699473,
-    "close": 251.9,
-    "atr": 14.01605286,
-    "symbol": "BCHUSDT",
-    "tf": "1d",
-    "tv_symbol": "BINANCE:BCHUSDT",
-    "detail": "dd 48.5%, vol x1.29, res 0.23ATR, 100EMA 0.52ATR, targets +25.9%/+41.2%",
-    "score": 0.415,
-    "dss": {
-     "1d": [
-      0.269,
-      0.32
-     ],
-     "1w": [
-      0.746,
-      0.489
-     ],
-     "1M": [
-      0.326,
-      0.555
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
      "12h": "none",
      "1w": "none"
     }
    },
    {
-    "state": "basing",
-    "drawdown_pct": 77.5,
-    "vol_ratio": 6.52,
+    "state": "compressing",
+    "drawdown_pct": 57.3,
+    "vol_ratio": 1.27,
     "base_bars": 180,
-    "gap_100_atr": 0.05,
-    "gap_res_atr": 0.23,
-    "target_200_pct": 4.1,
-    "target_300_pct": 26.5,
-    "resistance": 0.1266,
-    "invalidation": 0.12391946,
-    "close": 0.1213,
-    "atr": 0.02354761,
-    "symbol": "HEIUSDT",
+    "gap_100_atr": 0.04,
+    "gap_res_atr": 0.41,
+    "target_200_pct": 18.0,
+    "target_300_pct": 36.0,
+    "resistance": 1.06,
+    "invalidation": 0.96127686,
+    "close": 1.021,
+    "atr": 0.09422817,
+    "symbol": "ZROUSDT",
     "tf": "1d",
-    "tv_symbol": "BINANCE:HEIUSDT",
-    "detail": "dd 77.5%, vol x6.52, res 0.23ATR, 100EMA 0.05ATR, targets +4.1%/+26.5%",
-    "score": 0.38,
+    "tv_symbol": "BINANCE:ZROUSDT",
+    "detail": "dd 57.3%, vol x1.27, res 0.41ATR, 100EMA 0.04ATR, targets +18.0%/+36.0%",
+    "score": 0.427,
     "dss": {
      "1d": [
-      0.553,
-      0.758
+      0.15,
+      0.264
      ],
      "1w": [
-      0.305,
-      0.557
+      0.56,
+      0.263
      ],
      "1M": null
     },
@@ -276,31 +412,142 @@
     }
    },
    {
-    "state": "breakout",
-    "drawdown_pct": 54.9,
-    "vol_ratio": 1.24,
+    "state": "basing",
+    "drawdown_pct": 78.5,
+    "vol_ratio": 6.55,
     "base_bars": 180,
-    "gap_100_atr": -0.57,
-    "gap_res_atr": 1.51,
-    "target_200_pct": 11.8,
-    "target_300_pct": 28.7,
-    "resistance": 1.224,
-    "invalidation": 0.95973967,
-    "close": 1.079,
-    "atr": 0.09581913,
-    "symbol": "ZROUSDT",
+    "gap_100_atr": 0.28,
+    "gap_res_atr": 0.46,
+    "target_200_pct": 8.8,
+    "target_300_pct": 32.0,
+    "resistance": 0.1266,
+    "invalidation": 0.12305658,
+    "close": 0.116,
+    "atr": 0.02308523,
+    "symbol": "HEIUSDT",
     "tf": "1d",
-    "tv_symbol": "BINANCE:ZROUSDT",
-    "detail": "dd 54.9%, vol x1.24, res 1.51ATR, 100EMA -0.57ATR, targets +11.8%/+28.7%",
-    "score": 0.347,
+    "tv_symbol": "BINANCE:HEIUSDT",
+    "detail": "dd 78.5%, vol x6.55, res 0.46ATR, 100EMA 0.28ATR, targets +8.8%/+32.0%",
+    "score": 0.375,
     "dss": {
      "1d": [
-      0.182,
-      0.297
+      0.452,
+      0.69
      ],
      "1w": [
-      0.56,
-      0.263
+      0.305,
+      0.557
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "up",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "state": "basing",
+    "drawdown_pct": 68.4,
+    "vol_ratio": 1.45,
+    "base_bars": 180,
+    "gap_100_atr": 2.99,
+    "gap_res_atr": 2.06,
+    "target_200_pct": 123.1,
+    "target_300_pct": 275.1,
+    "resistance": 0.00225,
+    "invalidation": 0.00215306,
+    "close": 0.00179,
+    "atr": 0.00022365,
+    "symbol": "TOWNSUSDT",
+    "tf": "1d",
+    "tv_symbol": "BINANCE:TOWNSUSDT",
+    "detail": "dd 68.4%, vol x1.45, res 2.06ATR, 100EMA 2.99ATR, targets +123.1%/+275.1%",
+    "score": 0.339,
+    "dss": {
+     "1d": [
+      0.067,
+      0.198
+     ],
+     "1w": [
+      0.904,
+      0.766
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": null
+    }
+   },
+   {
+    "state": "basing",
+    "drawdown_pct": 50.7,
+    "vol_ratio": 1.2,
+    "base_bars": 180,
+    "gap_100_atr": 1.28,
+    "gap_res_atr": 0.75,
+    "target_200_pct": 102.5,
+    "target_300_pct": 294.0,
+    "resistance": 0.0111,
+    "invalidation": 0.01054947,
+    "close": 0.0103,
+    "atr": 0.00106399,
+    "symbol": "COOKIEUSDT",
+    "tf": "1d",
+    "tv_symbol": "BINANCE:COOKIEUSDT",
+    "detail": "dd 50.7%, vol x1.2, res 0.75ATR, 100EMA 1.28ATR, targets +102.5%/+294.0%",
+    "score": 0.333,
+    "dss": {
+     "1d": [
+      0.401,
+      0.628
+     ],
+     "1w": [
+      0.78,
+      0.589
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "state": "basing",
+    "drawdown_pct": 58.7,
+    "vol_ratio": 5.94,
+    "base_bars": 180,
+    "gap_100_atr": -0.5,
+    "gap_res_atr": 0.23,
+    "target_200_pct": 0.7,
+    "target_300_pct": 42.7,
+    "resistance": 0.1642,
+    "invalidation": 0.15086687,
+    "close": 0.1562,
+    "atr": 0.03539437,
+    "symbol": "ACEUSDT",
+    "tf": "1d",
+    "tv_symbol": "BINANCE:ACEUSDT",
+    "detail": "dd 58.7%, vol x5.94, res 0.23ATR, 100EMA -0.5ATR, targets +0.7%/+42.7%",
+    "score": 0.329,
+    "dss": {
+     "1d": [
+      0.115,
+      0.148
+     ],
+     "1w": [
+      0.889,
+      0.74
      ],
      "1M": null
     },
