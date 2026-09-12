@@ -18,10 +18,10 @@
   "bottoming": 0
  },
  "D": {
-  "ts": "2026-09-11 05:20 UTC",
+  "ts": "2026-09-12 05:10 UTC",
   "board": 74,
-  "bottoming": 1,
-  "topping": 4
+  "bottoming": 2,
+  "topping": 6
  },
  "E": {
   "ts": "2026-09-11 23:34 UTC",
