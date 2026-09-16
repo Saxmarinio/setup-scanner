@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-15 23:35 UTC",
+ "generated": "2026-09-16 23:43 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "GLD",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "channel %B, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 396.450012,
     "tv_symbol": "GLD",
@@ -16,12 +16,12 @@
     "score": 0.375,
     "dss": {
      "1d": [
-      0.041,
-      0.156
+      0.032,
+      0.128
      ],
      "1w": [
-      0.788,
-      0.513
+      0.784,
+      0.512
      ],
      "1M": [
       0.072,
