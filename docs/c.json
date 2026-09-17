@@ -1,40 +1,8 @@
 {
- "generated": "2026-09-16 23:43 UTC",
+ "generated": "2026-09-17 23:37 UTC",
  "groups": {
   "compression (1d)": [],
-  "divergence (1d)": [
-   {
-    "symbol": "GLD",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "channel %B, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 396.450012,
-    "tv_symbol": "GLD",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.032,
-      0.128
-     ],
-     "1w": [
-      0.784,
-      0.512
-     ],
-     "1M": [
-      0.072,
-      0.226
-     ]
-    },
-    "trend": {
-     "1h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   }
-  ],
+  "divergence (1d)": [],
   "bottoming (1d/1w)": []
  }
 }
