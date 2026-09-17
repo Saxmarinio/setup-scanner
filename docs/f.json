@@ -1,23 +1,54 @@
 {
- "generated": "2026-09-16 23:54 UTC",
+ "generated": "2026-09-17 23:45 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "ALAB",
+    "symbol": "GOOGL",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 262.450012,
-    "tv_symbol": "ALAB",
+    "invalidation": 327.73999,
+    "tv_symbol": "GOOGL",
     "htf_favourable": false,
     "score": 0.575,
     "dss": {
      "1d": [
-      0.488,
-      0.524
+      0.831,
+      0.641
+     ],
+     "1w": [
+      0.077,
+      0.196
+     ],
+     "1M": [
+      0.737,
+      0.786
+     ]
+    },
+    "trend": {
+     "1h": "up",
+     "1d": "none",
+     "1w": "up"
+    }
+   },
+   {
+    "symbol": "ALAB",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
+    "margin_excess": 0.0,
+    "invalidation": 262.450012,
+    "tv_symbol": "ALAB",
+    "htf_favourable": false,
+    "score": 0.255,
+    "dss": {
+     "1d": [
+      0.492,
+      0.517
      ],
      "1w": [
       0.095,
@@ -35,17 +66,17 @@
     "symbol": "ARM",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 225.460007,
     "tv_symbol": "ARM",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.255,
     "dss": {
      "1d": [
-      0.706,
-      0.577
+      0.741,
+      0.613
      ],
      "1w": [
       0.056,
@@ -63,25 +94,25 @@
     "symbol": "AXTI",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "channel %B, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 52.759998,
     "tv_symbol": "AXTI",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.255,
     "dss": {
      "1d": [
-      0.673,
-      0.472
+      0.746,
+      0.533
      ],
      "1w": [
-      0.166,
-      0.146
+      0.174,
+      0.148
      ],
      "1M": [
-      0.724,
-      0.812
+      0.727,
+      0.813
      ]
     },
     "trend": {
@@ -94,25 +125,25 @@
     "symbol": "NOK",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 9.54,
     "tv_symbol": "NOK",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.255,
     "dss": {
      "1d": [
-      0.49,
-      0.469
+      0.493,
+      0.474
      ],
      "1w": [
-      0.061,
-      0.113
+      0.068,
+      0.115
      ],
      "1M": [
-      0.365,
-      0.452
+      0.37,
+      0.453
      ]
     },
     "trend": {
@@ -125,25 +156,25 @@
     "symbol": "SOXL",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 98.620003,
     "tv_symbol": "SOXL",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.255,
     "dss": {
      "1d": [
-      0.586,
-      0.506
+      0.575,
+      0.521
      ],
      "1w": [
       0.052,
       0.176
      ],
      "1M": [
-      0.729,
-      0.778
+      0.734,
+      0.779
      ]
     },
     "trend": {
@@ -156,17 +187,17 @@
     "symbol": "WDC",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 420.880005,
     "tv_symbol": "WDC",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.255,
     "dss": {
      "1d": [
-      0.438,
-      0.469
+      0.341,
+      0.44
      ],
      "1w": [
       0.033,
@@ -187,56 +218,25 @@
     "symbol": "ORCL",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 139.720001,
     "tv_symbol": "ORCL",
     "htf_favourable": false,
-    "score": 0.375,
+    "score": 0.175,
     "dss": {
      "1d": [
-      0.294,
-      0.424
+      0.235,
+      0.382
      ],
      "1w": [
-      0.245,
-      0.251
+      0.261,
+      0.255
      ],
      "1M": [
       0.037,
       0.113
-     ]
-    },
-    "trend": {
-     "1h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "RKLB",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
-    "margin_excess": 0.0,
-    "invalidation": 61.450001,
-    "tv_symbol": "RKLB",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.533,
-      0.28
-     ],
-     "1w": [
-      0.046,
-      0.152
-     ],
-     "1M": [
-      0.272,
-      0.513
      ]
     },
     "trend": {
