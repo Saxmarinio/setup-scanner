@@ -1,35 +1,35 @@
 {
- "generated": "2026-09-16 04:44 UTC",
+ "generated": "2026-09-17 04:48 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
    {
-    "symbol": "ZECUSDT",
+    "symbol": "BTCUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
-    "invalidation": 1041.7,
-    "tv_symbol": "BINANCE:ZECUSDT",
+    "invalidation": 74967.97,
+    "tv_symbol": "BINANCE:BTCUSDT",
     "htf_favourable": false,
     "score": 0.375,
     "dss": {
      "1d": [
-      0.192,
-      0.452
+      0.026,
+      0.096
      ],
      "1w": [
-      0.733,
-      0.604
+      0.617,
+      0.403
      ],
      "1M": [
-      0.654,
-      0.603
+      0.058,
+      0.161
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "1d": "up",
@@ -37,53 +37,20 @@
     }
    },
    {
-    "symbol": "DOGEUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 0.08191,
-    "tv_symbol": "BINANCE:DOGEUSDT",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.169,
-      0.305
-     ],
-     "1w": [
-      0.537,
-      0.351
-     ],
-     "1M": [
-      0.01,
-      0.05
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
     "symbol": "SUIUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
-    "invalidation": 0.6926,
+    "invalidation": 0.673,
     "tv_symbol": "BINANCE:SUIUSDT",
     "htf_favourable": false,
     "score": 0.375,
     "dss": {
      "1d": [
-      0.262,
-      0.433
+      0.205,
+      0.382
      ],
      "1w": [
       0.547,
@@ -92,7 +59,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "1d": "none",
