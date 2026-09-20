@@ -1,52 +1,101 @@
 {
- "generated": "2026-09-20 19:10 UTC",
+ "generated": "2026-09-20 22:45 UTC",
  "groups": {
   "compression (15m/1h/4h)": [
    {
-    "state": "compressed",
-    "expansion_atr": 3.03,
-    "consol_bars": 39,
-    "consol_start": 860,
-    "coil_end": 899,
+    "state": "forming",
+    "expansion_atr": 6.52,
+    "consol_bars": 23,
+    "consol_start": 976,
+    "coil_end": 999,
     "bars_since_coil": 0,
     "res_touches": 2,
-    "channel_atr": 1.87,
-    "gap_atr": 0.6,
-    "bars_to_apex": 20.1,
-    "bars_in_state": 10,
-    "res_kind": "horizontal",
-    "resistance": 0.037314,
-    "res_slope": 4.545454545454469e-06,
-    "res_intercept": 0.03322727272727281,
-    "invalidation": 0.035297,
-    "close": 0.0368,
-    "atr": 0.00085,
-    "ribbon_pct": 1.87,
-    "symbol": "PHAUSDT",
-    "tf": "1h",
-    "tv_symbol": "BINANCE:PHAUSDT",
+    "channel_atr": 1.09,
+    "gap_atr": -0.07,
+    "bars_to_apex": 4.8,
+    "bars_in_state": 4,
+    "res_kind": "angled",
+    "resistance": 2.9045,
+    "res_slope": -0.002500000000000019,
+    "res_intercept": 5.402000000000019,
+    "invalidation": 2.868289,
+    "close": 2.906,
+    "atr": 0.022763,
+    "ribbon_pct": 1.09,
+    "symbol": "ICPUSDT",
+    "tf": "15m",
+    "tv_symbol": "BINANCE:ICPUSDT",
     "htf_favourable": true,
-    "trend_bars": 49,
-    "detail": "horizontal res x2, exp 3.03ATR, ch 1.87ATR, apex 20.1, trend 49b",
-    "score": 0.5,
+    "trend_bars": 1,
+    "detail": "angled res x2, exp 6.52ATR, ch 1.09ATR, apex 4.8, trend 1b",
+    "score": 0.55,
     "dss": {
      "1d": [
-      0.399,
-      0.218
+      0.243,
+      0.372
      ],
      "1w": [
-      0.288,
-      0.205
+      0.575,
+      0.367
      ],
      "1M": [
-      0.144,
-      0.123
+      0.568,
+      0.358
      ]
     },
     "trend": {
      "15m": "up",
-     "1h": "up",
+     "1h": "none",
      "4h": "none",
+     "12h": "up",
+     "1w": "none"
+    }
+   },
+   {
+    "state": "forming",
+    "expansion_atr": 4.44,
+    "consol_bars": 34,
+    "consol_start": 865,
+    "coil_end": 899,
+    "bars_since_coil": 0,
+    "res_touches": 2,
+    "channel_atr": 2.76,
+    "gap_atr": 2.44,
+    "bars_to_apex": 39.6,
+    "bars_in_state": 7,
+    "res_kind": "horizontal",
+    "resistance": 0.073591,
+    "res_slope": 2.1428571428560128e-06,
+    "res_intercept": 0.07166428571428672,
+    "invalidation": 0.071709,
+    "close": 0.07218,
+    "atr": 0.000577,
+    "ribbon_pct": 2.76,
+    "symbol": "KAVAUSDT",
+    "tf": "1h",
+    "tv_symbol": "BINANCE:KAVAUSDT",
+    "htf_favourable": true,
+    "trend_bars": 12,
+    "detail": "horizontal res x2, exp 4.44ATR, ch 2.76ATR, apex 39.6, trend 12b",
+    "score": 0.45,
+    "dss": {
+     "1d": [
+      0.256,
+      0.548
+     ],
+     "1w": [
+      0.493,
+      0.334
+     ],
+     "1M": [
+      0.068,
+      0.206
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "up",
+     "4h": "up",
      "12h": "up",
      "1w": "none"
     }
@@ -57,8 +106,8 @@
     "symbol": "PROMUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 4.687,
     "tv_symbol": "BINANCE:PROMUSDT",
@@ -355,7 +404,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -392,7 +441,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
