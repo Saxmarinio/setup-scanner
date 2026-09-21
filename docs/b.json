@@ -1,82 +1,93 @@
 {
- "generated": "2026-09-21 05:19 UTC",
+ "generated": "2026-09-21 15:24 UTC",
  "groups": {
   "compression (15m/1h/4h)": [
    {
-    "state": "forming",
-    "expansion_atr": 2.62,
-    "consol_bars": 27,
-    "consol_start": 872,
-    "coil_end": 899,
-    "bars_since_coil": 0,
-    "res_touches": 2,
-    "channel_atr": 1.43,
-    "gap_atr": 1.7,
-    "bars_to_apex": 30.6,
-    "bars_in_state": 0,
+    "state": "triggered",
+    "expansion_atr": 3.29,
+    "consol_bars": 57,
+    "consol_start": 941,
+    "coil_end": 998,
+    "bars_since_coil": 1,
+    "res_touches": 3,
+    "channel_atr": 2.57,
+    "gap_atr": 1.55,
+    "bars_to_apex": 19.3,
+    "bars_in_state": 5,
     "res_kind": "horizontal",
-    "resistance": 0.512393,
-    "res_slope": 0.00017333333333333222,
-    "res_intercept": 0.35656666666666775,
-    "invalidation": 0.489895,
-    "close": 0.4926,
-    "atr": 0.011648,
-    "ribbon_pct": 1.43,
-    "symbol": "JTOUSDT",
-    "tf": "1h",
-    "tv_symbol": "BINANCE:JTOUSDT",
+    "resistance": 1.2e-05,
+    "res_slope": 7.142857142856825e-10,
+    "res_intercept": 1.1389761904761933e-05,
+    "invalidation": 1.2e-05,
+    "close": 1.2e-05,
+    "atr": 0.0,
+    "ribbon_pct": 2.57,
+    "symbol": "1000SATSUSDT",
+    "tf": "15m",
+    "tv_symbol": "BINANCE:1000SATSUSDT",
     "htf_favourable": true,
-    "trend_bars": 40,
-    "detail": "horizontal res x2, exp 2.62ATR, ch 1.43ATR, apex 30.6, trend 40b",
-    "score": 0.5,
+    "trend_bars": 46,
+    "detail": "horizontal res x3, exp 3.29ATR, ch 2.57ATR, apex 19.3, trend 46b, broke 1b after coil",
+    "score": 0.75,
     "dss": {
      "1d": [
-      0.94,
-      0.823
+      0.58,
+      0.398
      ],
      "1w": [
-      0.123,
-      0.343
+      0.831,
+      0.614
      ],
      "1M": null
     },
     "trend": {
-     "15m": "none",
-     "1h": "up",
+     "15m": "up",
+     "1h": "none",
      "4h": "none",
      "12h": "none",
      "1w": "none"
     }
-   }
-  ],
-  "divergence (4h)": [
+   },
    {
-    "symbol": "PROMUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 4.687,
-    "tv_symbol": "BINANCE:PROMUSDT",
-    "htf_favourable": false,
-    "score": 0.375,
+    "state": "triggered",
+    "expansion_atr": 4.17,
+    "consol_bars": 20,
+    "consol_start": 977,
+    "coil_end": 997,
+    "bars_since_coil": 2,
+    "res_touches": 2,
+    "channel_atr": 1.92,
+    "gap_atr": 1.37,
+    "bars_to_apex": 23.5,
+    "bars_in_state": 2,
+    "res_kind": "horizontal",
+    "resistance": 9.5e-05,
+    "res_slope": 8.333333333309838e-10,
+    "res_intercept": 9.417583333333569e-05,
+    "invalidation": 9.3e-05,
+    "close": 9.8e-05,
+    "atr": 1e-06,
+    "ribbon_pct": 1.92,
+    "symbol": "NEIROUSDT",
+    "tf": "15m",
+    "tv_symbol": "BINANCE:NEIROUSDT",
+    "htf_favourable": true,
+    "trend_bars": 6,
+    "detail": "horizontal res x2, exp 4.17ATR, ch 1.92ATR, apex 23.5, trend 6b, broke 2b after coil",
+    "score": 0.25,
     "dss": {
      "1d": [
-      0.279,
-      0.34
+      0.517,
+      0.404
      ],
      "1w": [
-      0.92,
-      0.798
+      0.768,
+      0.57
      ],
-     "1M": [
-      0.193,
-      0.342
-     ]
+     "1M": null
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -84,6 +95,7 @@
     }
    }
   ],
+  "divergence (4h)": [],
   "bottoming (1d)": [
    {
     "state": "compressing",
@@ -115,7 +127,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "up",
@@ -156,7 +168,7 @@
     },
     "trend": {
      "15m": "none",
-     "1h": "none",
+     "1h": "up",
      "4h": "none",
      "12h": "none",
      "1w": "none"
@@ -272,7 +284,7 @@
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "up",
      "4h": "none",
      "12h": "none",
@@ -312,9 +324,9 @@
      ]
     },
     "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
+     "15m": "up",
+     "1h": "up",
+     "4h": "up",
      "12h": "none",
      "1w": "none"
     }
@@ -389,7 +401,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
