@@ -1,102 +1,50 @@
 {
- "generated": "2026-09-20 22:45 UTC",
+ "generated": "2026-09-21 05:19 UTC",
  "groups": {
   "compression (15m/1h/4h)": [
    {
     "state": "forming",
-    "expansion_atr": 6.52,
-    "consol_bars": 23,
-    "consol_start": 976,
-    "coil_end": 999,
-    "bars_since_coil": 0,
-    "res_touches": 2,
-    "channel_atr": 1.09,
-    "gap_atr": -0.07,
-    "bars_to_apex": 4.8,
-    "bars_in_state": 4,
-    "res_kind": "angled",
-    "resistance": 2.9045,
-    "res_slope": -0.002500000000000019,
-    "res_intercept": 5.402000000000019,
-    "invalidation": 2.868289,
-    "close": 2.906,
-    "atr": 0.022763,
-    "ribbon_pct": 1.09,
-    "symbol": "ICPUSDT",
-    "tf": "15m",
-    "tv_symbol": "BINANCE:ICPUSDT",
-    "htf_favourable": true,
-    "trend_bars": 1,
-    "detail": "angled res x2, exp 6.52ATR, ch 1.09ATR, apex 4.8, trend 1b",
-    "score": 0.55,
-    "dss": {
-     "1d": [
-      0.243,
-      0.372
-     ],
-     "1w": [
-      0.575,
-      0.367
-     ],
-     "1M": [
-      0.568,
-      0.358
-     ]
-    },
-    "trend": {
-     "15m": "up",
-     "1h": "none",
-     "4h": "none",
-     "12h": "up",
-     "1w": "none"
-    }
-   },
-   {
-    "state": "forming",
-    "expansion_atr": 4.44,
-    "consol_bars": 34,
-    "consol_start": 865,
+    "expansion_atr": 2.62,
+    "consol_bars": 27,
+    "consol_start": 872,
     "coil_end": 899,
     "bars_since_coil": 0,
     "res_touches": 2,
-    "channel_atr": 2.76,
-    "gap_atr": 2.44,
-    "bars_to_apex": 39.6,
-    "bars_in_state": 7,
+    "channel_atr": 1.43,
+    "gap_atr": 1.7,
+    "bars_to_apex": 30.6,
+    "bars_in_state": 0,
     "res_kind": "horizontal",
-    "resistance": 0.073591,
-    "res_slope": 2.1428571428560128e-06,
-    "res_intercept": 0.07166428571428672,
-    "invalidation": 0.071709,
-    "close": 0.07218,
-    "atr": 0.000577,
-    "ribbon_pct": 2.76,
-    "symbol": "KAVAUSDT",
+    "resistance": 0.512393,
+    "res_slope": 0.00017333333333333222,
+    "res_intercept": 0.35656666666666775,
+    "invalidation": 0.489895,
+    "close": 0.4926,
+    "atr": 0.011648,
+    "ribbon_pct": 1.43,
+    "symbol": "JTOUSDT",
     "tf": "1h",
-    "tv_symbol": "BINANCE:KAVAUSDT",
+    "tv_symbol": "BINANCE:JTOUSDT",
     "htf_favourable": true,
-    "trend_bars": 12,
-    "detail": "horizontal res x2, exp 4.44ATR, ch 2.76ATR, apex 39.6, trend 12b",
-    "score": 0.45,
+    "trend_bars": 40,
+    "detail": "horizontal res x2, exp 2.62ATR, ch 1.43ATR, apex 30.6, trend 40b",
+    "score": 0.5,
     "dss": {
      "1d": [
-      0.256,
-      0.548
+      0.94,
+      0.823
      ],
      "1w": [
-      0.493,
-      0.334
+      0.123,
+      0.343
      ],
-     "1M": [
-      0.068,
-      0.206
-     ]
+     "1M": null
     },
     "trend": {
      "15m": "none",
      "1h": "up",
-     "4h": "up",
-     "12h": "up",
+     "4h": "none",
+     "12h": "none",
      "1w": "none"
     }
    }
@@ -106,8 +54,8 @@
     "symbol": "PROMUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 4.687,
     "tv_symbol": "BINANCE:PROMUSDT",
@@ -115,12 +63,12 @@
     "score": 0.375,
     "dss": {
      "1d": [
-      0.359,
-      0.358
+      0.279,
+      0.34
      ],
      "1w": [
-      0.904,
-      0.763
+      0.92,
+      0.798
      ],
      "1M": [
       0.193,
@@ -138,31 +86,68 @@
   ],
   "bottoming (1d)": [
    {
-    "state": "basing",
-    "drawdown_pct": 76.7,
-    "vol_ratio": 11.62,
+    "state": "compressing",
+    "drawdown_pct": 66.1,
+    "vol_ratio": 6.79,
     "base_bars": 180,
-    "gap_100_atr": 0.35,
-    "gap_res_atr": 1.44,
-    "target_200_pct": 29.0,
-    "target_300_pct": 76.5,
+    "gap_100_atr": 0.22,
+    "gap_res_atr": 0.3,
+    "target_200_pct": 62.5,
+    "target_300_pct": 125.7,
+    "resistance": 0.0735,
+    "invalidation": 0.0597945,
+    "close": 0.0714,
+    "atr": 0.00690499,
+    "symbol": "LAUSDT",
+    "tf": "1d",
+    "tv_symbol": "BINANCE:LAUSDT",
+    "detail": "dd 66.1%, vol x6.79, res 0.3ATR, 100EMA 0.22ATR, targets +62.5%/+125.7%",
+    "score": 0.823,
+    "dss": {
+     "1d": [
+      0.511,
+      0.391
+     ],
+     "1w": [
+      0.836,
+      0.593
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "up",
+     "1w": null
+    }
+   },
+   {
+    "state": "basing",
+    "drawdown_pct": 75.9,
+    "vol_ratio": 11.27,
+    "base_bars": 180,
+    "gap_100_atr": 0.14,
+    "gap_res_atr": 1.26,
+    "target_200_pct": 24.6,
+    "target_300_pct": 69.8,
     "resistance": 0.0257,
-    "invalidation": 0.01983,
-    "close": 0.02096,
-    "atr": 0.00329423,
+    "invalidation": 0.01987846,
+    "close": 0.02165,
+    "atr": 0.00321651,
     "symbol": "BICOUSDT",
     "tf": "1d",
     "tv_symbol": "BINANCE:BICOUSDT",
-    "detail": "dd 76.7%, vol x11.62, res 1.44ATR, 100EMA 0.35ATR, targets +29.0%/+76.5%",
-    "score": 0.718,
+    "detail": "dd 75.9%, vol x11.27, res 1.26ATR, 100EMA 0.14ATR, targets +24.6%/+69.8%",
+    "score": 0.601,
     "dss": {
      "1d": [
-      0.265,
-      0.218
+      0.428,
+      0.265
      ],
      "1w": [
-      0.222,
-      0.293
+      0.221,
+      0.277
      ],
      "1M": [
       0.089,
@@ -178,145 +163,31 @@
     }
    },
    {
-    "state": "basing",
-    "drawdown_pct": 48.3,
-    "vol_ratio": 1.67,
+    "state": "compressing",
+    "drawdown_pct": 56.5,
+    "vol_ratio": 2.9,
     "base_bars": 180,
-    "gap_100_atr": -0.45,
-    "gap_res_atr": 0.04,
-    "target_200_pct": 26.0,
-    "target_300_pct": 76.5,
-    "resistance": 0.0014,
-    "invalidation": 0.00122511,
-    "close": 0.001395,
-    "atr": 0.00012702,
-    "symbol": "QIUSDT",
-    "tf": "1d",
-    "tv_symbol": "BINANCE:QIUSDT",
-    "detail": "dd 48.3%, vol x1.67, res 0.04ATR, 100EMA -0.45ATR, targets +26.0%/+76.5%",
-    "score": 0.431,
-    "dss": {
-     "1d": [
-      0.177,
-      0.096
-     ],
-     "1w": [
-      0.825,
-      0.642
-     ],
-     "1M": [
-      0.01,
-      0.04
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "up",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "state": "basing",
-    "drawdown_pct": 59.0,
-    "vol_ratio": 5.33,
-    "base_bars": 180,
-    "gap_100_atr": -0.52,
-    "gap_res_atr": 0.35,
-    "target_200_pct": 1.5,
-    "target_300_pct": 43.0,
-    "resistance": 0.1642,
-    "invalidation": 0.14992772,
-    "close": 0.155,
-    "atr": 0.02625489,
-    "symbol": "ACEUSDT",
-    "tf": "1d",
-    "tv_symbol": "BINANCE:ACEUSDT",
-    "detail": "dd 59.0%, vol x5.33, res 0.35ATR, 100EMA -0.52ATR, targets +1.5%/+43.0%",
-    "score": 0.413,
-    "dss": {
-     "1d": [
-      0.124,
-      0.09
-     ],
-     "1w": [
-      0.909,
-      0.778
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "state": "breakout",
-    "drawdown_pct": 51.2,
-    "vol_ratio": 1.7,
-    "base_bars": 180,
-    "gap_100_atr": -1.01,
-    "gap_res_atr": 0.79,
-    "target_200_pct": 6.6,
-    "target_300_pct": 22.5,
-    "resistance": 1.187,
-    "invalidation": 0.97472966,
-    "close": 1.116,
-    "atr": 0.08942912,
-    "symbol": "ZROUSDT",
-    "tf": "1d",
-    "tv_symbol": "BINANCE:ZROUSDT",
-    "detail": "dd 51.2%, vol x1.7, res 0.79ATR, 100EMA -1.01ATR, targets +6.6%/+22.5%",
-    "score": 0.402,
-    "dss": {
-     "1d": [
-      0.444,
-      0.219
-     ],
-     "1w": [
-      0.658,
-      0.351
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "state": "basing",
-    "drawdown_pct": 56.2,
-    "vol_ratio": 2.91,
-    "base_bars": 180,
-    "gap_100_atr": 1.99,
-    "gap_res_atr": 0.23,
-    "target_200_pct": 36.0,
-    "target_300_pct": 56.5,
+    "gap_100_atr": 2.11,
+    "gap_res_atr": 0.37,
+    "target_200_pct": 36.6,
+    "target_300_pct": 57.2,
     "resistance": 0.466,
-    "invalidation": 0.44064418,
-    "close": 0.461,
-    "atr": 0.0221287,
+    "invalidation": 0.44112192,
+    "close": 0.458,
+    "atr": 0.02187226,
     "symbol": "PORTOUSDT",
     "tf": "1d",
     "tv_symbol": "BINANCE:PORTOUSDT",
-    "detail": "dd 56.2%, vol x2.91, res 0.23ATR, 100EMA 1.99ATR, targets +36.0%/+56.5%",
-    "score": 0.4,
+    "detail": "dd 56.5%, vol x2.9, res 0.37ATR, 100EMA 2.11ATR, targets +36.6%/+57.2%",
+    "score": 0.554,
     "dss": {
      "1d": [
-      0.212,
-      0.201
+      0.329,
+      0.229
      ],
      "1w": [
-      0.688,
-      0.391
+      0.758,
+      0.473
      ],
      "1M": [
       0.401,
@@ -332,31 +203,108 @@
     }
    },
    {
-    "state": "basing",
-    "drawdown_pct": 65.7,
-    "vol_ratio": 2.56,
+    "state": "breakout",
+    "drawdown_pct": 48.5,
+    "vol_ratio": 1.77,
     "base_bars": 180,
-    "gap_100_atr": 0.38,
-    "gap_res_atr": 0.58,
-    "target_200_pct": 18.1,
-    "target_300_pct": 46.3,
+    "gap_100_atr": -1.59,
+    "gap_res_atr": 0.11,
+    "target_200_pct": 1.0,
+    "target_300_pct": 15.9,
+    "resistance": 1.187,
+    "invalidation": 0.98159349,
+    "close": 1.177,
+    "atr": 0.09320766,
+    "symbol": "ZROUSDT",
+    "tf": "1d",
+    "tv_symbol": "BINANCE:ZROUSDT",
+    "detail": "dd 48.5%, vol x1.77, res 0.11ATR, 100EMA -1.59ATR, targets +1.0%/+15.9%",
+    "score": 0.377,
+    "dss": {
+     "1d": [
+      0.568,
+      0.297
+     ],
+     "1w": [
+      0.734,
+      0.436
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "state": "basing",
+    "drawdown_pct": 47.8,
+    "vol_ratio": 1.76,
+    "base_bars": 180,
+    "gap_100_atr": -0.53,
+    "gap_res_atr": 0.08,
+    "target_200_pct": 24.4,
+    "target_300_pct": 73.9,
+    "resistance": 0.00142,
+    "invalidation": 0.00122995,
+    "close": 0.001409,
+    "atr": 0.00013072,
+    "symbol": "QIUSDT",
+    "tf": "1d",
+    "tv_symbol": "BINANCE:QIUSDT",
+    "detail": "dd 47.8%, vol x1.76, res 0.08ATR, 100EMA -0.53ATR, targets +24.4%/+73.9%",
+    "score": 0.32,
+    "dss": {
+     "1d": [
+      0.332,
+      0.148
+     ],
+     "1w": [
+      0.864,
+      0.691
+     ],
+     "1M": [
+      0.01,
+      0.04
+     ]
+    },
+    "trend": {
+     "15m": "up",
+     "1h": "up",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "state": "basing",
+    "drawdown_pct": 66.6,
+    "vol_ratio": 2.47,
+    "base_bars": 180,
+    "gap_100_atr": 0.65,
+    "gap_res_atr": 0.87,
+    "target_200_pct": 20.7,
+    "target_300_pct": 49.2,
     "resistance": 0.001554,
-    "invalidation": 0.00137832,
-    "close": 0.001478,
-    "atr": 0.00013005,
+    "invalidation": 0.00137975,
+    "close": 0.001443,
+    "atr": 0.00012715,
     "symbol": "TLMUSDT",
     "tf": "1d",
     "tv_symbol": "BINANCE:TLMUSDT",
-    "detail": "dd 65.7%, vol x2.56, res 0.58ATR, 100EMA 0.38ATR, targets +18.1%/+46.3%",
-    "score": 0.369,
+    "detail": "dd 66.6%, vol x2.47, res 0.87ATR, 100EMA 0.65ATR, targets +20.7%/+49.2%",
+    "score": 0.316,
     "dss": {
      "1d": [
-      0.502,
-      0.336
+      0.613,
+      0.397
      ],
      "1w": [
-      0.534,
-      0.602
+      0.493,
+      0.578
      ],
      "1M": [
       0.355,
@@ -373,30 +321,67 @@
    },
    {
     "state": "basing",
-    "drawdown_pct": 47.9,
-    "vol_ratio": 1.44,
+    "drawdown_pct": 92.9,
+    "vol_ratio": 4.67,
     "base_bars": 180,
-    "gap_100_atr": -0.06,
-    "gap_res_atr": 0.01,
-    "target_200_pct": 21.2,
-    "target_300_pct": 36.6,
+    "gap_100_atr": 0.57,
+    "gap_res_atr": 7.06,
+    "target_200_pct": 7.2,
+    "target_300_pct": 9.0,
+    "resistance": 0.08276,
+    "invalidation": 0.02375033,
+    "close": 0.0218,
+    "atr": 0.00863739,
+    "symbol": "TUTUSDT",
+    "tf": "1d",
+    "tv_symbol": "BINANCE:TUTUSDT",
+    "detail": "dd 92.9%, vol x4.67, res 7.06ATR, 100EMA 0.57ATR, targets +7.2%/+9.0%",
+    "score": 0.256,
+    "dss": {
+     "1d": [
+      0.914,
+      0.743
+     ],
+     "1w": [
+      0.269,
+      0.545
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": null
+    }
+   },
+   {
+    "state": "basing",
+    "drawdown_pct": 48.3,
+    "vol_ratio": 1.52,
+    "base_bars": 180,
+    "gap_100_atr": 0.08,
+    "gap_res_atr": 0.15,
+    "target_200_pct": 22.0,
+    "target_300_pct": 37.4,
     "resistance": 255.1,
-    "invalidation": 231.08816619,
-    "close": 254.9,
-    "atr": 14.93225949,
+    "invalidation": 231.83790068,
+    "close": 252.8,
+    "atr": 15.01564651,
     "symbol": "BCHUSDT",
     "tf": "1d",
     "tv_symbol": "BINANCE:BCHUSDT",
-    "detail": "dd 47.9%, vol x1.44, res 0.01ATR, 100EMA -0.06ATR, targets +21.2%/+36.6%",
-    "score": 0.274,
+    "detail": "dd 48.3%, vol x1.52, res 0.15ATR, 100EMA 0.08ATR, targets +22.0%/+37.4%",
+    "score": 0.236,
     "dss": {
      "1d": [
-      0.333,
-      0.174
+      0.481,
+      0.243
      ],
      "1w": [
-      0.797,
-      0.557
+      0.842,
+      0.62
      ],
      "1M": [
       0.326,
@@ -404,48 +389,11 @@
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
      "1w": "none"
-    }
-   },
-   {
-    "state": "basing",
-    "drawdown_pct": 93.0,
-    "vol_ratio": 4.49,
-    "base_bars": 180,
-    "gap_100_atr": 0.59,
-    "gap_res_atr": 6.83,
-    "target_200_pct": 8.9,
-    "target_300_pct": 10.6,
-    "resistance": 0.08276,
-    "invalidation": 0.02394917,
-    "close": 0.02149,
-    "atr": 0.00897725,
-    "symbol": "TUTUSDT",
-    "tf": "1d",
-    "tv_symbol": "BINANCE:TUTUSDT",
-    "detail": "dd 93.0%, vol x4.49, res 6.83ATR, 100EMA 0.59ATR, targets +8.9%/+10.6%",
-    "score": 0.25,
-    "dss": {
-     "1d": [
-      0.89,
-      0.694
-     ],
-     "1w": [
-      0.346,
-      0.624
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "up",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": null
     }
    }
   ]
