@@ -24,13 +24,13 @@
   "topping": 6
  },
  "E": {
-  "ts": "2026-09-18 23:39 UTC",
+  "ts": "2026-09-22 00:19 UTC",
   "compression": 0,
-  "divergence": 1,
+  "divergence": 2,
   "bottoming": 0
  },
  "F": {
-  "ts": "2026-09-18 23:39 UTC",
+  "ts": "2026-09-22 00:19 UTC",
   "compression": 0,
   "divergence": 7,
   "bottoming": 0
