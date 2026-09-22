@@ -24,15 +24,15 @@
   "topping": 8
  },
  "E": {
-  "ts": "2026-09-22 00:19 UTC",
+  "ts": "2026-09-22 23:53 UTC",
   "compression": 0,
   "divergence": 2,
   "bottoming": 0
  },
  "F": {
-  "ts": "2026-09-22 00:19 UTC",
+  "ts": "2026-09-22 23:53 UTC",
   "compression": 0,
-  "divergence": 7,
+  "divergence": 8,
   "bottoming": 0
  },
  "S": {
