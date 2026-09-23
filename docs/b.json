@@ -1,19 +1,102 @@
 {
- "generated": "2026-09-23 19:58 UTC",
+ "generated": "2026-09-23 23:15 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [],
+  "compression (15m/1h/4h)": [
+   {
+    "state": "compressed",
+    "expansion_atr": 5.74,
+    "consol_bars": 18,
+    "consol_start": 981,
+    "coil_end": 999,
+    "bars_since_coil": 0,
+    "res_touches": 2,
+    "channel_atr": 1.29,
+    "gap_atr": 0.84,
+    "bars_to_apex": 6.1,
+    "bars_in_state": 1,
+    "res_kind": "angled",
+    "resistance": 0.3955,
+    "res_slope": -0.0007500000000000075,
+    "res_intercept": 1.1447500000000075,
+    "invalidation": 0.383825,
+    "close": 0.39,
+    "atr": 0.006524,
+    "ribbon_pct": 1.29,
+    "symbol": "XNOUSDT",
+    "tf": "15m",
+    "tv_symbol": "BINANCE:XNOUSDT",
+    "htf_favourable": true,
+    "trend_bars": 2,
+    "detail": "angled res x2, exp 5.74ATR, ch 1.29ATR, apex 6.1, trend 2b",
+    "score": 0.5,
+    "dss": {
+     "1d": [
+      0.491,
+      0.244
+     ],
+     "1w": [
+      0.745,
+      0.677
+     ],
+     "1M": [
+      0.396,
+      0.352
+     ]
+    },
+    "trend": {
+     "15m": "up",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   }
+  ],
   "divergence (4h)": [
+   {
+    "symbol": "PROMUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 4.298,
+    "tv_symbol": "BINANCE:PROMUSDT",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.178,
+      0.283
+     ],
+     "1w": [
+      0.92,
+      0.798
+     ],
+     "1M": [
+      0.193,
+      0.342
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "up",
+     "1w": "none"
+    }
+   },
    {
     "symbol": "USDEUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 0.9202,
     "tv_symbol": "BINANCE:USDEUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.308,
     "dss": {
      "1d": [
       0.467,
@@ -37,8 +120,8 @@
     "symbol": "COTIUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 0.01425,
     "tv_symbol": "BINANCE:COTIUSDT",
@@ -100,7 +183,7 @@
     "trend": {
      "15m": "none",
      "1h": "none",
-     "4h": "up",
+     "4h": "none",
      "12h": "up",
      "1w": null
     }
