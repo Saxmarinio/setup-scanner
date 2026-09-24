@@ -132,6 +132,15 @@ def build(df, symbol_key, name):
         "first": str(d["datetime"].min().date()),
         "last": str(d["datetime"].max().date()),
         "tradingLen": tl,
+        # Sessions per year vary (250-253 for equities). Drawing out to the
+        # LONGEST year leaves a ragged tail that only a handful of years reach,
+        # so a small cohort's last few points swing on two or three members.
+        # Cap at the typical year instead: session 253 is not comparable across
+        # years anyway.
+        "tradingTypical": int(d.groupby(d["datetime"].dt.year).size()
+                              .drop(index=[y for y in [int(d["datetime"].max().year)]
+                                           if y in set(d["datetime"].dt.year)],
+                                    errors="ignore").median()),
         "calendarLen": CALENDAR_LEN,
         # When an asset never closes, the two alignments are the same series.
         # Say so rather than offering a toggle that does nothing.
