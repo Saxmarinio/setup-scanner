@@ -168,6 +168,12 @@ def _render_index(outdir, status):
                 "<td class=n>not run yet</td><td class=n>&ndash;</td>"
                 "<td class=n></td></tr>")
     h.append("</table>")
+    # Composites are built by their own script on their own cadence, so link
+    # unconditionally rather than gating on a scan having produced them.
+    h.append("<div class=sub style='margin-top:18px'>&#9679; "
+             "<a href='cycles.html'>Cycle composites</a> &mdash; the average shape "
+             "of a year for BTC, indices, metals and energy, from up to 99 years "
+             "of daily history</div>")
     open(os.path.join(outdir, "index.html"), "w", encoding="utf-8").write("\n".join(h))
 
 def _board_table(rows):
