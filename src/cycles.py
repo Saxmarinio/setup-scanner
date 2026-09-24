@@ -166,6 +166,17 @@ def build(df, symbol_key, name):
             partial.append(int(y))
     payload["partialYears"] = sorted(partial)
     payload["currentYear"] = this_year
+    # Bull/bear per year, from the calendar-year return rather than a hand
+    # -kept list. Hand-labelling is what the reference tool does, but it only
+    # ever covers one instrument and it ages; sign-of-the-year is objective,
+    # self-maintaining, and works for gold and copper too. On BTC it recovers
+    # the conventional bear years (2014, 2018, 2022) without being told.
+    rets = {}
+    for y, g in d.groupby(d["datetime"].dt.year):
+        c0, c1 = float(g["close"].iloc[0]), float(g["close"].iloc[-1])
+        if c0 > 0:
+            rets[str(int(y))] = round((c1 / c0 - 1.0) * 100.0, 2)
+    payload["yearReturn"] = rets
     # The anchor for price mode. Raw historical price cannot be overlaid - the
     # Nasdaq 100 opened 1986 near 130 and 2026 near 25,000, and one linear axis
     # cannot hold both. What IS meaningful is projecting each composite's

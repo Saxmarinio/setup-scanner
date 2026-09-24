@@ -47,7 +47,11 @@ label.ck input{accent-color:#2196f3;margin:0}
 .sw{width:11px;height:11px;border-radius:2px;flex:none}
 .years{display:flex;flex-wrap:wrap;gap:4px;max-height:120px;overflow-y:auto;margin-top:4px}
 .years button{background:var(--bg);border:1px solid var(--line);color:var(--dim);border-radius:3px;padding:2px 6px;font:inherit;font-size:11px;cursor:pointer}
-.years button.on{background:#f06292;border-color:#f06292;color:#121212;font-weight:600}
+.years button.up{color:#26c6a6;border-color:#27493f}
+.years button.down{color:#ff7043;border-color:#4d2b1f}
+.years button.on{background:#2a3142;outline:2px solid #f06292;outline-offset:-2px;font-weight:700}
+.chiplegend{display:flex;gap:12px;margin-top:8px;font-size:11px;color:var(--dim)}
+.chiplegend i{font-style:normal}
 #chart,#brush{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--line);border-radius:4px}
 #brush{margin-top:8px;cursor:ew-resize;touch-action:none}
 .note{color:var(--dim);font-size:12px;margin-top:10px}
@@ -158,7 +162,20 @@ table.tt{border-collapse:collapse;font-size:12px}
     </div>
 
     <div class=card><h3>Other curves</h3><div id=cohorts></div></div>
-    <div class=card><h3>Custom years</h3><div class=years id=years></div></div>
+    <div class=card>
+      <h3>Custom years <span class=help tabindex=0>?<span>
+        <b>Bull and bear are computed, not curated</b>
+        A year is coloured by its own calendar-year return: green for a year
+        that finished up, orange for one that finished down. Hover a year for
+        the figure.
+        <em>The reference tool keeps a hand-written bull/bear list, which covers
+        one instrument and goes stale. Taking the sign of the year is objective
+        and works for gold and copper too &ndash; and on Bitcoin it recovers the
+        conventional bear years (2014, 2018, 2022) without being told.</em>
+      </span></span></h3>
+      <div class=years id=years></div>
+      <div class=chiplegend id=chiplegend></div>
+    </div>
   </div>
 
   <div class=main>
@@ -181,6 +198,8 @@ const COHORTS = [
   {id:"y2",     label:"Y2 Midterm",       color:"#ef5350"},
   {id:"y3",     label:"Y3 Pre-election",  color:"#b388ff"},
   {id:"y4",     label:"Y4 Election",      color:"#ff7043"},
+  {id:"bull",   label:"Bull years",       color:"#26c6a6"},
+  {id:"bear",   label:"Bear years",       color:"#ff7043"},
   {id:"halving",label:"Halving years",    color:"#9575cd"},
   {id:"custom", label:"Custom",           color:"#f06292"}
 ];
@@ -215,6 +234,8 @@ function periodLabel(n){
   const anc  = S.anchorMode==="fixed" && S.anchorYear ? " from "+S.anchorYear : "";
   return n+"-year ("+mode+anc+")";
 }
+const yearRet = y => { const v=S.data.yearReturn && S.data.yearReturn[y];
+  return (v===undefined||v===null) ? null : v; };
 function cohortYears(id){
   const ys = eligible();
   if(id==="all")     return ys;
@@ -222,6 +243,8 @@ function cohortYears(id){
   if(id==="y2")      return ys.filter(y=>y%4===2);
   if(id==="y3")      return ys.filter(y=>y%4===3);
   if(id==="y4")      return ys.filter(y=>y%4===0);
+  if(id==="bull")    return ys.filter(y=>yearRet(y)>0);
+  if(id==="bear")    return ys.filter(y=>yearRet(y)<0);
   if(id==="halving") return ys.filter(y=>[2012,2016,2020,2024,2028].includes(y));
   if(id==="custom")  return ys.filter(y=>S.custom.has(y));
   return [];
@@ -427,11 +450,19 @@ function buildControls(){
   const y=$("#years"); y.innerHTML="";
   for(const yr of eligible()){
     const b=document.createElement("button");
-    b.textContent=yr; b.className=S.custom.has(yr)?"on":"";
+    const r=yearRet(yr);
+    b.textContent=yr;
+    b.className=[r===null?"":(r>0?"up":"down"), S.custom.has(yr)?"on":""].filter(Boolean).join(" ");
+    b.title = r===null ? yr : `${yr}: ${r>0?"+":""}${r.toFixed(1)}% on the year`;
     b.onclick=()=>{ S.custom.has(yr)?S.custom.delete(yr):S.custom.add(yr);
                     S.on.add("custom"); buildControls(); draw(); };
     y.appendChild(b);
   }
+  y.insertAdjacentHTML("afterend", "");
+  const cl=document.getElementById("chiplegend");
+  if(cl) cl.innerHTML = `<i style="color:#26c6a6">&#9632; bull</i>`
+    + `<i style="color:#ff7043">&#9632; bear</i>`
+    + `<i style="color:#f06292">&#9632; selected</i>`;
   const ay=$("#anchorYear"), ys=eligible();
   ay.innerHTML = ys.map(v=>`<option value="${v}">${v}</option>`).join("");
   if(!S.anchorYear || !ys.includes(S.anchorYear)) S.anchorYear = ys[ys.length-1] || null;
