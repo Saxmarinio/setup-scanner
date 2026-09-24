@@ -118,6 +118,30 @@ table.tt{border-collapse:collapse;font-size:12px}
     </div>
 
     <div class=card>
+      <h3>Y axis <span class=help tabindex=0>?<span>
+        <b>What the vertical axis shows</b>
+        <b style="color:#26a69a;margin-top:6px">Percent</b>
+        Each year rebased to 0% at its own first bar. The only way to compare
+        years directly &ndash; 1986 and 2026 are not on the same price scale.
+        <b style="color:#26a69a;margin-top:6px">Price</b>
+        The same curves projected onto <i style="display:inline">this year's</i>
+        opening price, so the composite becomes a price path in real units:
+        where the average year would finish from where you actually started.
+        <i>Raw historical price cannot be overlaid at all &ndash; the Nasdaq 100
+        opened 1986 near 130 and 2026 near 25,000.</i>
+      </span></span></h3>
+      <div class=seg id=yaxis>
+        <button data-v=pct class=on>Percent</button>
+        <button data-v=price>Price</button>
+      </div>
+      <div class=seg id=scale style="margin-top:6px">
+        <button data-v=linear class=on>Linear</button>
+        <button data-v=log>Log</button>
+      </div>
+      <div class=warn id=scaleWarn></div>
+    </div>
+
+    <div class=card>
       <h3>Curves</h3>
       <div id=cohorts></div>
     </div>
@@ -142,11 +166,14 @@ const COHORTS = [
   {id:"y2",     label:"Y2 Midterm",       color:"#ef5350"},
   {id:"y3",     label:"Y3 Pre-election",  color:"#b388ff"},
   {id:"y4",     label:"Y4 Election",      color:"#ff7043"},
-  {id:"dec",    label:"Decade offsets",   color:"#4dd0e1"},
+  {id:"l5",     label:"Last 5 years",     color:"#8bc34a"},
+  {id:"l10",    label:"Last 10 years",    color:"#4dd0e1"},
+  {id:"l20",    label:"Last 20 years",    color:"#7986cb"},
+  {id:"dec",    label:"Decade offsets",   color:"#a1887f"},
   {id:"halving",label:"Halving years",    color:"#9575cd"},
   {id:"custom", label:"Custom",           color:"#f06292"}
 ];
-const S = {sym:SYMBOLS[0].key, align:"trading", stat:"mean",
+const S = {sym:SYMBOLS[0].key, align:"trading", stat:"mean", yaxis:"pct", scale:"linear",
            on:new Set(["all"]), custom:new Set(), data:null, hover:null};
 
 const $ = s => document.querySelector(s);
@@ -164,6 +191,9 @@ function cohortYears(id){
   if(id==="y2")      return ys.filter(y=>y%4===2);
   if(id==="y3")      return ys.filter(y=>y%4===3);
   if(id==="y4")      return ys.filter(y=>y%4===0);
+  if(id==="l5")      return ys.slice(-5);
+  if(id==="l10")     return ys.slice(-10);
+  if(id==="l20")     return ys.slice(-20);
   if(id==="dec")     return ys.filter(y=>[10,20,30].some(o=>y===cur-o));
   if(id==="halving") return ys.filter(y=>[2012,2016,2020,2024,2028].includes(y));
   if(id==="custom")  return ys.filter(y=>S.custom.has(y));
@@ -189,37 +219,63 @@ function actualPath(){
   return p ? p.slice() : null;
 }
 
+// Percent -> price, anchored on the current year's first close, so every
+// curve is a real price path this year could actually take.
+function toPrice(arr){
+  const p0 = S.data.currentStart;
+  if(!p0) return arr;
+  return arr.map(v => v===null||v===undefined ? null : p0*(1+v/100));
+}
 function series(){
   const out = [];
+  const px = S.yaxis==="price";
   const a = actualPath();
   if(a) out.push({id:"actual", label:"Actual "+S.data.currentYear, color:"var(--actual)",
-                  colorRaw:"#2196f3", data:a, n:1});
+                  colorRaw:"#2196f3", data:px?toPrice(a):a, n:1});
   for(const c of COHORTS){
     if(!S.on.has(c.id)) continue;
     const ys = cohortYears(c.id);
     if(!ys.length) continue;
+    const d0 = composite(ys);
     out.push({id:c.id, label:c.label, color:c.color, colorRaw:c.color,
-              data:composite(ys), n:ys.length, years:ys});
+              data:px?toPrice(d0):d0, n:ys.length, years:ys});
   }
   return out;
 }
 
-const W=900,H=470,ML=52,MR=14,MT=16,MB=54;
+const W=900,H=470,ML=64,MR=14,MT=16,MB=54;
 function draw(){
   const svg=$("#chart"), ss=series();
   const w = S.align==="trading" ? S.data.tradingLen : S.data.calendarLen;
   let lo=Infinity, hi=-Infinity;
   for(const s of ss) for(const v of s.data) if(v!==null){ if(v<lo)lo=v; if(v>hi)hi=v; }
   if(!isFinite(lo)){ lo=-10; hi=10; }
-  const pad=(hi-lo)*0.08||1; lo-=pad; hi+=pad;
+  const logOn = (S.scale==="log" && S.yaxis==="price" && lo>0);
+  if(logOn){                       // pad multiplicatively, not additively
+    const f=Math.pow(hi/lo,0.04); lo/=f; hi*=f;
+  } else {
+    const pad=(hi-lo)*0.08||1; lo-=pad; hi+=pad;
+  }
   const X = i => ML + (i/(w-1))*(W-ML-MR);
-  const Y = v => MT + (1-(v-lo)/(hi-lo))*(H-MT-MB);
+  const L = Math.log10, lLo = logOn?L(lo):0, lHi = logOn?L(hi):0;
+  const Y = v => logOn
+    ? MT + (1-(L(v)-lLo)/(lHi-lLo))*(H-MT-MB)
+    : MT + (1-(v-lo)/(hi-lo))*(H-MT-MB);
 
-  const step = niceStep((hi-lo)/6);
-  let g="";
-  for(let v=Math.ceil(lo/step)*step; v<=hi; v+=step){
+  let g="", ticks2=[];
+  if(logOn){
+    // One tick per 1-2-5 step across each decade the range spans.
+    for(let e=Math.floor(lLo); e<=Math.ceil(lHi); e++)
+      for(const m of [1,2,5]){ const v=m*Math.pow(10,e); if(v>=lo&&v<=hi) ticks2.push(v); }
+    if(ticks2.length<3){ ticks2=[]; for(let k=0;k<=5;k++) ticks2.push(Math.pow(10,lLo+(lHi-lLo)*k/5)); }
+  } else {
+    const step = niceStep((hi-lo)/6);
+    for(let v=Math.ceil(lo/step)*step; v<=hi; v+=step) ticks2.push(v);
+  }
+  for(const v of ticks2){
     const y=Y(v).toFixed(1);
-    g+=`<line x1=${ML} y1=${y} x2=${W-MR} y2=${y} stroke="${Math.abs(v)<1e-9?'#3d4452':'#232735'}" stroke-width="1"/>`;
+    const zero = S.yaxis==="pct" && Math.abs(v)<1e-9;
+    g+=`<line x1=${ML} y1=${y} x2=${W-MR} y2=${y} stroke="${zero?'#3d4452':'#232735'}" stroke-width="1"/>`;
     g+=`<text x=${ML-8} y=${(+y+4).toFixed(1)} fill="#787b86" font-size="11" text-anchor="end">${fmt(v)}</text>`;
   }
   const ticks=S.data[S.align].monthTicks, MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -258,7 +314,14 @@ function draw(){
 function niceStep(r){ if(!(r>0)) return 1;
   const p=Math.pow(10,Math.floor(Math.log10(r))), n=r/p;
   return (n<=1?1:n<=2?2:n<=5?5:10)*p; }
-function fmt(v){ return (Math.abs(v)>=1000? v.toFixed(0) : v.toFixed(1))+"%"; }
+function fmt(v){
+  if(S.yaxis==="pct") return (Math.abs(v)>=1000? v.toFixed(0) : v.toFixed(1))+"%";
+  const a=Math.abs(v);
+  if(a>=1000) return v.toLocaleString(undefined,{maximumFractionDigits:0});
+  if(a>=10)   return v.toFixed(1);
+  if(a>=1)    return v.toFixed(2);
+  return v.toPrecision(3);
+}
 
 function tooltip(ss,w){
   const el=$("#note");
@@ -303,21 +366,44 @@ function buildControls(){
   $("#alignWarn").textContent = "This market never closes, so both alignments give the same curve.";
 }
 
+// A percentage path crosses zero and goes negative, so a log axis is not
+// defined on it. Rather than silently ignore the choice, disable it and say
+// why - the toggle stays visible so the reason is discoverable.
+function syncScale(){
+  const px = S.yaxis==="price", ok = px && S.data && S.data.currentStart;
+  $("#scale").querySelectorAll("button").forEach(b=>{
+    b.disabled = !ok; b.style.opacity = ok ? 1 : .4;
+    b.style.cursor = ok ? "pointer" : "not-allowed";
+  });
+  const warn=$("#scaleWarn");
+  if(!px){
+    warn.style.display="block";
+    warn.textContent="Log needs a price axis - percent paths cross zero.";
+    S.scale="linear";
+    $("#scale").querySelectorAll("button").forEach(b=>
+      b.classList.toggle("on", b.dataset.v==="linear"));
+  } else if(!ok){
+    warn.style.display="block";
+    warn.textContent="No bars yet this year, so there is no price to project from.";
+  } else warn.style.display="none";
+}
+
 async function loadSym(k){
   S.sym=k; S.custom.clear();
   const r=await fetch("cycles/"+k+".json"); S.data=await r.json();
   $("#sub").innerHTML=`${S.data.name} &middot; ${S.data[S.align].years.length} years of daily history
      (${S.data.first} &rarr; ${S.data.last}) &middot; every year rebased to 0% at its first bar`;
-  buildControls(); draw();
+  buildControls(); syncScale(); draw();
 }
 
 $("#sym").innerHTML=SYMBOLS.map(s=>`<option value="${s.key}">${s.name}</option>`).join("");
 $("#sym").onchange=e=>loadSym(e.target.value);
-for(const grp of ["align","stat"]){
+for(const grp of ["align","stat","yaxis","scale"]){
   $("#"+grp).querySelectorAll("button").forEach(b=>b.onclick=()=>{
     $("#"+grp).querySelectorAll("button").forEach(x=>x.classList.remove("on"));
     b.classList.add("on"); S[grp]=b.dataset.v;
-    if(grp==="align"){ $("#sub").innerHTML=$("#sub").innerHTML; buildControls(); }
+    if(grp==="align") buildControls();
+    syncScale();
     draw();
   });
 }

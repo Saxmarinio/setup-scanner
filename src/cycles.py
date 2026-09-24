@@ -157,4 +157,12 @@ def build(df, symbol_key, name):
             partial.append(int(y))
     payload["partialYears"] = sorted(partial)
     payload["currentYear"] = this_year
+    # The anchor for price mode. Raw historical price cannot be overlaid - the
+    # Nasdaq 100 opened 1986 near 130 and 2026 near 25,000, and one linear axis
+    # cannot hold both. What IS meaningful is projecting each composite's
+    # percentage path onto THIS year's opening price, which turns the composite
+    # into a price path in real units: "where does the average year finish".
+    cur = d[d["datetime"].dt.year == this_year]
+    payload["currentStart"] = float(cur["close"].iloc[0]) if len(cur) else None
+    payload["lastClose"] = float(d["close"].iloc[-1])
     return payload
