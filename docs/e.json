@@ -1,23 +1,54 @@
 {
- "generated": "2026-09-25 00:04 UTC",
+ "generated": "2026-09-26 00:12 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "SI=F",
+    "symbol": "LE=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 63.02,
-    "tv_symbol": "COMEX:SI1!",
+    "invalidation": 214.274994,
+    "tv_symbol": "CME:LE1!",
     "htf_favourable": false,
     "score": 0.575,
     "dss": {
      "1d": [
-      0.489,
-      0.311
+      0.949,
+      0.85
+     ],
+     "1w": [
+      0.044,
+      0.119
+     ],
+     "1M": [
+      0.27,
+      0.422
+     ]
+    },
+    "trend": {
+     "1h": "up",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "SI=F",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 4 bars ago",
+    "bars_since": 4,
+    "margin_excess": 0.0,
+    "invalidation": 63.02,
+    "tv_symbol": "COMEX:SI1!",
+    "htf_favourable": false,
+    "score": 0.175,
+    "dss": {
+     "1d": [
+      0.468,
+      0.342
      ],
      "1w": [
       0.782,
@@ -30,37 +61,6 @@
     },
     "trend": {
      "1h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "NG=F",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 2.753,
-    "tv_symbol": "NYMEX:NG1!",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.34,
-      0.295
-     ],
-     "1w": [
-      0.266,
-      0.381
-     ],
-     "1M": [
-      0.173,
-      0.417
-     ]
-    },
-    "trend": {
-     "1h": "up",
      "1d": "none",
      "1w": "none"
     }
