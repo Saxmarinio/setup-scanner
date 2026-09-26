@@ -1,57 +1,7 @@
 {
- "generated": "2026-09-25 04:51 UTC",
+ "generated": "2026-09-26 04:51 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [
-   {
-    "state": "forming",
-    "expansion_atr": 4.5,
-    "consol_bars": 21,
-    "consol_start": 878,
-    "coil_end": 899,
-    "bars_since_coil": 0,
-    "res_touches": 2,
-    "channel_atr": 2.02,
-    "gap_atr": 1.18,
-    "bars_to_apex": 15.4,
-    "bars_in_state": 4,
-    "res_kind": "horizontal",
-    "resistance": 119.4675,
-    "res_slope": -0.027500000000000895,
-    "res_intercept": 144.19000000000074,
-    "invalidation": 113.995861,
-    "close": 116.9,
-    "atr": 2.16735,
-    "ribbon_pct": 2.02,
-    "symbol": "SOLUSDT",
-    "tf": "4h",
-    "tv_symbol": "BINANCE:SOLUSDT",
-    "htf_favourable": true,
-    "trend_bars": 24,
-    "detail": "horizontal res x2, exp 4.5ATR, ch 2.02ATR, apex 15.4, trend 24b",
-    "score": 0.5,
-    "dss": {
-     "1d": [
-      0.793,
-      0.523
-     ],
-     "1w": [
-      0.953,
-      0.889
-     ],
-     "1M": [
-      0.029,
-      0.06
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "up",
-     "1d": "up",
-     "1w": "none"
-    }
-   }
-  ],
+  "compression (15m/1h/4h)": [],
   "divergence (4h)": [],
   "bottoming (1d/1w)": []
  }
