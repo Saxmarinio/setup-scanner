@@ -1,44 +1,96 @@
 {
- "generated": "2026-09-28 05:41 UTC",
+ "generated": "2026-09-28 17:03 UTC",
  "groups": {
   "compression (15m/1h/4h)": [
    {
     "state": "compressed",
-    "expansion_atr": 4.86,
-    "consol_bars": 34,
-    "consol_start": 865,
+    "expansion_atr": 5.5,
+    "consol_bars": 36,
+    "consol_start": 863,
     "coil_end": 899,
     "bars_since_coil": 0,
-    "res_touches": 3,
-    "channel_atr": 0.48,
-    "gap_atr": 0.73,
-    "bars_to_apex": 2.9,
-    "bars_in_state": 0,
+    "res_touches": 2,
+    "channel_atr": 0.98,
+    "gap_atr": 0.88,
+    "bars_to_apex": 12.8,
+    "bars_in_state": 1,
     "res_kind": "angled",
-    "resistance": 0.01921,
-    "res_slope": -6.99999999999988e-05,
-    "res_intercept": 0.08213999999999888,
-    "invalidation": 0.018443,
-    "close": 0.01864,
-    "atr": 0.000782,
-    "ribbon_pct": 0.48,
-    "symbol": "TSTUSDT",
+    "resistance": 0.149056,
+    "res_slope": -0.00015083056478405336,
+    "res_intercept": 0.284652823920266,
+    "invalidation": 0.140219,
+    "close": 0.1438,
+    "atr": 0.005979,
+    "ribbon_pct": 0.98,
+    "symbol": "MINAUSDT",
     "tf": "4h",
-    "tv_symbol": "BINANCE:TSTUSDT",
+    "tv_symbol": "BINANCE:MINAUSDT",
     "htf_favourable": true,
-    "trend_bars": 3,
-    "detail": "angled res x3, exp 4.86ATR, ch 0.48ATR, apex 2.9, trend 3b",
-    "score": 0.5,
+    "trend_bars": 42,
+    "detail": "angled res x2, exp 5.5ATR, ch 0.98ATR, apex 12.8, trend 42b",
+    "score": 0.55,
     "dss": {
      "1d": [
-      0.841,
-      0.613
+      0.773,
+      0.587
      ],
      "1w": [
-      0.847,
-      0.678
+      0.835,
+      0.641
      ],
-     "1M": null
+     "1M": [
+      0.294,
+      0.13
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "up",
+     "12h": "up",
+     "1w": "none"
+    }
+   },
+   {
+    "state": "compressed",
+    "expansion_atr": 10.13,
+    "consol_bars": 19,
+    "consol_start": 880,
+    "coil_end": 899,
+    "bars_since_coil": 0,
+    "res_touches": 2,
+    "channel_atr": 1.4,
+    "gap_atr": 0.93,
+    "bars_to_apex": 4.9,
+    "bars_in_state": 4,
+    "res_kind": "angled",
+    "resistance": 0.003598,
+    "res_slope": -7.799999999999853e-05,
+    "res_intercept": 0.07371999999999866,
+    "invalidation": 0.002704,
+    "close": 0.003158,
+    "atr": 0.000472,
+    "ribbon_pct": 1.4,
+    "symbol": "QIUSDT",
+    "tf": "4h",
+    "tv_symbol": "BINANCE:QIUSDT",
+    "htf_favourable": true,
+    "trend_bars": 23,
+    "detail": "angled res x2, exp 10.13ATR, ch 1.4ATR, apex 4.9, trend 23b",
+    "score": 0.45,
+    "dss": {
+     "1d": [
+      0.827,
+      0.657
+     ],
+     "1w": [
+      0.894,
+      0.736
+     ],
+     "1M": [
+      0.01,
+      0.04
+     ]
     },
     "trend": {
      "15m": "none",
@@ -124,7 +176,7 @@
      "15m": "none",
      "1h": "none",
      "4h": "none",
-     "12h": "up",
+     "12h": "none",
      "1w": null
     }
    },
@@ -203,7 +255,7 @@
     "trend": {
      "15m": "none",
      "1h": "none",
-     "4h": "up",
+     "4h": "none",
      "12h": "none",
      "1w": "none"
     }
