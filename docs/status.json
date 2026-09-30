@@ -6,9 +6,9 @@
   "bottoming": 0
  },
  "B": {
-  "ts": "2026-09-29 18:21 UTC",
-  "compression": 1,
-  "divergence": 2,
+  "ts": "2026-09-30 00:01 UTC",
+  "compression": 2,
+  "divergence": 1,
   "bottoming": 8
  },
  "C": {
