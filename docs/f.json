@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-29 01:18 UTC",
+ "generated": "2026-09-30 00:48 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "NFLX",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "channel %B, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 70.110001,
     "tv_symbol": "NFLX",
@@ -16,12 +16,12 @@
     "score": 0.575,
     "dss": {
      "1d": [
-      0.021,
-      0.082
+      0.017,
+      0.068
      ],
      "1w": [
-      0.742,
-      0.537
+      0.733,
+      0.581
      ],
      "1M": [
       0.024,
@@ -38,8 +38,8 @@
     "symbol": "FLNC",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 7.01,
     "tv_symbol": "FLNC",
@@ -47,16 +47,16 @@
     "score": 0.475,
     "dss": {
      "1d": [
-      0.193,
-      0.217
+      0.308,
+      0.238
      ],
      "1w": [
-      0.073,
-      0.218
+      0.058,
+      0.182
      ],
      "1M": [
-      0.563,
-      0.622
+      0.564,
+      0.623
      ]
     },
     "trend": {
@@ -69,8 +69,8 @@
     "symbol": "AMAT",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 411.51001,
     "tv_symbol": "AMAT",
@@ -78,16 +78,16 @@
     "score": 0.375,
     "dss": {
      "1d": [
-      0.869,
-      0.712
+      0.898,
+      0.753
      ],
      "1w": [
-      0.041,
-      0.143
+      0.053,
+      0.123
      ],
      "1M": [
-      0.81,
-      0.795
+      0.815,
+      0.796
      ]
     },
     "trend": {
@@ -100,8 +100,8 @@
     "symbol": "KORU",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 17.790001,
     "tv_symbol": "KORU",
@@ -109,15 +109,15 @@
     "score": 0.375,
     "dss": {
      "1d": [
-      0.318,
-      0.322
+      0.335,
+      0.325
      ],
      "1w": [
-      0.078,
-      0.12
+      0.141,
+      0.125
      ],
      "1M": [
-      0.675,
+      0.678,
       0.769
      ]
     },
@@ -131,8 +131,8 @@
     "symbol": "ALAB",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 251.625,
     "tv_symbol": "ALAB",
@@ -140,12 +140,12 @@
     "score": 0.275,
     "dss": {
      "1d": [
-      0.881,
-      0.734
+      0.907,
+      0.773
      ],
      "1w": [
-      0.09,
-      0.238
+      0.106,
+      0.209
      ],
      "1M": null
     },
@@ -159,8 +159,8 @@
     "symbol": "IREN",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 40.970001,
     "tv_symbol": "IREN",
@@ -168,12 +168,12 @@
     "score": 0.275,
     "dss": {
      "1d": [
-      0.81,
-      0.842
+      0.63,
+      0.795
      ],
      "1w": [
-      0.327,
-      0.265
+      0.477,
+      0.312
      ],
      "1M": [
       0.334,
@@ -190,8 +190,8 @@
     "symbol": "STX",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 758.349976,
     "tv_symbol": "STX",
@@ -199,12 +199,12 @@
     "score": 0.275,
     "dss": {
      "1d": [
-      0.826,
-      0.654
+      0.865,
+      0.701
      ],
      "1w": [
-      0.075,
-      0.143
+      0.13,
+      0.14
      ],
      "1M": [
       0.54,
@@ -212,7 +212,7 @@
      ]
     },
     "trend": {
-     "1h": "up",
+     "1h": "none",
      "1d": "none",
      "1w": "up"
     }
@@ -221,8 +221,8 @@
     "symbol": "TSLA",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 354.049988,
     "tv_symbol": "TSLA",
@@ -230,12 +230,12 @@
     "score": 0.275,
     "dss": {
      "1d": [
-      0.57,
-      0.326
+      0.507,
+      0.366
      ],
      "1w": [
-      0.384,
-      0.347
+      0.442,
+      0.368
      ],
      "1M": [
       0.384,
