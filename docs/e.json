@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-30 00:48 UTC",
+ "generated": "2026-10-01 00:53 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "NG=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 2.817,
     "tv_symbol": "NYMEX:NG1!",
@@ -16,12 +16,12 @@
     "score": 0.575,
     "dss": {
      "1d": [
-      0.529,
-      0.415
+      0.463,
+      0.425
      ],
      "1w": [
-      0.307,
-      0.362
+      0.303,
+      0.361
      ],
      "1M": [
       0.173,
@@ -38,8 +38,8 @@
     "symbol": "LE=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 214.274994,
     "tv_symbol": "CME:LE1!",
@@ -47,12 +47,12 @@
     "score": 0.175,
     "dss": {
      "1d": [
-      0.855,
-      0.853
+      0.722,
+      0.809
      ],
      "1w": [
-      0.063,
-      0.105
+      0.072,
+      0.108
      ],
      "1M": [
       0.27,
@@ -69,8 +69,8 @@
     "symbol": "HE=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 77.974998,
     "tv_symbol": "CME:HE1!",
@@ -78,8 +78,8 @@
     "score": 0.175,
     "dss": {
      "1d": [
-      0.104,
-      0.259
+      0.095,
+      0.226
      ],
      "1w": [
       0.09,
