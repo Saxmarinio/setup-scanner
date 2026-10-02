@@ -266,10 +266,14 @@ function series(){
   for(const c of COHORTS){
     if(!S.on.has(c.id)) continue;
     const ys = cohortYears(c.id);
-    if(ys.length<2) continue;
+    // One year is a legitimate selection - it is that year's own path rather
+    // than an average of anything, which is exactly what picking a single year
+    // off the grid should give you. Name it by the year so the legend does not
+    // claim a composite that isn't one.
+    if(!ys.length) continue;
     const d0 = composite(ys);
-    out.push({id:c.id, label:c.label, colorRaw:c.color,
-              data:px?toPrice(d0):d0, n:ys.length, years:ys});
+    out.push({id:c.id, label: ys.length===1 ? String(ys[0]) : c.label,
+              colorRaw:c.color, data:px?toPrice(d0):d0, n:ys.length, years:ys});
   }
   return out;
 }
@@ -348,7 +352,7 @@ function draw(){
   }
   let lx=ML, leg="";
   for(const s of ss){
-    const t = s.id==="actual" ? s.label : `${s.label} ×${s.n}`;
+    const t = (s.id==="actual"||s.n===1) ? s.label : `${s.label} ×${s.n}`;
     leg+=`<rect x=${lx} y=${H-26} width="9" height="9" rx="2" fill="${s.colorRaw}"/>`;
     leg+=`<text x=${lx+14} y=${H-18} fill="#d1d4dc" font-size="11.5">${t}</text>`;
     lx += 26 + t.length*6.1;
