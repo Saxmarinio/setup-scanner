@@ -171,6 +171,9 @@ def _render_index(outdir, status):
     # Composites are built by their own script on their own cadence, so link
     # unconditionally rather than gating on a scan having produced them.
     h.append("<div class=sub style='margin-top:18px'>&#9679; "
+             "<a href='spaghetti.html'>Relative strength</a> &mdash; which crypto "
+             "sector, chain or tradfi sector is leading, on 15m to YTD</div>")
+    h.append("<div class=sub>&#9679; "
              "<a href='cycles.html'>Cycle composites</a> &mdash; the average shape "
              "of a year for BTC, indices, metals and energy, from up to 99 years "
              "of daily history</div>")

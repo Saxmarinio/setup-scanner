@@ -5,3 +5,4 @@ calibration_*.csv
 data/backtest/
 backtest_*.csv
 osc_reset*.csv
+data/spaghetti/

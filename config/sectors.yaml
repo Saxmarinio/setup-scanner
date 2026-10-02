@@ -1,0 +1,139 @@
+# Spaghetti-chart taxonomy: which assets make up each line.
+#
+# Every assignment here is EXCLUSIVE - a coin belongs to exactly one sector and
+# exactly one home chain. That is deliberate. Measured on the live Binance
+# universe, the raw CoinGecko tags overlap badly enough to manufacture false
+# confirmation: 91% of "DEX" sits inside "DeFi", and Arbitrum and Avalanche
+# share 64% of their members. Two lines drawn from the same coins move together
+# and read as agreement when they are one signal counted twice.
+#
+# Priority decides who claims a shared coin, and ORDER MATTERS MORE THAN IT
+# LOOKS. Narrow sectors must claim their members before broad ones: with AI
+# ahead of DePIN, AR / TAO / GRT / RENDER all landed in AI and DePIN collapsed
+# from 18 members to 7. With RWA ahead of Oracle, LINK became a real-world
+# asset. Narrowest first, always.
+
+crypto:
+  sector_priority:
+    - Meme          # distinctive and self-identifying; claim first or it leaks
+    - GameFi
+    - Privacy
+    - Oracle        # must precede RWA, or LINK is misfiled
+    - DePIN         # must precede AI, or it is swallowed whole
+    - RWA
+    - AI
+    - DEX           # a subset of DeFi, so it must claim first
+    - DeFi
+    - L2
+    - L1            # broadest - the catch-all for infrastructure
+  uncategorised: Uncategorised   # shown, not hidden: if it leads, the rotation
+                                 # is somewhere this taxonomy does not reach
+
+  # Distinctive chains first; Ethereum last, as the catch-all for ERC-20s.
+  chain_priority: [Solana, TON, Sui, Avalanche, BNB, Base, Arbitrum, Polygon, Ethereum]
+
+  # CoinGecko category ids behind each label.
+  sector_source:
+    Meme:   meme-token
+    GameFi: gaming
+    AI:     artificial-intelligence
+    DePIN:  depin
+    RWA:    real-world-assets-rwa
+    Oracle: oracle
+    DEX:    decentralized-exchange
+    DeFi:   decentralized-finance-defi
+    L2:     layer-2
+    L1:     layer-1
+  chain_source:
+    Solana:    solana-ecosystem
+    Ethereum:  ethereum-ecosystem
+    Base:      base-ecosystem
+    BNB:       binance-smart-chain
+    Sui:       sui-ecosystem
+    Avalanche: avalanche-ecosystem
+    Arbitrum:  arbitrum-ecosystem
+    TON:       ton-ecosystem
+    Polygon:   polygon-ecosystem
+
+  # Hand-curation beats the tag. CoinGecko's privacy-coins tag returns only
+  # ZEC/DCR/XVG/EPIC and misses DASH, ZEN and ROSE entirely. Monero is absent
+  # for a different reason: Binance delisted XMR from spot in Feb 2024, so it
+  # cannot be priced from this data at all.
+  overrides:
+    Privacy: [ZEC, DASH, DCR, ZEN, XVG, EPIC, ROSE]
+
+  baseline: BTC            # the line everything is judged against
+  min_members: 4           # below this a "sector" is one coin's noise
+  exclude: [BTC]           # the baseline is not a member of any sector
+
+# Tradfi needs no priority rules: GICS assigns every company to exactly one
+# sector, so the ETFs are disjoint by construction.
+tradfi:
+  boards:
+    "Equity sectors":
+      baseline: SPY
+      members:
+        XLK: Technology
+        XLC: Communications
+        XLY: Cons. Discretionary
+        XLP: Cons. Staples
+        XLE: Energy
+        XLF: Financials
+        XLV: Health Care
+        XLI: Industrials
+        XLB: Materials
+        XLRE: Real Estate
+        XLU: Utilities
+    "Commodities":
+      baseline: PDBC
+      members:
+        GLD: Gold
+        SLV: Silver
+        PPLT: Platinum
+        CPER: Copper
+        DBB: Base Metals
+        USO: Crude Oil
+        UNG: Natural Gas
+        DBA: Agriculture
+        WEAT: Wheat
+        CORN: Corn
+    "Rates & credit":
+      baseline: IEF
+      members:
+        SHY: 1-3y Treasuries
+        IEF: 7-10y Treasuries
+        TLT: 20y+ Treasuries
+        TIP: Inflation-linked
+        LQD: Investment Grade
+        HYG: High Yield
+        EMB: EM Debt
+    "Cross-asset":
+      baseline: SPY
+      members:
+        SPY: US Large Cap
+        QQQ: US Tech
+        IWM: US Small Cap
+        EFA: Intl Developed
+        EEM: Emerging Mkts
+        VNQ: US REITs
+        GLD: Gold
+        TLT: Long Treasuries
+        UUP: US Dollar
+
+# Chart windows. The bar interval is chosen to give a readable number of points
+# over the span - a year of 15m bars is 35,000 points of noise, and a day of
+# daily bars is one.
+windows:
+  crypto:
+    "15m": {tf: "15m", span_days: 1}
+    "1H":  {tf: "1h",  span_days: 7}
+    "4H":  {tf: "4h",  span_days: 30}
+    "D":   {tf: "1d",  span_days: 90}
+    "W":   {tf: "1d",  span_days: 365}
+    "M":   {tf: "1d",  span_days: 1095}
+    "YTD": {tf: "1d",  span_days: 0}      # 0 = since 1 January
+  tradfi:
+    "D":   {tf: "1d",  span_days: 90}
+    "W":   {tf: "1d",  span_days: 365}
+    "M":   {tf: "1d",  span_days: 1095}
+    "YTD": {tf: "1d",  span_days: 0}

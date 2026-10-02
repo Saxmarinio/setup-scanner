@@ -1,0 +1,301 @@
+#!/usr/bin/env python3
+"""Write docs/spaghetti.html from whatever build_spaghetti.py produced.
+
+Kept separate from the builder so the page can be reworked without refetching
+a thousand symbols.
+
+  python src/spaghetti_page.py
+"""
+import json, os
+
+OUT = "docs"
+
+PAGE = r"""<!doctype html><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Relative Strength</title>
+<style>
+:root{--bg:#131722;--panel:#1a1e29;--line:#2a2e39;--txt:#d1d4dc;--dim:#787b86;--base:#eceff4}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font:14px/1.5 -apple-system,Segoe UI,sans-serif;margin:0;padding:18px}
+h1{font-size:18px;margin:0 0 3px;font-weight:600}
+.sub{color:var(--dim);font-size:12px;margin-bottom:14px}
+a{color:#2196f3}
+.bar{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.grp{display:flex;align-items:center;gap:7px}
+.grp>span.lbl{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--dim)}
+.seg{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.seg button{background:var(--bg);color:var(--dim);border:0;padding:6px 11px;font:inherit;font-size:12px;cursor:pointer}
+.seg button.on{background:#2a3142;color:#fff;font-weight:600}
+.seg button:focus-visible{outline:2px solid #2196f3;outline-offset:-2px}
+select{background:var(--bg);color:var(--txt);border:1px solid var(--line);border-radius:3px;padding:6px 8px;font:inherit}
+.wrap{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.main{flex:1;min-width:460px}
+.side{width:470px;flex:none}
+#chart{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--line);border-radius:4px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:12px 14px}
+.card h3{font-size:12px;margin:0 0 2px;font-weight:600}
+.card .meta{font-size:11px;color:var(--dim);margin-bottom:10px}
+table{border-collapse:collapse;width:100%;font-size:12px}
+th{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);font-weight:600;
+   text-align:right;padding:0 0 6px 6px;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap}
+th:first-child{text-align:left;padding-left:0}
+th.sorted{color:#d1d4dc}
+td{text-align:right;padding:4px 0 4px 6px;border-bottom:1px solid #20242e;white-space:nowrap;
+   font-variant-numeric:tabular-nums}
+td:first-child{text-align:left;padding-left:0;font-weight:600}
+tr:hover td{background:#20242e}
+.up{color:#26a69a}.dn{color:#ef5350}
+.hint{color:var(--dim);font-size:12px}
+.note{color:var(--dim);font-size:12px;margin-top:9px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:9px}
+.lg{display:flex;align-items:center;gap:5px;font-size:11.5px;cursor:pointer;padding:1px 5px;border-radius:3px}
+.lg:hover{background:#20242e}
+.lg.off{opacity:.33}
+.lg i{width:10px;height:10px;border-radius:2px;display:block}
+</style>
+
+<h1>Relative Strength</h1>
+<div class=sub id=sub>Loading&hellip;</div>
+
+<div class=bar>
+  <div class=grp><span class=lbl>Board</span><select id=board></select></div>
+  <div class=grp><span class=lbl>Window</span><div class=seg id=win></div></div>
+  <div class=grp><span class=lbl>Measure</span><div class=seg id=mode>
+    <button data-v=abs class=on>Absolute %</button>
+    <button data-v=rel>vs baseline</button>
+  </div></div>
+</div>
+
+<div class=wrap>
+  <div class=main>
+    <svg id=chart viewBox="0 0 980 520" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class=legend id=legend></div>
+    <div class=note id=note></div>
+  </div>
+  <div class=side><div class=card id=panel></div></div>
+</div>
+
+<script>
+const IDX = __INDEX__;
+const SPANS = __SPANS__;
+const COLORS = ["#b388ff","#9e9e9e","#ef5350","#26a69a","#ffb74d","#4dd0e1","#f06292",
+                "#8bc34a","#7986cb","#ff7043","#4db6ac","#ba68c8","#aed581","#ffd54f"];
+const S = {board:IDX.boards[0] && IDX.boards[0].id, win:null, mode:"abs",
+           data:null, hidden:new Set(), pick:null, hover:null, sort:"contrib"};
+const $ = s => document.querySelector(s);
+const cur = () => S.data[S.win];
+
+function colorOf(name, i){ return name==="__baseline__" ? "var(--base)" : COLORS[i%COLORS.length]; }
+function names(){
+  const L = cur().lines;
+  return Object.keys(L).filter(k=>k!=="__baseline__").sort();
+}
+// "vs baseline" subtracts the benchmark's own path, so the benchmark becomes a
+// flat zero line and what is left is pure relative strength.
+function pathOf(name){
+  const L = cur().lines, p = L[name].path;
+  if(S.mode==="abs" || !L.__baseline__) return p;
+  const b = L.__baseline__.path;
+  return p.map((v,i)=> (v===null||b[i]===null||b[i]===undefined) ? null : v-b[i]);
+}
+
+const W=980,H=520,ML=52,MR=118,MT=14,MB=34;
+function draw(){
+  const c = cur(), t = c.t, n = t.length;
+  const show = names().filter(k=>!S.hidden.has(k));
+  const series = show.map((k,i)=>({k, color:colorOf(k, names().indexOf(k)), data:pathOf(k)}));
+  if(c.lines.__baseline__ && !S.hidden.has("__baseline__"))
+    series.push({k:"__baseline__", label:c.baseline, color:"var(--base)",
+                 raw:"#eceff4", data:pathOf("__baseline__")});
+  let lo=Infinity, hi=-Infinity;
+  for(const s of series) for(const v of s.data) if(v!==null&&v!==undefined){ if(v<lo)lo=v; if(v>hi)hi=v; }
+  if(!isFinite(lo)){lo=-1;hi=1;}
+  if(hi===lo){hi=lo+1;lo-=1;}
+  const pad=(hi-lo)*0.07; lo-=pad; hi+=pad;
+  const X = i => ML + (i/Math.max(1,n-1))*(W-ML-MR);
+  const Y = v => MT + (1-(v-lo)/(hi-lo))*(H-MT-MB);
+
+  let g="";
+  const step = niceStep((hi-lo)/6);
+  for(let v=Math.ceil(lo/step)*step; v<=hi; v+=step){
+    const y=Y(v).toFixed(1), zero=Math.abs(v)<1e-9;
+    g+=`<line x1=${ML} y1=${y} x2=${W-MR} y2=${y} stroke="${zero?'#3d4452':'#232735'}" stroke-width="1"/>`;
+    g+=`<text x=${ML-7} y=${(+y+4).toFixed(1)} fill="#787b86" font-size="11" text-anchor="end">${v.toFixed(1)}%</text>`;
+  }
+  // time ticks
+  const ticks = Math.min(8, n);
+  for(let k=0;k<ticks;k++){
+    const i = Math.round(k*(n-1)/(ticks-1||1)), x=X(i).toFixed(1);
+    g+=`<line x1=${x} y1=${MT} x2=${x} y2=${H-MB} stroke="#1f2430" stroke-width="1"/>`;
+    g+=`<text x=${x} y=${H-MB+15} fill="#787b86" font-size="10.5" text-anchor="middle">${tlabel(t[i])}</text>`;
+  }
+  for(const s of series){
+    let d="", pen=false;
+    s.data.forEach((v,i)=>{ if(v===null||v===undefined){pen=false;return;}
+      d+=(pen?"L":"M")+X(i).toFixed(1)+" "+Y(v).toFixed(1)+" "; pen=true; });
+    const sel = S.pick===s.k;
+    const base = s.k==="__baseline__";
+    g+=`<path d="${d}" fill="none" stroke="${s.raw||s.color}" stroke-width="${sel?2.8:(base?2.2:1.4)}"
+        opacity="${S.pick&&!sel?0.3:1}" stroke-linejoin="round" style="cursor:pointer"
+        data-k="${s.k}"/>`;
+  }
+  // right-edge name pills, nudged apart so they never sit on top of each other
+  const ends = series.map(s=>{
+    let v=null; for(let i=s.data.length-1;i>=0;i--) if(s.data[i]!==null&&s.data[i]!==undefined){v=s.data[i];break;}
+    return {k:s.k, label:(s.label||s.k), color:s.raw||s.color, v};
+  }).filter(e=>e.v!==null).sort((a,b)=>b.v-a.v);
+  let prev=-1e9;
+  for(const e of ends){
+    let y=Y(e.v); if(y-prev<13) y=prev+13; prev=y;
+    const txt=`${e.label} ${e.v>=0?"+":""}${e.v.toFixed(2)}%`;
+    g+=`<rect x="${W-MR+4}" y="${(y-8).toFixed(1)}" width="${Math.min(MR-8,txt.length*5.6+8)}" height="15" rx="2"
+         fill="${e.color}" opacity="${S.pick&&S.pick!==e.k?0.3:0.92}"/>`;
+    g+=`<text x="${W-MR+8}" y="${(y+3.5).toFixed(1)}" font-size="10.5" fill="#10131a"
+         font-weight="600" opacity="${S.pick&&S.pick!==e.k?0.4:1}">${txt}</text>`;
+  }
+  if(S.hover!==null && S.hover>=0 && S.hover<n){
+    const x=X(S.hover).toFixed(1);
+    g+=`<line x1=${x} y1=${MT} x2=${x} y2=${H-MB} stroke="#5d6270" stroke-width="1" stroke-dasharray="3 3"/>`;
+  }
+  $("#chart").innerHTML=g;
+  $("#chart").querySelectorAll("path[data-k]").forEach(p=>
+    p.onclick=()=>{ S.pick = S.pick===p.dataset.k ? null : p.dataset.k; render(); });
+  buildLegend();
+  note();
+}
+function niceStep(r){ if(!(r>0)) return 1; const p=Math.pow(10,Math.floor(Math.log10(r))), x=r/p;
+  return (x<=1?1:x<=2?2:x<=5?5:10)*p; }
+function tlabel(sec){
+  const d=new Date(sec*1000), w=S.win;
+  if(w==="15m"||w==="1H") return d.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
+  return d.toLocaleDateString([],{day:"numeric",month:"short"});
+}
+function buildLegend(){
+  const c=cur(), el=$("#legend"); el.innerHTML="";
+  const all=names();
+  const mk=(k,label,color)=>{
+    const d=document.createElement("div");
+    d.className="lg"+(S.hidden.has(k)?" off":"");
+    d.innerHTML=`<i style="background:${color}"></i><span>${label}</span>`;
+    d.onclick=()=>{ S.hidden.has(k)?S.hidden.delete(k):S.hidden.add(k);
+                    if(S.pick===k) S.pick=null; render(); };
+    el.appendChild(d);
+  };
+  all.forEach((k,i)=>mk(k, `${k} (${c.lines[k].n})`, colorOf(k,i)));
+  if(c.lines.__baseline__) mk("__baseline__", c.baseline+" (baseline)", "#eceff4");
+}
+function note(){
+  $("#note").textContent = S.pick
+    ? "Click the line again to clear. Members below, sorted by contribution."
+    : "Click any line to see what is inside it.";
+}
+
+const COLS=[["sym","Symbol"],["price","Price"],["m15","15m"],["h4","4H"],["d1","Day"],
+            ["d1abs","Day Δ"],["pct","Window"],["contrib","Contrib"]];
+function panel(){
+  const el=$("#panel"), c=cur();
+  if(!S.pick || !c.members[S.pick]){
+    el.innerHTML="<h3>Members</h3><div class=meta>Click a line on the chart.</div>"
+      + "<div class=hint>The <b>Contrib</b> column is each member's window move divided by "
+      + "the member count &mdash; in an equal-weight basket that is literally how many "
+      + "points it put into the line. It is the column that answers which asset is "
+      + "responsible.</div>";
+    return;
+  }
+  const rows=[...c.members[S.pick]];
+  const k=S.sort;
+  rows.sort((a,b)=> k==="sym" ? String(a.sym).localeCompare(b.sym)
+                              : ((b[k]??-1e9)-(a[k]??-1e9)));
+  const f=(v,suf="%")=> v===null||v===undefined ? "<span style='color:#4a505e'>&ndash;</span>"
+    : `<span class="${v>=0?'up':'dn'}">${v>=0?"+":""}${v.toFixed(2)}${suf}</span>`;
+  const price=v=> v===null||v===undefined ? "&ndash;"
+    : (Math.abs(v)>=1000? v.toLocaleString(undefined,{maximumFractionDigits:0})
+      : Math.abs(v)>=1? v.toFixed(3) : v.toPrecision(4));
+  el.innerHTML = `<h3>${S.pick}</h3>
+    <div class=meta>${rows.length} members &middot; equal weight &middot; window ${S.win}</div>
+    <div style="overflow-x:auto"><table><thead><tr>`
+    + COLS.map(([k2,l])=>`<th data-k="${k2}" class="${k===k2?'sorted':''}">${l}</th>`).join("")
+    + `</tr></thead><tbody>`
+    + rows.map(r=>`<tr><td>${r.sym}</td><td>${price(r.price)}</td>
+        <td>${f(r.m15)}</td><td>${f(r.h4)}</td><td>${f(r.d1)}</td>
+        <td>${r.d1abs===null||r.d1abs===undefined?"&ndash;":price(r.d1abs)}</td>
+        <td>${f(r.pct)}</td><td>${f(r.contrib,"pp")}</td></tr>`).join("")
+    + `</tbody></table></div>`;
+  el.querySelectorAll("th").forEach(th=>th.onclick=()=>{ S.sort=th.dataset.k; panel(); });
+}
+
+// The button says "D" because that is the bar interval; the percentages are
+// over the SPAN, which is 90 days. Spelling that out stops "+64% D" being read
+// as a one-day move.
+function subline(){
+  const meta=IDX.boards.find(b=>b.id===S.board);
+  $("#sub").innerHTML = `${meta.title} &middot; <b>${SPANS[S.win]||S.win}</b> &middot; `
+    + `equal-weight baskets rebased to 0% at the window start &middot; `
+    + `baseline <b>${cur().baseline}</b> &middot; built ${IDX.built}`;
+}
+function render(){ subline(); draw(); panel(); }
+
+function buildWindows(){
+  const el=$("#win"); el.innerHTML="";
+  for(const w of Object.keys(S.data)){
+    const b=document.createElement("button");
+    b.textContent=w; b.className = w===S.win ? "on" : "";
+    b.title = SPANS[w]||w;
+    b.onclick=()=>{ S.win=w; S.pick=null; buildWindows(); render(); };
+    el.appendChild(b);
+  }
+}
+async function loadBoard(id){
+  S.board=id; S.pick=null; S.hidden.clear();
+  S.data = await (await fetch("spaghetti/"+id+".json")).json();
+  const ws=Object.keys(S.data);
+  if(!ws.includes(S.win)) S.win = ws.includes("D") ? "D" : ws[0];
+  const meta=IDX.boards.find(b=>b.id===id);
+  subline();
+  buildWindows(); render();
+}
+$("#board").innerHTML = IDX.boards.map(b=>`<option value="${b.id}">${b.title}</option>`).join("");
+$("#board").onchange = e => loadBoard(e.target.value);
+$("#mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{
+  $("#mode").querySelectorAll("button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); S.mode=b.dataset.v; render(); });
+const chart=$("#chart");
+chart.addEventListener("mousemove",e=>{
+  const r=chart.getBoundingClientRect(), px=(e.clientX-r.left)/r.width*W;
+  S.hover=Math.round((px-ML)/(W-ML-MR)*(cur().t.length-1)); draw(); });
+chart.addEventListener("mouseleave",()=>{S.hover=null;draw();});
+loadBoard(S.board);
+</script>
+"""
+
+
+def _spans():
+    """Human text for each window, derived from the same config the builder used
+    so the two can never drift apart."""
+    import yaml
+    cfg = yaml.safe_load(open(os.path.join("config", "sectors.yaml"), encoding="utf-8"))
+    out = {}
+    for group in cfg["windows"].values():
+        for name, w in group.items():
+            if w["span_days"] == 0:
+                out[name] = "%s bars, year to date" % w["tf"]
+            elif w["span_days"] >= 365:
+                out[name] = "%s bars, last %.0f years" % (w["tf"], w["span_days"] / 365.0)
+            elif w["span_days"] == 1:
+                out[name] = "%s bars, last 24 hours" % w["tf"]
+            else:
+                out[name] = "%s bars, last %d days" % (w["tf"], w["span_days"])
+    return out
+
+
+def main():
+    idx = json.load(open(os.path.join(OUT, "spaghetti", "index.json"), encoding="utf-8"))
+    html = (PAGE.replace("__INDEX__", json.dumps(idx))
+                .replace("__SPANS__", json.dumps(_spans())))
+    with open(os.path.join(OUT, "spaghetti.html"), "w", encoding="utf-8") as f:
+        f.write(html)
+    print("wrote %s/spaghetti.html (%d boards)" % (OUT, len(idx["boards"])))
+
+
+if __name__ == "__main__":
+    main()

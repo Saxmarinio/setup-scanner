@@ -1,0 +1,60 @@
+name: build-boards
+on:
+  schedule:
+    - cron: "25 */4 * * *"       # every 4h: the 15m and 1H boards go stale fast
+    - cron: "40 5 * * 1"         # Mondays, with a membership refresh
+  workflow_dispatch:
+    inputs:
+      refresh_membership:
+        description: "Re-fetch sector membership from CoinGecko (slow, ~5 min)"
+        type: boolean
+        default: false
+concurrency:
+  group: scanner-commit          # shares docs/ with the scan workflows
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - run: pip install -r requirements.txt
+      - uses: actions/cache@v4
+        with:
+          path: data
+          key: boards-${{ github.run_id }}
+          restore-keys: boards-
+
+      # Membership is a committed snapshot, deliberately: CoinGecko 429s after a
+      # few rapid calls, and a coin changing sector should show up in a diff
+      # rather than silently redefining a line. Refreshed weekly, not per build.
+      - name: refresh sector membership
+        if: github.event.schedule == '40 5 * * 1' || inputs.refresh_membership
+        run: python src/fetch/categories.py
+        continue-on-error: true   # a rate-limited refresh must not block the build
+
+      - run: python src/build_spaghetti.py
+      - run: python src/spaghetti_page.py
+      - run: python src/build_cycles.py
+
+      - name: commit and push results
+        shell: bash
+        run: |
+          git config user.name  "scanner-bot"
+          git config user.email "scanner@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes to commit"; exit 0
+          fi
+          git commit -m "boards $(date -u +%F_%H:%M)"
+          for i in 1 2 3; do
+            if git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            echo "push attempt $i failed, retrying in 5s..."; sleep 5
+          done
+          echo "push failed after 3 attempts"; exit 1

@@ -1,0 +1,147 @@
+{
+ "boards": [
+  {
+   "id": "tradfi-equity-sectors",
+   "title": "Equity sectors",
+   "kind": "tradfi",
+   "windows": [
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
+  },
+  {
+   "id": "tradfi-commodities",
+   "title": "Commodities",
+   "kind": "tradfi",
+   "windows": [
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
+  },
+  {
+   "id": "tradfi-rates-credit",
+   "title": "Rates & credit",
+   "kind": "tradfi",
+   "windows": [
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
+  },
+  {
+   "id": "tradfi-cross-asset",
+   "title": "Cross-asset",
+   "kind": "tradfi",
+   "windows": [
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
+  },
+  {
+   "id": "crypto-sector",
+   "title": "Crypto sectors",
+   "kind": "crypto",
+   "windows": [
+    "15m",
+    "1H",
+    "4H",
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
+  },
+  {
+   "id": "crypto-chain-avalanche",
+   "title": "Avalanche by sector",
+   "kind": "crypto",
+   "windows": [
+    "15m",
+    "1H",
+    "4H",
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
+  },
+  {
+   "id": "crypto-chain-bnb",
+   "title": "BNB by sector",
+   "kind": "crypto",
+   "windows": [
+    "15m",
+    "1H",
+    "4H",
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
+  },
+  {
+   "id": "crypto-chain-base",
+   "title": "Base by sector",
+   "kind": "crypto",
+   "windows": [
+    "15m",
+    "1H",
+    "4H",
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
+  },
+  {
+   "id": "crypto-chain-solana",
+   "title": "Solana by sector",
+   "kind": "crypto",
+   "windows": [
+    "15m",
+    "1H",
+    "4H",
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
+  },
+  {
+   "id": "crypto-chain-sui",
+   "title": "Sui by sector",
+   "kind": "crypto",
+   "windows": [
+    "15m",
+    "1H",
+    "4H",
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
+  },
+  {
+   "id": "crypto-chain",
+   "title": "Crypto home chains",
+   "kind": "crypto",
+   "windows": [
+    "15m",
+    "1H",
+    "4H",
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
+  }
+ ],
+ "built": "2026-10-02 18:44 UTC"
+}
