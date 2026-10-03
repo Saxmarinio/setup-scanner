@@ -39,6 +39,7 @@ jobs:
       - run: python src/build_spaghetti.py
       - run: python src/spaghetti_page.py
       - run: python src/build_cycles.py
+      - run: python src/build_home.py
 
       - name: commit and push results
         shell: bash

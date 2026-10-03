@@ -4,253 +4,287 @@
 <style>
 :root{--bg:#131722;--panel:#1a1e29;--line:#2a2e39;--txt:#d1d4dc;--dim:#787b86;--base:#eceff4}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--txt);font:14px/1.5 -apple-system,Segoe UI,sans-serif;margin:0;padding:18px}
-h1{font-size:18px;margin:0 0 3px;font-weight:600}
-.sub{color:var(--dim);font-size:12px;margin-bottom:14px}
+body{background:var(--bg);color:var(--txt);font:14px/1.5 -apple-system,Segoe UI,sans-serif;margin:0;padding:18px 20px 60px}
 a{color:#2196f3}
-.bar{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
-.grp{display:flex;align-items:center;gap:7px}
-.grp>span.lbl{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--dim)}
-.seg{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden}
-.seg button{background:var(--bg);color:var(--dim);border:0;padding:6px 11px;font:inherit;font-size:12px;cursor:pointer}
+.top{display:flex;align-items:baseline;gap:14px;margin-bottom:4px}
+h1{font-size:19px;margin:0;font-weight:600}
+.lead{color:var(--dim);font-size:12px;margin-bottom:20px}
+section{margin-bottom:26px}
+.shead{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.shead h2{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--dim);margin:0;font-weight:600}
+.shead .meta{font-size:11.5px;color:#5d6270;margin-left:auto}
+.tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
+.tabs button{background:var(--panel);color:var(--dim);border:1px solid var(--line);border-radius:4px;
+  padding:6px 12px;font:inherit;font-size:12.5px;cursor:pointer;white-space:nowrap}
+.tabs button:hover{border-color:#3d4452;color:var(--txt)}
+.tabs button.on{background:#2a3142;border-color:#4a5468;color:#fff;font-weight:600}
+.tabs button:focus-visible{outline:2px solid #2196f3;outline-offset:1px}
+.bar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:9px}
+.grp{display:flex;align-items:center;gap:6px}
+.grp>.lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:#5d6270}
+.seg{display:flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.seg button{background:var(--bg);color:var(--dim);border:0;padding:5px 10px;font:inherit;font-size:12px;cursor:pointer}
 .seg button.on{background:#2a3142;color:#fff;font-weight:600}
 .seg button:focus-visible{outline:2px solid #2196f3;outline-offset:-2px}
-select{background:var(--bg);color:var(--txt);border:1px solid var(--line);border-radius:3px;padding:6px 8px;font:inherit}
-.wrap{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
-.main{flex:1;min-width:460px}
-.side{width:470px;flex:none}
-#chart{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--line);border-radius:4px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:12px 14px}
-.card h3{font-size:12px;margin:0 0 2px;font-weight:600}
-.card .meta{font-size:11px;color:var(--dim);margin-bottom:10px}
-table{border-collapse:collapse;width:100%;font-size:12px}
-th{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--dim);font-weight:600;
-   text-align:right;padding:0 0 6px 6px;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap}
+.row{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.chartbox{flex:1;min-width:440px}
+svg.chart{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--line);border-radius:4px}
+svg.chart .pill{cursor:pointer}
+svg.chart .pill:hover rect{stroke:#fff;stroke-width:1.2}
+.side{width:500px;flex:none;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:12px 14px;display:flex;flex-direction:column;max-height:470px}
+/* A 48-member basket would otherwise make the section a thousand pixels tall and
+   push the whole TradFi chart off the screen. The table scrolls instead. */
+.side .scroll{overflow:auto;flex:1;min-height:0}
+.side h3{font-size:13px;margin:0 0 2px;font-weight:600}
+.side .meta{font-size:11px;color:var(--dim);margin-bottom:9px}
+.side .hint{color:var(--dim);font-size:12px}
+table{border-collapse:collapse;width:100%;font-size:11.5px}
+thead th{position:sticky;top:0;background:var(--panel);z-index:1}
+th{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--dim);font-weight:600;
+  text-align:right;padding:0 0 6px 6px;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap}
 th:first-child{text-align:left;padding-left:0}
 th.sorted{color:#d1d4dc}
-td{text-align:right;padding:4px 0 4px 6px;border-bottom:1px solid #20242e;white-space:nowrap;
-   font-variant-numeric:tabular-nums}
+td{text-align:right;padding:4px 0 4px 6px;border-bottom:1px solid #20242e;white-space:nowrap;font-variant-numeric:tabular-nums}
 td:first-child{text-align:left;padding-left:0;font-weight:600}
 tr:hover td{background:#20242e}
 .up{color:#26a69a}.dn{color:#ef5350}
-.hint{color:var(--dim);font-size:12px}
-.note{color:var(--dim);font-size:12px;margin-top:9px}
-.legend{display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:9px}
-.lg{display:flex;align-items:center;gap:5px;font-size:11.5px;cursor:pointer;padding:1px 5px;border-radius:3px}
-.lg:hover{background:#20242e}
-.lg.off{opacity:.33}
-.lg i{width:10px;height:10px;border-radius:2px;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:3px 9px;margin-top:8px}
+.lg{display:flex;align-items:center;gap:5px;font-size:11.5px;cursor:pointer;padding:1px 5px;border-radius:3px;color:var(--dim)}
+.lg:hover{background:#20242e;color:var(--txt)}
+.lg.off{opacity:.3}
+.lg i{width:9px;height:9px;border-radius:2px;display:block;flex:none}
+.note{color:#5d6270;font-size:11.5px;margin-top:7px}
 </style>
 
-<h1>Relative Strength</h1>
-<div class=sub id=sub>Loading&hellip;</div>
+<div class=top><h1>Relative Strength</h1><a href="index.html">&larr; dashboard</a></div>
+<div class=lead>Equal-weight baskets, every member rebased to 0% at the window start.
+Click a label on the right of a chart to see what is inside that line.</div>
 
-<div class=bar>
-  <div class=grp><span class=lbl>Board</span><select id=board></select></div>
-  <div class=grp><span class=lbl>Window</span><div class=seg id=win></div></div>
-  <div class=grp><span class=lbl>Measure</span><div class=seg id=mode>
-    <button data-v=abs class=on>Absolute %</button>
-    <button data-v=rel>vs baseline</button>
-  </div></div>
-</div>
-
-<div class=wrap>
-  <div class=main>
-    <svg id=chart viewBox="0 0 980 520" preserveAspectRatio="xMidYMid meet"></svg>
-    <div class=legend id=legend></div>
-    <div class=note id=note></div>
+<section id=sec-crypto>
+  <div class=shead><h2>Crypto</h2><span class=meta id=crypto-meta></span></div>
+  <div class="tabs" id=crypto-boards></div>
+  <div class=bar>
+    <div class=grp><span class=lbl>Window</span><div class=seg id=crypto-win></div></div>
+    <div class=grp><span class=lbl>Measure</span><div class=seg id=crypto-mode>
+      <button data-v=abs class=on>Absolute %</button><button data-v=rel>vs baseline</button></div></div>
   </div>
-  <div class=side><div class=card id=panel></div></div>
-</div>
+  <div class=row>
+    <div class=chartbox>
+      <svg class=chart id=crypto-chart viewBox="0 0 980 470" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class=legend id=crypto-legend></div>
+      <div class=note id=crypto-note></div>
+    </div>
+    <div class=side id=crypto-panel></div>
+  </div>
+</section>
+
+<section id=sec-tradfi>
+  <div class=shead><h2>TradFi</h2><span class=meta id=tradfi-meta></span></div>
+  <div class="tabs" id=tradfi-boards></div>
+  <div class=bar>
+    <div class=grp><span class=lbl>Window</span><div class=seg id=tradfi-win></div></div>
+    <div class=grp><span class=lbl>Measure</span><div class=seg id=tradfi-mode>
+      <button data-v=abs class=on>Absolute %</button><button data-v=rel>vs baseline</button></div></div>
+  </div>
+  <div class=row>
+    <div class=chartbox>
+      <svg class=chart id=tradfi-chart viewBox="0 0 980 470" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class=legend id=tradfi-legend></div>
+      <div class=note id=tradfi-note></div>
+    </div>
+    <div class=side id=tradfi-panel></div>
+  </div>
+</section>
 
 <script>
 const IDX = {"boards": [{"id": "crypto-sector", "title": "Crypto sectors", "kind": "crypto", "windows": ["15m", "1H", "4H", "D", "W", "M", "YTD"]}, {"id": "crypto-chain-avalanche", "title": "Avalanche by sector", "kind": "crypto", "windows": ["15m", "1H", "4H", "D", "W", "M", "YTD"]}, {"id": "crypto-chain-bnb", "title": "BNB by sector", "kind": "crypto", "windows": ["15m", "1H", "4H", "D", "W", "M", "YTD"]}, {"id": "crypto-chain-base", "title": "Base by sector", "kind": "crypto", "windows": ["15m", "1H", "4H", "D", "W", "M", "YTD"]}, {"id": "crypto-chain-solana", "title": "Solana by sector", "kind": "crypto", "windows": ["15m", "1H", "4H", "D", "W", "M", "YTD"]}, {"id": "crypto-chain-sui", "title": "Sui by sector", "kind": "crypto", "windows": ["15m", "1H", "4H", "D", "W", "M", "YTD"]}, {"id": "crypto-chain", "title": "Crypto home chains", "kind": "crypto", "windows": ["15m", "1H", "4H", "D", "W", "M", "YTD"]}, {"id": "tradfi-equity-sectors", "title": "Equity sectors", "kind": "tradfi", "windows": ["D", "W", "M", "YTD"]}, {"id": "tradfi-commodities", "title": "Commodities", "kind": "tradfi", "windows": ["D", "W", "M", "YTD"]}, {"id": "tradfi-rates-credit", "title": "Rates & credit", "kind": "tradfi", "windows": ["D", "W", "M", "YTD"]}, {"id": "tradfi-cross-asset", "title": "Cross-asset", "kind": "tradfi", "windows": ["D", "W", "M", "YTD"]}], "built": "2026-10-03 05:41 UTC"};
 const SPANS = {"15m": "15m bars, last 24 hours", "1H": "1h bars, last 7 days", "4H": "4h bars, last 30 days", "D": "1d bars, last 90 days", "W": "1d bars, last 1 years", "M": "1d bars, last 3 years", "YTD": "1d bars, year to date"};
 const COLORS = ["#b388ff","#9e9e9e","#ef5350","#26a69a","#ffb74d","#4dd0e1","#f06292",
                 "#8bc34a","#7986cb","#ff7043","#4db6ac","#ba68c8","#aed581","#ffd54f"];
-const S = {board:IDX.boards[0] && IDX.boards[0].id, win:null, mode:"abs",
-           data:null, hidden:new Set(), pick:null, hover:null, sort:"contrib"};
-const $ = s => document.querySelector(s);
-const cur = () => S.data[S.win];
-
-function colorOf(name, i){ return name==="__baseline__" ? "var(--base)" : COLORS[i%COLORS.length]; }
-function names(){
-  const L = cur().lines;
-  return Object.keys(L).filter(k=>k!=="__baseline__").sort();
-}
-// "vs baseline" subtracts the benchmark's own path, so the benchmark becomes a
-// flat zero line and what is left is pure relative strength.
-function pathOf(name){
-  const L = cur().lines, p = L[name].path;
-  if(S.mode==="abs" || !L.__baseline__) return p;
-  const b = L.__baseline__.path;
-  return p.map((v,i)=> (v===null||b[i]===null||b[i]===undefined) ? null : v-b[i]);
-}
-
-const W=980,H=520,ML=52,MR=118,MT=14,MB=34;
-function draw(){
-  const c = cur(), t = c.t, n = t.length;
-  const show = names().filter(k=>!S.hidden.has(k));
-  const series = show.map((k,i)=>({k, color:colorOf(k, names().indexOf(k)), data:pathOf(k)}));
-  if(c.lines.__baseline__ && !S.hidden.has("__baseline__"))
-    series.push({k:"__baseline__", label:c.baseline, color:"var(--base)",
-                 raw:"#eceff4", data:pathOf("__baseline__")});
-  let lo=Infinity, hi=-Infinity;
-  for(const s of series) for(const v of s.data) if(v!==null&&v!==undefined){ if(v<lo)lo=v; if(v>hi)hi=v; }
-  if(!isFinite(lo)){lo=-1;hi=1;}
-  if(hi===lo){hi=lo+1;lo-=1;}
-  const pad=(hi-lo)*0.07; lo-=pad; hi+=pad;
-  const X = i => ML + (i/Math.max(1,n-1))*(W-ML-MR);
-  const Y = v => MT + (1-(v-lo)/(hi-lo))*(H-MT-MB);
-
-  let g="";
-  const step = niceStep((hi-lo)/6);
-  for(let v=Math.ceil(lo/step)*step; v<=hi; v+=step){
-    const y=Y(v).toFixed(1), zero=Math.abs(v)<1e-9;
-    g+=`<line x1=${ML} y1=${y} x2=${W-MR} y2=${y} stroke="${zero?'#3d4452':'#232735'}" stroke-width="1"/>`;
-    g+=`<text x=${ML-7} y=${(+y+4).toFixed(1)} fill="#787b86" font-size="11" text-anchor="end">${v.toFixed(1)}%</text>`;
-  }
-  // time ticks
-  const ticks = Math.min(8, n);
-  for(let k=0;k<ticks;k++){
-    const i = Math.round(k*(n-1)/(ticks-1||1)), x=X(i).toFixed(1);
-    g+=`<line x1=${x} y1=${MT} x2=${x} y2=${H-MB} stroke="#1f2430" stroke-width="1"/>`;
-    g+=`<text x=${x} y=${H-MB+15} fill="#787b86" font-size="10.5" text-anchor="middle">${tlabel(t[i])}</text>`;
-  }
-  for(const s of series){
-    let d="", pen=false;
-    s.data.forEach((v,i)=>{ if(v===null||v===undefined){pen=false;return;}
-      d+=(pen?"L":"M")+X(i).toFixed(1)+" "+Y(v).toFixed(1)+" "; pen=true; });
-    const sel = S.pick===s.k;
-    const base = s.k==="__baseline__";
-    g+=`<path d="${d}" fill="none" stroke="${s.raw||s.color}" stroke-width="${sel?2.8:(base?2.2:1.4)}"
-        opacity="${S.pick&&!sel?0.3:1}" stroke-linejoin="round" style="cursor:pointer"
-        data-k="${s.k}"/>`;
-  }
-  // right-edge name pills, nudged apart so they never sit on top of each other
-  const ends = series.map(s=>{
-    let v=null; for(let i=s.data.length-1;i>=0;i--) if(s.data[i]!==null&&s.data[i]!==undefined){v=s.data[i];break;}
-    return {k:s.k, label:(s.label||s.k), color:s.raw||s.color, v};
-  }).filter(e=>e.v!==null).sort((a,b)=>b.v-a.v);
-  let prev=-1e9;
-  for(const e of ends){
-    let y=Y(e.v); if(y-prev<13) y=prev+13; prev=y;
-    const txt=`${e.label} ${e.v>=0?"+":""}${e.v.toFixed(2)}%`;
-    g+=`<rect x="${W-MR+4}" y="${(y-8).toFixed(1)}" width="${Math.min(MR-8,txt.length*5.6+8)}" height="15" rx="2"
-         fill="${e.color}" opacity="${S.pick&&S.pick!==e.k?0.3:0.92}"/>`;
-    g+=`<text x="${W-MR+8}" y="${(y+3.5).toFixed(1)}" font-size="10.5" fill="#10131a"
-         font-weight="600" opacity="${S.pick&&S.pick!==e.k?0.4:1}">${txt}</text>`;
-  }
-  if(S.hover!==null && S.hover>=0 && S.hover<n){
-    const x=X(S.hover).toFixed(1);
-    g+=`<line x1=${x} y1=${MT} x2=${x} y2=${H-MB} stroke="#5d6270" stroke-width="1" stroke-dasharray="3 3"/>`;
-  }
-  $("#chart").innerHTML=g;
-  $("#chart").querySelectorAll("path[data-k]").forEach(p=>
-    p.onclick=()=>{ S.pick = S.pick===p.dataset.k ? null : p.dataset.k; render(); });
-  buildLegend();
-  note();
-}
-function niceStep(r){ if(!(r>0)) return 1; const p=Math.pow(10,Math.floor(Math.log10(r))), x=r/p;
-  return (x<=1?1:x<=2?2:x<=5?5:10)*p; }
-function tlabel(sec){
-  const d=new Date(sec*1000), w=S.win;
-  if(w==="15m"||w==="1H") return d.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
-  return d.toLocaleDateString([],{day:"numeric",month:"short"});
-}
-function buildLegend(){
-  const c=cur(), el=$("#legend"); el.innerHTML="";
-  const all=names();
-  const mk=(k,label,color)=>{
-    const d=document.createElement("div");
-    d.className="lg"+(S.hidden.has(k)?" off":"");
-    d.innerHTML=`<i style="background:${color}"></i><span>${label}</span>`;
-    d.onclick=()=>{ S.hidden.has(k)?S.hidden.delete(k):S.hidden.add(k);
-                    if(S.pick===k) S.pick=null; render(); };
-    el.appendChild(d);
-  };
-  all.forEach((k,i)=>mk(k, `${k} (${c.lines[k].n})`, colorOf(k,i)));
-  if(c.lines.__baseline__) mk("__baseline__", c.baseline+" (baseline)", "#eceff4");
-}
-function note(){
-  $("#note").textContent = S.pick
-    ? "Click the line again to clear. Members below, sorted by contribution."
-    : "Click any line to see what is inside it.";
-}
-
 const COLS=[["sym","Symbol"],["price","Price"],["m15","15m"],["h4","4H"],["d1","Day"],
             ["d1abs","Day Δ"],["pct","Window"],["contrib","Contrib"]];
-function panel(){
-  const el=$("#panel"), c=cur();
-  if(!S.pick || !c.members[S.pick]){
-    el.innerHTML="<h3>Members</h3><div class=meta>Click a line on the chart.</div>"
-      + "<div class=hint>The <b>Contrib</b> column is each member's window move divided by "
-      + "the member count &mdash; in an equal-weight basket that is literally how many "
-      + "points it put into the line. It is the column that answers which asset is "
-      + "responsible.</div>";
-    return;
-  }
-  const rows=[...c.members[S.pick]];
-  const k=S.sort;
-  rows.sort((a,b)=> k==="sym" ? String(a.sym).localeCompare(b.sym)
-                              : ((b[k]??-1e9)-(a[k]??-1e9)));
-  const f=(v,suf="%")=> v===null||v===undefined ? "<span style='color:#4a505e'>&ndash;</span>"
-    : `<span class="${v>=0?'up':'dn'}">${v>=0?"+":""}${v.toFixed(2)}${suf}</span>`;
-  const price=v=> v===null||v===undefined ? "&ndash;"
-    : (Math.abs(v)>=1000? v.toLocaleString(undefined,{maximumFractionDigits:0})
-      : Math.abs(v)>=1? v.toFixed(3) : v.toPrecision(4));
-  el.innerHTML = `<h3>${S.pick}</h3>
-    <div class=meta>${rows.length} members &middot; equal weight &middot; window ${S.win}</div>
-    <div style="overflow-x:auto"><table><thead><tr>`
-    + COLS.map(([k2,l])=>`<th data-k="${k2}" class="${k===k2?'sorted':''}">${l}</th>`).join("")
-    + `</tr></thead><tbody>`
-    + rows.map(r=>`<tr><td>${r.sym}</td><td>${price(r.price)}</td>
-        <td>${f(r.m15)}</td><td>${f(r.h4)}</td><td>${f(r.d1)}</td>
-        <td>${r.d1abs===null||r.d1abs===undefined?"&ndash;":price(r.d1abs)}</td>
-        <td>${f(r.pct)}</td><td>${f(r.contrib,"pp")}</td></tr>`).join("")
-    + `</tbody></table></div>`;
-  el.querySelectorAll("th").forEach(th=>th.onclick=()=>{ S.sort=th.dataset.k; panel(); });
-}
+const W=980,H=470,ML=52,MR=126,MT=14,MB=34;
+const $ = s => document.querySelector(s);
+function niceStep(r){ if(!(r>0)) return 1; const p=Math.pow(10,Math.floor(Math.log10(r))), x=r/p;
+  return (x<=1?1:x<=2?2:x<=5?5:10)*p; }
 
-// The button says "D" because that is the bar interval; the percentages are
-// over the SPAN, which is 90 days. Spelling that out stops "+64% D" being read
-// as a one-day move.
-function subline(){
-  const meta=IDX.boards.find(b=>b.id===S.board);
-  $("#sub").innerHTML = `${meta.title} &middot; <b>${SPANS[S.win]||S.win}</b> &middot; `
-    + `equal-weight baskets rebased to 0% at the window start &middot; `
-    + `baseline <b>${cur().baseline}</b> &middot; built ${IDX.built}`;
-}
-function render(){ subline(); draw(); panel(); }
+// Each section owns its state entirely: the two charts answer different
+// questions and must not drag each other's window or selection around.
+function makeSection(kind){
+  const boards = IDX.boards.filter(b=>b.kind===kind);
+  const S = {kind, board:boards[0] && boards[0].id, win:null, mode:"abs",
+             data:null, hidden:new Set(), pick:null, hover:null, sort:"contrib"};
+  const el = n => $("#"+kind+"-"+n);
+  const cur = () => S.data[S.win];
+  const names = () => Object.keys(cur().lines).filter(k=>k!=="__baseline__").sort();
+  const colorOf = k => k==="__baseline__" ? "#eceff4" : COLORS[names().indexOf(k)%COLORS.length];
 
-function buildWindows(){
-  const el=$("#win"); el.innerHTML="";
-  for(const w of Object.keys(S.data)){
-    const b=document.createElement("button");
-    b.textContent=w; b.className = w===S.win ? "on" : "";
-    b.title = SPANS[w]||w;
-    b.onclick=()=>{ S.win=w; S.pick=null; buildWindows(); render(); };
-    el.appendChild(b);
+  // "vs baseline" subtracts the benchmark's own path, so the benchmark becomes
+  // a flat zero line and what is left is pure relative strength.
+  function pathOf(k){
+    const L=cur().lines, p=L[k].path;
+    if(S.mode==="abs" || !L.__baseline__) return p;
+    const b=L.__baseline__.path;
+    return p.map((v,i)=> (v===null||v===undefined||b[i]===null||b[i]===undefined) ? null : v-b[i]);
   }
+  function tlabel(sec){
+    const d=new Date(sec*1000);
+    return (S.win==="15m"||S.win==="1H")
+      ? d.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})
+      : d.toLocaleDateString([],{day:"numeric",month:"short"});
+  }
+
+  function draw(){
+    const c=cur(), t=c.t, n=t.length;
+    const series=names().filter(k=>!S.hidden.has(k))
+      .map(k=>({k, label:k, raw:colorOf(k), data:pathOf(k)}));
+    if(c.lines.__baseline__ && !S.hidden.has("__baseline__"))
+      series.push({k:"__baseline__", label:c.baseline, raw:"#eceff4", data:pathOf("__baseline__")});
+    let lo=Infinity, hi=-Infinity;
+    for(const s of series) for(const v of s.data)
+      if(v!==null&&v!==undefined){ if(v<lo)lo=v; if(v>hi)hi=v; }
+    if(!isFinite(lo)){lo=-1;hi=1;}
+    if(hi===lo){hi=lo+1;lo-=1;}
+    const pad=(hi-lo)*0.07; lo-=pad; hi+=pad;
+    const X=i=>ML+(i/Math.max(1,n-1))*(W-ML-MR), Y=v=>MT+(1-(v-lo)/(hi-lo))*(H-MT-MB);
+    let g="";
+    const step=niceStep((hi-lo)/6);
+    for(let v=Math.ceil(lo/step)*step; v<=hi; v+=step){
+      const y=Y(v).toFixed(1), zero=Math.abs(v)<1e-9;
+      g+=`<line x1=${ML} y1=${y} x2=${W-MR} y2=${y} stroke="${zero?'#3d4452':'#232735'}" stroke-width="1"/>`;
+      g+=`<text x=${ML-7} y=${(+y+4).toFixed(1)} fill="#787b86" font-size="11" text-anchor="end">${v.toFixed(1)}%</text>`;
+    }
+    const ticks=Math.min(8,n);
+    for(let k=0;k<ticks;k++){
+      const i=Math.round(k*(n-1)/(ticks-1||1)), x=X(i).toFixed(1);
+      g+=`<line x1=${x} y1=${MT} x2=${x} y2=${H-MB} stroke="#1f2430" stroke-width="1"/>`;
+      g+=`<text x=${x} y=${H-MB+15} fill="#787b86" font-size="10.5" text-anchor="middle">${tlabel(t[i])}</text>`;
+    }
+    for(const s of series){
+      let d="",pen=false;
+      s.data.forEach((v,i)=>{ if(v===null||v===undefined){pen=false;return;}
+        d+=(pen?"L":"M")+X(i).toFixed(1)+" "+Y(v).toFixed(1)+" "; pen=true; });
+      const sel=S.pick===s.k, base=s.k==="__baseline__";
+      g+=`<path d="${d}" fill="none" stroke="${s.raw}" stroke-width="${sel?2.9:(base?2.1:1.4)}"
+          opacity="${S.pick&&!sel?0.28:1}" stroke-linejoin="round"/>`;
+    }
+    // Right-edge labels are the hit target, not the lines: picking a 1.4px
+    // stroke out of a dozen overlapping ones with a mouse is miserable.
+    const ends=series.map(s=>{
+      let v=null; for(let i=s.data.length-1;i>=0;i--)
+        if(s.data[i]!==null&&s.data[i]!==undefined){v=s.data[i];break;}
+      return {k:s.k, label:s.label, color:s.raw, v};
+    }).filter(e=>e.v!==null).sort((a,b)=>b.v-a.v);
+    let prev=-1e9;
+    for(const e of ends){
+      let y=Y(e.v); if(y-prev<14) y=prev+14; prev=y;
+      const txt=`${e.label} ${e.v>=0?"+":""}${e.v.toFixed(2)}%`;
+      const w=Math.min(MR-6, txt.length*5.5+10);
+      const dim=S.pick&&S.pick!==e.k;
+      g+=`<g class="pill" data-k="${e.k}"><title>Show the assets inside ${e.label}</title>`
+       + `<rect x="${W-MR+4}" y="${(y-8).toFixed(1)}" width="${w}" height="16" rx="3"
+            fill="${e.color}" opacity="${dim?0.3:0.93}"/>`
+       + `<text x="${W-MR+9}" y="${(y+3.5).toFixed(1)}" font-size="10.5" fill="#10131a"
+            font-weight="600" opacity="${dim?0.45:1}">${txt}</text></g>`;
+    }
+    if(S.hover!==null&&S.hover>=0&&S.hover<n){
+      const x=X(S.hover).toFixed(1);
+      g+=`<line x1=${x} y1=${MT} x2=${x} y2=${H-MB} stroke="#5d6270" stroke-width="1" stroke-dasharray="3 3"/>`;
+    }
+    el("chart").innerHTML=g;
+    el("chart").querySelectorAll("g.pill").forEach(p=>p.onclick=()=>{
+      S.pick = S.pick===p.dataset.k ? null : p.dataset.k; render(); });
+    legend();
+    el("note").textContent = S.pick
+      ? "Showing " + S.pick + ". Click its label again to clear."
+      : "Click a label on the right of the chart to see its assets.";
+  }
+
+  function legend(){
+    const c=cur(), e=el("legend"); e.innerHTML="";
+    const mk=(k,label,color)=>{
+      const d=document.createElement("div");
+      d.className="lg"+(S.hidden.has(k)?" off":"");
+      d.title="Show or hide this line";
+      d.innerHTML=`<i style="background:${color}"></i><span>${label}</span>`;
+      d.onclick=()=>{ S.hidden.has(k)?S.hidden.delete(k):S.hidden.add(k);
+        if(S.pick===k) S.pick=null; render(); };
+      e.appendChild(d);
+    };
+    names().forEach(k=>mk(k, `${k} (${c.lines[k].n})`, colorOf(k)));
+    if(c.lines.__baseline__) mk("__baseline__", c.baseline+" (baseline)", "#eceff4");
+  }
+
+  function panel(){
+    const e=el("panel"), c=cur();
+    if(!S.pick || !c.members[S.pick]){
+      e.innerHTML="<h3>Members</h3><div class=meta>Nothing selected.</div>"
+        + "<div class=hint><b>Contrib</b> is each member's window move divided by the "
+        + "member count &mdash; in an equal-weight basket that is literally how many "
+        + "points it put into the line, so it answers which asset is responsible.</div>";
+      return;
+    }
+    const rows=[...c.members[S.pick]], k=S.sort;
+    rows.sort((a,b)=> k==="sym" ? String(a.sym).localeCompare(b.sym)
+                                : ((b[k]??-1e9)-(a[k]??-1e9)));
+    const f=(v,suf="%")=> v===null||v===undefined ? "<span style='color:#4a505e'>&ndash;</span>"
+      : `<span class="${v>=0?'up':'dn'}">${v>=0?"+":""}${v.toFixed(2)}${suf}</span>`;
+    const px=v=> v===null||v===undefined ? "&ndash;"
+      : (Math.abs(v)>=1000? v.toLocaleString(undefined,{maximumFractionDigits:0})
+        : Math.abs(v)>=1? v.toFixed(3) : v.toPrecision(4));
+    e.innerHTML=`<h3>${S.pick}</h3>
+      <div class=meta>${rows.length} members &middot; equal weight &middot; ${SPANS[S.win]||S.win}</div>
+      <div class=scroll><table><thead><tr>`
+      + COLS.map(([k2,l])=>`<th data-k="${k2}" class="${k===k2?'sorted':''}">${l}</th>`).join("")
+      + `</tr></thead><tbody>`
+      + rows.map(r=>`<tr><td>${r.sym}</td><td>${px(r.price)}</td><td>${f(r.m15)}</td>
+          <td>${f(r.h4)}</td><td>${f(r.d1)}</td>
+          <td>${r.d1abs===null||r.d1abs===undefined?"&ndash;":px(r.d1abs)}</td>
+          <td>${f(r.pct)}</td><td>${f(r.contrib,"pp")}</td></tr>`).join("")
+      + `</tbody></table></div>`;
+    e.querySelectorAll("th").forEach(th=>th.onclick=()=>{ S.sort=th.dataset.k; panel(); });
+  }
+
+  function render(){
+    el("meta").innerHTML = `${SPANS[S.win]||S.win} &middot; baseline <b>${cur().baseline}</b>`;
+    draw(); panel();
+  }
+  function windows(){
+    const e=el("win"); e.innerHTML="";
+    for(const w of Object.keys(S.data)){
+      const b=document.createElement("button");
+      b.textContent=w; b.className = w===S.win?"on":""; b.title=SPANS[w]||w;
+      b.onclick=()=>{ S.win=w; S.pick=null; windows(); render(); };
+      e.appendChild(b);
+    }
+  }
+  function tabs(){
+    const e=el("boards"); e.innerHTML="";
+    for(const b of boards){
+      const btn=document.createElement("button");
+      btn.textContent=b.title; btn.className = b.id===S.board?"on":"";
+      btn.onclick=()=>load(b.id);
+      e.appendChild(btn);
+    }
+  }
+  async function load(id){
+    S.board=id; S.pick=null; S.hidden.clear();
+    S.data = await (await fetch("spaghetti/"+id+".json")).json();
+    const ws=Object.keys(S.data);
+    if(!ws.includes(S.win)) S.win = ws.includes("D") ? "D" : ws[0];
+    tabs(); windows(); render();
+  }
+  el("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    el("mode").querySelectorAll("button").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on"); S.mode=b.dataset.v; render(); });
+  const ch=el("chart");
+  ch.addEventListener("mousemove",ev=>{
+    const r=ch.getBoundingClientRect(), x=(ev.clientX-r.left)/r.width*W;
+    S.hover=Math.round((x-ML)/(W-ML-MR)*(cur().t.length-1)); draw(); });
+  ch.addEventListener("mouseleave",()=>{S.hover=null;draw();});
+  if(!boards.length){ $("#sec-"+kind).style.display="none"; return; }
+  load(S.board);
 }
-async function loadBoard(id){
-  S.board=id; S.pick=null; S.hidden.clear();
-  S.data = await (await fetch("spaghetti/"+id+".json")).json();
-  const ws=Object.keys(S.data);
-  if(!ws.includes(S.win)) S.win = ws.includes("D") ? "D" : ws[0];
-  const meta=IDX.boards.find(b=>b.id===id);
-  subline();
-  buildWindows(); render();
-}
-$("#board").innerHTML = IDX.boards.map(b=>`<option value="${b.id}">${b.title}</option>`).join("");
-$("#board").onchange = e => loadBoard(e.target.value);
-$("#mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{
-  $("#mode").querySelectorAll("button").forEach(x=>x.classList.remove("on"));
-  b.classList.add("on"); S.mode=b.dataset.v; render(); });
-const chart=$("#chart");
-chart.addEventListener("mousemove",e=>{
-  const r=chart.getBoundingClientRect(), px=(e.clientX-r.left)/r.width*W;
-  S.hover=Math.round((px-ML)/(W-ML-MR)*(cur().t.length-1)); draw(); });
-chart.addEventListener("mouseleave",()=>{S.hover=null;draw();});
-loadBoard(S.board);
+makeSection("crypto");
+makeSection("tradfi");
 </script>

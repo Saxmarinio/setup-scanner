@@ -1,7 +1,7 @@
 """Static HTML output for GitHub Pages.
 
 One page per tier (docs/a.html, docs/b.html, docs/c.html) plus a landing
-index (docs/index.html) that lists all three with their last-run time and
+hub (docs/scans.html) that lists all tiers with their last-run time and
 setup counts. Each tier run writes its own page and refreshes the index from
 docs/status.json, so the tiers no longer overwrite one shared page.
 """
@@ -121,7 +121,7 @@ def _render_tier(tier, groups, notes, outdir, ts):
     out = os.path.join(outdir, f"{tier.lower()}.html")
     h = [_head(f"Setup scan — Tier {tier}"),
          f"<h1>{TIER_LABEL[tier]}</h1>",
-         f"<div class=sub>last run {ts} &middot; <a href='index.html'>&larr; all tiers</a></div>"]
+         f"<div class=sub>last run {ts} &middot; <a href='scans.html'>&larr; all tiers</a></div>"]
     for n in notes:
         h.append(f"<div class=warn>{n}</div>")
     h.append("<div class=sub>DSS Bressert (fast / slow) on daily / weekly / monthly &middot; "
@@ -168,16 +168,11 @@ def _render_index(outdir, status):
                 "<td class=n>not run yet</td><td class=n>&ndash;</td>"
                 "<td class=n></td></tr>")
     h.append("</table>")
-    # Composites are built by their own script on their own cadence, so link
-    # unconditionally rather than gating on a scan having produced them.
-    h.append("<div class=sub style='margin-top:18px'>&#9679; "
-             "<a href='spaghetti.html'>Relative strength</a> &mdash; which crypto "
-             "sector, chain or tradfi sector is leading, on 15m to YTD</div>")
-    h.append("<div class=sub>&#9679; "
-             "<a href='cycles.html'>Cycle composites</a> &mdash; the average shape "
-             "of a year for BTC, indices, metals and energy, from up to 99 years "
-             "of daily history</div>")
-    open(os.path.join(outdir, "index.html"), "w", encoding="utf-8").write("\n".join(h))
+    h.append("<div class=sub style='margin-top:18px'>"
+             "<a href='index.html'>&larr; dashboard</a></div>")
+    # scans.html, not index.html: index.html is the dashboard front page, built
+    # by src/build_home.py. The scan hub is one card on it.
+    open(os.path.join(outdir, "scans.html"), "w", encoding="utf-8").write("\n".join(h))
 
 def _board_table(rows):
     h = ["<div style='overflow-x:auto'><table><tr><th>symbol</th>"
@@ -211,7 +206,7 @@ def publish_board(tier, rows, notes, outdir="docs"):
     out = os.path.join(outdir, f"{tier.lower()}.html")
     h = [_head(f"Setup scan — Tier {tier}"),
          f"<h1>{TIER_LABEL[tier]}</h1>",
-         f"<div class=sub>last run {ts} &middot; <a href='index.html'>&larr; all tiers</a></div>"]
+         f"<div class=sub>last run {ts} &middot; <a href='scans.html'>&larr; all tiers</a></div>"]
     for n in notes:
         h.append(f"<div class=warn>{n}</div>")
     h.append("<div class=sub>DSS Bressert (fast / slow) on daily / weekly / monthly &middot; "
@@ -240,7 +235,7 @@ def render_signals(outdir, breaks, flips, touches, failed=0):
     os.makedirs(outdir, exist_ok=True)
     ts = _now()
     h = [_head("Signals feed"), "<h1>Signals feed</h1>",
-         f"<div class=sub>updated {ts} &middot; <a href='index.html'>&larr; all tiers</a>"
+         f"<div class=sub>updated {ts} &middot; <a href='scans.html'>&larr; all tiers</a>"
          + (f" &middot; {failed} fetches failed" if failed else "") + "</div>"]
 
     def _chart(r):

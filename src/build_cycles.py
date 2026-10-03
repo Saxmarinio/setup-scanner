@@ -61,7 +61,7 @@ label.ck input{accent-color:#2196f3;margin:0}
 table.tt{border-collapse:collapse;font-size:12px}
 </style>
 
-<h1>Cycle Composites</h1>
+<div style="display:flex;align-items:baseline;gap:14px"><h1>Cycle Composites</h1><a href="index.html">&larr; dashboard</a></div>
 <div class=sub id=sub>Loading&hellip;</div>
 
 <div class=wrap>

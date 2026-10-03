@@ -1,45 +1,33 @@
-<!doctype html><meta charset=utf-8><title>Setup scan</title><style>
-body{background:#131722;color:#d1d4dc;font:14px/1.5 -apple-system,Segoe UI,sans-serif;margin:0;padding:24px}
-h1{font-size:18px;font-weight:600;margin:0 0 4px}
-h2{font-size:15px;font-weight:600;margin:24px 0 4px}
-.sub{color:#787b86;font-size:12px;margin-bottom:20px}
-table{border-collapse:collapse;width:100%;margin-bottom:28px}
-th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#787b86;
-   border-bottom:1px solid #2a2e39;padding:8px 10px;font-weight:500}
-td{padding:9px 10px;border-bottom:1px solid #1e222d}
-tr:hover td{background:#1a1e29}
-a{color:#2962ff;text-decoration:none}
-.s{display:inline-block;padding:2px 7px;border-radius:3px;font-size:11px}
-.compressed{background:#1b3a2a;color:#26a69a}
-.triggered{background:#3a2a1b;color:#ff9800}
-.forming{background:#22263a;color:#787b86}
-.div{background:#2a1b3a;color:#b388ff}
-.basing{background:#22263a;color:#787b86}
-.reclaimed{background:#1b3a2a;color:#26a69a}
-.compressing{background:#3a2a1b;color:#ff9800}
-.breakout{background:#1b3a2a;color:#26a69a;font-weight:700}
-.warn{background:#3a1b1b;color:#ef5350;padding:10px 12px;border-radius:4px;margin-bottom:18px;font-size:12px}
-.n{color:#787b86;font-size:12px}
-.dss{font-variant-numeric:tabular-nums;white-space:nowrap}
-.dg{color:#26a69a;font-weight:600}
-.dr{color:#ef5350;font-weight:600}
-.dw{color:#d1d4dc}
-.trendcell{white-space:nowrap}
-.tb{display:inline-block;padding:1px 3px;margin:0 1px;border-radius:2px;font-size:9px;font-weight:600}
-.tup{background:#1b3a2a;color:#26a69a}
-.tno{background:#22263a;color:#6b7280}
-.tna{background:transparent;color:#3a3f4b}
+<!doctype html><meta charset=utf-8>
+<meta name=viewport content='width=device-width,initial-scale=1'>
+<title>Saxmarinio Dashboard</title>
+<style>
+*{box-sizing:border-box}
+body{background:#131722;color:#d1d4dc;font:14px/1.6 -apple-system,Segoe UI,sans-serif;
+     margin:0;padding:48px 24px 80px}
+.page{max-width:900px;margin:0 auto}
+h1{font-size:26px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
+.sub{color:#787b86;font-size:13px;margin-bottom:34px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:14px}
+a.card{display:block;background:#1a1e29;border:1px solid #2a2e39;border-radius:6px;
+       padding:20px 20px 18px;text-decoration:none;color:inherit;position:relative;
+       overflow:hidden;transition:border-color .12s,transform .12s}
+a.card:hover{border-color:#3d4452;transform:translateY(-1px)}
+a.card:focus-visible{outline:2px solid #2196f3;outline-offset:2px}
+a.card .rail{position:absolute;left:0;top:0;bottom:0;width:3px}
+a.card h2{font-size:15px;font-weight:600;margin:0 0 7px;color:#eceff4}
+a.card p{margin:0;color:#9aa0ab;font-size:12.5px;line-height:1.55}
+a.card .stat{margin-top:13px;font-size:11px;color:#787b86;font-variant-numeric:tabular-nums}
+.foot{margin-top:40px;color:#5d6270;font-size:11.5px}
+.foot a{color:#787b86}
 </style>
-<h1>Setup scan</h1>
-<div class=sub>index updated 2026-10-03 06:35 UTC</div>
-<div class=sub>&#9733; <a href='signals.html'>Signals feed</a> &mdash; <span class=dg>195</span> noodle breaks &middot; 112 trend changes &middot; 221 at weekly noodle <span class=n>(2026-10-03 06:35 UTC)</span></div>
-<table><tr><th>tier</th><th>last run</th><th>signals</th><th></th></tr>
-<tr><td><b>Tier A — top-10 crypto, 4H scan</b></td><td class=n>2026-10-03 05:12 UTC</td><td class=n>0 compression &middot; 0 divergence</td><td><a href='a.html'>view &rarr;</a></td></tr>
-<tr><td><b>Tier B — other crypto, 1H scan</b></td><td class=n>2026-10-03 05:41 UTC</td><td class=n>0 compression &middot; 8 divergence &middot; <span class=dg>8</span> bottoming</td><td><a href='b.html'>view &rarr;</a></td></tr>
-<tr><td><b>Tier C — equities & ETFs, 1D scan</b></td><td class=n>2026-10-03 00:36 UTC</td><td class=n>0 compression &middot; 0 divergence</td><td><a href='c.html'>view &rarr;</a></td></tr>
-<tr><td><b>Tier D — tokenized stocks, 1D scan</b></td><td class=n>2026-10-03 06:03 UTC</td><td class=n>86 tracked &middot; <span class=dg>5</span> bottoming &middot; <span class=dr>12</span> topping</td><td><a href='d.html'>view &rarr;</a></td></tr>
-<tr><td><b>Tier E — commodities (futures), 1D scan</b></td><td class=n>2026-10-03 00:47 UTC</td><td class=n>0 compression &middot; 3 divergence</td><td><a href='e.html'>view &rarr;</a></td></tr>
-<tr><td><b>Tier F — NASDAQ/SPX stocks, 1D scan</b></td><td class=n>2026-10-03 00:46 UTC</td><td class=n>0 compression &middot; 4 divergence</td><td><a href='f.html'>view &rarr;</a></td></tr>
-</table>
-<div class=sub style='margin-top:18px'>&#9679; <a href='spaghetti.html'>Relative strength</a> &mdash; which crypto sector, chain or tradfi sector is leading, on 15m to YTD</div>
-<div class=sub>&#9679; <a href='cycles.html'>Cycle composites</a> &mdash; the average shape of a year for BTC, indices, metals and energy, from up to 99 years of daily history</div>
+<div class=page>
+<h1>Saxmarinio Dashboard</h1>
+<div class=sub>Market structure, relative strength and seasonality &mdash; rebuilt automatically from public data.</div>
+<div class=grid>
+<a class=card href='spaghetti.html'><span class=rail style='background:#26a69a'></span><h2>Relative Strength</h2><p>Which sector, chain or asset class is leading. Equal-weight baskets against BTC and SPY, 15m through YTD.</p><div class=stat>11 boards · built 2026-10-03 05:41 UTC</div></a>
+<a class=card href='cycles.html'><span class=rail style='background:#b388ff'></span><h2>Cycle Composites</h2><p>The average shape of a year, from up to 99 years of history. Election cycles, decade offsets, bull and bear years.</p></a>
+<a class=card href='scans.html'><span class=rail style='background:#ff9800'></span><h2>Setup Scans</h2><p>Noodle compression, roofed-RSI divergence and bottoming patterns across crypto, equities and commodities.</p><div class=stat>6 tiers tracked · last run 2026-10-03 06:03 UTC</div></a>
+</div>
+<div class=foot>Page generated 2026-10-03 08:06 UTC &middot; <a href='https://github.com/Saxmarinio/setup-scanner'>source</a></div>
+</div>
