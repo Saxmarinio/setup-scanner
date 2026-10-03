@@ -1,31 +1,62 @@
 {
- "generated": "2026-10-02 01:07 UTC",
+ "generated": "2026-10-03 00:46 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "SQQQ",
+    "symbol": "HIMS",
     "tf": "1d",
     "state": "divergence",
     "detail": "channel %B, fired 0 bars ago",
     "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 33.349998,
-    "tv_symbol": "SQQQ",
+    "invalidation": 27.309999,
+    "tv_symbol": "HIMS",
     "htf_favourable": false,
     "score": 0.575,
     "dss": {
      "1d": [
-      0.068,
-      0.2
+      0.846,
+      0.711
      ],
      "1w": [
-      0.475,
+      0.075,
+      0.239
+     ],
+     "1M": [
+      0.078,
+      0.106
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "SQQQ",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 1 bars ago",
+    "bars_since": 1,
+    "margin_excess": 0.0,
+    "invalidation": 33.349998,
+    "tv_symbol": "SQQQ",
+    "htf_favourable": false,
+    "score": 0.495,
+    "dss": {
+     "1d": [
+      0.053,
+      0.167
+     ],
+     "1w": [
+      0.473,
       0.499
      ],
      "1M": [
-      0.356,
-      0.218
+      0.377,
+      0.253
      ]
     },
     "trend": {
@@ -38,25 +69,25 @@
     "symbol": "NFLX",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "channel %B, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 70.110001,
     "tv_symbol": "NFLX",
     "htf_favourable": false,
-    "score": 0.335,
+    "score": 0.255,
     "dss": {
      "1d": [
-      0.01,
-      0.045
+      0.008,
+      0.037
      ],
      "1w": [
-      0.717,
-      0.577
+      0.711,
+      0.576
      ],
      "1M": [
-      0.024,
-      0.096
+      0.019,
+      0.079
      ]
     },
     "trend": {
@@ -69,87 +100,25 @@
     "symbol": "FLNC",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 7.01,
     "tv_symbol": "FLNC",
     "htf_favourable": false,
-    "score": 0.255,
+    "score": 0.175,
     "dss": {
      "1d": [
-      0.582,
-      0.353
+      0.675,
+      0.424
      ],
      "1w": [
       0.057,
       0.182
      ],
      "1M": [
-      0.564,
-      0.622
-     ]
-    },
-    "trend": {
-     "1h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "AMAT",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 411.51001,
-    "tv_symbol": "AMAT",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.938,
-      0.824
-     ],
-     "1w": [
-      0.06,
-      0.125
-     ],
-     "1M": [
-      0.815,
-      0.796
-     ]
-    },
-    "trend": {
-     "1h": "up",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "KORU",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 17.790001,
-    "tv_symbol": "KORU",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.455,
-      0.362
-     ],
-     "1w": [
-      0.138,
-      0.124
-     ],
-     "1M": [
-      0.675,
-      0.768
+      0.438,
+      0.582
      ]
     },
     "trend": {
