@@ -1,50 +1,6 @@
 {
  "boards": [
   {
-   "id": "tradfi-equity-sectors",
-   "title": "Equity sectors",
-   "kind": "tradfi",
-   "windows": [
-    "D",
-    "W",
-    "M",
-    "YTD"
-   ]
-  },
-  {
-   "id": "tradfi-commodities",
-   "title": "Commodities",
-   "kind": "tradfi",
-   "windows": [
-    "D",
-    "W",
-    "M",
-    "YTD"
-   ]
-  },
-  {
-   "id": "tradfi-rates-credit",
-   "title": "Rates & credit",
-   "kind": "tradfi",
-   "windows": [
-    "D",
-    "W",
-    "M",
-    "YTD"
-   ]
-  },
-  {
-   "id": "tradfi-cross-asset",
-   "title": "Cross-asset",
-   "kind": "tradfi",
-   "windows": [
-    "D",
-    "W",
-    "M",
-    "YTD"
-   ]
-  },
-  {
    "id": "crypto-sector",
    "title": "Crypto sectors",
    "kind": "crypto",
@@ -141,7 +97,51 @@
     "M",
     "YTD"
    ]
+  },
+  {
+   "id": "tradfi-equity-sectors",
+   "title": "Equity sectors",
+   "kind": "tradfi",
+   "windows": [
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
+  },
+  {
+   "id": "tradfi-commodities",
+   "title": "Commodities",
+   "kind": "tradfi",
+   "windows": [
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
+  },
+  {
+   "id": "tradfi-rates-credit",
+   "title": "Rates & credit",
+   "kind": "tradfi",
+   "windows": [
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
+  },
+  {
+   "id": "tradfi-cross-asset",
+   "title": "Cross-asset",
+   "kind": "tradfi",
+   "windows": [
+    "D",
+    "W",
+    "M",
+    "YTD"
+   ]
   }
  ],
- "built": "2026-10-02 18:44 UTC"
+ "built": "2026-10-02 23:53 UTC"
 }
