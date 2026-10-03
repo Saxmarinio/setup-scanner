@@ -1,53 +1,50 @@
 {
- "generated": "2026-10-03 19:19 UTC",
+ "generated": "2026-10-03 23:10 UTC",
  "groups": {
   "compression (15m/1h/4h)": [
    {
-    "state": "compressed",
-    "expansion_atr": 2.54,
+    "state": "forming",
+    "expansion_atr": 3.86,
     "consol_bars": 32,
     "consol_start": 967,
     "coil_end": 999,
     "bars_since_coil": 0,
-    "res_touches": 3,
-    "channel_atr": 0.9,
-    "gap_atr": 0.7,
-    "bars_to_apex": 12.3,
-    "bars_in_state": 3,
-    "res_kind": "angled",
-    "resistance": 0.002679,
-    "res_slope": -2.5939849624060137e-06,
-    "res_intercept": 0.005270127819548871,
-    "invalidation": 0.002564,
-    "close": 0.002621,
-    "atr": 8.2e-05,
-    "ribbon_pct": 0.9,
-    "symbol": "ONEUSDT",
+    "res_touches": 2,
+    "channel_atr": 1.5,
+    "gap_atr": 1.32,
+    "bars_to_apex": 20.5,
+    "bars_in_state": 5,
+    "res_kind": "horizontal",
+    "resistance": 0.009283,
+    "res_slope": -6.521739130434945e-07,
+    "res_intercept": 0.009934652173913058,
+    "invalidation": 0.009194,
+    "close": 0.009224,
+    "atr": 4.5e-05,
+    "ribbon_pct": 1.5,
+    "symbol": "PENGUUSDT",
     "tf": "15m",
-    "tv_symbol": "BINANCE:ONEUSDT",
+    "tv_symbol": "BINANCE:PENGUUSDT",
     "htf_favourable": true,
-    "trend_bars": 13,
-    "detail": "angled res x3, exp 2.54ATR, ch 0.9ATR, apex 12.3, trend 13b",
+    "trend_bars": 26,
+    "detail": "horizontal res x2, exp 3.86ATR, ch 1.5ATR, apex 20.5, trend 26b",
     "score": 0.5,
     "dss": {
      "1d": [
-      0.18,
-      0.408
+      0.855,
+      0.854
      ],
      "1w": [
-      0.664,
-      0.423
+      0.743,
+      0.525
      ],
-     "1M": [
-      0.092,
-      0.045
-     ]
+     "1M": null
     },
     "trend": {
      "15m": "up",
      "1h": "none",
      "4h": "none",
-     "12h": "up",
+     "12h": "none",
      "1w": "none"
     }
    }
@@ -57,8 +54,8 @@
     "symbol": "TIAUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 0.4209,
     "tv_symbol": "BINANCE:TIAUSDT",
@@ -195,7 +192,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
