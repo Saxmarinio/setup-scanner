@@ -1,19 +1,69 @@
 {
- "generated": "2026-10-03 13:30 UTC",
+ "generated": "2026-10-03 19:19 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [],
+  "compression (15m/1h/4h)": [
+   {
+    "state": "compressed",
+    "expansion_atr": 2.54,
+    "consol_bars": 32,
+    "consol_start": 967,
+    "coil_end": 999,
+    "bars_since_coil": 0,
+    "res_touches": 3,
+    "channel_atr": 0.9,
+    "gap_atr": 0.7,
+    "bars_to_apex": 12.3,
+    "bars_in_state": 3,
+    "res_kind": "angled",
+    "resistance": 0.002679,
+    "res_slope": -2.5939849624060137e-06,
+    "res_intercept": 0.005270127819548871,
+    "invalidation": 0.002564,
+    "close": 0.002621,
+    "atr": 8.2e-05,
+    "ribbon_pct": 0.9,
+    "symbol": "ONEUSDT",
+    "tf": "15m",
+    "tv_symbol": "BINANCE:ONEUSDT",
+    "htf_favourable": true,
+    "trend_bars": 13,
+    "detail": "angled res x3, exp 2.54ATR, ch 0.9ATR, apex 12.3, trend 13b",
+    "score": 0.5,
+    "dss": {
+     "1d": [
+      0.18,
+      0.408
+     ],
+     "1w": [
+      0.664,
+      0.423
+     ],
+     "1M": [
+      0.092,
+      0.045
+     ]
+    },
+    "trend": {
+     "15m": "up",
+     "1h": "none",
+     "4h": "none",
+     "12h": "up",
+     "1w": "none"
+    }
+   }
+  ],
   "divergence (4h)": [
    {
     "symbol": "TIAUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.4209,
     "tv_symbol": "BINANCE:TIAUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.375,
     "dss": {
      "1d": [
       0.602,
@@ -26,40 +76,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "VTHOUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 0.000648,
-    "tv_symbol": "BINANCE:VTHOUSDT",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.154,
-      0.187
-     ],
-     "1w": [
-      0.739,
-      0.457
-     ],
-     "1M": [
-      0.19,
-      0.061
-     ]
-    },
-    "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
