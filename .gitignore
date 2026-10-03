@@ -6,3 +6,5 @@ data/backtest/
 backtest_*.csv
 osc_reset*.csv
 data/spaghetti/
+data/median_volume.json
+data/pionex_bases.json

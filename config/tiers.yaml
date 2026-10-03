@@ -9,6 +9,13 @@ universe:
     top_n_by_volume: 10            # tier A membership is a RULE, not a list
     volume_window_days: 30
     overrides: config/overrides.yaml
+    # Housekeeping, SCANNER ONLY. The spaghetti boards keep the full universe:
+    # a sector composite wants breadth, and thinning a 7-member basket would
+    # distort the thing it measures. A setup scan wants the opposite.
+    filters:
+      pionex_only: true              # tradable on either Pionex host (any quote)
+      min_median_quote_volume: 1000000   # USDT/day, 30d MEDIAN - a one-day pump
+                                         #   must not buy its way past the floor
   equity:
     source: yfinance
     tickers_file: config/equities.txt

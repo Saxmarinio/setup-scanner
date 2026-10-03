@@ -123,6 +123,38 @@ def klines(symbol, tf, start_ms=None, limit=1000):
     df = df[df["ct"].astype("int64") < now]
     return df[["datetime", "open", "high", "low", "close", "volume"]]
 
+def median_quote_volume(symbols, window=30, floor=0.0, prefilter=3.0):
+    """{symbol: median daily quote volume} over `window` days.
+
+    Median, not 24h: a one-day pump must not buy its way past a liquidity
+    floor. That is the same reasoning as top_by_volume, applied as a filter
+    rather than a ranking.
+
+    One bulk 24h call first discards anything whose 24h volume is below
+    floor/prefilter - a name doing $100k today will not have a $1M median -
+    so the per-symbol daily fetch only runs for plausible survivors. Without
+    that this is one request per symbol across the whole universe.
+    """
+    wanted = set(symbols)
+    out = {}
+    try:
+        data = _get(f"{BASE}/api/v3/ticker/24hr")
+        by24 = {d["symbol"]: float(d.get("quoteVolume") or 0.0)
+                for d in data if d["symbol"] in wanted}
+    except Exception:
+        by24 = {s: float("inf") for s in wanted}      # no prefilter rather than no scan
+    cand = [s for s in symbols if by24.get(s, 0.0) >= (floor / prefilter if floor else 0.0)]
+    for s in cand:
+        try:
+            d = klines(s, "1d", limit=window + 2)
+            if len(d) < window // 2:
+                continue
+            out[s] = float((d["close"] * d["volume"]).median())
+        except Exception:
+            continue
+        time.sleep(0.03)
+    return out
+
 def top_by_volume(symbols, n=10, window=30, shortlist=40):
     """Top-n crypto by `window`-day MEDIAN quote volume. Rule-based tier A
     membership, recomputed each run.

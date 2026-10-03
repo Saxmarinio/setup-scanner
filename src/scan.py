@@ -5,13 +5,13 @@
   python src/scan.py --tier B     # rest of crypto, 1H scan + 4H/1D confirm
   python src/scan.py --tier C     # equities/ETFs, 1D
 """
-import argparse, os, sys, time, traceback
+import argparse, json, os, sys, time, traceback
 import numpy as np, pandas as pd, yaml
 
 sys.path.insert(0, os.path.dirname(__file__))
 from detectors.compression import compression_noodle
 from detectors import l1, dss, noodle, trend as trendmod, bottoming
-from fetch import crypto, store, equity
+from fetch import crypto, store, equity, pionex
 import rank as ranker
 import render as renderer
 
@@ -116,6 +116,73 @@ def trend_multi(sym, kind, cfg, tfs=None):
     return out
 
 
+_VOL_CACHE = os.path.join("data", "median_volume.json")
+
+
+def _cached_volumes(syms, window, floor, max_age_h=12):
+    """A 30d median moves slowly; recomputing it for every tier would cost
+    ~290 daily fetches three times a cycle for the same answer."""
+    if os.path.exists(_VOL_CACHE):
+        age_h = (time.time() - os.path.getmtime(_VOL_CACHE)) / 3600.0
+        if age_h < max_age_h:
+            try:
+                d = json.load(open(_VOL_CACHE, encoding="utf-8"))
+                if set(d.get("symbols", [])) >= set(syms):
+                    return {k: float(v) for k, v in d["volumes"].items()}
+            except Exception:
+                pass
+    vols = crypto.median_quote_volume(syms, window, floor)
+    try:
+        os.makedirs(os.path.dirname(_VOL_CACHE), exist_ok=True)
+        json.dump({"symbols": sorted(syms), "volumes": vols,
+                   "window": window,
+                   "fetched": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())},
+                  open(_VOL_CACHE, "w", encoding="utf-8"))
+    except Exception:
+        pass
+    return vols
+
+
+def scanner_universe(cfg, notes=None):
+    """The crypto universe the SCANNER works on, after housekeeping.
+
+    Deliberately scoped to the scanner. The spaghetti boards call
+    crypto.universe() directly and keep the full list: a sector composite wants
+    breadth, and dropping the thin half of a 7-member basket would distort the
+    very thing it measures. A setup scan wants the opposite - something you can
+    actually trade, in size, without the fill being the trade.
+
+    Two filters, both measured rather than guessed:
+      - listed on Pionex (either host), so a flagged setup is one you can take
+      - 30d MEDIAN daily quote volume above a floor, so a single pump day
+        cannot sneak a dead coin past it
+    """
+    ucfg = cfg["universe"]["crypto"]
+    allsyms = crypto.universe(ucfg["quote"])
+    f = ucfg.get("filters") or {}
+    syms, n0 = allsyms, len(allsyms)
+
+    if f.get("pionex_only"):
+        try:
+            px = pionex.bases()
+            quote = ucfg["quote"]
+            syms = [s for s in syms if s[:-len(quote)].upper() in px]
+            if notes is not None:
+                notes.append(f"universe: {n0 - len(syms)} of {n0} not listed on Pionex")
+        except Exception as e:
+            print("pionex filter skipped: %s" % e)
+
+    floor = float(f.get("min_median_quote_volume") or 0)
+    if floor > 0:
+        before = len(syms)
+        vols = _cached_volumes(syms, ucfg.get("volume_window_days", 30), floor)
+        syms = [s for s in syms if vols.get(s, 0.0) >= floor]
+        if notes is not None:
+            notes.append(f"universe: {before - len(syms)} below "
+                         f"${floor:,.0f}/day median volume")
+    print("scanner universe: %d -> %d symbols" % (n0, len(syms)))
+    return syms
+
 def _signals_universe(cfg):
     """Every watched symbol as (fetch_symbol, kind, tv_symbol, timeframes).
     Alt coins get the 12H (they're more volatile); majors, stocks and
@@ -126,7 +193,7 @@ def _signals_universe(cfg):
     alt_tf = scfg.get("alt_tf", "12h")
     wk = scfg.get("weekly_tf", "1w")
 
-    allc = crypto.universe(quote)
+    allc = scanner_universe(cfg)
     majors = set(crypto.top_by_volume(allc, ucfg["top_n_by_volume"],
                                       ucfg["volume_window_days"]))
     u = [(s, "crypto", "BINANCE:" + s,
@@ -236,7 +303,7 @@ def main():
         kind = "equity"
         tvpfx = ""
     else:
-        allsyms = crypto.universe(cfg["universe"]["crypto"]["quote"])
+        allsyms = scanner_universe(cfg, notes)
         added, removed = crypto.diff_universe(allsyms)
         if added:
             notes.append(f"universe: {len(added)} new listings ({', '.join(added[:8])})")
