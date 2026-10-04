@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-04 14:12 UTC",
+ "generated": "2026-10-04 19:44 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
@@ -7,8 +7,8 @@
     "symbol": "SAGAUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 0.02233,
     "tv_symbol": "BINANCE:SAGAUSDT",
@@ -37,8 +37,8 @@
     "symbol": "IOUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.1495,
     "tv_symbol": "BINANCE:IOUSDT",
@@ -67,8 +67,8 @@
     "symbol": "LDOUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 0.425,
     "tv_symbol": "BINANCE:LDOUSDT",
@@ -100,8 +100,8 @@
     "symbol": "ADAUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.2369,
     "tv_symbol": "BINANCE:ADAUSDT",
@@ -122,7 +122,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "up",
@@ -133,8 +133,8 @@
     "symbol": "ATOMUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 1.61,
     "tv_symbol": "BINANCE:ATOMUSDT",
@@ -166,8 +166,8 @@
     "symbol": "BBUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.00883,
     "tv_symbol": "BINANCE:BBUSDT",
@@ -196,8 +196,8 @@
     "symbol": "BCHUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 296.1,
     "tv_symbol": "BINANCE:BCHUSDT",
@@ -229,8 +229,8 @@
     "symbol": "CAKEUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 2.453,
     "tv_symbol": "BINANCE:CAKEUSDT",
@@ -277,7 +277,7 @@
     "tf": "1d",
     "tv_symbol": "BINANCE:BICOUSDT",
     "detail": "dd 75.8%, vol x10.43, res 0.83ATR, 100EMA 0.14ATR, targets +21.4%/+64.2%",
-    "score": 0.675,
+    "score": 0.503,
     "dss": {
      "1d": [
       0.741,
@@ -302,6 +302,43 @@
    },
    {
     "state": "basing",
+    "drawdown_pct": 62.9,
+    "vol_ratio": 4.77,
+    "base_bars": 180,
+    "gap_100_atr": 0.95,
+    "gap_res_atr": 0.48,
+    "target_200_pct": 65.3,
+    "target_300_pct": 129.7,
+    "resistance": 0.0698,
+    "invalidation": 0.06428622,
+    "close": 0.0669,
+    "atr": 0.00598957,
+    "symbol": "LAUSDT",
+    "tf": "1d",
+    "tv_symbol": "BINANCE:LAUSDT",
+    "detail": "dd 62.9%, vol x4.77, res 0.48ATR, 100EMA 0.95ATR, targets +65.3%/+129.7%",
+    "score": 0.438,
+    "dss": {
+     "1d": [
+      0.19,
+      0.399
+     ],
+     "1w": [
+      0.873,
+      0.655
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": null
+    }
+   },
+   {
+    "state": "basing",
     "drawdown_pct": 47.4,
     "vol_ratio": 9.76,
     "base_bars": 180,
@@ -317,7 +354,7 @@
     "tf": "1d",
     "tv_symbol": "BINANCE:COTIUSDT",
     "detail": "dd 47.4%, vol x9.76, res 0.23ATR, 100EMA -0.21ATR, targets +5.5%/+34.4%",
-    "score": 0.175,
+    "score": 0.395,
     "dss": {
      "1d": [
       0.082,
