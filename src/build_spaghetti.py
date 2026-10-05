@@ -24,7 +24,12 @@ from fetch import crypto, equity
 OUT = os.path.join("docs", "spaghetti")
 CACHE = os.path.join("data", "spaghetti")
 KEEP = 1000
-STALE_MIN = {"15m": 10, "1h": 45, "4h": 180, "1d": 720}   # refetch older than this
+# Generous on purpose. A full crypto build takes ~30 minutes, so a 10-minute
+# staleness window meant a restart re-fetched everything it had just fetched
+# and could never finish. The boards rebuild every 4h anyway - a 45-minute-old
+# 15m bar is not the problem a stalled build is.
+STALE_MIN = {"15m": 45, "1h": 120, "4h": 240, "1d": 720}
+_RUN_START = time.time()
 
 
 # ---------------------------------------------------------------- data access
@@ -35,8 +40,11 @@ def bars(symbol, tf, kind):
     os.makedirs(d, exist_ok=True)
     p = os.path.join(d, "%s.csv.gz" % symbol.replace("/", "_"))
     if os.path.exists(p):
-        age_min = (time.time() - os.path.getmtime(p)) / 60.0
-        if age_min < STALE_MIN.get(tf, 60):
+        mt = os.path.getmtime(p)
+        age_min = (time.time() - mt) / 60.0
+        # Anything this run already wrote is fresh by definition, whatever the
+        # clock says - one build must never fetch the same symbol twice.
+        if age_min < STALE_MIN.get(tf, 60) or mt >= _RUN_START:
             try:
                 return pd.read_csv(p, parse_dates=["datetime"])
             except Exception:
@@ -164,6 +172,9 @@ def main():
     ap.add_argument("--crypto-only", action="store_true")
     ap.add_argument("--tradfi-only", action="store_true")
     ap.add_argument("--limit", type=int, default=0, help="cap members per group")
+    # A full crypto build exceeds a 30-minute budget on a cold cache. Chunking
+    # by board keeps every invocation finishable, and the index merges.
+    ap.add_argument("--boards", default="", help="comma-separated board id prefixes")
     a = ap.parse_args()
 
     cfg = sectormod.load_cfg()
@@ -178,8 +189,19 @@ def main():
         except Exception:
             pass
     index["built"] = time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())
-    keep_kind = "tradfi" if a.crypto_only else ("crypto" if a.tradfi_only else None)
-    index["boards"] = [b for b in index.get("boards", []) if b.get("kind") == keep_kind]
+    if a.crypto_only:
+        keep = lambda b: b.get("kind") == "tradfi"
+    elif a.tradfi_only:
+        keep = lambda b: b.get("kind") == "crypto"
+    else:
+        keep = lambda b: False
+    prior = [b for b in index.get("boards", []) if keep(b)]
+    # A partial run must not delete the boards it simply did not touch.
+    if a.boards:
+        want = [x.strip() for x in a.boards.split(",") if x.strip()]
+        prior += [b for b in index.get("boards", [])
+                  if not keep(b) and not any(b["id"].startswith(w) for w in want)]
+    index["boards"] = prior
 
     if not a.tradfi_only:
         uni = {s[:-4] for s in crypto.universe() if s.endswith("USDT")}
@@ -209,6 +231,9 @@ def main():
                 boards.append(("crypto-chain-" + ch.lower(), "%s by sector" % ch, trim(g)))
         boards.append(("crypto-chain", "Crypto home chains", trim(m["chains"])))
 
+        want = [x.strip() for x in a.boards.split(",") if x.strip()]
+        if want:
+            boards = [b for b in boards if any(b[0].startswith(w) for w in want)]
         for bid, title, groups in boards:
             wins = {}
             for wname, w in cfg["windows"]["crypto"].items():

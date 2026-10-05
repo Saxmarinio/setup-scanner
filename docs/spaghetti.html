@@ -26,15 +26,20 @@ section{margin-bottom:26px}
 .seg button{background:var(--bg);color:var(--dim);border:0;padding:5px 10px;font:inherit;font-size:12px;cursor:pointer}
 .seg button.on{background:#2a3142;color:#fff;font-weight:600}
 .seg button:focus-visible{outline:2px solid #2196f3;outline-offset:-2px}
-.row{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
-.chartbox{flex:1;min-width:440px}
+.row{display:block}
+.chartbox{width:100%}
 svg.chart{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--line);border-radius:4px}
 svg.chart .pill{cursor:pointer}
 svg.chart .pill:hover rect{stroke:#fff;stroke-width:1.2}
-.side{width:500px;flex:none;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:12px 14px;display:flex;flex-direction:column;max-height:470px}
+.side{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:12px 14px;margin-top:10px;display:none;max-height:330px;flex-direction:column}
+.side.open{display:flex}
+/* The table only appears once a line is picked. Reserving half the page for an
+   empty panel squeezed the chart into a third of the width and stacked the
+   labels into an unreadable pile - the chart is the product here. */
 /* A 48-member basket would otherwise make the section a thousand pixels tall and
    push the whole TradFi chart off the screen. The table scrolls instead. */
 .side .scroll{overflow:auto;flex:1;min-height:0}
+.side h3{font-size:13px}
 .side h3{font-size:13px;margin:0 0 2px;font-weight:600}
 .side .meta{font-size:11px;color:var(--dim);margin-bottom:9px}
 .side .hint{color:var(--dim);font-size:12px}
@@ -70,7 +75,7 @@ Click a label on the right of a chart to see what is inside that line.</div>
   </div>
   <div class=row>
     <div class=chartbox>
-      <svg class=chart id=crypto-chart viewBox="0 0 980 470" preserveAspectRatio="xMidYMid meet"></svg>
+      <svg class=chart id=crypto-chart viewBox="0 0 1680 620" preserveAspectRatio="xMidYMid meet"></svg>
       <div class=legend id=crypto-legend></div>
       <div class=note id=crypto-note></div>
     </div>
@@ -88,7 +93,7 @@ Click a label on the right of a chart to see what is inside that line.</div>
   </div>
   <div class=row>
     <div class=chartbox>
-      <svg class=chart id=tradfi-chart viewBox="0 0 980 470" preserveAspectRatio="xMidYMid meet"></svg>
+      <svg class=chart id=tradfi-chart viewBox="0 0 1680 620" preserveAspectRatio="xMidYMid meet"></svg>
       <div class=legend id=tradfi-legend></div>
       <div class=note id=tradfi-note></div>
     </div>
@@ -97,13 +102,13 @@ Click a label on the right of a chart to see what is inside that line.</div>
 </section>
 
 <script>
-const IDX = {"boards": [{"id": "crypto-sector", "title": "Crypto sectors", "kind": "crypto", "windows": ["15m", "1H", "4H", "D", "W", "M", "YTD"]}, {"id": "crypto-chain-avalanche", "title": "Avalanche by sector", "kind": "crypto", "windows": ["15m", "1H", "4H", "D", "W", "M", "YTD"]}, {"id": "crypto-chain-bnb", "title": "BNB by sector", "kind": "crypto", "windows": ["15m", "1H", "4H", "D", "W", "M", "YTD"]}, {"id": "crypto-chain-base", "title": "Base by sector", "kind": "crypto", "windows": ["15m", "1H", "4H", "D", "W", "M", "YTD"]}, {"id": "crypto-chain-solana", "title": "Solana by sector", "kind": "crypto", "windows": ["15m", "1H", "4H", "D", "W", "M", "YTD"]}, {"id": "crypto-chain-sui", "title": "Sui by sector", "kind": "crypto", "windows": ["15m", "1H", "4H", "D", "W", "M", "YTD"]}, {"id": "crypto-chain", "title": "Crypto home chains", "kind": "crypto", "windows": ["15m", "1H", "4H", "D", "W", "M", "YTD"]}, {"id": "tradfi-equity-sectors", "title": "Equity sectors", "kind": "tradfi", "windows": ["D", "W", "M", "YTD"]}, {"id": "tradfi-commodities", "title": "Commodities", "kind": "tradfi", "windows": ["D", "W", "M", "YTD"]}, {"id": "tradfi-rates-credit", "title": "Rates & credit", "kind": "tradfi", "windows": ["D", "W", "M", "YTD"]}, {"id": "tradfi-cross-asset", "title": "Cross-asset", "kind": "tradfi", "windows": ["D", "W", "M", "YTD"]}], "built": "2026-10-05 05:58 UTC"};
-const SPANS = {"15m": "15m bars, last 24 hours", "1H": "1h bars, last 7 days", "4H": "4h bars, last 30 days", "D": "1d bars, last 90 days", "W": "1d bars, last 1 years", "M": "1d bars, last 3 years", "YTD": "1d bars, year to date"};
+const IDX = {"boards": [{"id": "tradfi-equity-sectors", "title": "Equity sectors", "kind": "tradfi", "windows": ["30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "tradfi-commodities", "title": "Commodities", "kind": "tradfi", "windows": ["30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "tradfi-rates-credit", "title": "Rates & credit", "kind": "tradfi", "windows": ["30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "tradfi-cross-asset", "title": "Cross-asset", "kind": "tradfi", "windows": ["30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-sector", "title": "Crypto sectors", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-avalanche", "title": "Avalanche by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-bnb", "title": "BNB by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-base", "title": "Base by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-solana", "title": "Solana by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-sui", "title": "Sui by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain", "title": "Crypto home chains", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}], "built": "2026-10-05 07:15 UTC"};
+const SPANS = {"24H": "15m bars, last 24 hours", "7D": "1h bars, last 7 days", "30D": "1d bars, last 30 days", "90D": "1d bars, last 90 days", "1Y": "1d bars, last 1 years", "3Y": "1d bars, last 3 years", "YTD": "1d bars, year to date"};
 const COLORS = ["#b388ff","#9e9e9e","#ef5350","#26a69a","#ffb74d","#4dd0e1","#f06292",
                 "#8bc34a","#7986cb","#ff7043","#4db6ac","#ba68c8","#aed581","#ffd54f"];
 const COLS=[["sym","Symbol"],["price","Price"],["m15","15m"],["h4","4H"],["d1","Day"],
             ["d1abs","Day Δ"],["pct","Window"],["contrib","Contrib"]];
-const W=980,H=470,ML=52,MR=126,MT=14,MB=34;
+const W=1680,H=620,ML=58,MR=150,MT=16,MB=36;
 const $ = s => document.querySelector(s);
 function niceStep(r){ if(!(r>0)) return 1; const p=Math.pow(10,Math.floor(Math.log10(r))), x=r/p;
   return (x<=1?1:x<=2?2:x<=5?5:10)*p; }
@@ -129,7 +134,8 @@ function makeSection(kind){
   }
   function tlabel(sec){
     const d=new Date(sec*1000);
-    return (S.win==="15m"||S.win==="1H")
+    // Intraday windows want clock times; anything a week or longer wants dates.
+    return (S.win==="24H"||S.win==="7D")
       ? d.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})
       : d.toLocaleDateString([],{day:"numeric",month:"short"});
   }
@@ -166,7 +172,7 @@ function makeSection(kind){
         d+=(pen?"L":"M")+X(i).toFixed(1)+" "+Y(v).toFixed(1)+" "; pen=true; });
       const sel=S.pick===s.k, base=s.k==="__baseline__";
       g+=`<path d="${d}" fill="none" stroke="${s.raw}" stroke-width="${sel?2.9:(base?2.1:1.4)}"
-          opacity="${S.pick&&!sel?0.28:1}" stroke-linejoin="round"/>`;
+          opacity="${S.pick&&!sel?0.72:1}" stroke-linejoin="round"/>`;
     }
     // Right-edge labels are the hit target, not the lines: picking a 1.4px
     // stroke out of a dozen overlapping ones with a mouse is miserable.
@@ -177,15 +183,15 @@ function makeSection(kind){
     }).filter(e=>e.v!==null).sort((a,b)=>b.v-a.v);
     let prev=-1e9;
     for(const e of ends){
-      let y=Y(e.v); if(y-prev<14) y=prev+14; prev=y;
+      let y=Y(e.v); if(y-prev<17) y=prev+17; prev=y;
       const txt=`${e.label} ${e.v>=0?"+":""}${e.v.toFixed(2)}%`;
-      const w=Math.min(MR-6, txt.length*5.5+10);
+      const w=Math.min(MR-6, txt.length*6.0+11);
       const dim=S.pick&&S.pick!==e.k;
       g+=`<g class="pill" data-k="${e.k}"><title>Show the assets inside ${e.label}</title>`
-       + `<rect x="${W-MR+4}" y="${(y-8).toFixed(1)}" width="${w}" height="16" rx="3"
-            fill="${e.color}" opacity="${dim?0.3:0.93}"/>`
-       + `<text x="${W-MR+9}" y="${(y+3.5).toFixed(1)}" font-size="10.5" fill="#10131a"
-            font-weight="600" opacity="${dim?0.45:1}">${txt}</text></g>`;
+       + `<rect x="${W-MR+4}" y="${(y-8).toFixed(1)}" width="${w}" height="17" rx="3"
+            fill="${e.color}" opacity="${dim?0.6:0.95}"/>`
+       + `<text x="${W-MR+9}" y="${(y+3.5).toFixed(1)}" font-size="11.5" fill="#10131a"
+            font-weight="600" opacity="${dim?0.75:1}">${txt}</text></g>`;
     }
     if(S.hover!==null&&S.hover>=0&&S.hover<n){
       const x=X(S.hover).toFixed(1);
@@ -217,13 +223,8 @@ function makeSection(kind){
 
   function panel(){
     const e=el("panel"), c=cur();
-    if(!S.pick || !c.members[S.pick]){
-      e.innerHTML="<h3>Members</h3><div class=meta>Nothing selected.</div>"
-        + "<div class=hint><b>Contrib</b> is each member's window move divided by the "
-        + "member count &mdash; in an equal-weight basket that is literally how many "
-        + "points it put into the line, so it answers which asset is responsible.</div>";
-      return;
-    }
+    if(!S.pick || !c.members[S.pick]){ e.className="side"; e.innerHTML=""; return; }
+    e.className="side open";
     const rows=[...c.members[S.pick]], k=S.sort;
     rows.sort((a,b)=> k==="sym" ? String(a.sym).localeCompare(b.sym)
                                 : ((b[k]??-1e9)-(a[k]??-1e9)));
@@ -245,6 +246,16 @@ function makeSection(kind){
     e.querySelectorAll("th").forEach(th=>th.onclick=()=>{ S.sort=th.dataset.k; panel(); });
   }
 
+  function leader(){
+    const L=cur().lines;
+    let best=null, bv=-Infinity;
+    for(const k of names()){
+      const p=L[k].path;
+      for(let i=p.length-1;i>=0;i--)
+        if(p[i]!==null&&p[i]!==undefined){ if(p[i]>bv){bv=p[i];best=k;} break; }
+    }
+    return best;
+  }
   function render(){
     el("meta").innerHTML = `${SPANS[S.win]||S.win} &middot; baseline <b>${cur().baseline}</b>`;
     draw(); panel();
@@ -254,7 +265,7 @@ function makeSection(kind){
     for(const w of Object.keys(S.data)){
       const b=document.createElement("button");
       b.textContent=w; b.className = w===S.win?"on":""; b.title=SPANS[w]||w;
-      b.onclick=()=>{ S.win=w; S.pick=null; windows(); render(); };
+      b.onclick=()=>{ S.win=w; S.pick=leader(); windows(); render(); };
       e.appendChild(b);
     }
   }
@@ -269,9 +280,20 @@ function makeSection(kind){
   }
   async function load(id){
     S.board=id; S.pick=null; S.hidden.clear();
-    S.data = await (await fetch("spaghetti/"+id+".json")).json();
+    // Cache-bust on the build stamp. Without it a browser keeps serving the
+    // previous build's JSON after a rebuild - which is exactly how a "the page
+    // did not change" bug happens on GitHub Pages.
+    const v = encodeURIComponent(IDX.built || "");
+    S.data = await (await fetch("spaghetti/"+id+".json?v="+v)).json();
     const ws=Object.keys(S.data);
-    if(!ws.includes(S.win)) S.win = ws.includes("D") ? "D" : ws[0];
+    // Default to the SHORTEST window. The board exists to answer "what is
+    // leading right now"; opening on a 90-day view made the numbers look
+    // inexplicably large for an intraday question.
+    if(!ws.includes(S.win)) S.win = ws[0];
+    // Open on the leading line's members, the way the reference board does:
+    // "AI is leading, and AKT and FET are leading AI" is one glance, not two
+    // clicks. The panel sits below the chart so this costs no chart width.
+    S.pick = leader();
     tabs(); windows(); render();
   }
   el("mode").querySelectorAll("button").forEach(b=>b.onclick=()=>{

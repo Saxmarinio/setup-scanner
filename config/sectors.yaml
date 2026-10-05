@@ -124,16 +124,20 @@ tradfi:
 # over the span - a year of 15m bars is 35,000 points of noise, and a day of
 # daily bars is one.
 windows:
+  # Named by the SPAN, not the bar interval. "D" meant "90 days of daily bars"
+  # and read as "today" - the percentages looked inexplicably large because the
+  # window was a quarter, not a session.
   crypto:
-    "15m": {tf: "15m", span_days: 1}
-    "1H":  {tf: "1h",  span_days: 7}
-    "4H":  {tf: "4h",  span_days: 30}
-    "D":   {tf: "1d",  span_days: 90}
-    "W":   {tf: "1d",  span_days: 365}
-    "M":   {tf: "1d",  span_days: 1095}
-    "YTD": {tf: "1d",  span_days: 0}      # 0 = since 1 January
+    "24H": {tf: "15m", span_days: 1}
+    "7D":  {tf: "1h",  span_days: 7}
+    "30D": {tf: "4h",  span_days: 30}
+    "90D": {tf: "1d",  span_days: 90}
+    "1Y":  {tf: "1d",  span_days: 365}
+    "3Y":  {tf: "1d",  span_days: 1095}
+    "YTD": {tf: "1d",  span_days: 0}
   tradfi:
-    "D":   {tf: "1d",  span_days: 90}
-    "W":   {tf: "1d",  span_days: 365}
-    "M":   {tf: "1d",  span_days: 1095}
+    "30D": {tf: "1d",  span_days: 30}
+    "90D": {tf: "1d",  span_days: 90}
+    "1Y":  {tf: "1d",  span_days: 365}
+    "3Y":  {tf: "1d",  span_days: 1095}
     "YTD": {tf: "1d",  span_days: 0}

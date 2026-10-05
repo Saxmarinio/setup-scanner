@@ -36,7 +36,15 @@ jobs:
         run: python src/fetch/categories.py
         continue-on-error: true   # a rate-limited refresh must not block the build
 
-      - run: python src/build_spaghetti.py
+      # Chunked. A single full crypto build exceeds a 30-minute budget on a
+      # cold cache, and a job that only completes from a warm cache fails the
+      # first time it runs on a fresh runner.
+      - run: python src/build_spaghetti.py --tradfi-only
+        timeout-minutes: 25
+      - run: python src/build_spaghetti.py --crypto-only --boards crypto-sector
+        timeout-minutes: 30
+      - run: python src/build_spaghetti.py --crypto-only --boards crypto-chain
+        timeout-minutes: 30
       - run: python src/spaghetti_page.py
       - run: python src/build_cycles.py
       - run: python src/build_home.py
