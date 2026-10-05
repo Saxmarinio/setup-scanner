@@ -119,20 +119,6 @@
    ]
   },
   {
-   "id": "crypto-chain-sui",
-   "title": "Sui by sector",
-   "kind": "crypto",
-   "windows": [
-    "24H",
-    "7D",
-    "30D",
-    "90D",
-    "1Y",
-    "3Y",
-    "YTD"
-   ]
-  },
-  {
    "id": "crypto-chain",
    "title": "Crypto home chains",
    "kind": "crypto",
@@ -147,5 +133,5 @@
    ]
   }
  ],
- "built": "2026-10-05 08:57 UTC"
+ "built": "2026-10-05 13:03 UTC"
 }
