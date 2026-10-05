@@ -19,7 +19,7 @@ import numpy as np, pandas as pd, yaml
 
 sys.path.insert(0, os.path.dirname(__file__))
 import sectors as sectormod
-from fetch import crypto, equity
+from fetch import crypto, equity, pionex
 
 OUT = os.path.join("docs", "spaghetti")
 CACHE = os.path.join("data", "spaghetti")
@@ -129,7 +129,7 @@ def member_stats(members, kind, cache):
     return out
 
 
-def board(groups, baseline, tf, span_days, kind, cache, stats_cache):
+def board(groups, baseline, tf, span_days, kind, cache, stats_cache, tradable=None):
     """One board, one window: a composite line per group, plus the baseline."""
     lines, members_out = {}, {}
     for name, mem in groups.items():
@@ -144,7 +144,13 @@ def board(groups, baseline, tf, span_days, kind, cache, stats_cache):
         rows = []
         for c in present:
             st = stats_cache.get(c, {})
-            rows.append({"sym": c, "pct": None if end[c] is None else round(end[c], 2),
+            row = {"sym": c, "pct": None if end[c] is None else round(end[c], 2)}
+            # Marked, never excluded: the composite needs every member to stay
+            # honest, but a setup you cannot buy is worth knowing about at a
+            # glance rather than after opening the exchange.
+            if tradable is not None:
+                row["px"] = c in tradable
+            rows.append({**row,
                          # In an equal-weight basket a member moves the line by
                          # its own move divided by the member count. This is the
                          # column that answers "who is responsible".
@@ -208,6 +214,11 @@ def main():
         m = sectormod.build(uni, cfg)
         cc = cfg["crypto"]
         cache = {}
+        try:
+            tradable = pionex.bases()
+        except Exception as e:
+            print("  pionex unavailable, tradability not marked: %s" % e)
+            tradable = None
         print("crypto universe %d, %d sectors, %d chains"
               % (len(uni), len(m["sectors"]), len(m["chains"])), flush=True)
 
@@ -238,7 +249,7 @@ def main():
             wins = {}
             for wname, w in cfg["windows"]["crypto"].items():
                 r = board(groups, cc["baseline"], w["tf"], w["span_days"],
-                          "crypto", cache, stats)
+                          "crypto", cache, stats, tradable)
                 if r:
                     wins[wname] = r
                 print("  %-26s %-4s %s" % (bid, wname, "ok" if r else "no data"), flush=True)

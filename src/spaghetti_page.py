@@ -69,6 +69,9 @@ th:first-child{text-align:left;padding-left:0}
 th.sorted{color:#d1d4dc}
 td{text-align:right;padding:4px 0 4px 6px;border-bottom:1px solid #20242e;white-space:nowrap;font-variant-numeric:tabular-nums}
 td:first-child{text-align:left;padding-left:0;font-weight:600}
+/* Parenthesised and muted = listed on Binance but not tradable on Pionex. */
+td.nopx{color:var(--dim);font-weight:500;font-style:italic}
+.pxnote{font-size:11px;color:var(--dim);margin-top:7px}
 tr:hover td{background:#20242e}
 .up{color:#26a69a}.dn{color:#ef5350}
 .legend{display:flex;flex-wrap:wrap;gap:3px 9px;margin-top:8px}
@@ -239,6 +242,15 @@ function makeSection(kind){
     if(c.lines.__baseline__) mk("__baseline__", c.baseline+" (baseline)", "#eceff4");
   }
 
+  // How much of a basket you can actually act on. A sector that is leading on
+  // names you cannot buy is a different piece of information from one that is
+  // leading on names you can.
+  function pxmeta(rows){
+    const known = rows.filter(r=>r.px!==undefined);
+    if(!known.length) return "";
+    const n = known.filter(r=>r.px).length;
+    return ` &middot; <b>${n}/${known.length}</b> on Pionex`;
+  }
   function panel(){
     const e=el("panel"), c=cur();
     if(!S.pick || !c.members[S.pick]){ e.className="side"; e.innerHTML=""; return; }
@@ -252,15 +264,18 @@ function makeSection(kind){
       : (Math.abs(v)>=1000? v.toLocaleString(undefined,{maximumFractionDigits:0})
         : Math.abs(v)>=1? v.toFixed(3) : v.toPrecision(4));
     e.innerHTML=`<h3>${S.pick}</h3>
-      <div class=meta>${rows.length} members &middot; equal weight &middot; ${SPANS[S.win]||S.win}</div>
+      <div class=meta>${rows.length} members &middot; equal weight &middot; ${SPANS[S.win]||S.win}${pxmeta(rows)}</div>
       <div class=scroll><table><thead><tr>`
       + COLS.map(([k2,l])=>`<th data-k="${k2}" class="${k===k2?'sorted':''}">${l}</th>`).join("")
       + `</tr></thead><tbody>`
-      + rows.map(r=>`<tr><td>${r.sym}</td><td>${px(r.price)}</td><td>${f(r.m15)}</td>
+      + rows.map(r=>`<tr><td class="${r.px===false?'nopx':''}" ${r.px===false?'title="Not listed on Pionex"':''}>${r.px===false?"("+r.sym+")":r.sym}</td><td>${px(r.price)}</td><td>${f(r.m15)}</td>
           <td>${f(r.h4)}</td><td>${f(r.d1)}</td>
           <td>${r.d1abs===null||r.d1abs===undefined?"&ndash;":px(r.d1abs)}</td>
           <td>${f(r.pct)}</td><td>${f(r.contrib,"pp")}</td></tr>`).join("")
-      + `</tbody></table></div>`;
+      + `</tbody></table></div>`
+      + (rows.some(r=>r.px===false)
+          ? "<div class=pxnote>(Parenthesised) = listed on Binance but not tradable on Pionex. "
+            + "Kept in the basket so the composite stays honest.</div>" : "");
     e.querySelectorAll("th").forEach(th=>th.onclick=()=>{ S.sort=th.dataset.k; panel(); });
   }
 

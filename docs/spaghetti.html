@@ -51,6 +51,9 @@ th:first-child{text-align:left;padding-left:0}
 th.sorted{color:#d1d4dc}
 td{text-align:right;padding:4px 0 4px 6px;border-bottom:1px solid #20242e;white-space:nowrap;font-variant-numeric:tabular-nums}
 td:first-child{text-align:left;padding-left:0;font-weight:600}
+/* Parenthesised and muted = listed on Binance but not tradable on Pionex. */
+td.nopx{color:var(--dim);font-weight:500;font-style:italic}
+.pxnote{font-size:11px;color:var(--dim);margin-top:7px}
 tr:hover td{background:#20242e}
 .up{color:#26a69a}.dn{color:#ef5350}
 .legend{display:flex;flex-wrap:wrap;gap:3px 9px;margin-top:8px}
@@ -102,7 +105,7 @@ Click a label on the right of a chart to see what is inside that line.</div>
 </section>
 
 <script>
-const IDX = {"boards": [{"id": "tradfi-equity-sectors", "title": "Equity sectors", "kind": "tradfi", "windows": ["30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "tradfi-commodities", "title": "Commodities", "kind": "tradfi", "windows": ["30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "tradfi-rates-credit", "title": "Rates & credit", "kind": "tradfi", "windows": ["30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "tradfi-cross-asset", "title": "Cross-asset", "kind": "tradfi", "windows": ["30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-sector", "title": "Crypto sectors", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-avalanche", "title": "Avalanche by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-bnb", "title": "BNB by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-base", "title": "Base by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-solana", "title": "Solana by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-sui", "title": "Sui by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain", "title": "Crypto home chains", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}], "built": "2026-10-05 07:15 UTC"};
+const IDX = {"boards": [{"id": "tradfi-equity-sectors", "title": "Equity sectors", "kind": "tradfi", "windows": ["30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "tradfi-commodities", "title": "Commodities", "kind": "tradfi", "windows": ["30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "tradfi-rates-credit", "title": "Rates & credit", "kind": "tradfi", "windows": ["30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "tradfi-cross-asset", "title": "Cross-asset", "kind": "tradfi", "windows": ["30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-sector", "title": "Crypto sectors", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-avalanche", "title": "Avalanche by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-bnb", "title": "BNB by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-base", "title": "Base by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-solana", "title": "Solana by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain-sui", "title": "Sui by sector", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}, {"id": "crypto-chain", "title": "Crypto home chains", "kind": "crypto", "windows": ["24H", "7D", "30D", "90D", "1Y", "3Y", "YTD"]}], "built": "2026-10-05 08:57 UTC"};
 const SPANS = {"24H": "15m bars, last 24 hours", "7D": "1h bars, last 7 days", "30D": "1d bars, last 30 days", "90D": "1d bars, last 90 days", "1Y": "1d bars, last 1 years", "3Y": "1d bars, last 3 years", "YTD": "1d bars, year to date"};
 const COLORS = ["#b388ff","#9e9e9e","#ef5350","#26a69a","#ffb74d","#4dd0e1","#f06292",
                 "#8bc34a","#7986cb","#ff7043","#4db6ac","#ba68c8","#aed581","#ffd54f"];
@@ -221,6 +224,15 @@ function makeSection(kind){
     if(c.lines.__baseline__) mk("__baseline__", c.baseline+" (baseline)", "#eceff4");
   }
 
+  // How much of a basket you can actually act on. A sector that is leading on
+  // names you cannot buy is a different piece of information from one that is
+  // leading on names you can.
+  function pxmeta(rows){
+    const known = rows.filter(r=>r.px!==undefined);
+    if(!known.length) return "";
+    const n = known.filter(r=>r.px).length;
+    return ` &middot; <b>${n}/${known.length}</b> on Pionex`;
+  }
   function panel(){
     const e=el("panel"), c=cur();
     if(!S.pick || !c.members[S.pick]){ e.className="side"; e.innerHTML=""; return; }
@@ -234,15 +246,18 @@ function makeSection(kind){
       : (Math.abs(v)>=1000? v.toLocaleString(undefined,{maximumFractionDigits:0})
         : Math.abs(v)>=1? v.toFixed(3) : v.toPrecision(4));
     e.innerHTML=`<h3>${S.pick}</h3>
-      <div class=meta>${rows.length} members &middot; equal weight &middot; ${SPANS[S.win]||S.win}</div>
+      <div class=meta>${rows.length} members &middot; equal weight &middot; ${SPANS[S.win]||S.win}${pxmeta(rows)}</div>
       <div class=scroll><table><thead><tr>`
       + COLS.map(([k2,l])=>`<th data-k="${k2}" class="${k===k2?'sorted':''}">${l}</th>`).join("")
       + `</tr></thead><tbody>`
-      + rows.map(r=>`<tr><td>${r.sym}</td><td>${px(r.price)}</td><td>${f(r.m15)}</td>
+      + rows.map(r=>`<tr><td class="${r.px===false?'nopx':''}" ${r.px===false?'title="Not listed on Pionex"':''}>${r.px===false?"("+r.sym+")":r.sym}</td><td>${px(r.price)}</td><td>${f(r.m15)}</td>
           <td>${f(r.h4)}</td><td>${f(r.d1)}</td>
           <td>${r.d1abs===null||r.d1abs===undefined?"&ndash;":px(r.d1abs)}</td>
           <td>${f(r.pct)}</td><td>${f(r.contrib,"pp")}</td></tr>`).join("")
-      + `</tbody></table></div>`;
+      + `</tbody></table></div>`
+      + (rows.some(r=>r.px===false)
+          ? "<div class=pxnote>(Parenthesised) = listed on Binance but not tradable on Pionex. "
+            + "Kept in the basket so the composite stays honest.</div>" : "");
     e.querySelectorAll("th").forEach(th=>th.onclick=()=>{ S.sort=th.dataset.k; panel(); });
   }
 
