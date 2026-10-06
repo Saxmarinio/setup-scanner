@@ -1,35 +1,66 @@
 {
- "generated": "2026-10-03 00:46 UTC",
+ "generated": "2026-10-06 01:57 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "HIMS",
+    "symbol": "COHR",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 0 bars ago",
+    "detail": "roofed RSI, fired 0 bars ago",
     "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 27.309999,
-    "tv_symbol": "HIMS",
+    "invalidation": 275.790009,
+    "tv_symbol": "COHR",
     "htf_favourable": false,
     "score": 0.575,
     "dss": {
      "1d": [
-      0.846,
-      0.711
+      0.592,
+      0.567
      ],
      "1w": [
-      0.075,
-      0.239
+      0.345,
+      0.198
      ],
      "1M": [
-      0.078,
+      0.492,
+      0.695
+     ]
+    },
+    "trend": {
+     "1h": "up",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "HIMS",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 2 bars ago",
+    "bars_since": 2,
+    "margin_excess": 0.0,
+    "invalidation": 27.309999,
+    "tv_symbol": "HIMS",
+    "htf_favourable": false,
+    "score": 0.308,
+    "dss": {
+     "1d": [
+      0.846,
+      0.764
+     ],
+     "1w": [
+      0.065,
+      0.2
+     ],
+     "1M": [
+      0.08,
       0.106
      ]
     },
     "trend": {
-     "1h": "none",
+     "1h": "up",
      "1d": "none",
      "1w": "none"
     }
@@ -38,87 +69,25 @@
     "symbol": "SQQQ",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "channel %B, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 33.349998,
     "tv_symbol": "SQQQ",
     "htf_favourable": false,
-    "score": 0.495,
-    "dss": {
-     "1d": [
-      0.053,
-      0.167
-     ],
-     "1w": [
-      0.473,
-      0.499
-     ],
-     "1M": [
-      0.377,
-      0.253
-     ]
-    },
-    "trend": {
-     "1h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "NFLX",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
-    "margin_excess": 0.0,
-    "invalidation": 70.110001,
-    "tv_symbol": "NFLX",
-    "htf_favourable": false,
-    "score": 0.255,
-    "dss": {
-     "1d": [
-      0.008,
-      0.037
-     ],
-     "1w": [
-      0.711,
-      0.576
-     ],
-     "1M": [
-      0.019,
-      0.079
-     ]
-    },
-    "trend": {
-     "1h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "FLNC",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 7.01,
-    "tv_symbol": "FLNC",
-    "htf_favourable": false,
     "score": 0.175,
     "dss": {
      "1d": [
-      0.675,
-      0.424
+      0.032,
+      0.115
      ],
      "1w": [
-      0.057,
-      0.182
+      0.368,
+      0.47
      ],
      "1M": [
-      0.438,
-      0.582
+      0.354,
+      0.248
      ]
     },
     "trend": {
