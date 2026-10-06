@@ -1,19 +1,102 @@
 {
- "generated": "2026-10-06 11:22 UTC",
+ "generated": "2026-10-06 18:33 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [],
+  "compression (15m/1h/4h)": [
+   {
+    "state": "forming",
+    "expansion_atr": 4.32,
+    "consol_bars": 24,
+    "consol_start": 975,
+    "coil_end": 999,
+    "bars_since_coil": 0,
+    "res_touches": 2,
+    "channel_atr": 0.97,
+    "gap_atr": 1.31,
+    "bars_to_apex": 7.7,
+    "bars_in_state": 0,
+    "res_kind": "angled",
+    "resistance": 11.561,
+    "res_slope": -0.0054166666666668715,
+    "res_intercept": 16.972250000000205,
+    "invalidation": 11.446328,
+    "close": 11.459,
+    "atr": 0.077768,
+    "ribbon_pct": 0.97,
+    "symbol": "AVAXUSDT",
+    "tf": "15m",
+    "tv_symbol": "BINANCE:AVAXUSDT",
+    "htf_favourable": true,
+    "trend_bars": 4,
+    "detail": "angled res x2, exp 4.32ATR, ch 0.97ATR, apex 7.7, trend 4b",
+    "score": 0.5,
+    "dss": {
+     "1d": [
+      0.378,
+      0.647
+     ],
+     "1w": [
+      0.793,
+      0.557
+     ],
+     "1M": [
+      0.04,
+      0.04
+     ]
+    },
+    "trend": {
+     "15m": "up",
+     "1h": "none",
+     "4h": "none",
+     "12h": "up",
+     "1w": "none"
+    }
+   }
+  ],
   "divergence (4h)": [
+   {
+    "symbol": "VTHOUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
+    "margin_excess": 0.0,
+    "invalidation": 0.000629,
+    "tv_symbol": "BINANCE:VTHOUSDT",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.072,
+      0.136
+     ],
+     "1w": [
+      0.797,
+      0.532
+     ],
+     "1M": [
+      0.19,
+      0.061
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "up",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
    {
     "symbol": "FFUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 0.1139,
     "tv_symbol": "BINANCE:FFUSDT",
     "htf_favourable": false,
-    "score": 0.375,
+    "score": 0.175,
     "dss": {
      "1d": [
       0.005,
@@ -37,13 +120,13 @@
     "symbol": "LSKUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 0.2624,
     "tv_symbol": "BINANCE:LSKUSDT",
     "htf_favourable": false,
-    "score": 0.375,
+    "score": 0.175,
     "dss": {
      "1d": [
       0.041,
