@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-06 23:55 UTC",
+ "generated": "2026-10-07 06:07 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
@@ -7,8 +7,8 @@
     "symbol": "VTHOUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.000629,
     "tv_symbol": "BINANCE:VTHOUSDT",
@@ -16,8 +16,8 @@
     "score": 0.375,
     "dss": {
      "1d": [
-      0.072,
-      0.136
+      0.106,
+      0.13
      ],
      "1w": [
       0.797,
@@ -30,7 +30,7 @@
     },
     "trend": {
      "15m": "none",
-     "1h": "up",
+     "1h": "none",
      "4h": "none",
      "12h": "none",
      "1w": "none"
@@ -40,26 +40,26 @@
   "bottoming (1d)": [
    {
     "state": "compressing",
-    "drawdown_pct": 61.0,
-    "vol_ratio": 4.85,
+    "drawdown_pct": 61.3,
+    "vol_ratio": 4.55,
     "base_bars": 180,
-    "gap_100_atr": 0.36,
-    "gap_res_atr": 0.54,
-    "target_200_pct": 55.9,
-    "target_300_pct": 116.7,
-    "resistance": 0.0735,
-    "invalidation": 0.06460336,
-    "close": 0.0704,
-    "atr": 0.00573533,
+    "gap_100_atr": 0.73,
+    "gap_res_atr": 0.27,
+    "target_200_pct": 60.1,
+    "target_300_pct": 122.6,
+    "resistance": 0.0698,
+    "invalidation": 0.06472029,
+    "close": 0.0683,
+    "atr": 0.00559357,
     "symbol": "LAUSDT",
     "tf": "1d",
     "tv_symbol": "BINANCE:LAUSDT",
-    "detail": "dd 61.0%, vol x4.85, res 0.54ATR, 100EMA 0.36ATR, targets +55.9%/+116.7%",
-    "score": 0.768,
+    "detail": "dd 61.3%, vol x4.55, res 0.27ATR, 100EMA 0.73ATR, targets +60.1%/+122.6%",
+    "score": 0.785,
     "dss": {
      "1d": [
-      0.122,
-      0.294
+      0.107,
+      0.252
      ],
      "1w": [
       0.901,
@@ -71,32 +71,32 @@
      "15m": "none",
      "1h": "none",
      "4h": "none",
-     "12h": "up",
+     "12h": "none",
      "1w": null
     }
    },
    {
     "state": "basing",
-    "drawdown_pct": 76.4,
-    "vol_ratio": 9.22,
+    "drawdown_pct": 77.0,
+    "vol_ratio": 8.97,
     "base_bars": 180,
-    "gap_100_atr": 0.35,
-    "gap_res_atr": 1.08,
-    "target_200_pct": 23.7,
-    "target_300_pct": 66.7,
+    "gap_100_atr": 0.58,
+    "gap_res_atr": 1.34,
+    "target_200_pct": 26.7,
+    "target_300_pct": 72.2,
     "resistance": 0.02378,
-    "invalidation": 0.02057324,
-    "close": 0.02125,
-    "atr": 0.00235132,
+    "invalidation": 0.02055823,
+    "close": 0.02074,
+    "atr": 0.00226925,
     "symbol": "BICOUSDT",
     "tf": "1d",
     "tv_symbol": "BINANCE:BICOUSDT",
-    "detail": "dd 76.4%, vol x9.22, res 1.08ATR, 100EMA 0.35ATR, targets +23.7%/+66.7%",
-    "score": 0.533,
+    "detail": "dd 77.0%, vol x8.97, res 1.34ATR, 100EMA 0.58ATR, targets +26.7%/+72.2%",
+    "score": 0.516,
     "dss": {
      "1d": [
-      0.49,
-      0.7
+      0.381,
+      0.629
      ],
      "1w": [
       0.291,
@@ -116,27 +116,64 @@
     }
    },
    {
-    "state": "basing",
-    "drawdown_pct": 46.6,
-    "vol_ratio": 9.19,
+    "state": "breakout",
+    "drawdown_pct": 56.1,
+    "vol_ratio": 1.44,
     "base_bars": 180,
-    "gap_100_atr": -0.32,
-    "gap_res_atr": 0.14,
-    "target_200_pct": 3.9,
-    "target_300_pct": 32.0,
+    "gap_100_atr": -0.36,
+    "gap_res_atr": 0.07,
+    "target_200_pct": 31.1,
+    "target_300_pct": 75.5,
+    "resistance": 3.67e-06,
+    "invalidation": 3.24e-06,
+    "close": 3.65e-06,
+    "atr": 3e-07,
+    "symbol": "BONKUSDT",
+    "tf": "1d",
+    "tv_symbol": "BINANCE:BONKUSDT",
+    "detail": "dd 56.1%, vol x1.44, res 0.07ATR, 100EMA -0.36ATR, targets +31.1%/+75.5%",
+    "score": 0.496,
+    "dss": {
+     "1d": [
+      0.55,
+      0.756
+     ],
+     "1w": [
+      0.752,
+      0.5
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "up",
+     "1w": "none"
+    }
+   },
+   {
+    "state": "basing",
+    "drawdown_pct": 49.5,
+    "vol_ratio": 9.18,
+    "base_bars": 180,
+    "gap_100_atr": 0.06,
+    "gap_res_atr": 0.53,
+    "target_200_pct": 9.7,
+    "target_300_pct": 40.0,
     "resistance": 0.01455,
-    "invalidation": 0.01403525,
-    "close": 0.01428,
-    "atr": 0.00197398,
+    "invalidation": 0.01397189,
+    "close": 0.01352,
+    "atr": 0.00193378,
     "symbol": "COTIUSDT",
     "tf": "1d",
     "tv_symbol": "BINANCE:COTIUSDT",
-    "detail": "dd 46.6%, vol x9.19, res 0.14ATR, 100EMA -0.32ATR, targets +3.9%/+32.0%",
-    "score": 0.424,
+    "detail": "dd 49.5%, vol x9.18, res 0.53ATR, 100EMA 0.06ATR, targets +9.7%/+40.0%",
+    "score": 0.402,
     "dss": {
      "1d": [
-      0.274,
-      0.124
+      0.396,
+      0.185
      ],
      "1w": [
       0.816,
@@ -156,31 +193,31 @@
     }
    },
    {
-    "state": "breakout",
-    "drawdown_pct": 53.7,
-    "vol_ratio": 1.41,
+    "state": "basing",
+    "drawdown_pct": 45.4,
+    "vol_ratio": 2.15,
     "base_bars": 180,
-    "gap_100_atr": -1.01,
-    "gap_res_atr": 1.14,
-    "target_200_pct": 24.5,
-    "target_300_pct": 66.1,
-    "resistance": 4.2e-06,
-    "invalidation": 3.22e-06,
-    "close": 3.85e-06,
-    "atr": 3.1e-07,
-    "symbol": "BONKUSDT",
+    "gap_100_atr": 0.09,
+    "gap_res_atr": 0.68,
+    "target_200_pct": 27.4,
+    "target_300_pct": 89.2,
+    "resistance": 2.124,
+    "invalidation": 1.97438521,
+    "close": 2.01,
+    "atr": 0.16746296,
+    "symbol": "TRUMPUSDT",
     "tf": "1d",
-    "tv_symbol": "BINANCE:BONKUSDT",
-    "detail": "dd 53.7%, vol x1.41, res 1.14ATR, 100EMA -1.01ATR, targets +24.5%/+66.1%",
-    "score": 0.379,
+    "tv_symbol": "BINANCE:TRUMPUSDT",
+    "detail": "dd 45.4%, vol x2.15, res 0.68ATR, 100EMA 0.09ATR, targets +27.4%/+89.2%",
+    "score": 0.299,
     "dss": {
      "1d": [
-      0.707,
-      0.815
+      0.26,
+      0.513
      ],
      "1w": [
-      0.752,
-      0.5
+      0.873,
+      0.692
      ],
      "1M": null
     },
@@ -188,7 +225,7 @@
      "15m": "none",
      "1h": "none",
      "4h": "none",
-     "12h": "up",
+     "12h": "none",
      "1w": "none"
     }
    }
