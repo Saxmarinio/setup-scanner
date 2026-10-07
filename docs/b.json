@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-07 15:39 UTC",
+ "generated": "2026-10-07 21:26 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
@@ -7,8 +7,8 @@
     "symbol": "ALLOUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 0.2536,
     "tv_symbol": "BINANCE:ALLOUSDT",
