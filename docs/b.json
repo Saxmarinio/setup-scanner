@@ -1,39 +1,36 @@
 {
- "generated": "2026-10-07 06:07 UTC",
+ "generated": "2026-10-07 15:39 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
    {
-    "symbol": "VTHOUSDT",
+    "symbol": "ALLOUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
-    "invalidation": 0.000629,
-    "tv_symbol": "BINANCE:VTHOUSDT",
+    "invalidation": 0.2536,
+    "tv_symbol": "BINANCE:ALLOUSDT",
     "htf_favourable": false,
     "score": 0.375,
     "dss": {
      "1d": [
-      0.106,
-      0.13
+      0.291,
+      0.577
      ],
      "1w": [
-      0.797,
-      0.532
+      0.159,
+      0.394
      ],
-     "1M": [
-      0.19,
-      0.061
-     ]
+     "1M": null
     },
     "trend": {
      "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
-     "1w": "none"
+     "1w": null
     }
    }
   ],
@@ -148,7 +145,7 @@
      "15m": "none",
      "1h": "none",
      "4h": "none",
-     "12h": "up",
+     "12h": "none",
      "1w": "none"
     }
    },
