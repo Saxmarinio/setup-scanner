@@ -1,27 +1,58 @@
 {
- "generated": "2026-10-06 01:57 UTC",
+ "generated": "2026-10-07 01:04 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
+    "symbol": "LE=F",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 216.100006,
+    "tv_symbol": "CME:LE1!",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.41,
+      0.545
+     ],
+     "1w": [
+      0.149,
+      0.114
+     ],
+     "1M": [
+      0.21,
+      0.375
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
     "symbol": "NG=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 2.817,
     "tv_symbol": "NYMEX:NG1!",
     "htf_favourable": false,
-    "score": 0.375,
+    "score": 0.175,
     "dss": {
      "1d": [
-      0.232,
-      0.353
+      0.207,
+      0.32
      ],
      "1w": [
-      0.31,
-      0.363
+      0.418,
+      0.375
      ],
      "1M": [
       0.135,
@@ -29,7 +60,7 @@
      ]
     },
     "trend": {
-     "1h": "none",
+     "1h": "up",
      "1d": "none",
      "1w": "none"
     }
