@@ -1,30 +1,61 @@
 {
- "generated": "2026-10-08 01:22 UTC",
+ "generated": "2026-10-09 01:30 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "COHR",
+    "symbol": "TSLA",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
+    "detail": "channel %B, fired 1 bars ago",
     "bars_since": 1,
     "margin_excess": 0.0,
-    "invalidation": 275.790009,
-    "tv_symbol": "COHR",
+    "invalidation": 345.880005,
+    "tv_symbol": "TSLA",
     "htf_favourable": false,
     "score": 0.575,
     "dss": {
      "1d": [
-      0.683,
-      0.593
+      0.574,
+      0.402
      ],
      "1w": [
-      0.345,
-      0.198
+      0.588,
+      0.422
      ],
      "1M": [
-      0.493,
+      0.299,
+      0.532
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "COHR",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
+    "margin_excess": 0.0,
+    "invalidation": 275.790009,
+    "tv_symbol": "COHR",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.754,
+      0.656
+     ],
+     "1w": [
+      0.299,
+      0.187
+     ],
+     "1M": [
+      0.492,
       0.695
      ]
     },
@@ -38,56 +69,25 @@
     "symbol": "HIMS",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "channel %B, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 27.309999,
     "tv_symbol": "HIMS",
     "htf_favourable": false,
-    "score": 0.308,
-    "dss": {
-     "1d": [
-      0.85,
-      0.783
-     ],
-     "1w": [
-      0.064,
-      0.2
-     ],
-     "1M": [
-      0.079,
-      0.106
-     ]
-    },
-    "trend": {
-     "1h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "SQQQ",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
-    "margin_excess": 0.0,
-    "invalidation": 33.349998,
-    "tv_symbol": "SQQQ",
-    "htf_favourable": false,
     "score": 0.175,
     "dss": {
      "1d": [
-      0.025,
-      0.095
+      0.627,
+      0.752
      ],
      "1w": [
-      0.368,
-      0.47
+      0.059,
+      0.199
      ],
      "1M": [
-      0.376,
-      0.253
+      0.075,
+      0.105
      ]
     },
     "trend": {
