@@ -1,32 +1,32 @@
 {
- "generated": "2026-10-09 15:24 UTC",
+ "generated": "2026-10-09 21:05 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
    {
-    "symbol": "ACEUSDT",
+    "symbol": "SAGAUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 0.1633,
-    "tv_symbol": "BINANCE:ACEUSDT",
+    "invalidation": 0.02072,
+    "tv_symbol": "BINANCE:SAGAUSDT",
     "htf_favourable": false,
     "score": 0.375,
     "dss": {
      "1d": [
-      0.19,
-      0.422
+      0.034,
+      0.131
      ],
      "1w": [
-      0.955,
-      0.865
+      0.774,
+      0.591
      ],
      "1M": null
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -218,6 +218,43 @@
      "1w": [
       0.873,
       0.692
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "state": "basing",
+    "drawdown_pct": 60.8,
+    "vol_ratio": 1.59,
+    "base_bars": 180,
+    "gap_100_atr": 0.9,
+    "gap_res_atr": 1.33,
+    "target_200_pct": 45.9,
+    "target_300_pct": 95.1,
+    "resistance": 3.67e-06,
+    "invalidation": 3.23e-06,
+    "close": 3.26e-06,
+    "atr": 3.1e-07,
+    "symbol": "BONKUSDT",
+    "tf": "1d",
+    "tv_symbol": "BINANCE:BONKUSDT",
+    "detail": "dd 60.8%, vol x1.59, res 1.33ATR, 100EMA 0.9ATR, targets +45.9%/+95.1%",
+    "score": 0.315,
+    "dss": {
+     "1d": [
+      0.332,
+      0.605
+     ],
+     "1w": [
+      0.752,
+      0.5
      ],
      "1M": null
     },
