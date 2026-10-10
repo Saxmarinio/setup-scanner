@@ -1,27 +1,58 @@
 {
- "generated": "2026-10-09 01:30 UTC",
+ "generated": "2026-10-10 01:20 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
+    "symbol": "OJ=F",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 135.100006,
+    "tv_symbol": "ICEUS:OJ1!",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.277,
+      0.454
+     ],
+     "1w": [
+      0.498,
+      0.267
+     ],
+     "1M": [
+      0.049,
+      0.034
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
     "symbol": "LE=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 216.100006,
     "tv_symbol": "CME:LE1!",
     "htf_favourable": false,
-    "score": 0.375,
+    "score": 0.175,
     "dss": {
      "1d": [
-      0.544,
-      0.546
+      0.724,
+      0.602
      ],
      "1w": [
-      0.147,
-      0.113
+      0.174,
+      0.119
      ],
      "1M": [
       0.21,
