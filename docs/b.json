@@ -1,54 +1,7 @@
 {
- "generated": "2026-10-10 20:12 UTC",
+ "generated": "2026-10-10 23:41 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [
-   {
-    "state": "forming",
-    "expansion_atr": 4.13,
-    "consol_bars": 20,
-    "consol_start": 979,
-    "coil_end": 999,
-    "bars_since_coil": 0,
-    "res_touches": 2,
-    "channel_atr": 0.67,
-    "gap_atr": 1.08,
-    "bars_to_apex": 2.6,
-    "bars_in_state": 0,
-    "res_kind": "angled",
-    "resistance": 0.017927,
-    "res_slope": -5.437500000000067e-05,
-    "res_intercept": 0.07224750000000067,
-    "invalidation": 0.017618,
-    "close": 0.01764,
-    "atr": 0.000265,
-    "ribbon_pct": 0.67,
-    "symbol": "WUSDT",
-    "tf": "15m",
-    "tv_symbol": "BINANCE:WUSDT",
-    "htf_favourable": true,
-    "trend_bars": 0,
-    "detail": "angled res x2, exp 4.13ATR, ch 0.67ATR, apex 2.6, trend 0b",
-    "score": 0.5,
-    "dss": {
-     "1d": [
-      0.287,
-      0.375
-     ],
-     "1w": [
-      0.898,
-      0.776
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "up",
-     "1h": "up",
-     "4h": "none",
-     "12h": "up",
-     "1w": "none"
-    }
-   }
-  ],
+  "compression (15m/1h/4h)": [],
   "divergence (4h)": [
    {
     "symbol": "WLFIUSDT",
@@ -103,7 +56,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -232,7 +185,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "up",
@@ -299,7 +252,7 @@
     },
     "trend": {
      "15m": "none",
-     "1h": "up",
+     "1h": "none",
      "4h": "none",
      "12h": "none",
      "1w": "none"
@@ -454,7 +407,7 @@
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
