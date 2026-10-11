@@ -1,7 +1,57 @@
 {
- "generated": "2026-10-11 20:25 UTC",
+ "generated": "2026-10-11 23:50 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [],
+  "compression (15m/1h/4h)": [
+   {
+    "state": "forming",
+    "expansion_atr": 2.66,
+    "consol_bars": 46,
+    "consol_start": 853,
+    "coil_end": 899,
+    "bars_since_coil": 0,
+    "res_touches": 3,
+    "channel_atr": 1.64,
+    "gap_atr": 1.31,
+    "bars_to_apex": 26.3,
+    "bars_in_state": 1,
+    "res_kind": "horizontal",
+    "resistance": 1.910667,
+    "res_slope": -0.0001666666666666266,
+    "res_intercept": 2.060499999999964,
+    "invalidation": 1.880244,
+    "close": 1.892,
+    "atr": 0.014206,
+    "ribbon_pct": 1.64,
+    "symbol": "DEXEUSDT",
+    "tf": "1h",
+    "tv_symbol": "BINANCE:DEXEUSDT",
+    "htf_favourable": true,
+    "trend_bars": 12,
+    "detail": "horizontal res x3, exp 2.66ATR, ch 1.64ATR, apex 26.3, trend 12b",
+    "score": 0.5,
+    "dss": {
+     "1d": [
+      0.091,
+      0.182
+     ],
+     "1w": [
+      0.037,
+      0.135
+     ],
+     "1M": [
+      0.433,
+      0.375
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "up",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   }
+  ],
   "divergence (4h)": [
    {
     "symbol": "ALGOUSDT",
@@ -105,7 +155,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -145,7 +195,7 @@
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "up",
      "4h": "none",
      "12h": "none",
@@ -225,7 +275,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
