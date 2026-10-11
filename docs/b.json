@@ -1,61 +1,14 @@
 {
- "generated": "2026-10-11 05:56 UTC",
+ "generated": "2026-10-11 15:01 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [
-   {
-    "state": "compressed",
-    "expansion_atr": 3.11,
-    "consol_bars": 26,
-    "consol_start": 873,
-    "coil_end": 899,
-    "bars_since_coil": 0,
-    "res_touches": 2,
-    "channel_atr": 0.78,
-    "gap_atr": 0.36,
-    "bars_to_apex": 6.7,
-    "bars_in_state": 1,
-    "res_kind": "angled",
-    "resistance": 4.390125,
-    "res_slope": -0.0026874999999999686,
-    "res_intercept": 6.80618749999997,
-    "invalidation": 4.33249,
-    "close": 4.374,
-    "atr": 0.045192,
-    "ribbon_pct": 0.78,
-    "symbol": "ORDIUSDT",
-    "tf": "1h",
-    "tv_symbol": "BINANCE:ORDIUSDT",
-    "htf_favourable": true,
-    "trend_bars": 0,
-    "detail": "angled res x2, exp 3.11ATR, ch 0.78ATR, apex 6.7, trend 0b",
-    "score": 0.5,
-    "dss": {
-     "1d": [
-      0.081,
-      0.174
-     ],
-     "1w": [
-      0.942,
-      0.833
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "up",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   }
-  ],
+  "compression (15m/1h/4h)": [],
   "divergence (4h)": [
    {
     "symbol": "ALGOUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 0.1098,
     "tv_symbol": "BINANCE:ALGOUSDT",
@@ -87,13 +40,13 @@
     "symbol": "WLFIUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.0533,
     "tv_symbol": "BINANCE:WLFIUSDT",
     "htf_favourable": false,
-    "score": 0.442,
+    "score": 0.375,
     "dss": {
      "1d": [
       0.148,
@@ -117,13 +70,13 @@
     "symbol": "FFUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 0.10439,
     "tv_symbol": "BINANCE:FFUSDT",
     "htf_favourable": false,
-    "score": 0.308,
+    "score": 0.175,
     "dss": {
      "1d": [
       0.03,
@@ -141,39 +94,6 @@
      "4h": "none",
      "12h": "none",
      "1w": null
-    }
-   },
-   {
-    "symbol": "BICOUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
-    "margin_excess": 0.0,
-    "invalidation": 0.01838,
-    "tv_symbol": "BINANCE:BICOUSDT",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.14,
-      0.354
-     ],
-     "1w": [
-      0.291,
-      0.275
-     ],
-     "1M": [
-      0.226,
-      0.085
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
     }
    }
   ],
@@ -208,8 +128,8 @@
      "1M": null
     },
     "trend": {
-     "15m": "up",
-     "1h": "none",
+     "15m": "none",
+     "1h": "up",
      "4h": "none",
      "12h": "none",
      "1w": null
@@ -286,7 +206,7 @@
     },
     "trend": {
      "15m": "none",
-     "1h": "none",
+     "1h": "up",
      "4h": "none",
      "12h": "none",
      "1w": "none"
@@ -363,6 +283,43 @@
       0.257,
       0.113
      ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "state": "basing",
+    "drawdown_pct": 48.6,
+    "vol_ratio": 2.13,
+    "base_bars": 180,
+    "gap_100_atr": 0.76,
+    "gap_res_atr": 1.46,
+    "target_200_pct": 33.8,
+    "target_300_pct": 98.2,
+    "resistance": 2.124,
+    "invalidation": 1.94071312,
+    "close": 1.893,
+    "atr": 0.15832592,
+    "symbol": "TRUMPUSDT",
+    "tf": "1d",
+    "tv_symbol": "BINANCE:TRUMPUSDT",
+    "detail": "dd 48.6%, vol x2.13, res 1.46ATR, 100EMA 0.76ATR, targets +33.8%/+98.2%",
+    "score": 0.28,
+    "dss": {
+     "1d": [
+      0.097,
+      0.273
+     ],
+     "1w": [
+      0.873,
+      0.692
+     ],
+     "1M": null
     },
     "trend": {
      "15m": "none",
