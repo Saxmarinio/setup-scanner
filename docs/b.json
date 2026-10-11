@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-11 15:01 UTC",
+ "generated": "2026-10-11 20:25 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
@@ -7,13 +7,13 @@
     "symbol": "ALGOUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 0.1098,
     "tv_symbol": "BINANCE:ALGOUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.375,
     "dss": {
      "1d": [
       0.152,
@@ -29,71 +29,11 @@
      ]
     },
     "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "WLFIUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
-    "margin_excess": 0.0,
-    "invalidation": 0.0533,
-    "tv_symbol": "BINANCE:WLFIUSDT",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.148,
-      0.166
-     ],
-     "1w": [
-      0.959,
-      0.908
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "up",
      "4h": "none",
      "12h": "none",
-     "1w": null
-    }
-   },
-   {
-    "symbol": "FFUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 0.10439,
-    "tv_symbol": "BINANCE:FFUSDT",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.03,
-      0.014
-     ],
-     "1w": [
-      0.871,
-      0.709
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": null
+     "1w": "none"
     }
    }
   ],
@@ -165,7 +105,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -205,7 +145,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "up",
      "4h": "none",
      "12h": "none",
@@ -283,43 +223,6 @@
       0.257,
       0.113
      ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "state": "basing",
-    "drawdown_pct": 48.6,
-    "vol_ratio": 2.13,
-    "base_bars": 180,
-    "gap_100_atr": 0.76,
-    "gap_res_atr": 1.46,
-    "target_200_pct": 33.8,
-    "target_300_pct": 98.2,
-    "resistance": 2.124,
-    "invalidation": 1.94071312,
-    "close": 1.893,
-    "atr": 0.15832592,
-    "symbol": "TRUMPUSDT",
-    "tf": "1d",
-    "tv_symbol": "BINANCE:TRUMPUSDT",
-    "detail": "dd 48.6%, vol x2.13, res 1.46ATR, 100EMA 0.76ATR, targets +33.8%/+98.2%",
-    "score": 0.28,
-    "dss": {
-     "1d": [
-      0.097,
-      0.273
-     ],
-     "1w": [
-      0.873,
-      0.692
-     ],
-     "1M": null
     },
     "trend": {
      "15m": "none",
