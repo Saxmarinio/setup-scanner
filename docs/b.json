@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12 06:05 UTC",
+ "generated": "2026-10-12 18:03 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [],
@@ -72,7 +72,7 @@
     },
     "trend": {
      "15m": "none",
-     "1h": "up",
+     "1h": "none",
      "4h": "none",
      "12h": "none",
      "1w": "none"
@@ -159,46 +159,6 @@
     }
    },
    {
-    "state": "breakout",
-    "drawdown_pct": 64.0,
-    "vol_ratio": 3.65,
-    "base_bars": 180,
-    "gap_100_atr": -0.83,
-    "gap_res_atr": 1.64,
-    "target_200_pct": 8.8,
-    "target_300_pct": 40.5,
-    "resistance": 0.001027,
-    "invalidation": 0.00080311,
-    "close": 0.000881,
-    "atr": 8.914e-05,
-    "symbol": "IOSTUSDT",
-    "tf": "1d",
-    "tv_symbol": "BINANCE:IOSTUSDT",
-    "detail": "dd 64.0%, vol x3.65, res 1.64ATR, 100EMA -0.83ATR, targets +8.8%/+40.5%",
-    "score": 0.413,
-    "dss": {
-     "1d": [
-      0.209,
-      0.305
-     ],
-     "1w": [
-      0.778,
-      0.545
-     ],
-     "1M": [
-      0.801,
-      0.626
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "up",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
     "state": "basing",
     "drawdown_pct": 49.4,
     "vol_ratio": 9.16,
@@ -229,6 +189,43 @@
       0.257,
       0.113
      ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "state": "basing",
+    "drawdown_pct": 47.1,
+    "vol_ratio": 2.1,
+    "base_bars": 180,
+    "gap_100_atr": 0.42,
+    "gap_res_atr": 1.15,
+    "target_200_pct": 29.9,
+    "target_300_pct": 92.2,
+    "resistance": 2.124,
+    "invalidation": 1.93829205,
+    "close": 1.946,
+    "atr": 0.15495963,
+    "symbol": "TRUMPUSDT",
+    "tf": "1d",
+    "tv_symbol": "BINANCE:TRUMPUSDT",
+    "detail": "dd 47.1%, vol x2.1, res 1.15ATR, 100EMA 0.42ATR, targets +29.9%/+92.2%",
+    "score": 0.316,
+    "dss": {
+     "1d": [
+      0.106,
+      0.236
+     ],
+     "1w": [
+      0.893,
+      0.737
+     ],
+     "1M": null
     },
     "trend": {
      "15m": "none",
