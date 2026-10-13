@@ -1,7 +1,54 @@
 {
- "generated": "2026-10-13 19:25 UTC",
+ "generated": "2026-10-13 23:49 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [],
+  "compression (15m/1h/4h)": [
+   {
+    "state": "compressed",
+    "expansion_atr": 2.73,
+    "consol_bars": 38,
+    "consol_start": 961,
+    "coil_end": 999,
+    "bars_since_coil": 0,
+    "res_touches": 3,
+    "channel_atr": 0.44,
+    "gap_atr": 0.31,
+    "bars_to_apex": 7.8,
+    "bars_in_state": 1,
+    "res_kind": "angled",
+    "resistance": 4e-06,
+    "res_slope": -4.590570719603125e-10,
+    "res_intercept": 4.677766749379667e-06,
+    "invalidation": 4e-06,
+    "close": 4e-06,
+    "atr": 0.0,
+    "ribbon_pct": 0.44,
+    "symbol": "PEPEUSDT",
+    "tf": "15m",
+    "tv_symbol": "BINANCE:PEPEUSDT",
+    "htf_favourable": true,
+    "trend_bars": 0,
+    "detail": "angled res x3, exp 2.73ATR, ch 0.44ATR, apex 7.8, trend 0b",
+    "score": 0.5,
+    "dss": {
+     "1d": [
+      0.139,
+      0.148
+     ],
+     "1w": [
+      0.921,
+      0.787
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "up",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   }
+  ],
   "divergence (4h)": [],
   "bottoming (1d)": [
    {
@@ -74,7 +121,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
