@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-10 01:20 UTC",
+ "generated": "2026-10-13 02:45 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "OJ=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "channel %B, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 135.100006,
     "tv_symbol": "ICEUS:OJ1!",
@@ -16,16 +16,16 @@
     "score": 0.575,
     "dss": {
      "1d": [
-      0.277,
-      0.454
+      0.311,
+      0.424
      ],
      "1w": [
-      0.498,
-      0.267
+      0.609,
+      0.343
      ],
      "1M": [
-      0.049,
-      0.034
+      0.059,
+      0.037
      ]
     },
     "trend": {
@@ -38,8 +38,8 @@
     "symbol": "LE=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 216.100006,
     "tv_symbol": "CME:LE1!",
@@ -47,12 +47,12 @@
     "score": 0.175,
     "dss": {
      "1d": [
-      0.724,
-      0.602
+      0.785,
+      0.643
      ],
      "1w": [
-      0.174,
-      0.119
+      0.344,
+      0.166
      ],
      "1M": [
       0.21,
@@ -60,7 +60,7 @@
      ]
     },
     "trend": {
-     "1h": "none",
+     "1h": "up",
      "1d": "none",
      "1w": "none"
     }
