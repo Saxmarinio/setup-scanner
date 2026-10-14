@@ -1,34 +1,12 @@
 {
- "generated": "2026-10-13 07:10 UTC",
+ "generated": "2026-10-14 05:30 UTC",
  "rows": [
   {
    "symbol": "QNTBUSDT",
    "dss": {
     "1d": [
-     0.013,
-     0.06
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "INTCBUSDT",
-   "dss": {
-    "1d": [
-     0.023,
-     0.097
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "INTWBUSDT",
-   "dss": {
-    "1d": [
-     0.023,
-     0.095
+     0.01,
+     0.049
     ],
     "1w": null,
     "1M": null
@@ -38,19 +16,30 @@
    "symbol": "ARMBUSDT",
    "dss": {
     "1d": [
-     0.028,
-     0.111
+     0.024,
+     0.092
     ],
     "1w": null,
     "1M": null
    }
   },
   {
-   "symbol": "QCOMBUSDT",
+   "symbol": "INTWBUSDT",
    "dss": {
     "1d": [
-     0.03,
-     0.1
+     0.024,
+     0.079
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "INTCBUSDT",
+   "dss": {
+    "1d": [
+     0.025,
+     0.081
     ],
     "1w": null,
     "1M": null
@@ -60,19 +49,8 @@
    "symbol": "CBRSBUSDT",
    "dss": {
     "1d": [
-     0.035,
-     0.126
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "IRENBUSDT",
-   "dss": {
-    "1d": [
-     0.037,
-     0.069
+     0.033,
+     0.106
     ],
     "1w": null,
     "1M": null
@@ -82,19 +60,8 @@
    "symbol": "SNXXBUSDT",
    "dss": {
     "1d": [
-     0.038,
-     0.129
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "SNDKBUSDT",
-   "dss": {
-    "1d": [
-     0.04,
-     0.135
+     0.036,
+     0.108
     ],
     "1w": null,
     "1M": null
@@ -104,8 +71,8 @@
    "symbol": "USARBUSDT",
    "dss": {
     "1d": [
-     0.047,
-     0.095
+     0.036,
+     0.082
     ],
     "1w": null,
     "1M": null
@@ -115,19 +82,30 @@
    "symbol": "BMNRBUSDT",
    "dss": {
     "1d": [
-     0.048,
-     0.158
+     0.038,
+     0.131
     ],
     "1w": null,
     "1M": null
    }
   },
   {
-   "symbol": "HOODBUSDT",
+   "symbol": "SNDKBUSDT",
    "dss": {
     "1d": [
-     0.059,
-     0.143
+     0.038,
+     0.113
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "QCOMBUSDT",
+   "dss": {
+    "1d": [
+     0.04,
+     0.086
     ],
     "1w": null,
     "1M": null
@@ -137,8 +115,8 @@
    "symbol": "MSTRBUSDT",
    "dss": {
     "1d": [
-     0.06,
-     0.174
+     0.047,
+     0.146
     ],
     "1w": null,
     "1M": null
@@ -148,8 +126,8 @@
    "symbol": "DRAMBUSDT",
    "dss": {
     "1d": [
-     0.062,
-     0.199
+     0.048,
+     0.166
     ],
     "1w": null,
     "1M": null
@@ -159,19 +137,19 @@
    "symbol": "AMDBUSDT",
    "dss": {
     "1d": [
-     0.068,
-     0.185
+     0.06,
+     0.157
     ],
     "1w": null,
     "1M": null
    }
   },
   {
-   "symbol": "METABUSDT",
+   "symbol": "IRENBUSDT",
    "dss": {
     "1d": [
-     0.068,
-     0.046
+     0.061,
+     0.068
     ],
     "1w": null,
     "1M": null
@@ -181,19 +159,8 @@
    "symbol": "DJTBUSDT",
    "dss": {
     "1d": [
-     0.079,
-     0.255
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "WDCBUSDT",
-   "dss": {
-    "1d": [
-     0.086,
-     0.253
+     0.062,
+     0.212
     ],
     "1w": null,
     "1M": null
@@ -203,8 +170,8 @@
    "symbol": "MUUBUSDT",
    "dss": {
     "1d": [
-     0.089,
-     0.252
+     0.069,
+     0.211
     ],
     "1w": null,
     "1M": null
@@ -214,30 +181,30 @@
    "symbol": "MUBUSDT",
    "dss": {
     "1d": [
-     0.091,
-     0.258
+     0.071,
+     0.216
     ],
     "1w": null,
     "1M": null
    }
   },
   {
-   "symbol": "SPYBUSDT",
+   "symbol": "STXBUSDT",
    "dss": {
     "1d": [
-     0.919,
-     0.819
+     0.071,
+     0.228
     ],
     "1w": null,
     "1M": null
    }
   },
   {
-   "symbol": "MSFTBUSDT",
+   "symbol": "WDCBUSDT",
    "dss": {
     "1d": [
-     0.964,
-     0.947
+     0.072,
+     0.213
     ],
     "1w": null,
     "1M": null
@@ -247,19 +214,8 @@
    "symbol": "CRDOBUSDT",
    "dss": {
     "1d": [
-     0.103,
-     0.258
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "MRVLBUSDT",
-   "dss": {
-    "1d": [
-     0.106,
-     0.309
+     0.08,
+     0.218
     ],
     "1w": null,
     "1M": null
@@ -269,8 +225,19 @@
    "symbol": "ALABBUSDT",
    "dss": {
     "1d": [
-     0.107,
-     0.285
+     0.083,
+     0.24
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "MRVLBUSDT",
+   "dss": {
+    "1d": [
+     0.083,
+     0.258
     ],
     "1w": null,
     "1M": null
@@ -280,19 +247,19 @@
    "symbol": "MVLLBUSDT",
    "dss": {
     "1d": [
-     0.107,
-     0.308
+     0.083,
+     0.258
     ],
     "1w": null,
     "1M": null
    }
   },
   {
-   "symbol": "COINBUSDT",
+   "symbol": "HOODBUSDT",
    "dss": {
     "1d": [
-     0.112,
-     0.179
+     0.088,
+     0.131
     ],
     "1w": null,
     "1M": null
@@ -302,8 +269,52 @@
    "symbol": "ASTSBUSDT",
    "dss": {
     "1d": [
-     0.116,
-     0.245
+     0.09,
+     0.211
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "CRWDBUSDT",
+   "dss": {
+    "1d": [
+     0.098,
+     0.23
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "IBMBUSDT",
+   "dss": {
+    "1d": [
+     0.908,
+     0.737
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "MSFTBUSDT",
+   "dss": {
+    "1d": [
+     0.933,
+     0.943
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "SPYBUSDT",
+   "dss": {
+    "1d": [
+     0.937,
+     0.846
     ],
     "1w": null,
     "1M": null
@@ -313,8 +324,8 @@
    "symbol": "RKLBBUSDT",
    "dss": {
     "1d": [
-     0.142,
-     0.366
+     0.111,
+     0.309
     ],
     "1w": null,
     "1M": null
@@ -324,8 +335,8 @@
    "symbol": "SKHYBUSDT",
    "dss": {
     "1d": [
-     0.151,
-     0.335
+     0.117,
+     0.287
     ],
     "1w": null,
     "1M": null
@@ -335,8 +346,19 @@
    "symbol": "SMCIBUSDT",
    "dss": {
     "1d": [
-     0.168,
-     0.357
+     0.131,
+     0.307
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "COINBUSDT",
+   "dss": {
+    "1d": [
+     0.137,
+     0.169
     ],
     "1w": null,
     "1M": null
@@ -346,8 +368,8 @@
    "symbol": "NBISBUSDT",
    "dss": {
     "1d": [
-     0.192,
-     0.443
+     0.149,
+     0.378
     ],
     "1w": null,
     "1M": null
@@ -357,8 +379,8 @@
    "symbol": "BEBUSDT",
    "dss": {
     "1d": [
-     0.193,
-     0.362
+     0.15,
+     0.315
     ],
     "1w": null,
     "1M": null
@@ -368,8 +390,8 @@
    "symbol": "SOXLBUSDT",
    "dss": {
     "1d": [
-     0.211,
-     0.489
+     0.164,
+     0.417
     ],
     "1w": null,
     "1M": null
@@ -379,8 +401,8 @@
    "symbol": "EWYBUSDT",
    "dss": {
     "1d": [
-     0.218,
-     0.466
+     0.17,
+     0.4
     ],
     "1w": null,
     "1M": null
@@ -390,8 +412,8 @@
    "symbol": "AXTIBUSDT",
    "dss": {
     "1d": [
-     0.22,
-     0.502
+     0.171,
+     0.428
     ],
     "1w": null,
     "1M": null
@@ -401,8 +423,8 @@
    "symbol": "KORUBUSDT",
    "dss": {
     "1d": [
-     0.225,
-     0.467
+     0.175,
+     0.402
     ],
     "1w": null,
     "1M": null
@@ -412,8 +434,8 @@
    "symbol": "AMATBUSDT",
    "dss": {
     "1d": [
-     0.229,
-     0.513
+     0.178,
+     0.439
     ],
     "1w": null,
     "1M": null
@@ -423,8 +445,8 @@
    "symbol": "ASMLBUSDT",
    "dss": {
     "1d": [
-     0.23,
-     0.513
+     0.179,
+     0.438
     ],
     "1w": null,
     "1M": null
@@ -434,8 +456,19 @@
    "symbol": "SMHBUSDT",
    "dss": {
     "1d": [
-     0.237,
-     0.527
+     0.184,
+     0.451
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "METABUSDT",
+   "dss": {
+    "1d": [
+     0.186,
+     0.077
     ],
     "1w": null,
     "1M": null
@@ -445,8 +478,8 @@
    "symbol": "TSMBUSDT",
    "dss": {
     "1d": [
-     0.252,
-     0.543
+     0.196,
+     0.466
     ],
     "1w": null,
     "1M": null
@@ -456,8 +489,8 @@
    "symbol": "CRWVBUSDT",
    "dss": {
     "1d": [
-     0.261,
-     0.543
+     0.203,
+     0.467
     ],
     "1w": null,
     "1M": null
@@ -467,8 +500,8 @@
    "symbol": "TQQQBUSDT",
    "dss": {
     "1d": [
-     0.266,
-     0.552
+     0.207,
+     0.475
     ],
     "1w": null,
     "1M": null
@@ -478,8 +511,8 @@
    "symbol": "QQQBUSDT",
    "dss": {
     "1d": [
-     0.269,
-     0.551
+     0.209,
+     0.475
     ],
     "1w": null,
     "1M": null
@@ -489,8 +522,8 @@
    "symbol": "GLWBUSDT",
    "dss": {
     "1d": [
-     0.272,
-     0.542
+     0.212,
+     0.469
     ],
     "1w": null,
     "1M": null
@@ -500,8 +533,8 @@
    "symbol": "NVDABUSDT",
    "dss": {
     "1d": [
-     0.284,
-     0.582
+     0.221,
+     0.502
     ],
     "1w": null,
     "1M": null
@@ -511,8 +544,8 @@
    "symbol": "NOKBUSDT",
    "dss": {
     "1d": [
-     0.368,
-     0.424
+     0.287,
+     0.394
     ],
     "1w": null,
     "1M": null
@@ -522,19 +555,30 @@
    "symbol": "FLNCBUSDT",
    "dss": {
     "1d": [
-     0.442,
-     0.703
+     0.344,
+     0.624
     ],
     "1w": null,
     "1M": null
    }
   },
   {
-   "symbol": "CRCLBUSDT",
+   "symbol": "COHRBUSDT",
    "dss": {
     "1d": [
-     0.49,
-     0.291
+     0.452,
+     0.608
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "AAOIBUSDT",
+   "dss": {
+    "1d": [
+     0.454,
+     0.675
     ],
     "1w": null,
     "1M": null
@@ -566,14 +610,6 @@
   },
   {
    "symbol": "CRMBUSDT",
-   "dss": {
-    "1d": null,
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "CRWDBUSDT",
    "dss": {
     "1d": null,
     "1w": null,
@@ -637,14 +673,6 @@
    }
   },
   {
-   "symbol": "MRNABUSDT",
-   "dss": {
-    "1d": null,
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
    "symbol": "PDDBUSDT",
    "dss": {
     "1d": null,
@@ -677,22 +705,6 @@
    }
   },
   {
-   "symbol": "SQQQBUSDT",
-   "dss": {
-    "1d": null,
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "STXBUSDT",
-   "dss": {
-    "1d": null,
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
    "symbol": "USDEBUSDT",
    "dss": {
     "1d": null,
@@ -717,33 +729,11 @@
    }
   },
   {
-   "symbol": "COHRBUSDT",
+   "symbol": "MRNABUSDT",
    "dss": {
     "1d": [
-     0.581,
-     0.652
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "AAOIBUSDT",
-   "dss": {
-    "1d": [
-     0.584,
-     0.738
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "AAPLBUSDT",
-   "dss": {
-    "1d": [
-     0.591,
-     0.331
+     0.504,
+     0.414
     ],
     "1w": null,
     "1M": null
@@ -753,52 +743,8 @@
    "symbol": "AVGOBUSDT",
    "dss": {
     "1d": [
-     0.62,
-     0.655
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "PLTRBUSDT",
-   "dss": {
-    "1d": [
-     0.697,
-     0.521
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "GMEBUSDT",
-   "dss": {
-    "1d": [
-     0.727,
-     0.515
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "SPCXBUSDT",
-   "dss": {
-    "1d": [
-     0.729,
-     0.671
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "BABABUSDT",
-   "dss": {
-    "1d": [
-     0.735,
-     0.49
+     0.537,
+     0.629
     ],
     "1w": null,
     "1M": null
@@ -808,8 +754,85 @@
    "symbol": "LITEBUSDT",
    "dss": {
     "1d": [
-     0.735,
-     0.878
+     0.572,
+     0.81
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "CRCLBUSDT",
+   "dss": {
+    "1d": [
+     0.597,
+     0.359
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "SPCXBUSDT",
+   "dss": {
+    "1d": [
+     0.666,
+     0.67
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "AAPLBUSDT",
+   "dss": {
+    "1d": [
+     0.68,
+     0.409
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "PLTRBUSDT",
+   "dss": {
+    "1d": [
+     0.748,
+     0.571
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "GMEBUSDT",
+   "dss": {
+    "1d": [
+     0.788,
+     0.575
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "SQQQBUSDT",
+   "dss": {
+    "1d": [
+     0.79,
+     0.507
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "BABABUSDT",
+   "dss": {
+    "1d": [
+     0.794,
+     0.558
     ],
     "1w": null,
     "1M": null
@@ -819,41 +842,8 @@
    "symbol": "GOOGLBUSDT",
    "dss": {
     "1d": [
-     0.786,
-     0.532
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "SOXSBUSDT",
-   "dss": {
-    "1d": [
-     0.833,
-     0.582
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "NFLXBUSDT",
-   "dss": {
-    "1d": [
-     0.843,
+     0.834,
      0.599
-    ],
-    "1w": null,
-    "1M": null
-   }
-  },
-  {
-   "symbol": "PYPLBUSDT",
-   "dss": {
-    "1d": [
-     0.853,
-     0.711
     ],
     "1w": null,
     "1M": null
@@ -863,19 +853,19 @@
    "symbol": "ORCLBUSDT",
    "dss": {
     "1d": [
-     0.86,
-     0.776
+     0.859,
+     0.795
     ],
     "1w": null,
     "1M": null
    }
   },
   {
-   "symbol": "DELLBUSDT",
+   "symbol": "SOXSBUSDT",
    "dss": {
     "1d": [
-     0.864,
-     0.655
+     0.87,
+     0.646
     ],
     "1w": null,
     "1M": null
@@ -885,19 +875,30 @@
    "symbol": "AMZNBUSDT",
    "dss": {
     "1d": [
-     0.868,
-     0.686
+     0.873,
+     0.727
     ],
     "1w": null,
     "1M": null
    }
   },
   {
-   "symbol": "GSBUSDT",
+   "symbol": "NFLXBUSDT",
    "dss": {
     "1d": [
-     0.874,
-     0.664
+     0.878,
+     0.661
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "DELLBUSDT",
+   "dss": {
+    "1d": [
+     0.879,
+     0.705
     ],
     "1w": null,
     "1M": null
@@ -907,19 +908,30 @@
    "symbol": "TSLABUSDT",
    "dss": {
     "1d": [
-     0.878,
-     0.721
+     0.879,
+     0.756
     ],
     "1w": null,
     "1M": null
    }
   },
   {
-   "symbol": "IBMBUSDT",
+   "symbol": "PYPLBUSDT",
    "dss": {
     "1d": [
-     0.882,
-     0.688
+     0.886,
+     0.75
+    ],
+    "1w": null,
+    "1M": null
+   }
+  },
+  {
+   "symbol": "GSBUSDT",
+   "dss": {
+    "1d": [
+     0.894,
+     0.715
     ],
     "1w": null,
     "1M": null
