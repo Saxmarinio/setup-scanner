@@ -1,27 +1,58 @@
 {
- "generated": "2026-10-15 00:09 UTC",
+ "generated": "2026-10-15 23:55 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "NFLX",
+    "symbol": "IBM",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "channel %B, fired 0 bars ago",
+    "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 66.540001,
-    "tv_symbol": "NFLX",
+    "invalidation": 217.800003,
+    "tv_symbol": "IBM",
     "htf_favourable": false,
     "score": 0.575,
     "dss": {
      "1d": [
-      0.715,
-      0.41
+      0.738,
+      0.455
      ],
      "1w": [
-      0.63,
-      0.605
+      0.289,
+      0.232
+     ],
+     "1M": [
+      0.073,
+      0.19
+     ]
+    },
+    "trend": {
+     "1h": "up",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "NFLX",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 3 bars ago",
+    "bars_since": 3,
+    "margin_excess": 0.0,
+    "invalidation": 66.540001,
+    "tv_symbol": "NFLX",
+    "htf_favourable": false,
+    "score": 0.275,
+    "dss": {
+     "1d": [
+      0.828,
+      0.566
+     ],
+     "1w": [
+      0.645,
+      0.608
      ],
      "1M": [
       0.019,
@@ -38,21 +69,21 @@
     "symbol": "SOXS",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "channel %B, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 28.459999,
     "tv_symbol": "SOXS",
     "htf_favourable": false,
-    "score": 0.442,
+    "score": 0.175,
     "dss": {
      "1d": [
-      0.649,
-      0.34
+      0.788,
+      0.506
      ],
      "1w": [
-      0.706,
-      0.746
+      0.712,
+      0.748
      ],
      "1M": [
       0.032,
@@ -61,37 +92,6 @@
     },
     "trend": {
      "1h": "up",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "TSLA",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
-    "margin_excess": 0.0,
-    "invalidation": 345.880005,
-    "tv_symbol": "TSLA",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.798,
-      0.584
-     ],
-     "1w": [
-      0.68,
-      0.479
-     ],
-     "1M": [
-      0.299,
-      0.532
-     ]
-    },
-    "trend": {
-     "1h": "none",
      "1d": "none",
      "1w": "none"
     }
