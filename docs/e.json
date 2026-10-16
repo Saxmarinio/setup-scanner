@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-15 23:55 UTC",
+ "generated": "2026-10-16 23:58 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "OJ=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "channel %B, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 135.100006,
     "tv_symbol": "ICEUS:OJ1!",
@@ -16,15 +16,15 @@
     "score": 0.375,
     "dss": {
      "1d": [
-      0.175,
-      0.315
+      0.136,
+      0.275
      ],
      "1w": [
       0.609,
       0.343
      ],
      "1M": [
-      0.04,
+      0.038,
       0.032
      ]
     },
