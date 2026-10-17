@@ -1,53 +1,7 @@
 {
- "generated": "2026-10-17 12:18 UTC",
+ "generated": "2026-10-17 15:42 UTC",
  "groups": {
   "compression (15m/1h/4h)": [
-   {
-    "state": "forming",
-    "expansion_atr": 3.48,
-    "consol_bars": 29,
-    "consol_start": 870,
-    "coil_end": 899,
-    "bars_since_coil": 0,
-    "res_touches": 3,
-    "channel_atr": 0.86,
-    "gap_atr": 1.22,
-    "bars_to_apex": 7.3,
-    "bars_in_state": 0,
-    "res_kind": "angled",
-    "resistance": 0.694163,
-    "res_slope": -0.0007001661129568034,
-    "res_intercept": 1.3236127906976678,
-    "invalidation": 0.681232,
-    "close": 0.6826,
-    "atr": 0.009513,
-    "ribbon_pct": 0.86,
-    "symbol": "ETHFIUSDT",
-    "tf": "1h",
-    "tv_symbol": "BINANCE:ETHFIUSDT",
-    "htf_favourable": true,
-    "trend_bars": 2,
-    "detail": "angled res x3, exp 3.48ATR, ch 0.86ATR, apex 7.3, trend 2b",
-    "score": 0.55,
-    "dss": {
-     "1d": [
-      0.075,
-      0.132
-     ],
-     "1w": [
-      0.981,
-      0.92
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "up",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
    {
     "state": "forming",
     "expansion_atr": 2.57,
@@ -74,7 +28,7 @@
     "htf_favourable": true,
     "trend_bars": 8,
     "detail": "angled res x2, exp 2.57ATR, ch 1.25ATR, apex 14.8, trend 8b",
-    "score": 0.45,
+    "score": 0.5,
     "dss": {
      "1d": [
       0.705,
@@ -245,7 +199,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -540,7 +494,7 @@
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
