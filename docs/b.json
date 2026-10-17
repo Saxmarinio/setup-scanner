@@ -1,33 +1,33 @@
 {
- "generated": "2026-10-17 18:40 UTC",
+ "generated": "2026-10-17 22:27 UTC",
  "groups": {
   "compression (15m/1h/4h)": [
    {
     "state": "forming",
     "expansion_atr": 2.57,
-    "consol_bars": 21,
-    "consol_start": 878,
+    "consol_bars": 22,
+    "consol_start": 877,
     "coil_end": 899,
     "bars_since_coil": 0,
     "res_touches": 2,
-    "channel_atr": 1.23,
-    "gap_atr": 1.23,
-    "bars_to_apex": 14.9,
-    "bars_in_state": 9,
+    "channel_atr": 1.21,
+    "gap_atr": 1.07,
+    "bars_to_apex": 14.3,
+    "bars_in_state": 10,
     "res_kind": "angled",
-    "resistance": 0.003071,
-    "res_slope": -3.857142857142799e-06,
-    "res_intercept": 0.006538571428571376,
-    "invalidation": 0.002857,
-    "close": 0.002919,
-    "atr": 0.000123,
-    "ribbon_pct": 1.23,
+    "resistance": 0.003067,
+    "res_slope": -3.857142857142897e-06,
+    "res_intercept": 0.0065347142857143225,
+    "invalidation": 0.002862,
+    "close": 0.002938,
+    "atr": 0.00012,
+    "ribbon_pct": 1.21,
     "symbol": "BEAMXUSDT",
     "tf": "4h",
     "tv_symbol": "BINANCE:BEAMXUSDT",
     "htf_favourable": true,
-    "trend_bars": 9,
-    "detail": "angled res x2, exp 2.57ATR, ch 1.23ATR, apex 14.9, trend 9b",
+    "trend_bars": 10,
+    "detail": "angled res x2, exp 2.57ATR, ch 1.21ATR, apex 14.3, trend 10b",
     "score": 0.5,
     "dss": {
      "1d": [
@@ -51,247 +51,28 @@
   ],
   "divergence (4h)": [
    {
-    "symbol": "GRTUSDT",
+    "symbol": "PROMUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 0.02332,
-    "tv_symbol": "BINANCE:GRTUSDT",
+    "invalidation": 4.407,
+    "tv_symbol": "BINANCE:PROMUSDT",
     "htf_favourable": false,
     "score": 0.375,
     "dss": {
      "1d": [
-      0.025,
-      0.082
+      0.096,
+      0.237
      ],
      "1w": [
-      0.821,
-      0.596
+      0.954,
+      0.878
      ],
      "1M": [
-      0.117,
-      0.039
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "JTOUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 0.4337,
-    "tv_symbol": "BINANCE:JTOUSDT",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.075,
-      0.151
-     ],
-     "1w": [
-      0.194,
-      0.245
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "KITEUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 0.1174,
-    "tv_symbol": "BINANCE:KITEUSDT",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.045,
-      0.162
-     ],
-     "1w": [
-      0.638,
-      0.342
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": null
-    }
-   },
-   {
-    "symbol": "KMNOUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 0.0327,
-    "tv_symbol": "BINANCE:KMNOUSDT",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.26,
-      0.183
-     ],
-     "1w": [
-      0.98,
-      0.969
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": null
-    }
-   },
-   {
-    "symbol": "NMRUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 11.46,
-    "tv_symbol": "BINANCE:NMRUSDT",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.042,
-      0.131
-     ],
-     "1w": [
-      0.317,
-      0.351
-     ],
-     "1M": [
-      0.614,
-      0.629
-     ]
-    },
-    "trend": {
-     "15m": "up",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "PHAUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 0.0483,
-    "tv_symbol": "BINANCE:PHAUSDT",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.018,
-      0.072
-     ],
-     "1w": [
-      0.74,
-      0.477
-     ],
-     "1M": [
-      0.334,
-      0.17
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "SKYUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 0.06806,
-    "tv_symbol": "BINANCE:SKYUSDT",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.058,
-      0.195
-     ],
-     "1w": [
-      0.84,
-      0.618
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": null
-    }
-   },
-   {
-    "symbol": "WBTCUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 79695.61,
-    "tv_symbol": "BINANCE:WBTCUSDT",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.042,
-      0.14
-     ],
-     "1w": [
-      0.855,
-      0.644
-     ],
-     "1M": [
-      0.084,
-      0.215
+      0.209,
+      0.313
      ]
     },
     "trend": {
