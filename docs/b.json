@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-19 04:47 UTC",
+ "generated": "2026-10-19 15:44 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [],
@@ -126,6 +126,43 @@
    },
    {
     "state": "basing",
+    "drawdown_pct": 64.6,
+    "vol_ratio": 1.89,
+    "base_bars": 180,
+    "gap_100_atr": 2.0,
+    "gap_res_atr": 1.13,
+    "target_200_pct": 57.4,
+    "target_300_pct": 117.5,
+    "resistance": 3.24e-06,
+    "invalidation": 3.16e-06,
+    "close": 2.94e-06,
+    "atr": 2.7e-07,
+    "symbol": "BONKUSDT",
+    "tf": "1d",
+    "tv_symbol": "BINANCE:BONKUSDT",
+    "detail": "dd 64.6%, vol x1.89, res 1.13ATR, 100EMA 2.0ATR, targets +57.4%/+117.5%",
+    "score": 0.42,
+    "dss": {
+     "1d": [
+      0.027,
+      0.109
+     ],
+     "1w": [
+      0.843,
+      0.629
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "state": "basing",
     "drawdown_pct": 59.1,
     "vol_ratio": 5.24,
     "base_bars": 180,
@@ -194,7 +231,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
