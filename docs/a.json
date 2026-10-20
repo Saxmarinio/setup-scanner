@@ -1,8 +1,105 @@
 {
- "generated": "2026-10-19 04:35 UTC",
+ "generated": "2026-10-20 04:42 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
-  "divergence (4h)": [],
+  "divergence (4h)": [
+   {
+    "symbol": "BNBUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 705.86,
+    "tv_symbol": "BINANCE:BNBUSDT",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.04,
+      0.069
+     ],
+     "1w": [
+      0.895,
+      0.746
+     ],
+     "1M": [
+      0.053,
+      0.151
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "ZECUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
+    "margin_excess": 0.0,
+    "invalidation": 1049.01,
+    "tv_symbol": "BINANCE:ZECUSDT",
+    "htf_favourable": false,
+    "score": 0.175,
+    "dss": {
+     "1d": [
+      0.551,
+      0.345
+     ],
+     "1w": [
+      0.785,
+      0.759
+     ],
+     "1M": [
+      0.731,
+      0.631
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "SUIUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
+    "margin_excess": 0.0,
+    "invalidation": 0.9372,
+    "tv_symbol": "BINANCE:SUIUSDT",
+    "htf_favourable": false,
+    "score": 0.175,
+    "dss": {
+     "1d": [
+      0.024,
+      0.086
+     ],
+     "1w": [
+      0.864,
+      0.67
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   }
+  ],
   "bottoming (1d/1w)": []
  }
 }
