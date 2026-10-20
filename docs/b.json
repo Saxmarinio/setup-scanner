@@ -1,7 +1,53 @@
 {
- "generated": "2026-10-20 20:08 UTC",
+ "generated": "2026-10-20 23:17 UTC",
  "groups": {
   "compression (15m/1h/4h)": [
+   {
+    "state": "compressed",
+    "expansion_atr": 7.2,
+    "consol_bars": 35,
+    "consol_start": 964,
+    "coil_end": 999,
+    "bars_since_coil": 0,
+    "res_touches": 3,
+    "channel_atr": 1.0,
+    "gap_atr": 0.57,
+    "bars_to_apex": 8.0,
+    "bars_in_state": 14,
+    "res_kind": "angled",
+    "resistance": 7.3e-05,
+    "res_slope": -2.738747553815964e-08,
+    "res_intercept": 0.0001007240802348328,
+    "invalidation": 7.3e-05,
+    "close": 7.3e-05,
+    "atr": 0.0,
+    "ribbon_pct": 1.0,
+    "symbol": "NEIROUSDT",
+    "tf": "15m",
+    "tv_symbol": "BINANCE:NEIROUSDT",
+    "htf_favourable": true,
+    "trend_bars": 22,
+    "detail": "angled res x3, exp 7.2ATR, ch 1.0ATR, apex 8.0, trend 22b",
+    "score": 1.0,
+    "dss": {
+     "1d": [
+      0.018,
+      0.056
+     ],
+     "1w": [
+      0.882,
+      0.76
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "up",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
    {
     "state": "forming",
     "expansion_atr": 2.68,
@@ -28,7 +74,7 @@
     "htf_favourable": true,
     "trend_bars": 11,
     "detail": "horizontal res x3, exp 2.68ATR, ch 1.16ATR, apex 23.9, trend 11b",
-    "score": 0.5,
+    "score": 0.167,
     "dss": {
      "1d": [
       0.748,
@@ -203,7 +249,7 @@
     },
     "trend": {
      "15m": "up",
-     "1h": "none",
+     "1h": "up",
      "4h": "none",
      "12h": "none",
      "1w": "none"
@@ -235,8 +281,8 @@
      ]
     },
     "trend": {
-     "15m": "none",
-     "1h": "none",
+     "15m": "up",
+     "1h": "up",
      "4h": "none",
      "12h": "none",
      "1w": "none"
@@ -301,7 +347,7 @@
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -383,7 +429,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -460,7 +506,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -537,7 +583,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
