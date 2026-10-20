@@ -1,40 +1,8 @@
 {
- "generated": "2026-10-16 23:58 UTC",
+ "generated": "2026-10-20 00:44 UTC",
  "groups": {
   "compression (1d)": [],
-  "divergence (1d)": [
-   {
-    "symbol": "OJ=F",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "channel %B, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 135.100006,
-    "tv_symbol": "ICEUS:OJ1!",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.136,
-      0.275
-     ],
-     "1w": [
-      0.609,
-      0.343
-     ],
-     "1M": [
-      0.038,
-      0.032
-     ]
-    },
-    "trend": {
-     "1h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   }
-  ],
+  "divergence (1d)": [],
   "bottoming (1d/1w)": []
  }
 }
