@@ -1,33 +1,33 @@
 {
- "generated": "2026-10-20 13:41 UTC",
+ "generated": "2026-10-20 20:08 UTC",
  "groups": {
   "compression (15m/1h/4h)": [
    {
     "state": "forming",
     "expansion_atr": 2.68,
-    "consol_bars": 43,
-    "consol_start": 856,
+    "consol_bars": 45,
+    "consol_start": 854,
     "coil_end": 899,
     "bars_since_coil": 0,
     "res_touches": 3,
-    "channel_atr": 1.13,
-    "gap_atr": 1.42,
-    "bars_to_apex": 21.9,
+    "channel_atr": 1.16,
+    "gap_atr": 1.33,
+    "bars_to_apex": 23.9,
     "bars_in_state": 0,
     "res_kind": "horizontal",
-    "resistance": 0.021871,
-    "res_slope": -2.0397111913353426e-06,
-    "res_intercept": 0.023704530685920225,
-    "invalidation": 0.02089,
-    "close": 0.02102,
-    "atr": 0.0006,
-    "ribbon_pct": 1.13,
+    "resistance": 0.021867,
+    "res_slope": -2.0397111913363633e-06,
+    "res_intercept": 0.023700451263538466,
+    "invalidation": 0.020915,
+    "close": 0.0211,
+    "atr": 0.000575,
+    "ribbon_pct": 1.16,
     "symbol": "DODOUSDT",
     "tf": "4h",
     "tv_symbol": "BINANCE:DODOUSDT",
     "htf_favourable": true,
-    "trend_bars": 9,
-    "detail": "horizontal res x3, exp 2.68ATR, ch 1.13ATR, apex 21.9, trend 9b",
+    "trend_bars": 11,
+    "detail": "horizontal res x3, exp 2.68ATR, ch 1.16ATR, apex 23.9, trend 11b",
     "score": 0.5,
     "dss": {
      "1d": [
@@ -54,16 +54,79 @@
   ],
   "divergence (4h)": [
    {
+    "symbol": "ACEUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.1464,
+    "tv_symbol": "BINANCE:ACEUSDT",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.358,
+      0.522
+     ],
+     "1w": [
+      0.961,
+      0.904
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "RLCUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.6819,
+    "tv_symbol": "BINANCE:RLCUSDT",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.034,
+      0.132
+     ],
+     "1w": [
+      0.83,
+      0.629
+     ],
+     "1M": [
+      0.041,
+      0.025
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
     "symbol": "ATOMUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 1.624,
     "tv_symbol": "BINANCE:ATOMUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.255,
     "dss": {
      "1d": [
       0.154,
@@ -90,13 +153,13 @@
     "symbol": "BOMEUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.000585,
     "tv_symbol": "BINANCE:BOMEUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.255,
     "dss": {
      "1d": [
       0.117,
@@ -120,13 +183,13 @@
     "symbol": "BONKUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 3e-06,
     "tv_symbol": "BINANCE:BONKUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.255,
     "dss": {
      "1d": [
       0.024,
@@ -139,7 +202,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -150,13 +213,13 @@
     "symbol": "DEXEUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 1.66,
     "tv_symbol": "BINANCE:DEXEUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.255,
     "dss": {
      "1d": [
       0.5,
@@ -172,7 +235,7 @@
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -183,13 +246,13 @@
     "symbol": "LSKUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.1809,
     "tv_symbol": "BINANCE:LSKUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.255,
     "dss": {
      "1d": [
       0.769,
@@ -216,13 +279,13 @@
     "symbol": "LUNCUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 4.4e-05,
     "tv_symbol": "BINANCE:LUNCUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.255,
     "dss": {
      "1d": [
       0.17,
@@ -235,72 +298,6 @@
      "1M": [
       0.807,
       0.654
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "PHAUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
-    "margin_excess": 0.0,
-    "invalidation": 0.0463,
-    "tv_symbol": "BINANCE:PHAUSDT",
-    "htf_favourable": false,
-    "score": 0.575,
-    "dss": {
-     "1d": [
-      0.078,
-      0.055
-     ],
-     "1w": [
-      0.781,
-      0.545
-     ],
-     "1M": [
-      0.334,
-      0.17
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "up",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "RUNEUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
-    "margin_excess": 0.0,
-    "invalidation": 0.613,
-    "tv_symbol": "BINANCE:RUNEUSDT",
-    "htf_favourable": false,
-    "score": 0.575,
-    "dss": {
-     "1d": [
-      0.037,
-      0.066
-     ],
-     "1w": [
-      0.92,
-      0.826
-     ],
-     "1M": [
-      0.414,
-      0.168
      ]
     },
     "trend": {
