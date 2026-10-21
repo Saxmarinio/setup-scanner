@@ -1,47 +1,93 @@
 {
- "generated": "2026-10-21 20:21 UTC",
+ "generated": "2026-10-21 23:28 UTC",
  "groups": {
   "compression (15m/1h/4h)": [
    {
     "state": "compressed",
-    "expansion_atr": 3.01,
-    "consol_bars": 21,
-    "consol_start": 978,
+    "expansion_atr": 3.36,
+    "consol_bars": 40,
+    "consol_start": 959,
     "coil_end": 999,
     "bars_since_coil": 0,
-    "res_touches": 2,
-    "channel_atr": 0.59,
-    "gap_atr": 0.63,
-    "bars_to_apex": 3.1,
+    "res_touches": 3,
+    "channel_atr": 0.62,
+    "gap_atr": 0.77,
+    "bars_to_apex": 3.3,
     "bars_in_state": 0,
     "res_kind": "angled",
-    "resistance": 5e-06,
-    "res_slope": -4.999999999999985e-09,
-    "res_intercept": 9.679999999999985e-06,
-    "invalidation": 5e-06,
-    "close": 5e-06,
-    "atr": 0.0,
-    "ribbon_pct": 0.59,
-    "symbol": "PEPEUSDT",
+    "resistance": 0.36181,
+    "res_slope": -0.0003229299363057354,
+    "res_intercept": 0.6844171974522321,
+    "invalidation": 0.35846,
+    "close": 0.3595,
+    "atr": 0.00299,
+    "ribbon_pct": 0.62,
+    "symbol": "METUSDT",
     "tf": "15m",
-    "tv_symbol": "BINANCE:PEPEUSDT",
+    "tv_symbol": "BINANCE:METUSDT",
     "htf_favourable": true,
-    "trend_bars": 5,
-    "detail": "angled res x2, exp 3.01ATR, ch 0.59ATR, apex 3.1, trend 5b",
-    "score": 0.5,
+    "trend_bars": 30,
+    "detail": "angled res x3, exp 3.36ATR, ch 0.62ATR, apex 3.3, trend 30b",
+    "score": 0.925,
     "dss": {
      "1d": [
-      0.813,
-      0.587
+      0.17,
+      0.306
      ],
      "1w": [
-      0.93,
-      0.818
+      0.923,
+      0.961
      ],
      "1M": null
     },
     "trend": {
      "15m": "up",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": null
+    }
+   },
+   {
+    "state": "forming",
+    "expansion_atr": 2.82,
+    "consol_bars": 32,
+    "consol_start": 867,
+    "coil_end": 899,
+    "bars_since_coil": 0,
+    "res_touches": 2,
+    "channel_atr": 1.56,
+    "gap_atr": 1.96,
+    "bars_to_apex": 32.8,
+    "bars_in_state": 0,
+    "res_kind": "horizontal",
+    "resistance": 0.730608,
+    "res_slope": 0.00014399999999999645,
+    "res_intercept": 0.6011520000000034,
+    "invalidation": 0.710047,
+    "close": 0.711,
+    "atr": 0.00998,
+    "ribbon_pct": 1.56,
+    "symbol": "ETHFIUSDT",
+    "tf": "1h",
+    "tv_symbol": "BINANCE:ETHFIUSDT",
+    "htf_favourable": true,
+    "trend_bars": 16,
+    "detail": "horizontal res x2, exp 2.82ATR, ch 1.56ATR, apex 32.8, trend 16b",
+    "score": 0.075,
+    "dss": {
+     "1d": [
+      0.303,
+      0.168
+     ],
+     "1w": [
+      0.967,
+      0.93
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
      "1h": "up",
      "4h": "none",
      "12h": "none",
@@ -73,7 +119,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -208,8 +254,8 @@
      ]
     },
     "trend": {
-     "15m": "none",
-     "1h": "none",
+     "15m": "up",
+     "1h": "up",
      "4h": "none",
      "12h": "none",
      "1w": "none"
@@ -248,7 +294,7 @@
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "up",
      "4h": "none",
      "12h": "none",
@@ -289,7 +335,7 @@
     },
     "trend": {
      "15m": "none",
-     "1h": "up",
+     "1h": "none",
      "4h": "none",
      "12h": "none",
      "1w": "none"
@@ -442,7 +488,7 @@
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
