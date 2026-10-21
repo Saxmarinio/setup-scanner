@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-20 00:44 UTC",
+ "generated": "2026-10-21 00:11 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "IBM",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "channel %B, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 217.800003,
     "tv_symbol": "IBM",
@@ -16,12 +16,12 @@
     "score": 0.575,
     "dss": {
      "1d": [
-      0.796,
-      0.531
+      0.841,
+      0.6
      ],
      "1w": [
-      0.282,
-      0.23
+      0.441,
+      0.277
      ],
      "1M": [
       0.073,
@@ -38,21 +38,21 @@
     "symbol": "NFLX",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "channel %B, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 66.540001,
     "tv_symbol": "NFLX",
     "htf_favourable": false,
-    "score": 0.275,
+    "score": 0.175,
     "dss": {
      "1d": [
-      0.863,
-      0.632
+      0.88,
+      0.687
      ],
      "1w": [
-      0.629,
-      0.605
+      0.559,
+      0.595
      ],
      "1M": [
       0.019,
@@ -61,37 +61,6 @@
     },
     "trend": {
      "1h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "SOXS",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "channel %B, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 28.459999,
-    "tv_symbol": "SOXS",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.835,
-      0.579
-     ],
-     "1w": [
-      0.745,
-      0.755
-     ],
-     "1M": [
-      0.033,
-      0.122
-     ]
-    },
-    "trend": {
-     "1h": "up",
      "1d": "none",
      "1w": "none"
     }
