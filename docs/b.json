@@ -1,64 +1,14 @@
 {
- "generated": "2026-10-22 04:55 UTC",
+ "generated": "2026-10-22 13:56 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [
-   {
-    "state": "forming",
-    "expansion_atr": 2.68,
-    "consol_bars": 53,
-    "consol_start": 846,
-    "coil_end": 899,
-    "bars_since_coil": 0,
-    "res_touches": 3,
-    "channel_atr": 0.29,
-    "gap_atr": -0.11,
-    "bars_to_apex": 2.7,
-    "bars_in_state": 4,
-    "res_kind": "angled",
-    "resistance": 0.021438,
-    "res_slope": -2.775303643724642e-05,
-    "res_intercept": 0.04638844129554607,
-    "invalidation": 0.021061,
-    "close": 0.02149,
-    "atr": 0.000478,
-    "ribbon_pct": 0.29,
-    "symbol": "DODOUSDT",
-    "tf": "4h",
-    "tv_symbol": "BINANCE:DODOUSDT",
-    "htf_favourable": true,
-    "trend_bars": 19,
-    "detail": "angled res x3, exp 2.68ATR, ch 0.29ATR, apex 2.7, trend 19b",
-    "score": 0.5,
-    "dss": {
-     "1d": [
-      0.847,
-      0.661
-     ],
-     "1w": [
-      0.132,
-      0.253
-     ],
-     "1M": [
-      0.672,
-      0.37
-     ]
-    },
-    "trend": {
-     "15m": "up",
-     "1h": "none",
-     "4h": "up",
-     "12h": "none",
-     "1w": "none"
-    }
-   }
-  ],
+  "compression (15m/1h/4h)": [],
   "divergence (4h)": [
    {
     "symbol": "BERAUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.1592,
     "tv_symbol": "BINANCE:BERAUSDT",
@@ -87,8 +37,8 @@
     "symbol": "STRKUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.05474,
     "tv_symbol": "BINANCE:STRKUSDT",
@@ -117,8 +67,8 @@
     "symbol": "STXUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.3351,
     "tv_symbol": "BINANCE:STXUSDT",
