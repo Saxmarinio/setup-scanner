@@ -1,66 +1,66 @@
 {
- "generated": "2026-10-21 00:11 UTC",
+ "generated": "2026-10-22 00:17 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "IBM",
+    "symbol": "UVXY",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "channel %B, fired 0 bars ago",
+    "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 217.800003,
-    "tv_symbol": "IBM",
+    "invalidation": 15.69,
+    "tv_symbol": "UVXY",
     "htf_favourable": false,
     "score": 0.575,
     "dss": {
      "1d": [
-      0.841,
-      0.6
+      0.727,
+      0.469
+     ],
+     "1w": [
+      0.435,
+      0.195
+     ],
+     "1M": [
+      0.036,
+      0.136
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "IBM",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 3 bars ago",
+    "bars_since": 3,
+    "margin_excess": 0.0,
+    "invalidation": 217.800003,
+    "tv_symbol": "IBM",
+    "htf_favourable": false,
+    "score": 0.175,
+    "dss": {
+     "1d": [
+      0.877,
+      0.661
      ],
      "1w": [
       0.441,
       0.277
      ],
      "1M": [
-      0.073,
-      0.19
+      0.076,
+      0.191
      ]
     },
     "trend": {
      "1h": "up",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "NFLX",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "channel %B, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 66.540001,
-    "tv_symbol": "NFLX",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.88,
-      0.687
-     ],
-     "1w": [
-      0.559,
-      0.595
-     ],
-     "1M": [
-      0.019,
-      0.079
-     ]
-    },
-    "trend": {
-     "1h": "none",
      "1d": "none",
      "1w": "none"
     }
