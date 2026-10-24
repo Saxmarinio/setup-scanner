@@ -1,31 +1,62 @@
 {
- "generated": "2026-10-23 00:13 UTC",
+ "generated": "2026-10-24 00:05 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "UVXY",
+    "symbol": "HIMS",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "channel %B, fired 0 bars ago",
+    "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 15.69,
-    "tv_symbol": "UVXY",
+    "invalidation": 26.33,
+    "tv_symbol": "HIMS",
     "htf_favourable": false,
     "score": 0.575,
     "dss": {
      "1d": [
-      0.769,
-      0.535
+      0.371,
+      0.483
+     ],
+     "1w": [
+      0.068,
+      0.15
+     ],
+     "1M": [
+      0.075,
+      0.105
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "UVXY",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 2 bars ago",
+    "bars_since": 2,
+    "margin_excess": 0.0,
+    "invalidation": 15.69,
+    "tv_symbol": "UVXY",
+    "htf_favourable": false,
+    "score": 0.415,
+    "dss": {
+     "1d": [
+      0.82,
+      0.599
      ],
      "1w": [
       0.435,
       0.195
      ],
      "1M": [
-      0.046,
-      0.138
+      0.049,
+      0.139
      ]
     },
     "trend": {
@@ -38,8 +69,8 @@
     "symbol": "IBM",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "channel %B, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 217.800003,
     "tv_symbol": "IBM",
@@ -47,15 +78,15 @@
     "score": 0.175,
     "dss": {
      "1d": [
-      0.904,
-      0.715
+      0.925,
+      0.762
      ],
      "1w": [
       0.441,
       0.277
      ],
      "1M": [
-      0.076,
+      0.078,
       0.191
      ]
     },
