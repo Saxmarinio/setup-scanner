@@ -1,42 +1,8 @@
 {
- "generated": "2026-10-26 04:39 UTC",
+ "generated": "2026-10-27 04:59 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
-  "divergence (4h)": [
-   {
-    "symbol": "ETHUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "channel %B, fired 2 bars ago",
-    "bars_since": 2,
-    "margin_excess": 0.0,
-    "invalidation": 2282.46,
-    "tv_symbol": "BINANCE:ETHUSDT",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.465,
-      0.33
-     ],
-     "1w": [
-      0.871,
-      0.834
-     ],
-     "1M": [
-      0.137,
-      0.261
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   }
-  ],
+  "divergence (4h)": [],
   "bottoming (1d/1w)": []
  }
 }
