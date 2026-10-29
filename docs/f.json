@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28 00:47 UTC",
+ "generated": "2026-10-29 01:18 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "HIMS",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "channel %B, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 26.33,
     "tv_symbol": "HIMS",
@@ -16,16 +16,16 @@
     "score": 0.575,
     "dss": {
      "1d": [
-      0.242,
-      0.4
+      0.188,
+      0.353
      ],
      "1w": [
-      0.053,
-      0.129
+      0.065,
+      0.131
      ],
      "1M": [
-      0.075,
-      0.105
+      0.079,
+      0.106
      ]
     },
     "trend": {
@@ -38,8 +38,8 @@
     "symbol": "UVXY",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "channel %B, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 15.69,
     "tv_symbol": "UVXY",
@@ -47,15 +47,15 @@
     "score": 0.175,
     "dss": {
      "1d": [
-      0.891,
-      0.709
+      0.915,
+      0.755
      ],
      "1w": [
       0.561,
       0.276
      ],
      "1M": [
-      0.043,
+      0.039,
       0.137
      ]
     },
