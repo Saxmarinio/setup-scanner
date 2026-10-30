@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-30 05:56 UTC",
+ "generated": "2026-10-30 15:10 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [],
@@ -37,7 +37,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
