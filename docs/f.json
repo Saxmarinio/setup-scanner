@@ -1,31 +1,31 @@
 {
- "generated": "2026-10-29 01:18 UTC",
+ "generated": "2026-10-30 01:23 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "HIMS",
+    "symbol": "APP",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
-    "invalidation": 26.33,
-    "tv_symbol": "HIMS",
+    "invalidation": 260.589996,
+    "tv_symbol": "APP",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.375,
     "dss": {
      "1d": [
-      0.188,
-      0.353
+      0.615,
+      0.521
      ],
      "1w": [
-      0.065,
-      0.131
+      0.016,
+      0.071
      ],
      "1M": [
-      0.079,
-      0.106
+      0.05,
+      0.132
      ]
     },
     "trend": {
@@ -35,28 +35,28 @@
     }
    },
    {
-    "symbol": "UVXY",
+    "symbol": "HIMS",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 5 bars ago",
-    "bars_since": 5,
+    "detail": "channel %B, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
-    "invalidation": 15.69,
-    "tv_symbol": "UVXY",
+    "invalidation": 26.33,
+    "tv_symbol": "HIMS",
     "htf_favourable": false,
-    "score": 0.175,
+    "score": 0.375,
     "dss": {
      "1d": [
-      0.915,
-      0.755
+      0.192,
+      0.317
      ],
      "1w": [
-      0.561,
-      0.276
+      0.074,
+      0.133
      ],
      "1M": [
-      0.039,
-      0.137
+      0.08,
+      0.106
      ]
     },
     "trend": {
