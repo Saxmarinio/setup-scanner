@@ -1,23 +1,54 @@
 {
- "generated": "2026-10-30 01:23 UTC",
+ "generated": "2026-10-31 01:06 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
+    "symbol": "NOK",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 7.78,
+    "tv_symbol": "NOK",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.405,
+      0.184
+     ],
+     "1w": [
+      0.4,
+      0.287
+     ],
+     "1M": [
+      0.284,
+      0.415
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
     "symbol": "APP",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 260.589996,
     "tv_symbol": "APP",
     "htf_favourable": false,
-    "score": 0.375,
+    "score": 0.175,
     "dss": {
      "1d": [
-      0.615,
-      0.521
+      0.575,
+      0.533
      ],
      "1w": [
       0.016,
@@ -38,25 +69,25 @@
     "symbol": "HIMS",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "channel %B, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 26.33,
     "tv_symbol": "HIMS",
     "htf_favourable": false,
-    "score": 0.375,
+    "score": 0.175,
     "dss": {
      "1d": [
-      0.192,
-      0.317
+      0.307,
+      0.315
      ],
      "1w": [
-      0.074,
-      0.133
+      0.053,
+      0.129
      ],
      "1M": [
-      0.08,
-      0.106
+      0.075,
+      0.105
      ]
     },
     "trend": {
