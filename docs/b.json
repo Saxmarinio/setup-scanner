@@ -1,33 +1,33 @@
 {
- "generated": "2026-10-31 20:06 UTC",
+ "generated": "2026-10-31 23:31 UTC",
  "groups": {
   "compression (15m/1h/4h)": [
    {
-    "state": "forming",
+    "state": "compressed",
     "expansion_atr": 3.2,
-    "consol_bars": 19,
-    "consol_start": 880,
+    "consol_bars": 22,
+    "consol_start": 877,
     "coil_end": 899,
     "bars_since_coil": 0,
     "res_touches": 2,
-    "channel_atr": 1.82,
-    "gap_atr": 1.72,
-    "bars_to_apex": 17.0,
-    "bars_in_state": 16,
+    "channel_atr": 1.42,
+    "gap_atr": 0.42,
+    "bars_to_apex": 15.2,
+    "bars_in_state": 19,
     "res_kind": "horizontal",
     "resistance": 0.0053,
-    "res_slope": 3.472146317888967e-20,
-    "res_intercept": 0.00529999999999997,
-    "invalidation": 0.00474,
-    "close": 0.004884,
-    "atr": 0.000242,
-    "ribbon_pct": 1.82,
+    "res_slope": -6.078579532908952e-20,
+    "res_intercept": 0.0053000000000000555,
+    "invalidation": 0.004798,
+    "close": 0.005189,
+    "atr": 0.000262,
+    "ribbon_pct": 1.42,
     "symbol": "BEAMXUSDT",
     "tf": "1h",
     "tv_symbol": "BINANCE:BEAMXUSDT",
     "htf_favourable": true,
-    "trend_bars": 19,
-    "detail": "horizontal res x2, exp 3.2ATR, ch 1.82ATR, apex 17.0, trend 19b",
+    "trend_bars": 22,
+    "detail": "horizontal res x2, exp 3.2ATR, ch 1.42ATR, apex 15.2, trend 22b",
     "score": 0.5,
     "dss": {
      "1d": [
@@ -292,7 +292,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -494,7 +494,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
