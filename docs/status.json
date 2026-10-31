@@ -6,10 +6,10 @@
   "bottoming": 0
  },
  "B": {
-  "ts": "2026-10-31 05:49 UTC",
+  "ts": "2026-10-31 14:38 UTC",
   "compression": 0,
-  "divergence": 3,
-  "bottoming": 4
+  "divergence": 8,
+  "bottoming": 5
  },
  "C": {
   "ts": "2026-10-31 00:56 UTC",
