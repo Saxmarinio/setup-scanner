@@ -1,8 +1,42 @@
 {
- "generated": "2026-10-30 05:39 UTC",
+ "generated": "2026-10-31 05:32 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
-  "divergence (4h)": [],
+  "divergence (4h)": [
+   {
+    "symbol": "UNIUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 6.254,
+    "tv_symbol": "BINANCE:UNIUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.83,
+      0.717
+     ],
+     "1w": [
+      0.746,
+      0.886
+     ],
+     "1M": [
+      0.334,
+      0.144
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   }
+  ],
   "bottoming (1d/1w)": []
  }
 }
