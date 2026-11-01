@@ -1,19 +1,49 @@
 {
- "generated": "2026-11-01 15:18 UTC",
+ "generated": "2026-11-01 20:36 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
    {
-    "symbol": "PROMUSDT",
+    "symbol": "FFUSDT",
     "tf": "4h",
     "state": "divergence",
     "detail": "roofed RSI, fired 0 bars ago",
     "bars_since": 0,
     "margin_excess": 0.0,
+    "invalidation": 0.08667,
+    "tv_symbol": "BINANCE:FFUSDT",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.134,
+      0.325
+     ],
+     "1w": [
+      0.862,
+      0.797
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": null
+    }
+   },
+   {
+    "symbol": "PROMUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
+    "margin_excess": 0.0,
     "invalidation": 4.822,
     "tv_symbol": "BINANCE:PROMUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.175,
     "dss": {
      "1d": [
       0.937,
@@ -29,7 +59,7 @@
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -40,13 +70,13 @@
     "symbol": "WLFIUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 0.0496,
     "tv_symbol": "BINANCE:WLFIUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.175,
     "dss": {
      "1d": [
       0.061,
@@ -64,39 +94,6 @@
      "4h": "none",
      "12h": "none",
      "1w": null
-    }
-   },
-   {
-    "symbol": "RLCUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
-    "margin_excess": 0.0,
-    "invalidation": 0.4,
-    "tv_symbol": "BINANCE:RLCUSDT",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.066,
-      0.028
-     ],
-     "1w": [
-      0.822,
-      0.672
-     ],
-     "1M": [
-      0.18,
-      0.059
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
     }
    }
   ],
@@ -214,7 +211,7 @@
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
