@@ -1,31 +1,31 @@
 {
- "generated": "2026-10-31 01:06 UTC",
+ "generated": "2026-11-03 03:07 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "NOK",
+    "symbol": "CRDO",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "channel %B, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
-    "invalidation": 7.78,
-    "tv_symbol": "NOK",
+    "invalidation": 142.889999,
+    "tv_symbol": "CRDO",
     "htf_favourable": false,
     "score": 0.575,
     "dss": {
      "1d": [
-      0.405,
-      0.184
+      0.186,
+      0.161
      ],
      "1w": [
-      0.4,
-      0.287
+      0.067,
+      0.13
      ],
      "1M": [
-      0.284,
-      0.415
+      0.226,
+      0.371
      ]
     },
     "trend": {
@@ -35,28 +35,28 @@
     }
    },
    {
-    "symbol": "APP",
+    "symbol": "JPM",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
-    "invalidation": 260.589996,
-    "tv_symbol": "APP",
+    "invalidation": 330.399994,
+    "tv_symbol": "JPM",
     "htf_favourable": false,
-    "score": 0.175,
+    "score": 0.575,
     "dss": {
      "1d": [
-      0.575,
-      0.533
+      0.954,
+      0.906
      ],
      "1w": [
-      0.016,
-      0.071
+      0.143,
+      0.38
      ],
      "1M": [
-      0.05,
-      0.132
+      0.135,
+      0.274
      ]
     },
     "trend": {
@@ -66,28 +66,28 @@
     }
    },
    {
-    "symbol": "HIMS",
+    "symbol": "NOK",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 5 bars ago",
-    "bars_since": 5,
+    "detail": "channel %B, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
-    "invalidation": 26.33,
-    "tv_symbol": "HIMS",
+    "invalidation": 7.78,
+    "tv_symbol": "NOK",
     "htf_favourable": false,
     "score": 0.175,
     "dss": {
      "1d": [
-      0.307,
-      0.315
+      0.618,
+      0.342
      ],
      "1w": [
-      0.053,
-      0.129
+      0.345,
+      0.3
      ],
      "1M": [
-      0.075,
-      0.105
+      0.221,
+      0.372
      ]
     },
     "trend": {

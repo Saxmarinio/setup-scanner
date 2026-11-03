@@ -1,8 +1,40 @@
 {
- "generated": "2026-10-31 01:06 UTC",
+ "generated": "2026-11-03 03:07 UTC",
  "groups": {
   "compression (1d)": [],
-  "divergence (1d)": [],
+  "divergence (1d)": [
+   {
+    "symbol": "NG=F",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 2.497,
+    "tv_symbol": "NYMEX:NG1!",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.209,
+      0.228
+     ],
+     "1w": [
+      0.575,
+      0.501
+     ],
+     "1M": [
+      0.105,
+      0.299
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   }
+  ],
   "bottoming (1d/1w)": []
  }
 }
