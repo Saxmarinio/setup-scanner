@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04 01:43 UTC",
+ "generated": "2026-11-05 01:52 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "CRDO",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "channel %B, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 142.889999,
     "tv_symbol": "CRDO",
@@ -16,8 +16,8 @@
     "score": 0.575,
     "dss": {
      "1d": [
-      0.186,
-      0.161
+      0.224,
+      0.175
      ],
      "1w": [
       0.067,
@@ -38,8 +38,8 @@
     "symbol": "JPM",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
     "invalidation": 330.399994,
     "tv_symbol": "JPM",
@@ -47,20 +47,20 @@
     "score": 0.575,
     "dss": {
      "1d": [
-      0.954,
-      0.906
+      0.923,
+      0.91
      ],
      "1w": [
-      0.143,
-      0.38
+      0.17,
+      0.386
      ],
      "1M": [
-      0.135,
-      0.274
+      0.159,
+      0.28
      ]
     },
     "trend": {
-     "1h": "none",
+     "1h": "up",
      "1d": "none",
      "1w": "none"
     }
@@ -69,8 +69,8 @@
     "symbol": "NOK",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "channel %B, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 7.78,
     "tv_symbol": "NOK",
@@ -78,12 +78,12 @@
     "score": 0.175,
     "dss": {
      "1d": [
-      0.618,
-      0.342
+      0.685,
+      0.418
      ],
      "1w": [
-      0.362,
-      0.304
+      0.341,
+      0.299
      ],
      "1M": [
       0.221,
