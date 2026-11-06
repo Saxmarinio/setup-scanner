@@ -1,8 +1,75 @@
 {
- "generated": "2026-11-05 06:36 UTC",
+ "generated": "2026-11-06 06:32 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
-  "divergence (4h)": [],
+  "divergence (4h)": [
+   {
+    "symbol": "BTCUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
+    "margin_excess": 0.0,
+    "invalidation": 75736.38,
+    "tv_symbol": "BINANCE:BTCUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.21,
+      0.15
+     ],
+     "1w": [
+      0.9,
+      0.785
+     ],
+     "1M": [
+      0.075,
+      0.126
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "NEARUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
+    "margin_excess": 0.0,
+    "invalidation": 3.69,
+    "tv_symbol": "BINANCE:NEARUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.036,
+      0.042
+     ],
+     "1w": [
+      0.846,
+      0.668
+     ],
+     "1M": [
+      0.789,
+      0.518
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   }
+  ],
   "bottoming (1d/1w)": []
  }
 }
