@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06 01:51 UTC",
+ "generated": "2026-11-07 01:19 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "NG=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "channel %B, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 2.497,
     "tv_symbol": "NYMEX:NG1!",
@@ -16,12 +16,12 @@
     "score": 0.375,
     "dss": {
      "1d": [
-      0.494,
-      0.311
+      0.606,
+      0.377
      ],
      "1w": [
-      0.595,
-      0.506
+      0.604,
+      0.508
      ],
      "1M": [
       0.105,
@@ -29,7 +29,7 @@
      ]
     },
     "trend": {
-     "1h": "up",
+     "1h": "none",
      "1d": "none",
      "1w": "none"
     }
