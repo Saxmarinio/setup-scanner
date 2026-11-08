@@ -1,62 +1,32 @@
 {
- "generated": "2026-11-07 05:53 UTC",
+ "generated": "2026-11-08 05:54 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
    {
-    "symbol": "SOLUSDT",
+    "symbol": "BTCUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
     "margin_excess": 0.0,
-    "invalidation": 88.3,
-    "tv_symbol": "BINANCE:SOLUSDT",
+    "invalidation": 74888.0,
+    "tv_symbol": "BINANCE:BTCUSDT",
     "htf_favourable": false,
     "score": 0.375,
     "dss": {
      "1d": [
-      0.173,
-      0.255
+      0.256,
+      0.19
      ],
      "1w": [
-      0.84,
-      0.909
+      0.9,
+      0.785
      ],
      "1M": [
-      0.089,
-      0.066
+      0.075,
+      0.126
      ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "ENAUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
-    "margin_excess": 0.0,
-    "invalidation": 0.1562,
-    "tv_symbol": "BINANCE:ENAUSDT",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.203,
-      0.413
-     ],
-     "1w": [
-      0.88,
-      0.836
-     ],
-     "1M": null
     },
     "trend": {
      "15m": "none",
