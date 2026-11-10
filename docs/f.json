@@ -1,27 +1,58 @@
 {
- "generated": "2026-11-07 01:19 UTC",
+ "generated": "2026-11-10 03:52 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "PDD",
+    "symbol": "APP",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 1 bars ago",
+    "detail": "roofed RSI, fired 1 bars ago",
     "bars_since": 1,
     "margin_excess": 0.0,
-    "invalidation": 76.68,
-    "tv_symbol": "PDD",
+    "invalidation": 225.190002,
+    "tv_symbol": "APP",
     "htf_favourable": false,
     "score": 0.575,
     "dss": {
      "1d": [
-      0.38,
-      0.376
+      0.78,
+      0.612
      ],
      "1w": [
-      0.269,
-      0.478
+      0.405,
+      0.173
+     ],
+     "1M": [
+      0.05,
+      0.114
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "PDD",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 3 bars ago",
+    "bars_since": 3,
+    "margin_excess": 0.0,
+    "invalidation": 76.68,
+    "tv_symbol": "PDD",
+    "htf_favourable": false,
+    "score": 0.175,
+    "dss": {
+     "1d": [
+      0.578,
+      0.441
+     ],
+     "1w": [
+      0.251,
+      0.428
      ],
      "1M": [
       0.092,
@@ -29,7 +60,7 @@
      ]
     },
     "trend": {
-     "1h": "up",
+     "1h": "none",
      "1d": "none",
      "1w": "none"
     }
@@ -38,118 +69,25 @@
     "symbol": "SOXS",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "channel %B, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 39.330002,
     "tv_symbol": "SOXS",
     "htf_favourable": false,
-    "score": 0.575,
-    "dss": {
-     "1d": [
-      0.609,
-      0.623
-     ],
-     "1w": [
-      0.88,
-      0.805
-     ],
-     "1M": [
-      0.044,
-      0.105
-     ]
-    },
-    "trend": {
-     "1h": "up",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "CRDO",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
-    "margin_excess": 0.0,
-    "invalidation": 142.889999,
-    "tv_symbol": "CRDO",
-    "htf_favourable": false,
-    "score": 0.275,
-    "dss": {
-     "1d": [
-      0.178,
-      0.185
-     ],
-     "1w": [
-      0.067,
-      0.13
-     ],
-     "1M": [
-      0.226,
-      0.371
-     ]
-    },
-    "trend": {
-     "1h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "JPM",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
-    "margin_excess": 0.0,
-    "invalidation": 330.399994,
-    "tv_symbol": "JPM",
-    "htf_favourable": false,
-    "score": 0.275,
-    "dss": {
-     "1d": [
-      0.849,
-      0.901
-     ],
-     "1w": [
-      0.143,
-      0.38
-     ],
-     "1M": [
-      0.135,
-      0.274
-     ]
-    },
-    "trend": {
-     "1h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "NOK",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "channel %B, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 7.78,
-    "tv_symbol": "NOK",
-    "htf_favourable": false,
     "score": 0.175,
     "dss": {
      "1d": [
-      0.694,
-      0.532
+      0.619,
+      0.627
      ],
      "1w": [
-      0.321,
-      0.295
+      0.907,
+      0.827
      ],
      "1M": [
-      0.221,
-      0.372
+      0.037,
+      0.103
      ]
     },
     "trend": {
