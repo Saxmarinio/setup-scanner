@@ -1,8 +1,105 @@
 {
- "generated": "2026-11-11 16:17 UTC",
+ "generated": "2026-11-11 22:47 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
-  "divergence (4h)": [],
+  "divergence (4h)": [
+   {
+    "symbol": "ADAUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.1702,
+    "tv_symbol": "BINANCE:ADAUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.391,
+      0.453
+     ],
+     "1w": [
+      0.721,
+      0.829
+     ],
+     "1M": [
+      0.043,
+      0.109
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "BCHUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 226.5,
+    "tv_symbol": "BINANCE:BCHUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.087,
+      0.257
+     ],
+     "1w": [
+      0.897,
+      0.864
+     ],
+     "1M": [
+      0.197,
+      0.423
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "TRUMPUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 1.094,
+    "tv_symbol": "BINANCE:TRUMPUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.095,
+      0.207
+     ],
+     "1w": [
+      0.718,
+      0.773
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   }
+  ],
   "bottoming (1d)": [
    {
     "state": "breakout",
