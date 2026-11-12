@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-12 07:18 UTC",
+ "generated": "2026-11-12 16:54 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
@@ -7,8 +7,8 @@
     "symbol": "ALGOUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.088,
     "tv_symbol": "BINANCE:ALGOUSDT",
@@ -40,8 +40,8 @@
     "symbol": "ASTERUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.623,
     "tv_symbol": "BINANCE:ASTERUSDT",
@@ -70,8 +70,8 @@
     "symbol": "POLUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.08508,
     "tv_symbol": "BINANCE:POLUSDT",
@@ -100,8 +100,8 @@
     "symbol": "PUMPUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.003345,
     "tv_symbol": "BINANCE:PUMPUSDT",
@@ -127,11 +127,44 @@
     }
    },
    {
+    "symbol": "WBTCUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
+    "margin_excess": 0.0,
+    "invalidation": 72682.86,
+    "tv_symbol": "BINANCE:WBTCUSDT",
+    "htf_favourable": false,
+    "score": 0.575,
+    "dss": {
+     "1d": [
+      0.183,
+      0.204
+     ],
+     "1w": [
+      0.869,
+      0.797
+     ],
+     "1M": [
+      0.082,
+      0.185
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
     "symbol": "ZROUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 1.445,
     "tv_symbol": "BINANCE:ZROUSDT",
@@ -160,8 +193,8 @@
     "symbol": "BCHUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 226.5,
     "tv_symbol": "BINANCE:BCHUSDT",
@@ -193,8 +226,8 @@
     "symbol": "TRUMPUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 1.094,
     "tv_symbol": "BINANCE:TRUMPUSDT",
@@ -408,7 +441,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -417,35 +450,32 @@
    },
    {
     "state": "basing",
-    "drawdown_pct": 46.8,
-    "vol_ratio": 1.66,
+    "drawdown_pct": 60.6,
+    "vol_ratio": 1.59,
     "base_bars": 180,
-    "gap_100_atr": 2.44,
-    "gap_res_atr": 0.96,
-    "target_200_pct": 51.8,
-    "target_300_pct": 119.5,
-    "resistance": 0.616,
-    "invalidation": 0.64419875,
-    "close": 0.5635,
-    "atr": 0.054758,
-    "symbol": "APTUSDT",
+    "gap_100_atr": 2.25,
+    "gap_res_atr": 1.92,
+    "target_200_pct": 55.5,
+    "target_300_pct": 111.4,
+    "resistance": 3.19e-06,
+    "invalidation": 2.88e-06,
+    "close": 2.74e-06,
+    "atr": 2.3e-07,
+    "symbol": "BONKUSDT",
     "tf": "1d",
-    "tv_symbol": "BINANCE:APTUSDT",
-    "detail": "dd 46.8%, vol x1.66, res 0.96ATR, 100EMA 2.44ATR, targets +51.8%/+119.5%",
-    "score": 0.305,
+    "tv_symbol": "BINANCE:BONKUSDT",
+    "detail": "dd 60.6%, vol x1.59, res 1.92ATR, 100EMA 2.25ATR, targets +55.5%/+111.4%",
+    "score": 0.292,
     "dss": {
      "1d": [
-      0.374,
-      0.38
+      0.133,
+      0.305
      ],
      "1w": [
-      0.794,
-      0.725
+      0.878,
+      0.761
      ],
-     "1M": [
-      0.024,
-      0.03
-     ]
+     "1M": null
     },
     "trend": {
      "15m": "none",
@@ -497,42 +527,39 @@
    },
    {
     "state": "basing",
-    "drawdown_pct": 48.3,
-    "vol_ratio": 1.47,
+    "drawdown_pct": 45.6,
+    "vol_ratio": 1.38,
     "base_bars": 180,
-    "gap_100_atr": 0.17,
-    "gap_res_atr": 0.18,
-    "target_200_pct": 11.3,
-    "target_300_pct": 41.3,
-    "resistance": 0.00158,
-    "invalidation": 0.00153779,
-    "close": 0.001549,
-    "atr": 0.00016808,
-    "symbol": "RSRUSDT",
+    "gap_100_atr": 1.51,
+    "gap_res_atr": 0.04,
+    "target_200_pct": 22.9,
+    "target_300_pct": 56.4,
+    "resistance": 0.01322,
+    "invalidation": 0.01472576,
+    "close": 0.01317,
+    "atr": 0.00132292,
+    "symbol": "PLUMEUSDT",
     "tf": "1d",
-    "tv_symbol": "BINANCE:RSRUSDT",
-    "detail": "dd 48.3%, vol x1.47, res 0.18ATR, 100EMA 0.17ATR, targets +11.3%/+41.3%",
-    "score": 0.217,
+    "tv_symbol": "BINANCE:PLUMEUSDT",
+    "detail": "dd 45.6%, vol x1.38, res 0.04ATR, 100EMA 1.51ATR, targets +22.9%/+56.4%",
+    "score": 0.234,
     "dss": {
      "1d": [
-      0.917,
-      0.759
+      0.332,
+      0.282
      ],
      "1w": [
-      0.714,
-      0.731
+      0.711,
+      0.78
      ],
-     "1M": [
-      0.049,
-      0.045
-     ]
+     "1M": null
     },
     "trend": {
      "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
-     "1w": "none"
+     "1w": null
     }
    }
   ]
