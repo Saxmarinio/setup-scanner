@@ -1,31 +1,31 @@
 {
- "generated": "2026-11-11 06:03 UTC",
+ "generated": "2026-11-12 07:04 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
    {
-    "symbol": "BNBUSDT",
+    "symbol": "BTCUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
-    "invalidation": 673.31,
-    "tv_symbol": "BINANCE:BNBUSDT",
+    "invalidation": 72727.27,
+    "tv_symbol": "BINANCE:BTCUSDT",
     "htf_favourable": false,
-    "score": 0.375,
+    "score": 0.575,
     "dss": {
      "1d": [
-      0.074,
-      0.221
+      0.183,
+      0.206
      ],
      "1w": [
-      0.859,
-      0.818
+      0.874,
+      0.804
      ],
      "1M": [
-      0.048,
-      0.128
+      0.075,
+      0.126
      ]
     },
     "trend": {
