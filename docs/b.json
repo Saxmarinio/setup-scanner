@@ -1,50 +1,35 @@
 {
- "generated": "2026-11-13 01:10 UTC",
+ "generated": "2026-11-13 12:17 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [
+  "compression (15m/1h/4h)": [],
+  "divergence (4h)": [
    {
-    "state": "forming",
-    "expansion_atr": 3.38,
-    "consol_bars": 24,
-    "consol_start": 975,
-    "coil_end": 999,
-    "bars_since_coil": 0,
-    "res_touches": 2,
-    "channel_atr": 1.21,
-    "gap_atr": 1.41,
-    "bars_to_apex": 10.3,
-    "bars_in_state": 0,
-    "res_kind": "angled",
-    "resistance": 5.051923,
-    "res_slope": -0.002461538461538353,
-    "res_intercept": 7.510999999999893,
-    "invalidation": 4.970673,
-    "close": 4.985,
-    "atr": 0.047467,
-    "ribbon_pct": 1.21,
-    "symbol": "PROMUSDT",
-    "tf": "15m",
-    "tv_symbol": "BINANCE:PROMUSDT",
-    "htf_favourable": true,
-    "trend_bars": 11,
-    "detail": "angled res x2, exp 3.38ATR, ch 1.21ATR, apex 10.3, trend 11b",
-    "score": 0.5,
+    "symbol": "AVAUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
+    "margin_excess": 0.0,
+    "invalidation": 0.2295,
+    "tv_symbol": "BINANCE:AVAUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
     "dss": {
      "1d": [
-      0.078,
-      0.231
+      0.027,
+      0.076
      ],
      "1w": [
-      0.848,
-      0.883
+      0.891,
+      0.826
      ],
      "1M": [
-      0.244,
-      0.298
+      0.836,
+      0.602
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -52,7 +37,6 @@
     }
    }
   ],
-  "divergence (4h)": [],
   "bottoming (1d)": [
    {
     "state": "basing",
@@ -127,7 +111,7 @@
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -207,7 +191,7 @@
      ]
     },
     "trend": {
-     "15m": "up",
+     "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
