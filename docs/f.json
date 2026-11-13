@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-12 02:34 UTC",
+ "generated": "2026-11-13 02:11 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -20,12 +20,12 @@
       0.773
      ],
      "1w": [
-      0.697,
-      0.436
+      0.711,
+      0.439
      ],
      "1M": [
-      0.057,
-      0.121
+      0.063,
+      0.123
      ]
     },
     "trend": {
@@ -38,13 +38,13 @@
     "symbol": "APP",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 225.190002,
     "tv_symbol": "APP",
     "htf_favourable": false,
-    "score": 0.415,
+    "score": 0.335,
     "dss": {
      "1d": [
       0.867,
@@ -55,8 +55,8 @@
       0.173
      ],
      "1M": [
-      0.049,
-      0.114
+      0.047,
+      0.113
      ]
     },
     "trend": {
@@ -69,21 +69,21 @@
     "symbol": "PDD",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "channel %B, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 76.68,
     "tv_symbol": "PDD",
     "htf_favourable": false,
-    "score": 0.255,
+    "score": 0.175,
     "dss": {
      "1d": [
       0.575,
       0.498
      ],
      "1w": [
-      0.232,
-      0.424
+      0.214,
+      0.419
      ],
      "1M": [
       0.092,
@@ -113,7 +113,7 @@
       0.567
      ],
      "1w": [
-      0.881,
+      0.883,
       0.822
      ],
      "1M": [
