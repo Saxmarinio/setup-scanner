@@ -1,14 +1,64 @@
 {
- "generated": "2026-11-13 12:17 UTC",
+ "generated": "2026-11-13 19:51 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [],
+  "compression (15m/1h/4h)": [
+   {
+    "state": "triggered",
+    "expansion_atr": 6.12,
+    "consol_bars": 22,
+    "consol_start": 975,
+    "coil_end": 997,
+    "bars_since_coil": 2,
+    "res_touches": 2,
+    "channel_atr": 1.76,
+    "gap_atr": 0.47,
+    "bars_to_apex": 9.3,
+    "bars_in_state": 12,
+    "res_kind": "angled",
+    "resistance": 8.201125,
+    "res_slope": -0.003812499999999885,
+    "res_intercept": 12.002187499999883,
+    "invalidation": 8.020119,
+    "close": 8.293,
+    "atr": 0.098335,
+    "ribbon_pct": 1.76,
+    "symbol": "INJUSDT",
+    "tf": "15m",
+    "tv_symbol": "BINANCE:INJUSDT",
+    "htf_favourable": true,
+    "trend_bars": 10,
+    "detail": "angled res x2, exp 6.12ATR, ch 1.76ATR, apex 9.3, trend 10b, broke 2b after coil",
+    "score": 0.5,
+    "dss": {
+     "1d": [
+      0.796,
+      0.635
+     ],
+     "1w": [
+      0.89,
+      0.754
+     ],
+     "1M": [
+      0.571,
+      0.295
+     ]
+    },
+    "trend": {
+     "15m": "up",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   }
+  ],
   "divergence (4h)": [
    {
     "symbol": "AVAUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 0.2295,
     "tv_symbol": "BINANCE:AVAUSDT",
@@ -148,6 +198,46 @@
      "1M": [
       0.024,
       0.03
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "state": "basing",
+    "drawdown_pct": 73.6,
+    "vol_ratio": 5.97,
+    "base_bars": 180,
+    "gap_100_atr": 1.23,
+    "gap_res_atr": 1.46,
+    "target_200_pct": 16.0,
+    "target_300_pct": 29.5,
+    "resistance": 0.483,
+    "invalidation": 0.47527111,
+    "close": 0.3928,
+    "atr": 0.06164144,
+    "symbol": "RLCUSDT",
+    "tf": "1d",
+    "tv_symbol": "BINANCE:RLCUSDT",
+    "detail": "dd 73.6%, vol x5.97, res 1.46ATR, 100EMA 1.23ATR, targets +16.0%/+29.5%",
+    "score": 0.356,
+    "dss": {
+     "1d": [
+      0.489,
+      0.582
+     ],
+     "1w": [
+      0.722,
+      0.703
+     ],
+     "1M": [
+      0.18,
+      0.059
      ]
     },
     "trend": {
