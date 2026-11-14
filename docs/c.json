@@ -1,8 +1,40 @@
 {
- "generated": "2026-11-13 02:00 UTC",
+ "generated": "2026-11-14 01:33 UTC",
  "groups": {
   "compression (1d)": [],
-  "divergence (1d)": [],
+  "divergence (1d)": [
+   {
+    "symbol": "IWM",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 270.230011,
+    "tv_symbol": "IWM",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.575,
+      0.699
+     ],
+     "1w": [
+      0.035,
+      0.122
+     ],
+     "1M": [
+      0.587,
+      0.767
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   }
+  ],
   "bottoming (1d/1w)": []
  }
 }
