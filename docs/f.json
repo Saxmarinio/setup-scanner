@@ -1,31 +1,124 @@
 {
- "generated": "2026-11-13 02:11 UTC",
+ "generated": "2026-11-14 01:52 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "UVXY",
+    "symbol": "JPM",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 0 bars ago",
+    "detail": "roofed RSI, fired 0 bars ago",
     "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 16.02,
-    "tv_symbol": "UVXY",
+    "invalidation": 333.0,
+    "tv_symbol": "JPM",
     "htf_favourable": false,
     "score": 0.575,
     "dss": {
      "1d": [
-      0.57,
-      0.773
+      0.205,
+      0.458
      ],
      "1w": [
-      0.711,
-      0.439
+      0.128,
+      0.324
      ],
      "1M": [
-      0.063,
-      0.123
+      0.14,
+      0.275
+     ]
+    },
+    "trend": {
+     "1h": "up",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "GS",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
+    "margin_excess": 0.0,
+    "invalidation": 854.450012,
+    "tv_symbol": "GS",
+    "htf_favourable": false,
+    "score": 0.475,
+    "dss": {
+     "1d": [
+      0.785,
+      0.747
+     ],
+     "1w": [
+      0.033,
+      0.066
+     ],
+     "1M": [
+      0.207,
+      0.438
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "NOK",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
+    "margin_excess": 0.0,
+    "invalidation": 7.36,
+    "tv_symbol": "NOK",
+    "htf_favourable": false,
+    "score": 0.475,
+    "dss": {
+     "1d": [
+      0.788,
+      0.68
+     ],
+     "1w": [
+      0.25,
+      0.285
+     ],
+     "1M": [
+      0.221,
+      0.372
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "UVXY",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 2 bars ago",
+    "bars_since": 2,
+    "margin_excess": 0.0,
+    "invalidation": 16.02,
+    "tv_symbol": "UVXY",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.345,
+      0.621
+     ],
+     "1w": [
+      0.723,
+      0.442
+     ],
+     "1M": [
+      0.252,
+      0.163
      ]
     },
     "trend": {
@@ -38,91 +131,29 @@
     "symbol": "APP",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 225.190002,
     "tv_symbol": "APP",
     "htf_favourable": false,
-    "score": 0.335,
+    "score": 0.175,
     "dss": {
      "1d": [
-      0.867,
-      0.706
+      0.897,
+      0.749
      ],
      "1w": [
       0.405,
       0.173
      ],
      "1M": [
-      0.047,
-      0.113
+      0.05,
+      0.114
      ]
     },
     "trend": {
      "1h": "up",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "PDD",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "channel %B, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 76.68,
-    "tv_symbol": "PDD",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.575,
-      0.498
-     ],
-     "1w": [
-      0.214,
-      0.419
-     ],
-     "1M": [
-      0.092,
-      0.224
-     ]
-    },
-    "trend": {
-     "1h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "SOXS",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "channel %B, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 39.330002,
-    "tv_symbol": "SOXS",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.422,
-      0.567
-     ],
-     "1w": [
-      0.883,
-      0.822
-     ],
-     "1M": [
-      0.032,
-      0.102
-     ]
-    },
-    "trend": {
-     "1h": "none",
      "1d": "none",
      "1w": "none"
     }
