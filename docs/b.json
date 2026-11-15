@@ -1,72 +1,8 @@
 {
- "generated": "2026-11-15 06:40 UTC",
+ "generated": "2026-11-15 15:45 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
-  "divergence (4h)": [
-   {
-    "symbol": "LTCUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
-    "margin_excess": 0.0,
-    "invalidation": 47.7,
-    "tv_symbol": "BINANCE:LTCUSDT",
-    "htf_favourable": false,
-    "score": 0.575,
-    "dss": {
-     "1d": [
-      0.064,
-      0.145
-     ],
-     "1w": [
-      0.711,
-      0.764
-     ],
-     "1M": [
-      0.073,
-      0.13
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "XPLUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 0.04723,
-    "tv_symbol": "BINANCE:XPLUSDT",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.039,
-      0.117
-     ],
-     "1w": [
-      0.353,
-      0.628
-     ],
-     "1M": null
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": null
-    }
-   }
-  ],
+  "divergence (4h)": [],
   "bottoming (1d)": [
    {
     "state": "basing",
@@ -101,7 +37,7 @@
      ]
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
@@ -338,7 +274,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
