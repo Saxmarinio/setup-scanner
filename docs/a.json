@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-15 06:19 UTC",
+ "generated": "2026-11-16 06:20 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
@@ -7,21 +7,21 @@
     "symbol": "ZECUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 880.5,
+    "invalidation": 801.52,
     "tv_symbol": "BINANCE:ZECUSDT",
     "htf_favourable": false,
     "score": 0.375,
     "dss": {
      "1d": [
-      0.103,
-      0.26
+      0.082,
+      0.22
      ],
      "1w": [
-      0.593,
-      0.699
+      0.461,
+      0.646
      ],
      "1M": [
       0.791,
@@ -37,28 +37,28 @@
     }
    },
    {
-    "symbol": "NEARUSDT",
+    "symbol": "PEPEUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 3.265,
-    "tv_symbol": "BINANCE:NEARUSDT",
+    "invalidation": 4e-06,
+    "tv_symbol": "BINANCE:PEPEUSDT",
     "htf_favourable": false,
     "score": 0.375,
     "dss": {
      "1d": [
-      0.027,
-      0.02
+      0.087,
+      0.179
      ],
      "1w": [
-      0.836,
-      0.705
+      0.934,
+      0.901
      ],
      "1M": [
-      0.789,
-      0.518
+      0.161,
+      0.047
      ]
     },
     "trend": {
