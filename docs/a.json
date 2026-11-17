@@ -1,75 +1,8 @@
 {
- "generated": "2026-11-16 06:20 UTC",
+ "generated": "2026-11-17 07:50 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
-  "divergence (4h)": [
-   {
-    "symbol": "ZECUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
-    "margin_excess": 0.0,
-    "invalidation": 801.52,
-    "tv_symbol": "BINANCE:ZECUSDT",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.082,
-      0.22
-     ],
-     "1w": [
-      0.461,
-      0.646
-     ],
-     "1M": [
-      0.791,
-      0.667
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "PEPEUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
-    "margin_excess": 0.0,
-    "invalidation": 4e-06,
-    "tv_symbol": "BINANCE:PEPEUSDT",
-    "htf_favourable": false,
-    "score": 0.375,
-    "dss": {
-     "1d": [
-      0.087,
-      0.179
-     ],
-     "1w": [
-      0.934,
-      0.901
-     ],
-     "1M": [
-      0.161,
-      0.047
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   }
-  ],
+  "divergence (4h)": [],
   "bottoming (1d/1w)": []
  }
 }
