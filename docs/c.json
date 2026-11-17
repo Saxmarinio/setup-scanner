@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-14 01:33 UTC",
+ "generated": "2026-11-17 04:04 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "IWM",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "roofed RSI, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 270.230011,
     "tv_symbol": "IWM",
@@ -16,12 +16,12 @@
     "score": 0.375,
     "dss": {
      "1d": [
-      0.575,
-      0.699
+      0.448,
+      0.643
      ],
      "1w": [
-      0.035,
-      0.122
+      0.027,
+      0.101
      ],
      "1M": [
       0.587,
