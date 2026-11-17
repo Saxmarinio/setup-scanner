@@ -1,8 +1,66 @@
 {
- "generated": "2026-11-17 13:32 UTC",
+ "generated": "2026-11-17 23:35 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
-  "divergence (4h)": [],
+  "divergence (4h)": [
+   {
+    "symbol": "AEROUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.41,
+    "tv_symbol": "BINANCE:AEROUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.18,
+      0.292
+     ],
+     "1w": null,
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": null
+    }
+   },
+   {
+    "symbol": "ERAUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
+    "margin_excess": 0.0,
+    "invalidation": 0.0665,
+    "tv_symbol": "BINANCE:ERAUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.626,
+      0.587
+     ],
+     "1w": [
+      0.882,
+      0.681
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": null
+    }
+   }
+  ],
   "bottoming (1d)": [
    {
     "state": "basing",
@@ -194,8 +252,8 @@
      ]
     },
     "trend": {
-     "15m": "up",
-     "1h": "none",
+     "15m": "none",
+     "1h": "up",
      "4h": "none",
      "12h": "none",
      "1w": "none"
@@ -231,46 +289,6 @@
      "1M": [
       0.13,
       0.135
-     ]
-    },
-    "trend": {
-     "15m": "up",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "state": "basing",
-    "drawdown_pct": 48.6,
-    "vol_ratio": 1.63,
-    "base_bars": 180,
-    "gap_100_atr": 1.63,
-    "gap_res_atr": 3.9,
-    "target_200_pct": 12.9,
-    "target_300_pct": 26.0,
-    "resistance": 0.188,
-    "invalidation": 0.15492334,
-    "close": 0.1313,
-    "atr": 0.01454859,
-    "symbol": "ARBUSDT",
-    "tf": "1d",
-    "tv_symbol": "BINANCE:ARBUSDT",
-    "detail": "dd 48.6%, vol x1.63, res 3.9ATR, 100EMA 1.63ATR, targets +12.9%/+26.0%",
-    "score": 0.201,
-    "dss": {
-     "1d": [
-      0.265,
-      0.445
-     ],
-     "1w": [
-      0.838,
-      0.814
-     ],
-     "1M": [
-      0.293,
-      0.163
      ]
     },
     "trend": {
