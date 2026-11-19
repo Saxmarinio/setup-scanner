@@ -1,23 +1,54 @@
 {
- "generated": "2026-11-18 03:11 UTC",
+ "generated": "2026-11-19 02:51 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "JPM",
+    "symbol": "SOXS",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "channel %B, fired 0 bars ago",
+    "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 333.0,
-    "tv_symbol": "JPM",
+    "invalidation": 41.73,
+    "tv_symbol": "SOXS",
     "htf_favourable": false,
     "score": 0.575,
     "dss": {
      "1d": [
-      0.124,
-      0.332
+      0.142,
+      0.303
+     ],
+     "1w": [
+      0.92,
+      0.846
+     ],
+     "1M": [
+      0.111,
+      0.089
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "JPM",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 3 bars ago",
+    "bars_since": 3,
+    "margin_excess": 0.0,
+    "invalidation": 333.0,
+    "tv_symbol": "JPM",
+    "htf_favourable": false,
+    "score": 0.335,
+    "dss": {
+     "1d": [
+      0.097,
+      0.28
      ],
      "1w": [
       0.099,
@@ -38,21 +69,21 @@
     "symbol": "GS",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 854.450012,
     "tv_symbol": "GS",
     "htf_favourable": false,
-    "score": 0.375,
+    "score": 0.255,
     "dss": {
      "1d": [
-      0.717,
-      0.747
+      0.595,
+      0.713
      ],
      "1w": [
-      0.039,
-      0.06
+      0.036,
+      0.059
      ],
      "1M": [
       0.207,
@@ -69,17 +100,17 @@
     "symbol": "NOK",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 7.36,
     "tv_symbol": "NOK",
     "htf_favourable": false,
-    "score": 0.375,
+    "score": 0.255,
     "dss": {
      "1d": [
-      0.629,
-      0.678
+      0.502,
+      0.639
      ],
      "1w": [
       0.194,
@@ -100,8 +131,8 @@
     "symbol": "UVXY",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "channel %B, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 16.02,
     "tv_symbol": "UVXY",
@@ -109,8 +140,8 @@
     "score": 0.175,
     "dss": {
      "1d": [
-      0.358,
-      0.508
+      0.438,
+      0.493
      ],
      "1w": [
       0.785,
