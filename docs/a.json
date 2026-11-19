@@ -1,8 +1,42 @@
 {
- "generated": "2026-11-18 07:16 UTC",
+ "generated": "2026-11-19 07:17 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
-  "divergence (4h)": [],
+  "divergence (4h)": [
+   {
+    "symbol": "PEPEUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
+    "margin_excess": 0.0,
+    "invalidation": 4e-06,
+    "tv_symbol": "BINANCE:PEPEUSDT",
+    "htf_favourable": false,
+    "score": 0.375,
+    "dss": {
+     "1d": [
+      0.041,
+      0.111
+     ],
+     "1w": [
+      0.934,
+      0.901
+     ],
+     "1M": [
+      0.161,
+      0.047
+     ]
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   }
+  ],
   "bottoming (1d/1w)": []
  }
 }
