@@ -1,27 +1,58 @@
 {
- "generated": "2026-11-19 02:52 UTC",
+ "generated": "2026-11-20 02:41 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
    {
-    "symbol": "LE=F",
+    "symbol": "KC=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 210.850006,
-    "tv_symbol": "CME:LE1!",
+    "invalidation": 266.700012,
+    "tv_symbol": "ICEUS:KC1!",
     "htf_favourable": false,
     "score": 0.575,
     "dss": {
      "1d": [
-      0.451,
-      0.254
+      0.603,
+      0.344
      ],
      "1w": [
-      0.749,
-      0.522
+      0.093,
+      0.277
+     ],
+     "1M": [
+      0.065,
+      0.188
+     ]
+    },
+    "trend": {
+     "1h": "none",
+     "1d": "none",
+     "1w": "none"
+    }
+   },
+   {
+    "symbol": "LE=F",
+    "tf": "1d",
+    "state": "divergence",
+    "detail": "channel %B, fired 4 bars ago",
+    "bars_since": 4,
+    "margin_excess": 0.0,
+    "invalidation": 210.850006,
+    "tv_symbol": "CME:LE1!",
+    "htf_favourable": false,
+    "score": 0.175,
+    "dss": {
+     "1d": [
+      0.573,
+      0.325
+     ],
+     "1w": [
+      0.757,
+      0.524
      ],
      "1M": [
       0.164,
@@ -38,21 +69,21 @@
     "symbol": "HE=F",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 53.174999,
     "tv_symbol": "CME:HE1!",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.175,
     "dss": {
      "1d": [
-      0.865,
-      0.705
+      0.817,
+      0.713
      ],
      "1w": [
-      0.043,
-      0.066
+      0.048,
+      0.067
      ],
      "1M": [
       0.106,
@@ -63,37 +94,6 @@
      "1h": "none",
      "1d": "none",
      "1w": "none"
-    }
-   },
-   {
-    "symbol": "CT=F",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 76.470001,
-    "tv_symbol": "ICEUS:CT1!",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.662,
-      0.48
-     ],
-     "1w": [
-      0.085,
-      0.212
-     ],
-     "1M": [
-      0.92,
-      0.892
-     ]
-    },
-    "trend": {
-     "1h": "none",
-     "1d": "none",
-     "1w": "up"
     }
    }
   ],
