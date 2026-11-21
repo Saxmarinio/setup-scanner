@@ -1,7 +1,57 @@
 {
- "generated": "2026-11-21 12:44 UTC",
+ "generated": "2026-11-21 21:44 UTC",
  "groups": {
-  "compression (15m/1h/4h)": [],
+  "compression (15m/1h/4h)": [
+   {
+    "state": "compressed",
+    "expansion_atr": 3.14,
+    "consol_bars": 25,
+    "consol_start": 974,
+    "coil_end": 999,
+    "bars_since_coil": 0,
+    "res_touches": 3,
+    "channel_atr": 0.35,
+    "gap_atr": 0.26,
+    "bars_to_apex": 2.2,
+    "bars_in_state": 26,
+    "res_kind": "angled",
+    "resistance": 4e-06,
+    "res_slope": -1.3265306122449322e-09,
+    "res_intercept": 4.950204081632686e-06,
+    "invalidation": 4e-06,
+    "close": 4e-06,
+    "atr": 0.0,
+    "ribbon_pct": 0.35,
+    "symbol": "SHIBUSDT",
+    "tf": "15m",
+    "tv_symbol": "BINANCE:SHIBUSDT",
+    "htf_favourable": true,
+    "trend_bars": 19,
+    "detail": "angled res x3, exp 3.14ATR, ch 0.35ATR, apex 2.2, trend 19b",
+    "score": 0.907,
+    "dss": {
+     "1d": [
+      0.038,
+      0.093
+     ],
+     "1w": [
+      0.53,
+      0.722
+     ],
+     "1M": [
+      0.185,
+      0.085
+     ]
+    },
+    "trend": {
+     "15m": "up",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": "none"
+    }
+   }
+  ],
   "divergence (4h)": [],
   "bottoming (1d)": [
    {
@@ -114,7 +164,7 @@
      "1M": null
     },
     "trend": {
-     "15m": "none",
+     "15m": "up",
      "1h": "none",
      "4h": "none",
      "12h": "none",
