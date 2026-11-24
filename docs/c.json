@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-21 02:40 UTC",
+ "generated": "2026-11-24 05:25 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,56 +7,25 @@
     "symbol": "TLT",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 0 bars ago",
-    "bars_since": 0,
+    "detail": "channel %B, fired 1 bars ago",
+    "bars_since": 1,
     "margin_excess": 0.0,
     "invalidation": 79.110001,
     "tv_symbol": "TLT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.375,
     "dss": {
      "1d": [
-      0.132,
-      0.24
+      0.185,
+      0.228
      ],
      "1w": [
-      0.737,
-      0.479
+      0.796,
+      0.549
      ],
      "1M": [
-      0.256,
-      0.363
-     ]
-    },
-    "trend": {
-     "1h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "IWM",
-    "tf": "1d",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
-    "margin_excess": 0.0,
-    "invalidation": 270.230011,
-    "tv_symbol": "IWM",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.164,
-      0.381
-     ],
-     "1w": [
-      0.027,
-      0.101
-     ],
-     "1M": [
-      0.587,
-      0.767
+      0.26,
+      0.364
      ]
     },
     "trend": {
