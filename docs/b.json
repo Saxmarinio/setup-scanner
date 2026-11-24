@@ -1,31 +1,61 @@
 {
- "generated": "2026-11-24 04:52 UTC",
+ "generated": "2026-11-24 19:34 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
    {
-    "symbol": "ICPUSDT",
+    "symbol": "SKYUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 5 bars ago",
-    "bars_since": 5,
+    "detail": "roofed RSI, fired 0 bars ago",
+    "bars_since": 0,
     "margin_excess": 0.0,
-    "invalidation": 1.864,
-    "tv_symbol": "BINANCE:ICPUSDT",
+    "invalidation": 0.0362,
+    "tv_symbol": "BINANCE:SKYUSDT",
     "htf_favourable": false,
-    "score": 0.375,
+    "score": 0.575,
     "dss": {
      "1d": [
-      0.191,
-      0.422
+      0.563,
+      0.35
      ],
      "1w": [
-      0.578,
-      0.703
+      0.413,
+      0.605
+     ],
+     "1M": null
+    },
+    "trend": {
+     "15m": "none",
+     "1h": "none",
+     "4h": "none",
+     "12h": "none",
+     "1w": null
+    }
+   },
+   {
+    "symbol": "ONEUSDT",
+    "tf": "4h",
+    "state": "divergence",
+    "detail": "roofed RSI, fired 2 bars ago",
+    "bars_since": 2,
+    "margin_excess": 0.0,
+    "invalidation": 0.000923,
+    "tv_symbol": "BINANCE:ONEUSDT",
+    "htf_favourable": false,
+    "score": 0.175,
+    "dss": {
+     "1d": [
+      0.155,
+      0.368
+     ],
+     "1w": [
+      0.616,
+      0.675
      ],
      "1M": [
-      0.737,
-      0.495
+      0.169,
+      0.073
      ]
     },
     "trend": {
@@ -146,43 +176,6 @@
       0.024,
       0.03
      ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "state": "basing",
-    "drawdown_pct": 74.9,
-    "vol_ratio": 3.09,
-    "base_bars": 180,
-    "gap_100_atr": 2.13,
-    "gap_res_atr": 0.11,
-    "target_200_pct": 38.7,
-    "target_300_pct": 72.8,
-    "resistance": 0.0323,
-    "invalidation": 0.03755982,
-    "close": 0.03178,
-    "atr": 0.00468095,
-    "symbol": "STRKUSDT",
-    "tf": "1d",
-    "tv_symbol": "BINANCE:STRKUSDT",
-    "detail": "dd 74.9%, vol x3.09, res 0.11ATR, 100EMA 2.13ATR, targets +38.7%/+72.8%",
-    "score": 0.362,
-    "dss": {
-     "1d": [
-      0.669,
-      0.635
-     ],
-     "1w": [
-      0.56,
-      0.678
-     ],
-     "1M": null
     },
     "trend": {
      "15m": "none",
