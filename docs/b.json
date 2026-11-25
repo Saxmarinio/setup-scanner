@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25 03:39 UTC",
+ "generated": "2026-11-25 14:27 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
@@ -7,13 +7,13 @@
     "symbol": "SKYUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "roofed RSI, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 0.0362,
     "tv_symbol": "BINANCE:SKYUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.375,
     "dss": {
      "1d": [
       0.64,
@@ -26,44 +26,11 @@
      "1M": null
     },
     "trend": {
-     "15m": "up",
-     "1h": "none",
-     "4h": "none",
-     "12h": "none",
-     "1w": null
-    }
-   },
-   {
-    "symbol": "ONEUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 4 bars ago",
-    "bars_since": 4,
-    "margin_excess": 0.0,
-    "invalidation": 0.000923,
-    "tv_symbol": "BINANCE:ONEUSDT",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.12,
-      0.313
-     ],
-     "1w": [
-      0.616,
-      0.675
-     ],
-     "1M": [
-      0.169,
-      0.073
-     ]
-    },
-    "trend": {
      "15m": "none",
      "1h": "none",
      "4h": "none",
      "12h": "none",
-     "1w": "none"
+     "1w": null
     }
    }
   ],
