@@ -95,6 +95,64 @@ def year_paths(df, align="trading", width=None):
     return out
 
 
+def edge_paths(d, align, width, pad):
+    """The `pad` bars either side of each year, rebased to THAT year's first close.
+
+    The point of the context months is to see where a year came from and where
+    it went, so both wings have to share the focus year's base. Rebasing the
+    lead-in to the PREVIOUS year's January instead would not join up: the path
+    has to pass through 0% on day one of the focus year.
+
+    The main path is untouched - these are separate arrays, so the existing
+    composite cannot shift under anyone.
+    """
+    pre, post = {}, {}
+    if align == "trading":
+        closes = d["close"].to_numpy(float)
+        years = d["datetime"].dt.year.to_numpy(int)
+        n = len(closes)
+        starts = {}
+        for i, y in enumerate(years):
+            if int(y) not in starts:
+                starts[int(y)] = i
+
+        def at(gi, base):
+            if 0 <= gi < n and closes[gi] > 0:
+                return round(float((closes[gi] / base - 1.0) * 100.0), 2)
+            return None
+
+        for y, s in starts.items():
+            base = closes[s]
+            if base <= 0:
+                continue
+            # Offsets are from the year's first SESSION, which is what the main
+            # domain is indexed by, so the wings butt up against it exactly.
+            pre[y] = [at(s - pad + k, base) for k in range(pad)]
+            post[y] = [at(s + width + k, base) for k in range(pad)]
+    else:
+        ser = d.set_index("datetime")["close"].astype(float)
+        ser = ser[~ser.index.duplicated(keep="last")]
+        # Forward-fill to a daily grid: the wings are read by DATE, so a
+        # weekend or holiday must carry the last close rather than leave a hole.
+        daily = ser.resample("D").last().ffill()
+
+        def vals(ix, base):
+            v = daily.reindex(ix).to_numpy(float)
+            return [None if not np.isfinite(x) or x <= 0
+                    else round(float((x / base - 1.0) * 100.0), 2) for x in v]
+
+        for y, g in d.groupby(d["datetime"].dt.year):
+            y = int(y)
+            base = float(g["close"].iloc[0])
+            if base <= 0:
+                continue
+            j0 = pd.Timestamp(year=y, month=1, day=1)
+            j1 = pd.Timestamp(year=y + 1, month=1, day=1)
+            pre[y] = vals([j0 - pd.Timedelta(days=pad - k) for k in range(pad)], base)
+            post[y] = vals([j1 + pd.Timedelta(days=k) for k in range(pad)], base)
+    return pre, post
+
+
 def month_ticks(df, align="trading"):
     """Where the months fall on the x axis, so both modes can be read.
 
@@ -147,11 +205,20 @@ def build(df, symbol_key, name):
         "alwaysOpen": bool(tl >= 360),
     }
     for align in ("trading", "calendar"):
-        paths = year_paths(d, align, tl if align == "trading" else CALENDAR_LEN)
+        width = tl if align == "trading" else CALENDAR_LEN
+        paths = year_paths(d, align, width)
+        # Four months of context either side. A third of a year is 4 months in
+        # both modes, so the same fraction works for a 252-session equity year
+        # and a 366-day calendar year without a second constant.
+        pad = int(round(width / 3.0))
+        pre, post = edge_paths(d, align, width, pad)
         payload[align] = {
             "years": sorted(paths.keys()),
             "paths": {str(y): paths[y] for y in sorted(paths)},
             "monthTicks": month_ticks(d, align),
+            "pad": pad,
+            "pre": {str(y): pre[y] for y in sorted(pre) if y in paths},
+            "post": {str(y): post[y] for y in sorted(post) if y in paths},
         }
     # A year that does not START at the start of the year cannot describe the
     # shape of a year - Bitcoin's 2010 begins on 18 July, and rebasing that to

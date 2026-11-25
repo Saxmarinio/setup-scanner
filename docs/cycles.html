@@ -165,6 +165,7 @@ table.tt{border-collapse:collapse;font-size:12px}
     <svg id=brush viewBox="0 0 900 52" preserveAspectRatio="none"></svg>
     <div class=zoomrow>
       <span id=zoomLabel></span>
+      <button id=extToggle>Context months: on</button>
       <button id=zoomReset>Reset zoom</button>
     </div>
     <div class=note id=note></div>
@@ -186,7 +187,7 @@ const COHORTS = [
   {id:"custom", label:"Custom",           color:"#f06292"}
 ];
 const S = {sym:SYMBOLS[0].key, align:"trading", stat:"mean", yaxis:"pct", scale:"linear",
-           sampling:"consec", anchorMode:"rolling", anchorYear:null,
+           sampling:"consec", anchorMode:"rolling", anchorYear:null, ext:true,
            on:new Set(["all"]), periods:new Set(), custom:new Set(),
            data:null, hover:null, x0:0, x1:1};
 
@@ -195,6 +196,12 @@ const median = a => { const b=[...a].sort((x,y)=>x-y), n=b.length;
   return n%2 ? b[(n-1)/2] : (b[n/2-1]+b[n/2])/2; };
 const domainW = () => S.align==="trading"
   ? (S.data.tradingTypical || S.data.tradingLen) : S.data.calendarLen;
+// Context months either side. PAD is 0 when the toggle is off, which collapses
+// every bit of extension arithmetic below back to the original 12-month view.
+const PAD = () => S.ext ? (S.data[S.align].pad || 0) : 0;
+const fullW = () => PAD()*2 + domainW();
+// Index of the focus year inside the extended domain.
+const mainA = () => PAD(), mainB = () => PAD() + domainW() - 1;
 
 function eligible(){
   const part = new Set(S.data.partialYears);
@@ -232,17 +239,28 @@ function cohortYears(id){
   return [];
 }
 
+// One extended array per cohort: [pre months][the year][post months]. The three
+// blocks are averaged the same way and by the same rule, so a dashed wing is as
+// honest as the solid middle - it is just a part of the path that belongs to the
+// neighbouring year.
 function composite(years){
-  const paths = S.data[S.align].paths, w = domainW();
-  const out = new Array(w).fill(null);
+  const A = S.data[S.align], w = domainW(), pad = PAD();
+  const out = new Array(pad*2 + w).fill(null);
   // A point must be backed by most of the cohort, or the final index is
   // averaged from leap years alone and the curve ends in a cliff.
   const need = Math.min(years.length, Math.max(2, Math.ceil(years.length*0.6)));
-  for(let i=0;i<w;i++){
-    const v=[];
-    for(const y of years){ const p=paths[y]; if(p && p[i]!==null && p[i]!==undefined) v.push(p[i]); }
-    if(v.length>=need) out[i] = S.stat==="mean" ? v.reduce((a,b)=>a+b,0)/v.length : median(v);
-  }
+  const avg = v => S.stat==="mean" ? v.reduce((a,b)=>a+b,0)/v.length : median(v);
+  const fill = (src, from, len) => {
+    if(!src) return;
+    for(let i=0;i<len;i++){
+      const v=[];
+      for(const y of years){ const p=src[y];
+        if(p && p[i]!==null && p[i]!==undefined) v.push(p[i]); }
+      if(v.length>=need) out[from+i] = avg(v);
+    }
+  };
+  if(pad){ fill(A.pre, 0, pad); fill(A.post, pad+w, pad); }
+  fill(A.paths, pad, w);
   return out;
 }
 function toPrice(arr){
@@ -252,9 +270,14 @@ function toPrice(arr){
 }
 function series(){
   const out=[], px = S.yaxis==="price";
-  const a = S.data[S.align].paths[S.data.currentYear];
-  if(a) out.push({id:"actual", label:"Actual "+S.data.currentYear, colorRaw:"#2196f3",
-                  data: px?toPrice(a.slice()):a.slice(), n:1});
+  // The live year goes through the same extended builder so its lead-in from
+  // last autumn is drawn too. Its post wing is simply empty - it has not
+  // happened - which is correct rather than something to hide.
+  if(S.data[S.align].paths[S.data.currentYear]){
+    const a = composite([S.data.currentYear]);
+    out.push({id:"actual", label:"Actual "+S.data.currentYear, colorRaw:"#2196f3",
+              data: px?toPrice(a):a, n:1});
+  }
   for(const p of PERIODS){
     if(!S.periods.has(p.n)) continue;
     const ys = periodYears(p.n);
@@ -283,7 +306,7 @@ const BW=900,BH=52,BM=4;
 const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
 function viewRange(){
-  const w=domainW();
+  const w=fullW();
   return [Math.max(0,Math.round(S.x0*(w-1))), Math.min(w-1,Math.round(S.x1*(w-1)))];
 }
 function niceStep(r){ if(!(r>0)) return 1;
@@ -299,6 +322,14 @@ function fmt(v){
 }
 function dayLabel(i){ const d=new Date(2001,0,1); d.setDate(i+1);
   return d.toLocaleDateString(undefined,{day:"numeric",month:"short"}); }
+// An x index can now land in the previous year, the focus year or the next one.
+function axisLabel(i){
+  const pad=PAD(), w=domainW();
+  const inner = j => S.align==="trading" ? "session "+(j+1) : dayLabel(j);
+  if(i<pad)      return inner(w-(pad-i))+" (prev yr)";
+  if(i>pad+w-1)  return inner(i-pad-w)+" (next yr)";
+  return (S.align==="trading" ? "Session "+(i-pad+1) : dayLabel(i-pad));
+}
 
 function draw(){
   const ss=series(), [i0,i1]=viewRange(), span=Math.max(1,i1-i0);
@@ -331,18 +362,51 @@ function draw(){
     g+=`<line x1=${ML} y1=${y} x2=${W-MR} y2=${y} stroke="${zero?'#3d4452':'#232735'}" stroke-width="1"/>`;
     g+=`<text x=${ML-8} y=${(+y+4).toFixed(1)} fill="#787b86" font-size="11" text-anchor="end">${fmt(v)}</text>`;
   }
-  S.data[S.align].monthTicks.forEach((t,i)=>{
-    if(t<i0||t>i1) return;
+  // Month ticks. The wings reuse the same monthTicks offsets shifted by a whole
+  // year, which is exact in calendar mode and uses the same median session
+  // numbers in trading mode - no second table to keep in step.
+  const pad=PAD(), w=domainW(), mt=S.data[S.align].monthTicks, ticks=[];
+  mt.forEach((t,i)=>{
+    ticks.push([pad+t, MON[i], false]);
+    if(pad){
+      if(pad-(w-t) >= 0) ticks.push([pad-(w-t), MON[i], true]);
+      if(pad+w+t < fullW()) ticks.push([pad+w+t, MON[i], true]);
+    }
+  });
+  for(const [t,lab,dim] of ticks){
+    if(t<i0||t>i1) continue;
     const x=X(t).toFixed(1);
     g+=`<line x1=${x} y1=${MT} x2=${x} y2=${H-MB} stroke="#1f2430" stroke-width="1"/>`;
-    g+=`<text x=${x} y=${H-MB+16} fill="#787b86" font-size="11" text-anchor="middle">${MON[i]}</text>`;
-  });
-  for(const s of ss){
-    let d="", pen=false;
-    for(let i=i0;i<=i1;i++){ const v=s.data[i];
+    g+=`<text x=${x} y=${H-MB+16} fill="${dim?'#4b4f5a':'#787b86'}" font-size="11" text-anchor="middle">${lab}</text>`;
+  }
+  // Mark where the focus year starts and ends, so the dashed wings are
+  // unambiguous even when a curve runs flat across the boundary.
+  if(pad) for(const b of [mainA(), mainB()]){
+    if(b<i0||b>i1) continue;
+    g+=`<line x1=${X(b).toFixed(1)} y1=${MT} x2=${X(b).toFixed(1)} y2=${H-MB} stroke="#39404f" stroke-width="1" stroke-dasharray="2 4"/>`;
+  }
+  const seg=(s,a,b)=>{ let d="",pen=false;
+    for(let i=Math.max(a,i0);i<=Math.min(b,i1);i++){ const v=s.data[i];
       if(v===null||v===undefined){ pen=false; continue; }
       d += (pen?"L":"M")+X(i).toFixed(1)+" "+Y(v).toFixed(1)+" "; pen=true; }
-    g+=`<path d="${d}" fill="none" stroke="${s.colorRaw}" stroke-width="${s.id==="actual"?2.1:1.5}" stroke-linejoin="round"/>`;
+    return d; };
+  for(const s of ss){
+    const lw = s.id==="actual"?2.1:1.5;
+    // Wings overlap the first/last focus-year point by one index so the dashed
+    // and solid parts join instead of leaving a gap at the boundary.
+    if(pad){
+      // Join the wings to where the solid line ACTUALLY starts and ends, not to
+      // the nominal year boundary. A 253-session year inside a 254-slot domain
+      // leaves its last slot empty, and anchoring the dash there would open a
+      // hairline gap at the join.
+      let a=mainA(), b=mainB();
+      while(a<b && (s.data[a]===null||s.data[a]===undefined)) a++;
+      while(b>a && (s.data[b]===null||s.data[b]===undefined)) b--;
+      for(const d of [seg(s,0,a), seg(s,b,fullW()-1)]){
+        if(d) g+=`<path d="${d}" fill="none" stroke="${s.colorRaw}" stroke-width="${lw}" stroke-linejoin="round" stroke-dasharray="5 4" opacity=".72"/>`;
+      }
+    }
+    g+=`<path d="${seg(s,mainA(),mainB())}" fill="none" stroke="${s.colorRaw}" stroke-width="${lw}" stroke-linejoin="round"/>`;
   }
   if(S.hover!==null && S.hover>=i0 && S.hover<=i1){
     const x=X(S.hover).toFixed(1);
@@ -361,10 +425,11 @@ function draw(){
   $("#chart").innerHTML = g+leg;
   drawBrush(ss);
   tooltip(ss);
+  saveState();   // every change routes through draw(), so this is the one hook
 }
 
 function drawBrush(ss){
-  const w=domainW();
+  const w=fullW();
   const ctx = ss.find(s=>s.id!=="actual") || ss[0];
   let g=`<rect x="0" y="0" width="${BW}" height="${BH}" fill="#151922"/>`;
   if(ctx){
@@ -388,9 +453,10 @@ function drawBrush(ss){
   }
   $("#brush").innerHTML=g;
   const [i0,i1]=viewRange();
-  const lab = S.align==="trading" ? `sessions ${i0+1}–${i1+1}`
-                                  : `${dayLabel(i0)} – ${dayLabel(i1)}`;
-  $("#zoomLabel").textContent = (S.x0>0.001||S.x1<0.999) ? "Showing "+lab : "Full year · drag the strip to zoom";
+  $("#zoomLabel").textContent = (S.x0>0.001||S.x1<0.999)
+    ? "Showing "+axisLabel(i0)+" – "+axisLabel(i1)
+    : (PAD() ? "Full year plus 4 months either side · drag the strip to zoom"
+             : "Full year · drag the strip to zoom");
 }
 
 function tooltip(ss){
@@ -401,7 +467,7 @@ function tooltip(ss){
       : `<b>${S.data.name}</b> &middot; ${S.data.first} to ${S.data.last} &middot; hover the chart for values.`;
     return;
   }
-  const lbl = S.align==="trading" ? "Session "+(S.hover+1) : dayLabel(S.hover);
+  const lbl = axisLabel(S.hover);
   const rows = ss.filter(s=>s.data[S.hover]!==null&&s.data[S.hover]!==undefined)
     .map(s=>`<tr><td style="padding:1px 12px 1px 0"><span class=sw style="display:inline-block;background:${s.colorRaw}"></span> ${s.label}</td>
       <td style="text-align:right;font-variant-numeric:tabular-nums">${fmt(s.data[S.hover])}</td>
@@ -477,7 +543,12 @@ function syncScale(){
 }
 
 async function loadSym(k){
-  S.sym=k; S.custom.clear(); S.anchorYear=null; S.x0=0; S.x1=1;
+  // Year selection SURVIVES an asset change. Picking 2017 and 2021 on gold and
+  // then switching to copper used to wipe the choice, which made comparing the
+  // same years across instruments a retyping exercise. Years the new asset does
+  // not have simply go unused by cohortYears() and come back if you switch
+  // back, so nothing is silently discarded either.
+  S.sym=k; S.x0=0; S.x1=1; S.hover=null;
   S.data = await (await fetch("cycles/"+k+".json")).json();
   $("#sub").innerHTML=`${S.data.name} &middot; ${S.data[S.align].years.length} years of daily history
     (${S.data.first} &rarr; ${S.data.last}) &middot; every year rebased to 0% at its first bar`;
@@ -497,6 +568,12 @@ for(const grp of ["align","stat","yaxis","scale","sampling","anchorMode"]){
   });
 }
 $("#zoomReset").onclick=()=>{ S.x0=0; S.x1=1; draw(); };
+$("#extToggle").onclick=()=>{
+  S.ext=!S.ext; S.x0=0; S.x1=1; S.hover=null;
+  $("#extToggle").textContent="Context months: "+(S.ext?"on":"off");
+  try{ localStorage.setItem("cyc.ext", S.ext?"1":"0"); }catch(_){}
+  draw();
+};
 
 const chart=$("#chart");
 chart.addEventListener("mousemove",e=>{
@@ -532,5 +609,26 @@ for(const ev of ["pointerup","pointercancel"])
   brush.addEventListener(ev,e=>{ drag=null;
     try{ brush.releasePointerCapture(e.pointerId); }catch(_){} });
 
+// Keep the year selection across asset changes AND across reloads. Only the
+// selection and the view toggle are stored - not the instrument, because
+// landing on an asset you did not choose is more surprising than helpful.
+function saveState(){
+  try{ localStorage.setItem("cyc.sel", JSON.stringify({
+    custom:[...S.custom], on:[...S.on], periods:[...S.periods],
+    anchorYear:S.anchorYear, ext:S.ext})); }catch(_){}
+}
+function restoreState(){
+  try{
+    const r = JSON.parse(localStorage.getItem("cyc.sel")||"null");
+    if(!r) return;
+    if(Array.isArray(r.custom))  S.custom  = new Set(r.custom.map(Number));
+    if(Array.isArray(r.on))      S.on      = new Set(r.on);
+    if(Array.isArray(r.periods)) S.periods = new Set(r.periods.map(Number));
+    if(typeof r.anchorYear==="number") S.anchorYear = r.anchorYear;
+    if(typeof r.ext==="boolean")       S.ext = r.ext;
+  }catch(_){}
+}
+restoreState();
+$("#extToggle").textContent = "Context months: "+(S.ext?"on":"off");
 loadSym(S.sym);
 </script>
