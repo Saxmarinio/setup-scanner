@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25 04:38 UTC",
+ "generated": "2026-11-26 03:49 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "TMF",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 2 bars ago",
-    "bars_since": 2,
+    "detail": "channel %B, fired 3 bars ago",
+    "bars_since": 3,
     "margin_excess": 0.0,
     "invalidation": 27.120001,
     "tv_symbol": "TMF",
@@ -16,16 +16,16 @@
     "score": 0.575,
     "dss": {
      "1d": [
-      0.222,
-      0.234
+      0.297,
+      0.248
      ],
      "1w": [
       0.79,
       0.541
      ],
      "1M": [
-      0.286,
-      0.37
+      0.301,
+      0.373
      ]
     },
     "trend": {
@@ -38,8 +38,8 @@
     "symbol": "PDD",
     "tf": "1d",
     "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 76.269997,
     "tv_symbol": "PDD",
@@ -47,15 +47,15 @@
     "score": 0.375,
     "dss": {
      "1d": [
-      0.56,
-      0.401
+      0.657,
+      0.458
      ],
      "1w": [
-      0.4,
-      0.388
+      0.395,
+      0.387
      ],
      "1M": [
-      0.1,
+      0.101,
       0.226
      ]
     },
@@ -69,8 +69,8 @@
     "symbol": "SOXS",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 4 bars ago",
-    "bars_since": 4,
+    "detail": "channel %B, fired 5 bars ago",
+    "bars_since": 5,
     "margin_excess": 0.0,
     "invalidation": 41.73,
     "tv_symbol": "SOXS",
@@ -78,16 +78,16 @@
     "score": 0.175,
     "dss": {
      "1d": [
-      0.191,
-      0.228
+      0.201,
+      0.222
      ],
      "1w": [
-      0.937,
+      0.938,
       0.867
      ],
      "1M": [
-      0.116,
-      0.09
+      0.119,
+      0.091
      ]
     },
     "trend": {
