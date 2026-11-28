@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-27 03:42 UTC",
+ "generated": "2026-11-28 03:26 UTC",
  "groups": {
   "compression (1d)": [],
   "divergence (1d)": [
@@ -7,8 +7,8 @@
     "symbol": "TLT",
     "tf": "1d",
     "state": "divergence",
-    "detail": "channel %B, fired 3 bars ago",
-    "bars_since": 3,
+    "detail": "channel %B, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 79.110001,
     "tv_symbol": "TLT",
@@ -16,16 +16,16 @@
     "score": 0.375,
     "dss": {
      "1d": [
-      0.331,
-      0.255
+      0.44,
+      0.296
      ],
      "1w": [
       0.796,
       0.549
      ],
      "1M": [
-      0.268,
-      0.366
+      0.254,
+      0.362
      ]
     },
     "trend": {
