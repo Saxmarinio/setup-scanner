@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-28 07:54 UTC",
+ "generated": "2026-11-28 17:00 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
@@ -7,8 +7,8 @@
     "symbol": "BEAMXUSDT",
     "tf": "4h",
     "state": "divergence",
-    "detail": "roofed RSI, fired 1 bars ago",
-    "bars_since": 1,
+    "detail": "roofed RSI, fired 4 bars ago",
+    "bars_since": 4,
     "margin_excess": 0.0,
     "invalidation": 0.00311,
     "tv_symbol": "BINANCE:BEAMXUSDT",
