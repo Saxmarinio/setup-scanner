@@ -1,97 +1,31 @@
 {
- "generated": "2026-11-27 08:18 UTC",
+ "generated": "2026-11-28 07:39 UTC",
  "groups": {
   "compression (15m/1h/4h)": [],
   "divergence (4h)": [
    {
-    "symbol": "NEARUSDT",
+    "symbol": "ZECUSDT",
     "tf": "4h",
     "state": "divergence",
     "detail": "roofed RSI, fired 2 bars ago",
     "bars_since": 2,
     "margin_excess": 0.0,
-    "invalidation": 2.714,
-    "tv_symbol": "BINANCE:NEARUSDT",
+    "invalidation": 662.62,
+    "tv_symbol": "BINANCE:ZECUSDT",
     "htf_favourable": false,
-    "score": 0.575,
+    "score": 0.375,
     "dss": {
      "1d": [
-      0.9,
-      0.737
+      0.413,
+      0.254
      ],
      "1w": [
-      0.741,
-      0.729
+      0.358,
+      0.582
      ],
      "1M": [
-      0.789,
-      0.518
-     ]
-    },
-    "trend": {
-     "15m": "up",
-     "1h": "up",
-     "4h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "PEPEUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 2 bars ago",
-    "bars_since": 2,
-    "margin_excess": 0.0,
-    "invalidation": 3e-06,
-    "tv_symbol": "BINANCE:PEPEUSDT",
-    "htf_favourable": false,
-    "score": 0.575,
-    "dss": {
-     "1d": [
-      0.113,
-      0.058
-     ],
-     "1w": [
-      0.805,
-      0.88
-     ],
-     "1M": [
-      0.161,
-      0.047
-     ]
-    },
-    "trend": {
-     "15m": "none",
-     "1h": "up",
-     "4h": "none",
-     "1d": "none",
-     "1w": "none"
-    }
-   },
-   {
-    "symbol": "BTCUSDT",
-    "tf": "4h",
-    "state": "divergence",
-    "detail": "roofed RSI, fired 3 bars ago",
-    "bars_since": 3,
-    "margin_excess": 0.0,
-    "invalidation": 57300.38,
-    "tv_symbol": "BINANCE:BTCUSDT",
-    "htf_favourable": false,
-    "score": 0.175,
-    "dss": {
-     "1d": [
-      0.733,
-      0.449
-     ],
-     "1w": [
-      0.596,
-      0.752
-     ],
-     "1M": [
-      0.075,
-      0.126
+      0.791,
+      0.667
      ]
     },
     "trend": {
